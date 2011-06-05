@@ -29,6 +29,7 @@ public class PRTActivity extends Activity {
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
+	boolean pushupchanged = false, situpchanged = false, runchanged = false;
 	
 	int age = 18, pushups = 0, situps = 0, runtime = 0, minutes, seconds;
 	boolean male;
@@ -89,7 +90,7 @@ public class PRTActivity extends Activity {
 		
 		secondDownBTN = (Button) findViewById(R.id.calculatorSecondsDownBTN);
 		
-		ageSeekBar.setMax(100);//max age 100
+		ageSeekBar.setMax(80);//max age 100
 		ageSeekBar.setProgress(18);
 		
 		pushupSeekBar.setMax(100);//max pushups is 92
@@ -114,12 +115,10 @@ public class PRTActivity extends Activity {
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 			
@@ -130,17 +129,16 @@ public class PRTActivity extends Activity {
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				pushups = arg1;
 				pushupLBL.setText(Integer.toString(pushups));
+				pushupchanged = true;
 				calculateScore();
 				
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 			
@@ -151,17 +149,16 @@ public class PRTActivity extends Activity {
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				situps = arg1;
 				situpLBL.setText(Integer.toString(situps));
+				situpchanged = true;
 				calculateScore();
 				
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 			
@@ -174,17 +171,16 @@ public class PRTActivity extends Activity {
 				minutes = (Integer) runtime / 60;
 				seconds = runtime % 60;
 				formatTimer();
+				runchanged = true;
 				calculateScore();
 				
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 			
@@ -194,7 +190,6 @@ public class PRTActivity extends Activity {
 		secondUpBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				runtime += 1;
 				if(runtime > 1080){
 					runtime = 1080;
@@ -203,6 +198,7 @@ public class PRTActivity extends Activity {
 				seconds = runtime % 60;
 				formatTimer();
 				runSeekBar.setProgress(runtime);
+				runchanged = true;
 				calculateScore();
 			}
 			
@@ -211,7 +207,6 @@ public class PRTActivity extends Activity {
 		secondDownBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				runtime -= 1;
 				if(runtime < 0){
 					runtime = 0;
@@ -220,6 +215,7 @@ public class PRTActivity extends Activity {
 				seconds = runtime % 60;
 				formatTimer();
 				runSeekBar.setProgress(runtime);
+				runchanged = true;
 				calculateScore();
 			}
 			
@@ -323,7 +319,9 @@ public class PRTActivity extends Activity {
 		}
 		
 		if(!weightCheckBox.isChecked() || !SitReachCheckBox.isChecked()){
-			scoreLBL.setText("Fail");
+			if(changed()){
+				scoreLBL.setText("Fail");
+			}
 		}
 		
 	}
@@ -341,7 +339,6 @@ public class PRTActivity extends Activity {
 				if(i > 0){
 					totalScore += Scores[i];
 					fail0 = false;
-					System.out.println("Pushup Score " + Scores[i-1]);
 				}
 				
 				break;
@@ -352,7 +349,6 @@ public class PRTActivity extends Activity {
 				if(i > 0){
 					totalScore += Scores[i];
 					fail1 = false;
-					System.out.println("Situp Score " + Scores[i-1]);
 				}	
 			
 				break;
@@ -363,15 +359,13 @@ public class PRTActivity extends Activity {
 				if(i > 0){
 					totalScore += Scores[i];
 					fail2 = false;
-					System.out.println("Run Score " + Scores[i-1]);
 				}
 				break;
 			}
 		}
 		
-		if(!fail0 && !fail1 && !fail2){
+		if(!fail0 && !fail1 && !fail2 && changed()){
 
-			System.out.println("Total Score " + totalScore / 3);
 			if((totalScore / 3) < 50){
 				scoreLBL.setText("Probationary");
 			}else if((totalScore / 3) < 55){
@@ -397,7 +391,7 @@ public class PRTActivity extends Activity {
 			}else if((totalScore / 3) == 100){
 				scoreLBL.setText("Outstanding High");
 			}
-		}else{
+		}else if(changed()){
 			scoreLBL.setText("Fail");
 		}
 	
@@ -418,7 +412,6 @@ public class PRTActivity extends Activity {
 				if(i > 0){
 					totalScore += Scores[i];
 					fail0 = false;
-					System.out.println("Pushup Score " + Scores[i-1]);
 				}
 				break;
 			}
@@ -428,7 +421,6 @@ public class PRTActivity extends Activity {
 				if(i > 0){
 					totalScore += Scores[i];
 					fail1=false;
-					System.out.println("Situp Score " + Scores[i-1]);
 				}	
 				
 				break;
@@ -439,15 +431,13 @@ public class PRTActivity extends Activity {
 				if(i > 0){
 					totalScore += Scores[i];
 					fail2 = false;
-					System.out.println("Run Score " + Scores[i-1]);
 				}
 				break;
 			}
 		}
 		
-		if(!fail0 && !fail1 && !fail2){
+		if(!fail0 && !fail1 && !fail2 && changed()){
 
-			System.out.println("Total Score " + totalScore / 3);
 			if((totalScore / 3) < 50){
 				scoreLBL.setText("Probationary");
 			}else if((totalScore / 3) < 55){
@@ -473,12 +463,21 @@ public class PRTActivity extends Activity {
 			}else if((totalScore / 3) == 100){
 				scoreLBL.setText("Outstanding High");
 			}
-		}else{
+		}else if(changed()){
 			scoreLBL.setText("Fail");
 		}
 	
 		
 		
+	}
+	
+	private boolean changed(){
+		boolean changed = false;
+		if(runchanged && situpchanged && pushupchanged){
+			changed = true;
+		}
+		
+		return changed;
 	}
 	public void onResume(){
 		super.onResume();

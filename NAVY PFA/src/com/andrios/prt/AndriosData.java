@@ -4,8 +4,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -122,7 +120,6 @@ public class AndriosData implements Serializable, Cloneable {
 
 
 	
-	@SuppressWarnings("null")
 	public void write(Context ctx){
 		AndriosData writableData = null;
 		try {

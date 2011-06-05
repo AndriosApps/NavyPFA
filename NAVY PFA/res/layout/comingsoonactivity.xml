@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:background="@drawable/comingsoon" android:orientation="vertical">
+    <TextView android:text="Additional resources will be available in time for" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+ 	<TextView android:text="Fall 2011 PRT Cycle" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+ 	<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:gravity="bottom" android:layout_weight="1">
+ 		<com.google.ads.AdView 
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:id="@+id/comingSoonAdView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14dca3fe4ea15f"
+        ads:adSize="BANNER"
+        android:layout_weight="0" />
+ 	
+ 	</LinearLayout>
+
+</LinearLayout>

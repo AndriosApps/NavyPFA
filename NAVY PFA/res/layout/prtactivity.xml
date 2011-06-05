@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" 
+  android:orientation="vertical"
+  android:background="@drawable/background">
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1">
+        <RadioGroup android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/radioGroup1" android:layout_width="wrap_content">
+            <RadioButton android:layout_width="wrap_content" android:text="Male" android:layout_height="wrap_content" android:checked="true" android:id="@+id/calculatorMaleRDO"></RadioButton>
+            <RadioButton android:layout_width="wrap_content" android:text="Female" android:layout_height="wrap_content" android:id="@+id/calculatorFemaleRDO"></RadioButton>
+        </RadioGroup>
+        <LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/linearLayout2" android:orientation="vertical">
+            <CheckBox android:layout_width="wrap_content" android:text="Weight in Standards" android:layout_height="wrap_content" android:id="@+id/calculatorWeightCheckBox"></CheckBox>
+            <CheckBox android:layout_width="wrap_content" android:text="Sit and Reach" android:layout_height="wrap_content" android:id="@+id/calculatorSitReachCheckBox"></CheckBox>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:gravity="center">
+        <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:layout_width="200dip" android:gravity="center" android:orientation="vertical" android:id="@+id/linearLayout4">
+            <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout12">
+                <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout13" android:layout_weight="1" android:layout_width="1px"></LinearLayout>
+                <TextView android:layout_height="wrap_content" android:text="Age" android:id="@+id/textView1" android:layout_weight="1" android:layout_width="1px" android:gravity="center"></TextView>
+                <TextView android:layout_height="wrap_content" android:layout_weight="1" android:text="18" android:layout_width="1px" android:id="@+id/calculatorAgeLBL"></TextView>
+            </LinearLayout>
+            <SeekBar android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/calculatorAgeSeekBar"></SeekBar>
+        </LinearLayout>
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="200dip">
+            <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout11">
+                <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout14" android:layout_weight="1" android:layout_width="1px"></LinearLayout>
+                <TextView android:layout_height="wrap_content" android:text="Pushups" android:id="@+id/textView6" android:layout_weight="1" android:layout_width="1px" android:gravity="center"></TextView>
+                <TextView android:layout_height="wrap_content" android:layout_weight="1" android:text="0" android:layout_width="1px" android:id="@+id/calculatorPushUpLBL"></TextView>
+            </LinearLayout>
+            <SeekBar android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/calculatorPushupSeekBar"></SeekBar>
+        </LinearLayout>
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout6" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="200dip">
+            <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout8">
+                <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout15" android:layout_weight="1" android:layout_width="1px"></LinearLayout>
+                <TextView android:layout_height="wrap_content" android:text="Situps" android:id="@+id/textView7" android:layout_weight="1" android:layout_width="1px" android:gravity="center"></TextView>
+                <TextView android:layout_height="wrap_content" android:layout_weight="1" android:text="0" android:layout_width="1px" android:id="@+id/calculatorSitUpLBL"></TextView>
+            </LinearLayout>
+            <SeekBar android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/calculatorSitUpSeekBar"></SeekBar>
+        </LinearLayout>
+        <LinearLayout android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center" android:orientation="vertical" android:id="@+id/LinearLayout02" android:layout_width="260dip">
+            <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout7">
+                <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout16" android:layout_weight="1" android:layout_width="1px"></LinearLayout>
+                <TextView android:layout_height="wrap_content" android:text="Run Time" android:id="@+id/TextView01" android:layout_weight="1" android:layout_width="1px" android:gravity="center"></TextView>
+                <TextView android:layout_height="wrap_content" android:text="00:00" android:layout_weight="1" android:layout_width="1px" android:id="@+id/calculatorRunLBL"></TextView>
+            </LinearLayout>
+            <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout17" android:layout_width="match_parent">
+                <Button android:layout_height="30dip" android:background="@drawable/minus" android:id="@+id/calculatorSecondsDownBTN" android:layout_width="30dip" android:layout_weight="0"></Button>
+                <SeekBar android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/calculatorRunTimeSeekBar" android:layout_weight="1"></SeekBar>
+                <Button android:layout_height="30dip" android:background="@drawable/plus" android:id="@+id/calculatorSecondsUpBTN" android:layout_width="30dip" android:layout_weight="0"></Button>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center" android:orientation="horizontal" android:id="@+id/linearLayout9">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout10" android:gravity="center" android:layout_weight="1">
+        <TextView android:layout_width="wrap_content" android:text="Enter required metrics" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/calculatorScoreLBL"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout18" android:layout_height="wrap_content">
+    	<com.google.ads.AdView 
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:id="@+id/homeAdView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14dca3fe4ea15f"
+        ads:adSize="BANNER"
+        android:layout_weight="0" />	
+    </LinearLayout>
+</LinearLayout>

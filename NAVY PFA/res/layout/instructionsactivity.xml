@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" 
+  android:orientation="vertical" 
+  android:id="@+id/ll"
+  android:background="@drawable/background">
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"  android:id="@+id/linearLayout1" android:gravity="center">
+        <TextView android:layout_height="wrap_content" android:text="2011 Navy Physical Fitness Standards" android:id="@+id/tv" android:textSize="18dip" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout2" android:gravity="center" android:layout_weight="1" android:orientation="vertical">
+        <TextView android:textColor="#FFFF00" android:text="OPNAV 6110.1H" android:id="@+id/instructionActivityOPNAVLBL" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <TextView android:layout_height="wrap_content" android:text="Official PRT/PFA Instruction" android:id="@+id/textView1" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1" android:gravity="center" android:id="@+id/ll2" android:orientation="vertical">
+        <TextView android:textColor="#FFFF00" android:text="NAVADMIN 180-05" android:id="@+id/instructionActivityNAVADMIN1LBL" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <TextView android:text="Authorizes ADSEP for PRT failures" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <TextView android:textColor="#FFFF00" android:layout_height="wrap_content" android:text="NAVADMIN 293-06" android:id="@+id/instructionActivityNAVADMIN2LBL" android:layout_width="wrap_content"></TextView>
+        <TextView android:text="Authorizes Elliptical for PRT use" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <TextView android:textColor="#FFFF00" android:layout_height="wrap_content" android:text="NPC.navy.mil" android:id="@+id/instructionActivityNPCLBL" android:layout_width="wrap_content"></TextView>
+        <TextView android:text="Navy's Official site for Instructions" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout5" android:orientation="vertical" android:gravity="center|bottom" android:layout_weight="0">
+        	<com.google.ads.AdView 
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:id="@+id/instructionsAdView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14dca3fe4ea15f"
+        ads:adSize="BANNER"
+        android:layout_weight="0" /></LinearLayout>
+</LinearLayout>

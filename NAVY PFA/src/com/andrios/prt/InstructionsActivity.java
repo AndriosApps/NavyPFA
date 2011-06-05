@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class InstructionsActivity extends Activity {
 
-	TextView opnavLBL, navadmin1LBL, navadmin2LBL, npcLBL;
+	TextView opnavLBL, navadmin1LBL, navadmin2LBL, navadmin3LBL, npcLBL;
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
@@ -34,6 +34,7 @@ public class InstructionsActivity extends Activity {
 		opnavLBL = (TextView) findViewById(R.id.instructionActivityOPNAVLBL);
 		navadmin1LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN1LBL);
 		navadmin2LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN2LBL);
+		navadmin3LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN3LBL);
 		npcLBL = (TextView) findViewById(R.id.instructionActivityNPCLBL);
 		
 		adView = (AdView)this.findViewById(R.id.instructionsAdView);
@@ -84,6 +85,19 @@ public class InstructionsActivity extends Activity {
 			}
 			
 		});
+		navadmin3LBL.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 011-07", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/navadmin011-07.html"));
+				startActivity(browserIntent);
+			}
+			
+		});
 		npcLBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
@@ -106,8 +120,6 @@ public class InstructionsActivity extends Activity {
 
 	    // Start the tracker in manual dispatch mode...
 	    tracker.start("UA-23366060-2", this);
-	    
-		
 	}
 
 	

@@ -18,20 +18,25 @@
         <TextView android:text="Authorizes ADSEP for PRT failures" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-        <TextView android:textColor="#FFFF00" android:layout_height="wrap_content" android:text="NAVADMIN 293-06" android:id="@+id/instructionActivityNAVADMIN2LBL" android:layout_width="wrap_content"></TextView>
+        <TextView android:textColor="#FFFF00" android:layout_height="wrap_content" android:text="NAVADMIN 293-06" android:layout_width="wrap_content" android:id="@+id/instructionActivityNAVADMIN2LBL"></TextView>
         <TextView android:text="Authorizes Elliptical for PRT use" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:orientation="vertical" android:layout_weight="1" android:id="@+id/LinearLayout01" android:layout_height="wrap_content" android:gravity="center">
+        <TextView android:layout_width="wrap_content" android:textColor="#FFFF00" android:text="NAVADMIN 011/07" android:layout_height="wrap_content" android:id="@+id/instructionActivityNAVADMIN3LBL"></TextView>
+        <TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:text="Stationary Cycle and Elliptical Procedures" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-        <TextView android:textColor="#FFFF00" android:layout_height="wrap_content" android:text="NPC.navy.mil" android:id="@+id/instructionActivityNPCLBL" android:layout_width="wrap_content"></TextView>
+        <TextView android:textColor="#FFFF00" android:layout_height="wrap_content" android:text="NPC.navy.mil" android:layout_width="wrap_content" android:id="@+id/instructionActivityNPCLBL"></TextView>
         <TextView android:text="Navy's Official site for Instructions" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout5" android:orientation="vertical" android:gravity="center|bottom" android:layout_weight="0">
-        	<com.google.ads.AdView 
+    <LinearLayout android:layout_width="match_parent" android:orientation="vertical" android:layout_weight="0" android:id="@+id/linearLayout5" android:layout_height="wrap_content" android:gravity="center|bottom">
+    	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 		android:id="@+id/instructionsAdView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         ads:adUnitId="a14dca3fe4ea15f"
         ads:adSize="BANNER"
-        android:layout_weight="0" /></LinearLayout>
+        android:layout_weight="0" />
+    </LinearLayout>
 </LinearLayout>

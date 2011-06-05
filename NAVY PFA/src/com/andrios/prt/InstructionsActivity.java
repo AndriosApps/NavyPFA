@@ -48,6 +48,11 @@ public class InstructionsActivity extends Activity {
 		opnavLBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "OPNAV INST", // Label
+				            0);       // Value
 				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/files/6110.1H.pdf"));
 				startActivity(browserIntent);
 			}
@@ -56,7 +61,11 @@ public class InstructionsActivity extends Activity {
 		navadmin1LBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				System.out.println("NAVADMIN 1 Clicked");
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 180-05", // Label
+				            0);       // Value
 				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/navadmin180-05.html"));
 				startActivity(browserIntent);
 			}
@@ -65,6 +74,11 @@ public class InstructionsActivity extends Activity {
 		navadmin2LBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 293-06", // Label
+				            0);       // Value
 				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/navadmin293-06.html"));
 				startActivity(browserIntent);
 			}
@@ -73,6 +87,11 @@ public class InstructionsActivity extends Activity {
 		npcLBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NPC.navy.mil", // Label
+				            0);       // Value
 				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.npc.navy.mil/"));
 				startActivity(browserIntent);
 			}

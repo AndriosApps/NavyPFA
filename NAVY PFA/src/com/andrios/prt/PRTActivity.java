@@ -25,6 +25,7 @@ public class PRTActivity extends Activity {
 	SeekBar ageSeekBar, pushupSeekBar, situpSeekBar, runSeekBar;
 	TextView ageLBL, pushupLBL, situpLBL, minutesLBL, runLBL, scoreLBL;
 	Button minuteUpBTN, minuteDownBTN, secondUpBTN, secondDownBTN;
+	Button ageUpBTN, ageDownBTN, pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
 	AndriosData mData;
 	AdView adView;
 	AdRequest request;
@@ -85,9 +86,15 @@ public class PRTActivity extends Activity {
 		situpLBL = (TextView) findViewById(R.id.calculatorSitUpLBL);
 		runLBL = (TextView) findViewById(R.id.calculatorRunLBL);
 		
-		
+
+		ageUpBTN = (Button) findViewById(R.id.calculatorAgeUpBTN);
+		pushupUpBTN = (Button) findViewById(R.id.calculatorPushupsUpBTN);
+		situpUpBTN = (Button) findViewById(R.id.calculatorSitupsUpBTN);
 		secondUpBTN = (Button) findViewById(R.id.calculatorSecondsUpBTN);
-		
+
+		ageDownBTN = (Button) findViewById(R.id.calculatorAgeDownBTN);
+		pushupDownBTN = (Button) findViewById(R.id.calculatorPushupsDownBTN);
+		situpDownBTN = (Button) findViewById(R.id.calculatorSitupsDownBTN);
 		secondDownBTN = (Button) findViewById(R.id.calculatorSecondsDownBTN);
 		
 		ageSeekBar.setMax(80);//max age 100
@@ -185,7 +192,50 @@ public class PRTActivity extends Activity {
 			}
 			
 		});
+		ageUpBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				age += 1;
+				if(age > 80){
+					age = 80;
+				}
+				
+				ageSeekBar.setProgress(age);
+				
+				calculateScore();
+			}
+			
+		});
 		
+		pushupUpBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				pushups += 1;
+				if(pushups > 100){
+					pushups = 100;
+				}
+				
+				pushupSeekBar.setProgress(pushups);
+				
+				calculateScore();
+			}
+			
+		});
+		
+		situpUpBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				situps += 1;
+				if(situps > 110){
+					situps = 110;
+				}
+				
+				situpSeekBar.setProgress(situps);
+				
+				calculateScore();
+			}
+			
+		});
 
 		secondUpBTN.setOnClickListener(new OnClickListener(){
 
@@ -199,6 +249,51 @@ public class PRTActivity extends Activity {
 				formatTimer();
 				runSeekBar.setProgress(runtime);
 				runchanged = true;
+				calculateScore();
+			}
+			
+		});
+		
+		ageDownBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				age -= 1;
+				if(age < 0){
+					age = 0;
+				}
+				
+				ageSeekBar.setProgress(age);
+				
+				calculateScore();
+			}
+			
+		});
+		
+		pushupDownBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				pushups -= 1;
+				if(pushups < 0){
+					pushups = 0;
+				}
+				
+				pushupSeekBar.setProgress(pushups);
+				
+				calculateScore();
+			}
+			
+		});
+		
+		situpDownBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				situps -= 1;
+				if(situps < 0){
+					situps = 0;
+				}
+				
+				situpSeekBar.setProgress(situps);
+				
 				calculateScore();
 			}
 			

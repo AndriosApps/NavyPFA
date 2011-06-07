@@ -11,7 +11,7 @@
 		android:id="@+id/comingSoonAdView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        ads:adUnitId="a14dca3fe4ea15f"
+        ads:adUnitId="a14debe274d41b2"
         ads:adSize="BANNER"
         android:layout_weight="0" />
  	

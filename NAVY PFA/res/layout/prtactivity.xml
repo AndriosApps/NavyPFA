@@ -23,9 +23,9 @@
                 <TextView android:layout_height="wrap_content" android:layout_weight="1" android:text="18" android:layout_width="1px" android:id="@+id/calculatorAgeLBL"></TextView>
             </LinearLayout>
             <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout21" android:layout_height="wrap_content">
-                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/minus" android:id="@+id/Button06" android:layout_height="30dip"></Button>
+                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/minus" android:layout_height="30dip" android:id="@+id/calculatorAgeDownBTN"></Button>
                 <SeekBar android:layout_width="match_parent" android:layout_weight="1" android:id="@+id/calculatorAgeSeekBar" android:layout_height="wrap_content"></SeekBar>
-                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:id="@+id/Button05" android:layout_height="30dip"></Button>
+                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_height="30dip" android:id="@+id/calculatorAgeUpBTN"></Button>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="260dip">
@@ -35,9 +35,9 @@
                 <TextView android:layout_height="wrap_content" android:layout_weight="1" android:text="0" android:layout_width="1px" android:id="@+id/calculatorPushUpLBL"></TextView>
             </LinearLayout>
             <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout20" android:layout_height="wrap_content">
-                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/minus" android:id="@+id/Button04" android:layout_height="30dip"></Button>
+                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/minus" android:layout_height="30dip" android:id="@+id/calculatorPushupsDownBTN"></Button>
                 <SeekBar android:layout_width="match_parent" android:id="@+id/calculatorPushupSeekBar" android:layout_height="wrap_content" android:layout_weight="1"></SeekBar>
-                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:id="@+id/Button03" android:layout_height="30dip"></Button>
+                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_height="30dip" android:id="@+id/calculatorPushupsUpBTN"></Button>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout6" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="260dip">
@@ -47,9 +47,9 @@
                 <TextView android:layout_height="wrap_content" android:layout_weight="1" android:text="0" android:layout_width="1px" android:id="@+id/calculatorSitUpLBL"></TextView>
             </LinearLayout>
             <LinearLayout android:id="@+id/linearLayout19" android:layout_height="match_parent" android:layout_width="match_parent">
-                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/minus" android:id="@+id/Button02" android:layout_height="30dip"></Button>
+                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/minus" android:layout_height="30dip" android:id="@+id/calculatorSitupsDownBTN"></Button>
                 <SeekBar android:layout_width="match_parent" android:id="@+id/calculatorSitUpSeekBar" android:layout_height="wrap_content" android:layout_weight="1"></SeekBar>
-                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:id="@+id/Button01" android:layout_height="30dip"></Button>
+                <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_height="30dip" android:id="@+id/calculatorSitupsUpBTN"></Button>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center" android:orientation="vertical" android:id="@+id/LinearLayout02" android:layout_width="260dip">
@@ -76,7 +76,7 @@
 		android:id="@+id/homeAdView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        ads:adUnitId="a14dca3fe4ea15f"
+        ads:adUnitId="a14debe274d41b2"
         ads:adSize="BANNER"
         android:layout_weight="0" />	
     </LinearLayout>

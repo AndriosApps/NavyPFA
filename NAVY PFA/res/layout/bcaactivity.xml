@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_weight="0" android:layout_height="wrap_content">
+        <RadioGroup android:layout_height="wrap_content" android:id="@+id/radioGroup1" android:layout_width="wrap_content" android:layout_weight="1">
+            <RadioButton android:layout_width="wrap_content" android:id="@+id/calculatorMaleRDO" android:text="Male" android:layout_height="wrap_content" android:checked="true"></RadioButton>
+            <RadioButton android:layout_width="wrap_content" android:id="@+id/calculatorFemaleRDO" android:text="Female" android:layout_height="wrap_content"></RadioButton>
+        </RadioGroup>
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:orientation="vertical" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout09" android:layout_width="260dip">
+                <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout07" android:layout_width="match_parent">
+                    <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout06" android:layout_width="1px"></LinearLayout>
+                    <TextView android:gravity="center" android:text="Height" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView03"></TextView>
+                    <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView04"></TextView>
+                </LinearLayout>
+                <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout08" android:layout_width="match_parent">
+                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/Button04" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
+                    <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/SeekBar02"></SeekBar>
+                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/Button03" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout05" android:layout_width="260dip">
+                <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout03" android:layout_width="match_parent">
+                    <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout02" android:layout_width="1px"></LinearLayout>
+                    <TextView android:gravity="center" android:text="Height" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView01"></TextView>
+                    <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView02"></TextView>
+                </LinearLayout>
+                <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout04" android:layout_width="match_parent">
+                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/Button02" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
+                    <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/SeekBar01"></SeekBar>
+                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/Button01" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout3" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="15dip" android:orientation="horizontal">
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout5" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center">
+            <ImageView android:id="@+id/imageView1" android:src="@drawable/ptufemale" android:layout_height="match_parent" android:layout_width="match_parent" android:scaleType="fitXY"></ImageView>
+        </LinearLayout>
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout6" android:layout_width="wrap_content" android:layout_weight="1" android:orientation="vertical">
+            <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout9" android:layout_width="match_parent">
+                <TextView android:text="TextView" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+                <Button android:text="Button" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_weight="0" android:gravity="center" android:layout_height="75dip">
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout8" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center">
+            <TextView android:text="Height / Weight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/textView1"></TextView>
+        </LinearLayout>
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center">
+            <TextView android:text="BodyFat%" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/textView2"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

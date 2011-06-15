@@ -38,7 +38,7 @@ public class MainActivity extends TabActivity {
         		.setContent(intent));
         
         //Setup for Workout Tab (Tab 1)
-        intent = new Intent().setClass(this, ComingSoonActivity.class);
+        intent = new Intent().setClass(this, BCAActivity.class);
         intent.putExtra("data", mData);
         mTabHost.addTab(mTabHost.newTabSpec("BCA").setIndicator("",res.getDrawable(R.drawable.weight2))
         		.setContent(intent));

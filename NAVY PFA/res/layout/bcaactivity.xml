@@ -2,56 +2,150 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent" android:orientation="vertical">
+  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background" android:id="@+id/topLayout">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_weight="0" android:layout_height="wrap_content">
-        <RadioGroup android:layout_height="wrap_content" android:id="@+id/radioGroup1" android:layout_width="wrap_content" android:layout_weight="1">
-            <RadioButton android:layout_width="wrap_content" android:id="@+id/calculatorMaleRDO" android:text="Male" android:layout_height="wrap_content" android:checked="true"></RadioButton>
+        <RadioGroup android:layout_height="wrap_content" android:id="@+id/radioGroup1" android:layout_weight="1" android:layout_width="75dip">
+            <RadioButton android:layout_width="wrap_content" android:text="Male" android:layout_height="wrap_content" android:checked="true" android:id="@+id/bcaActivityrMaleRDO"></RadioButton>
             <RadioButton android:layout_width="wrap_content" android:id="@+id/calculatorFemaleRDO" android:text="Female" android:layout_height="wrap_content"></RadioButton>
         </RadioGroup>
         <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:orientation="vertical" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout09" android:layout_width="260dip">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout09" android:layout_width="200dip">
                 <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout07" android:layout_width="match_parent">
-                    <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout06" android:layout_width="1px"></LinearLayout>
-                    <TextView android:gravity="center" android:text="Height" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView03"></TextView>
-                    <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView04"></TextView>
+                    <TextView android:layout_height="wrap_content" android:text="5'9&quot;" android:layout_weight="1" android:layout_width="1px" android:gravity="right" android:id="@+id/bcaActivityHeightFeetLBL"></TextView>
+                    <TextView android:gravity="center" android:text="Height" android:layout_width="1px" android:layout_height="wrap_content" android:id="@+id/TextView03" android:layout_weight="1"></TextView>
+                    <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/bcaActivityHeightInchesLBL"></TextView>
                 </LinearLayout>
                 <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout08" android:layout_width="match_parent">
-                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/Button04" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
-                    <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/SeekBar02"></SeekBar>
-                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/Button03" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
+                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityHeightMinusBTN"></Button>
+                    <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/bcaActivityHeightSeekBar"></SeekBar>
+                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityHeightPlusBTN"></Button>
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout05" android:layout_width="260dip">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout05" android:layout_width="200dip">
                 <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout03" android:layout_width="match_parent">
-                    <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout02" android:layout_width="1px"></LinearLayout>
-                    <TextView android:gravity="center" android:text="Height" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView01"></TextView>
-                    <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView02"></TextView>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout34" android:layout_weight="1" android:layout_width="1px"></LinearLayout>
+                    <TextView android:gravity="center" android:text="Weight" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/TextView01"></TextView>
+                    <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/bcaActivityWeightLBL"></TextView>
                 </LinearLayout>
                 <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout04" android:layout_width="match_parent">
-                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/Button02" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
-                    <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/SeekBar01"></SeekBar>
-                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/Button01" android:layout_height="30dip" android:layout_weight="0" android:text="Button"></Button>
+                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityWeightMinusBTN"></Button>
+                    <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/bcaActivityWeightSeekBar"></SeekBar>
+                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityWeightPlusBTN"></Button>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout3" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="15dip" android:orientation="horizontal">
-        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout5" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center">
-            <ImageView android:id="@+id/imageView1" android:src="@drawable/ptufemale" android:layout_height="match_parent" android:layout_width="match_parent" android:scaleType="fitXY"></ImageView>
-        </LinearLayout>
-        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout6" android:layout_width="wrap_content" android:layout_weight="1" android:orientation="vertical">
-            <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout9" android:layout_width="match_parent">
-                <TextView android:text="TextView" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-                <Button android:text="Button" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    <ViewFlipper android:id="@+id/details" android:layout_height="match_parent" android:paddingLeft="15dip" android:paddingRight="15dip" android:layout_width="match_parent" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal" android:id="@+id/LinearLayout31">
+            <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:id="@+id/LinearLayout30" android:layout_width="1dip">
+                <ImageView android:scaleType="fitXY" android:layout_height="match_parent" android:id="@+id/ImageView01" android:layout_width="match_parent" android:src="@drawable/male_with_labels2"></ImageView>
+            </LinearLayout>
+            <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/LinearLayout29" android:layout_width="1dip">
+                <LinearLayout android:layout_height="match_parent" android:orientation="vertical" android:id="@+id/LinearLayout01" android:layout_width="match_parent">
+                    <TextView android:layout_width="match_parent" android:textSize="18dip" android:layout_height="wrap_content" android:text="Measurements" android:id="@+id/TextView14" android:gravity="center"></TextView>
+                    <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout27" android:layout_width="match_parent">
+                        <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Neck (Inches)" android:id="@+id/TextView16" android:gravity="center"></TextView>
+                        <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout25" android:layout_width="match_parent">
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityMaleNeckLBL" android:gravity="center"></TextView>
+                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout26" android:layout_width="15dip">
+                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleNeckMinusBTN" android:layout_height="30dip"></Button>
+                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleNeckPlusBTN" android:layout_height="30dip"></Button>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout10" android:layout_width="match_parent">
+                        <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Waist (Inches)" android:id="@+id/TextView06" android:gravity="center"></TextView>
+                        <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout19" android:layout_width="match_parent">
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityMaleWaistLBL" android:gravity="center"></TextView>
+                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout18" android:layout_width="15dip">
+                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleWaistMinusBTN" android:layout_height="30dip"></Button>
+                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleWaistPlusBTN" android:layout_height="30dip"></Button>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout21" android:layout_width="match_parent">
+                        <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout22" android:layout_width="match_parent">
+                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:id="@+id/LinearLayout23" android:layout_width="15dip"></LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout20" android:layout_width="match_parent">
+                        <LinearLayout android:layout_height="wrap_content" android:gravity="center" android:id="@+id/LinearLayout24" android:layout_width="match_parent">
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="Circum" android:id="@+id/TextView18" android:gravity="center"></TextView>
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="Body Fat" android:id="@+id/TextView15" android:gravity="center"></TextView>
+                        </LinearLayout>
+                        <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout28" android:layout_width="match_parent">
+                            <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:id="@+id/LinearLayout32" android:layout_width="wrap_content">
+                                <TextView android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="12 Inches" android:id="@+id/bcaActivityDifferenceLBL"></TextView>
+                            </LinearLayout>
+                            <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:id="@+id/LinearLayout33" android:layout_width="wrap_content">
+                                <TextView android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="16%" android:id="@+id/bcaActivityPercentFatLBL"></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_weight="0" android:gravity="center" android:layout_height="75dip">
-        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout8" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center">
-            <TextView android:text="Height / Weight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/textView1"></TextView>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal" android:id="@+id/linearLayout3">
+            <LinearLayout android:layout_height="match_parent" android:gravity="center" android:id="@+id/linearLayout5" android:layout_width="1dip" android:layout_weight="1">
+                <ImageView android:scaleType="fitXY" android:layout_height="match_parent" android:id="@+id/imageView1" android:layout_width="match_parent" android:src="@drawable/female_with_labels2"></ImageView>
+            </LinearLayout>
+            <LinearLayout android:layout_height="match_parent" android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/linearLayout6" android:layout_width="1dip" android:layout_weight="1">
+                <LinearLayout android:layout_height="match_parent" android:orientation="vertical" android:id="@+id/linearLayout9" android:layout_width="match_parent">
+                    <TextView android:layout_width="match_parent" android:textSize="18dip" android:layout_height="wrap_content" android:text="Measurements" android:id="@+id/textView3" android:gravity="center"></TextView>
+                    <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/linearLayout10" android:layout_width="match_parent">
+                        <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Neck (Inches)" android:id="@+id/textView5" android:gravity="center"></TextView>
+                        <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/linearLayout12" android:layout_width="match_parent">
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleNeckLBL" android:gravity="center"></TextView>
+                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/linearLayout11" android:layout_width="15dip">
+                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleNeckMinusBTN" android:layout_height="30dip"></Button>
+                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleNeckPlusBTN" android:layout_height="30dip"></Button>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout14" android:layout_width="match_parent">
+                        <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Waist (Inches)" android:id="@+id/TextView08" android:gravity="center"></TextView>
+                        <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout12" android:layout_width="match_parent">
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleWaistLBL" android:gravity="center"></TextView>
+                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout13" android:layout_width="15dip">
+                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleWaistMinusBTN" android:layout_height="30dip"></Button>
+                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleWaistPlusBTN" android:layout_height="30dip"></Button>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout17" android:layout_width="match_parent">
+                        <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Hips (Inches)" android:id="@+id/TextView09" android:gravity="center"></TextView>
+                        <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout16" android:layout_width="match_parent">
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleHipLBL" android:gravity="center"></TextView>
+                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout15" android:layout_width="15dip">
+                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleHipMinusBTN" android:layout_height="30dip"></Button>
+                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleHipPlusBTN" android:layout_height="30dip"></Button>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout11" android:layout_width="match_parent">
+                        <LinearLayout android:layout_height="wrap_content" android:gravity="center" android:id="@+id/linearLayout18" android:layout_width="match_parent">
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="Circum" android:id="@+id/textView7" android:gravity="center"></TextView>
+                            <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="Body Fat" android:id="@+id/textView6" android:gravity="center"></TextView>
+                        </LinearLayout>
+                        <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout19" android:layout_width="match_parent">
+                            <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:id="@+id/linearLayout20" android:layout_width="wrap_content">
+                                <TextView android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="12 Inches" android:id="@+id/bcaActivityFemaleCircumLBL"></TextView>
+                            </LinearLayout>
+                            <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:id="@+id/linearLayout21" android:layout_width="wrap_content">
+                                <TextView android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="16%" android:id="@+id/bcaActivityFemaleBodyFatLBL"></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center">
-            <TextView android:text="BodyFat%" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/textView2"></TextView>
+    </ViewFlipper>
+    <LinearLayout android:gravity="center" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/linearLayout4" android:layout_width="match_parent">
+        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityHeightWeightLL" android:background="@drawable/passbtn" android:layout_height="50dip">
+            <TextView android:text="Height/Weight" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/HeightWeightLBL"></TextView>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityBodyFatLL" android:layout_height="50dip" android:background="@drawable/passbtn">
+            <TextView android:text="BodyFat%" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/BodyFatLBL"></TextView>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

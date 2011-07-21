@@ -47,6 +47,7 @@ public class BCAActivity extends Activity {
 	TextView differenceLBL, percentFatLBL, femaleDifferenceLBL, femalePercentFatLBL;
 	TextView weightLBL, heightInchLBL, heightFeetLBL;
 	TextView HWLBL, bodyFatLBL;
+	boolean HWchanged, maleBFchanged, femaleBFchanged;
 	
 	LinearLayout HWLL, bodyFatLL;
 	
@@ -156,7 +157,9 @@ public class BCAActivity extends Activity {
 					maleNeckLBL.setText(Double.toString(neck));
 					difference = waist - neck;
 					differenceLBL.setText(Double.toString(difference));
+					maleBFchanged = true;
 					calculateMale();
+					
 				}
 				
 			});
@@ -171,6 +174,7 @@ public class BCAActivity extends Activity {
 					maleNeckLBL.setText(Double.toString(neck));
 					difference = waist - neck;
 					differenceLBL.setText(Double.toString(difference));
+					maleBFchanged = true;
 					calculateMale();
 				}
 				
@@ -186,6 +190,7 @@ public class BCAActivity extends Activity {
 					maleWaistLBL.setText(Double.toString(waist));
 					difference = waist - neck;
 					differenceLBL.setText(Double.toString(difference));
+					maleBFchanged = true;
 					calculateMale();
 				}
 				
@@ -201,6 +206,7 @@ public class BCAActivity extends Activity {
 					maleWaistLBL.setText(Double.toString(waist));
 					difference = waist - neck;
 					differenceLBL.setText(Double.toString(difference));
+					maleBFchanged = true;
 					calculateMale();
 				}
 				
@@ -216,6 +222,7 @@ public class BCAActivity extends Activity {
 					femaleNeckLBL.setText(Double.toString(fneck));
 					fdifference = (fwaist + fhips) - fneck;
 					femaleDifferenceLBL.setText(Double.toString(fdifference));
+					femaleBFchanged = true;
 					calculateFemale();
 				}
 				
@@ -231,6 +238,7 @@ public class BCAActivity extends Activity {
 					femaleNeckLBL.setText(Double.toString(fneck));
 					fdifference = (fwaist + fhips) - fneck;
 					femaleDifferenceLBL.setText(Double.toString(fdifference));
+					femaleBFchanged = true;
 					calculateFemale();
 				}
 				
@@ -246,6 +254,7 @@ public class BCAActivity extends Activity {
 					femaleWaistLBL.setText(Double.toString(fwaist));
 					fdifference = (fwaist + fhips) - fneck;
 					femaleDifferenceLBL.setText(Double.toString(fdifference));
+					femaleBFchanged = true;
 					calculateFemale();
 				}
 				
@@ -261,6 +270,7 @@ public class BCAActivity extends Activity {
 					femaleWaistLBL.setText(Double.toString(fwaist));
 					fdifference = (fwaist + fhips) - fneck;
 					femaleDifferenceLBL.setText(Double.toString(fdifference));
+					femaleBFchanged = true;
 					calculateFemale();
 				}
 				
@@ -276,6 +286,7 @@ public class BCAActivity extends Activity {
 					femaleHipsLBL.setText(Double.toString(fhips));
 					fdifference = (fwaist + fhips) - fneck;
 					femaleDifferenceLBL.setText(Double.toString(fdifference));
+					femaleBFchanged = true;
 					calculateFemale();
 				}
 				
@@ -291,6 +302,7 @@ public class BCAActivity extends Activity {
 					femaleHipsLBL.setText(Double.toString(fhips));
 					fdifference = (fwaist + fhips) - fneck;
 					femaleDifferenceLBL.setText(Double.toString(fdifference));
+					femaleBFchanged = true;
 					calculateFemale();
 				}
 				
@@ -300,7 +312,10 @@ public class BCAActivity extends Activity {
 
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 				flipper.showNext();
-				calcHeightWeight();
+				if(HWchanged){
+					calcHeightWeight();
+				}
+				
 				if(maleRDO.isChecked()){
 					calculateMale();
 				}else{
@@ -317,9 +332,9 @@ public class BCAActivity extends Activity {
 				height = arg1 + MIN_HEIGHT;
 				updateLBLS();
 				
-				//pushupchanged = true;
-				//calculateScore();
+				HWchanged = true;
 				calcHeightWeight();
+				
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
@@ -336,9 +351,10 @@ public class BCAActivity extends Activity {
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				weight = arg1 + MIN_WEIGHT;
 				updateLBLS();
-				//pushupchanged = true;
-				//calculateScore();
+				HWchanged = true;
+				
 				calcHeightWeight();
+				
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
@@ -356,12 +372,12 @@ public class BCAActivity extends Activity {
 			public void onClick(View v) {
 				height += 1;
 				if(height > MAX_HEIGHT){
-					height = MAX_HEIGHT;
+					height = (MAX_HEIGHT-MIN_HEIGHT);
 				}
-				
+				System.out.println("Height " + height);
 				heightSeekBar.setProgress(height - MIN_HEIGHT);
 				
-				//calculateScore();
+				
 			}
 			
 		});
@@ -376,7 +392,7 @@ public class BCAActivity extends Activity {
 				
 				heightSeekBar.setProgress(height - MIN_HEIGHT);
 				
-				//calculateScore();
+				
 			}
 			
 		});
@@ -386,12 +402,12 @@ public class BCAActivity extends Activity {
 			public void onClick(View v) {
 				weight += 1;
 				if(weight > MAX_WEIGHT){
-					height = MAX_WEIGHT;
+					weight = MAX_WEIGHT;
 				}
 				
 				weightSeekBar.setProgress(weight - MIN_WEIGHT);
 				
-				//calculateScore();
+				
 			}
 			
 		});
@@ -403,10 +419,10 @@ public class BCAActivity extends Activity {
 				if(weight < MIN_WEIGHT){
 					weight = MIN_WEIGHT;
 				}
-				
+				System.out.println("Weight: "+ weight);
 				weightSeekBar.setProgress(weight - MIN_WEIGHT);
 				
-				//calculateScore();
+				
 			}
 			
 		});
@@ -418,11 +434,16 @@ public class BCAActivity extends Activity {
 			percentFat = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(69.0) + 36.76;
 			percentFat = (double) Math.round(percentFat);
 			percentFatLBL.setText(Double.toString(percentFat)+ "%");
-			if(percentFat > 22.0){
-				bodyFatLL.setBackgroundResource(R.drawable.failbtn);
+			if(maleBFchanged){
+				if(percentFat > 22.0){
+					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
+				}else{
+					bodyFatLL.setBackgroundResource(R.drawable.passbtn);
+				}
 			}else{
-				bodyFatLL.setBackgroundResource(R.drawable.passbtn);
+				bodyFatLL.setBackgroundResource(R.drawable.grey_button);
 			}
+			
 	
 		}
 		
@@ -430,12 +451,18 @@ public class BCAActivity extends Activity {
 			fpercentFat = 163.205 * Math.log10(fwaist + fhips - fneck) - 97.684 * Math.log10(69.0) - 78.387;
 			fpercentFat = (double) Math.round(fpercentFat);
 			femalePercentFatLBL.setText(Double.toString(fpercentFat)+ "%");
-			if(percentFat > 33.0){
-				bodyFatLL.setBackgroundResource(R.drawable.failbtn);
+			if(femaleBFchanged){
+				if(fpercentFat > 33.0){
+					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
+				}else{
+					bodyFatLL.setBackgroundResource(R.drawable.passbtn);
+					
+				}
 			}else{
-				bodyFatLL.setBackgroundResource(R.drawable.passbtn);
-				
+				bodyFatLL.setBackgroundResource(R.drawable.grey_button);
 			}
+			
+		
 			
 		
 		}
@@ -476,8 +503,9 @@ public class BCAActivity extends Activity {
 		
 		private void calcHeightWeight(){
 			boolean inStandards = false;
+			
 			if(maleRDO.isChecked()){
-	
+			
 				if(weight > mData.weightMale[height-MIN_HEIGHT]){
 					inStandards = false;
 				}else{

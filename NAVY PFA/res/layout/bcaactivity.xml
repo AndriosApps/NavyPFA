@@ -46,21 +46,17 @@
                     <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout27" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Neck (Inches)" android:id="@+id/TextView16" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout25" android:layout_width="match_parent">
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityMaleNeckMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityMaleNeckLBL" android:gravity="center"></TextView>
-                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout26" android:layout_width="15dip">
-                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleNeckMinusBTN" android:layout_height="30dip"></Button>
-                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleNeckPlusBTN" android:layout_height="30dip"></Button>
-                            </LinearLayout>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityMaleNeckPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout10" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Waist (Inches)" android:id="@+id/TextView06" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout19" android:layout_width="match_parent">
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityMaleWaistMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityMaleWaistLBL" android:gravity="center"></TextView>
-                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout18" android:layout_width="15dip">
-                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleWaistMinusBTN" android:layout_height="30dip"></Button>
-                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityMaleWaistPlusBTN" android:layout_height="30dip"></Button>
-                            </LinearLayout>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityMaleWaistPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout21" android:layout_width="match_parent">
@@ -95,31 +91,25 @@
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/linearLayout10" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Neck (Inches)" android:id="@+id/textView5" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/linearLayout12" android:layout_width="match_parent">
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleNeckMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleNeckLBL" android:gravity="center"></TextView>
-                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/linearLayout11" android:layout_width="15dip">
-                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleNeckMinusBTN" android:layout_height="30dip"></Button>
-                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleNeckPlusBTN" android:layout_height="30dip"></Button>
-                            </LinearLayout>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleNeckPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout14" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Waist (Inches)" android:id="@+id/TextView08" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout12" android:layout_width="match_parent">
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleWaistMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleWaistLBL" android:gravity="center"></TextView>
-                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout13" android:layout_width="15dip">
-                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleWaistMinusBTN" android:layout_height="30dip"></Button>
-                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleWaistPlusBTN" android:layout_height="30dip"></Button>
-                            </LinearLayout>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleWaistPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout17" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Hips (Inches)" android:id="@+id/TextView09" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout16" android:layout_width="match_parent">
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleHipMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleHipLBL" android:gravity="center"></TextView>
-                            <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:id="@+id/LinearLayout15" android:layout_width="15dip">
-                                <Button android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleHipMinusBTN" android:layout_height="30dip"></Button>
-                                <Button android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/bcaActivityFemaleHipPlusBTN" android:layout_height="30dip"></Button>
-                            </LinearLayout>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleHipPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout11" android:layout_width="match_parent">
@@ -141,11 +131,11 @@
         </LinearLayout>
     </ViewFlipper>
     <LinearLayout android:gravity="center" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/linearLayout4" android:layout_width="match_parent">
-        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityHeightWeightLL" android:background="@drawable/passbtn" android:layout_height="50dip">
-            <TextView android:text="Height/Weight" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/HeightWeightLBL"></TextView>
+        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityHeightWeightLL" android:background="@drawable/grey_button" android:layout_height="50dip">
+            <TextView android:text="Height/Weight" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:id="@+id/HeightWeightLBL" android:textSize="18dip"></TextView>
         </LinearLayout>
-        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityBodyFatLL" android:layout_height="50dip" android:background="@drawable/passbtn">
-            <TextView android:text="BodyFat%" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/BodyFatLBL"></TextView>
+        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityBodyFatLL" android:layout_height="50dip" android:background="@drawable/grey_button">
+            <TextView android:text="BodyFat%" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:id="@+id/BodyFatLBL" android:textSize="18dip"></TextView>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

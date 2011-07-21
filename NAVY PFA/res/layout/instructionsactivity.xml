@@ -29,6 +29,14 @@
         <TextView android:textColor="#FFFF00" android:layout_height="wrap_content" android:text="NPC.navy.mil" android:layout_width="wrap_content" android:id="@+id/instructionActivityNPCLBL"></TextView>
         <TextView android:text="Navy's Official site for Instructions" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:orientation="horizontal">
+        <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout3" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
+            <TextView android:text="Rate this app now!" android:layout_height="wrap_content" android:id="@+id/TextView03" android:layout_width="wrap_content"></TextView>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
+            <Button android:text="Rate" android:layout_width="wrap_content" android:background="@drawable/grey_button" android:layout_height="50dip" android:id="@+id/instructionActivityRateBTN"></Button>
+        </LinearLayout>
+    </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:orientation="vertical" android:layout_weight="0" android:id="@+id/linearLayout5" android:layout_height="wrap_content" android:gravity="center|bottom">
     	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"

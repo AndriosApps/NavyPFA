@@ -44,7 +44,7 @@ public class MainActivity extends TabActivity {
         		.setContent(intent));
         
         //Setup for Profile Tab (Tab 2)
-        intent = new Intent().setClass(this, ComingSoonActivity.class);
+        intent = new Intent().setClass(this, CardioActivity.class);
         intent.putExtra("data", mData);
         mTabHost.addTab(mTabHost.newTabSpec("Alternate Cardio").setIndicator("",res.getDrawable(R.drawable.cardio2))
         		.setContent(intent));

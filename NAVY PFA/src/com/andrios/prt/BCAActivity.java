@@ -372,7 +372,7 @@ public class BCAActivity extends Activity {
 			public void onClick(View v) {
 				height += 1;
 				if(height > MAX_HEIGHT){
-					height = (MAX_HEIGHT-MIN_HEIGHT);
+					height = (MAX_HEIGHT);
 				}
 				System.out.println("Height " + height);
 				heightSeekBar.setProgress(height - MIN_HEIGHT);

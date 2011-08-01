@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background">
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_weight="0">
+        <RadioGroup android:layout_weight="1" android:layout_width="75dip" android:layout_height="wrap_content" android:id="@+id/radioGroup1">
+            <RadioButton android:layout_height="wrap_content" android:checked="true" android:layout_width="wrap_content" android:text="Male" android:id="@+id/cardioActivityMaleRDO"></RadioButton>
+            <RadioButton android:layout_height="wrap_content" android:id="@+id/calculatorFemaleRDO" android:layout_width="wrap_content" android:text="Female"></RadioButton>
+        </RadioGroup>
+        <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_height="wrap_content">
+            <LinearLayout android:layout_weight="1" android:layout_width="200dip" android:id="@+id/LinearLayout05" android:gravity="center" android:orientation="vertical" android:layout_height="match_parent">
+                <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout03" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_weight="1" android:layout_width="1px" android:id="@+id/linearLayout34" android:layout_height="match_parent"></LinearLayout>
+                    <TextView android:id="@+id/TextView01" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1" android:layout_width="1px" android:text="Weight"></TextView>
+                    <TextView android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="1px" android:text="18" android:id="@+id/cardioActivityWeightLBL"></TextView>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout04" android:layout_height="wrap_content">
+                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/cardioActivityWeightMinusBTN"></Button>
+                    <SeekBar android:layout_weight="1" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/cardioActivityWeightSeekBar"></SeekBar>
+                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/cardioActivityWeightPlusBTN"></Button>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_weight="1" android:layout_width="200dip" android:id="@+id/LinearLayout09" android:gravity="center" android:orientation="vertical" android:layout_height="match_parent">
+                <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout07" android:layout_height="wrap_content">
+                    <TextView android:id="@+id/bcaActivityHeightFeetLBL" android:layout_height="wrap_content" android:gravity="right" android:layout_weight="1" android:layout_width="1px" android:text=""></TextView>
+                    <TextView android:id="@+id/TextView03" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1" android:layout_width="1px" android:text="Calories"></TextView>
+                    <TextView android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="1px" android:text="18" android:id="@+id/cardioActivityCalorieLBL"></TextView>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout08" android:layout_height="wrap_content">
+                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/cardioActivityCalorieMinusBTN"></Button>
+                    <SeekBar android:layout_weight="1" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/cardioActivityCalorieSeekBar"></SeekBar>
+                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/cardioActivityCaloriePlusBTN"></Button>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@+id/textView2" android:gravity="center" android:layout_width="match_parent" android:text="Equivalent Run Times" android:layout_height="50dip" android:textSize="24dip"></TextView>
+    <LinearLayout android:id="@+id/linearLayout3" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="75dip" android:orientation="horizontal" android:gravity="center_vertical|left">
+        <ImageView android:src="@drawable/cardio_bike_2" android:id="@+id/imageView1" android:scaleType="fitXY" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
+        <LinearLayout android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_width="75dip" android:layout_weight="1" android:gravity="center">
+            <TextView android:id="@+id/cardioActivityBikeLBL" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="18dip" android:text="TextView"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_weight="1" android:layout_height="75dip" android:orientation="horizontal" android:gravity="center_vertical|left">
+        <ImageView android:layout_width="50dip" android:src="@drawable/elliptical_2" android:id="@+id/ImageView01" android:scaleType="fitXY" android:layout_height="50dip"></ImageView>
+        <LinearLayout android:id="@+id/linearLayout7" android:layout_height="match_parent" android:layout_width="75dip" android:layout_weight="1" android:gravity="center">
+            <TextView android:id="@+id/TextView02" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="18dip" android:text="Coming Soon!"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:background="#FF0000" android:id="@+id/linearLayout5" android:layout_height="wrap_content" android:gravity="center">
+        <TextView android:text="Not to be used for official PFA Scoring" android:textColor="#000000" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout9" android:layout_height="75px">
+    
+    <com.google.ads.AdView 
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:id="@+id/cardioAdView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14debe274d41b2"
+        ads:adSize="BANNER"
+        android:layout_weight="0" />
+    
+    </LinearLayout>
+</LinearLayout>

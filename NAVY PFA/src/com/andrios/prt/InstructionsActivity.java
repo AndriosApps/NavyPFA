@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class InstructionsActivity extends Activity {
 
-	TextView opnavLBL, navadmin1LBL, navadmin2LBL, navadmin3LBL, npcLBL;
+	TextView opnavLBL, navadmin1LBL, navadmin2LBL, navadmin3LBL;
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
@@ -38,7 +38,6 @@ public class InstructionsActivity extends Activity {
 		navadmin1LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN1LBL);
 		navadmin2LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN2LBL);
 		navadmin3LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN3LBL);
-		npcLBL = (TextView) findViewById(R.id.instructionActivityNPCLBL);
 		
 		adView = (AdView)this.findViewById(R.id.instructionsAdView);
 	      
@@ -111,19 +110,7 @@ public class InstructionsActivity extends Activity {
 			}
 			
 		});
-		npcLBL.setOnClickListener(new OnClickListener(){
 
-			public void onClick(View v) {
-				 tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Link",  // Action
-				            "NPC.navy.mil", // Label
-				            0);       // Value
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.npc.navy.mil/"));
-				startActivity(browserIntent);
-			}
-			
-		});
 
 		
 	}

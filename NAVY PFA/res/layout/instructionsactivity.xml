@@ -16,11 +16,23 @@
                     <LinearLayout android:id="@+id/LinearLayout03" android:layout_width="40dip" android:layout_height="20dip" android:background="@drawable/new_icon"></LinearLayout>
                 </LinearLayout>
                 <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:orientation="vertical">
-                    <TextView android:id="@+id/instructionActivityOPNAVLBL" android:textColor="#FFFF00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OPNAV 6110.1J"></TextView>
+                    <TextView android:textColor="#FFFF00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OPNAV 6110.1J" android:id="@+id/instructionActivityOPNAVLBL"></TextView>
                     <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Official PRT/PFA Instruction"></TextView>
                 </LinearLayout>
                 <LinearLayout android:id="@+id/linearLayout10" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
                     <LinearLayout android:id="@+id/linearLayout8" android:layout_width="40dip" android:layout_height="20dip" android:background="@drawable/new_icon"></LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_weight="1" android:id="@+id/LinearLayout04" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center" android:orientation="horizontal">
+                <LinearLayout android:layout_weight="1" android:id="@+id/LinearLayout06" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center">
+                    <LinearLayout android:id="@+id/LinearLayout08" android:layout_width="40dip" android:layout_height="20dip" android:background="@drawable/new_icon"></LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/LinearLayout05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:orientation="vertical">
+                    <TextView android:textColor="#FFFF00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NAVADMIN 203/11" android:id="@+id/instructionActivityNAVADMIN20311LBL"></TextView>
+                    <TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6110.1J Policy Changes"></TextView>
+                </LinearLayout>
+                <LinearLayout android:layout_weight="1" android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center">
+                    <LinearLayout android:id="@+id/LinearLayout09" android:layout_width="40dip" android:layout_height="20dip" android:background="@drawable/new_icon"></LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout android:layout_weight="1" android:id="@+id/ll2" android:layout_width="match_parent" android:gravity="center" android:orientation="vertical" android:layout_height="50dip">
@@ -31,13 +43,13 @@
                 <TextView android:id="@+id/instructionActivityNAVADMIN2LBL" android:textColor="#FFFF00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NAVADMIN 293-06"></TextView>
                 <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Authorizes Elliptical for PRT use"></TextView>
             </LinearLayout>
-            <LinearLayout android:layout_weight="1" android:id="@+id/LinearLayout01" android:layout_width="match_parent" android:gravity="center" android:orientation="vertical" android:layout_height="50dip">
+            <LinearLayout android:layout_weight="1" android:id="@+id/LinearLayout01" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center" android:orientation="vertical">
                 <TextView android:id="@+id/instructionActivityNAVADMIN3LBL" android:textColor="#FFFF00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NAVADMIN 011/07"></TextView>
                 <TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stationary Cycle and Elliptical Procedures"></TextView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout5" android:gravity="center" android:orientation="vertical" android:layout_weight="0">
         <TextView android:text="Comments and Ratings help us improve this app.  Please take a minute to rate it." android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center"></TextView>
     </LinearLayout>
     <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:orientation="horizontal">

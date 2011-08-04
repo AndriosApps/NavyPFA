@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class InstructionsActivity extends Activity {
 
-	TextView opnavLBL, navadmin1LBL, navadmin2LBL, navadmin3LBL;
+	TextView opnavLBL, navadmin203_11LBL, navadmin1LBL, navadmin2LBL, navadmin3LBL;
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
@@ -35,6 +35,8 @@ public class InstructionsActivity extends Activity {
 	private void setConnections() {
 		rateBTN = (Button) findViewById(R.id.instructionActivityRateBTN);
 		opnavLBL = (TextView) findViewById(R.id.instructionActivityOPNAVLBL);
+
+		navadmin203_11LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN20311LBL);
 		navadmin1LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN1LBL);
 		navadmin2LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN2LBL);
 		navadmin3LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN3LBL);
@@ -58,13 +60,28 @@ public class InstructionsActivity extends Activity {
 			}
 			
 		});
+		
+		navadmin203_11LBL.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2011/NAV11203.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});
+		
 		opnavLBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
 				 tracker.trackEvent(
 				            "Clicks",  // Category
 				            "Link",  // Action
-				            "OPNAV INST", // Label
+				            "OPNAV INST 6110.1J", // Label
 				            0);       // Value
 				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://navy-fitness.com/wp-content/uploads/2011/07/6110.1J-Physical-Readiness-program.pdf"));
 				startActivity(browserIntent);

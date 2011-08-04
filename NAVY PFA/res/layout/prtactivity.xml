@@ -68,7 +68,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout10" android:gravity="center" android:layout_weight="1">
-        <TextView android:layout_width="wrap_content" android:text="Enter required metrics" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/calculatorScoreLBL"></TextView>
+        <TextView android:text="Enter required metrics" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/calculatorScoreLBL" android:layout_width="260dip" android:gravity="center"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout18" android:layout_height="wrap_content">
     	<com.google.ads.AdView 

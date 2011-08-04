@@ -6,6 +6,7 @@ import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -415,7 +416,10 @@ public class PRTActivity extends Activity {
 		
 		if(!weightCheckBox.isChecked() || !SitReachCheckBox.isChecked()){
 			if(changed()){
-				scoreLBL.setText("Fail");
+				scoreLBL.setText("Failure");
+				scoreLBL.setBackgroundColor(Color.RED);
+				scoreLBL.setTextColor(Color.BLACK);
+				scoreLBL.getBackground().setAlpha(100);
 			}
 		}
 		
@@ -425,11 +429,11 @@ public class PRTActivity extends Activity {
 
 	private void calculateMale(int[] pushupMale, int[] situpMale, int[] runMale) {
 		int totalScore = 0;
-		int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
+		int[] Scores = {45, 60, 75, 90, 100};
 		boolean fail0 = true;//pushups
 		boolean fail1 = true;//situps
 		boolean fail2 = true;//run
-		for(int i = 11; i >= 0; i--){
+		for(int i = 4; i >= 0; i--){
 			if(pushups >= pushupMale[i]){
 				if(i > 0){
 					totalScore += Scores[i];
@@ -439,7 +443,7 @@ public class PRTActivity extends Activity {
 				break;
 			}
 		}
-		for(int i = 11; i >= 0; i--){
+		for(int i = 4; i >= 0; i--){
 			if(situps >= situpMale[i]){
 				if(i > 0){
 					totalScore += Scores[i];
@@ -449,7 +453,7 @@ public class PRTActivity extends Activity {
 				break;
 			}
 		}
-		for(int i = 11; i >= 0; i--){
+		for(int i = 4; i >= 0; i--){
 			if(runtime <= runMale[i]){
 				if(i > 0){
 					totalScore += Scores[i];
@@ -460,36 +464,35 @@ public class PRTActivity extends Activity {
 		}
 		
 		if(!fail0 && !fail1 && !fail2 && changed()){
-
-			if((totalScore / 3) < 50){
-				scoreLBL.setText("Probationary");
-			}else if((totalScore / 3) < 55){
-				scoreLBL.setText("Satisfactory Medium");
-			}else if((totalScore / 3)< 60){
-				scoreLBL.setText("Satisfactory High");
-			}else if((totalScore / 3)< 65){
-				scoreLBL.setText("Good Low");
-			}else if((totalScore / 3)< 70){
-				scoreLBL.setText("Good Medium");
-			}else if((totalScore / 3)< 75){
-				scoreLBL.setText("Good High");
-			}else if((totalScore / 3)< 80){
-				scoreLBL.setText("Excellent Low");
-			}else if((totalScore / 3)< 85){
-				scoreLBL.setText("Excellent Medium");
-			}else if((totalScore / 3)< 90){
-				scoreLBL.setText("Excellent High");
-			}else if((totalScore / 3) < 95){
-				scoreLBL.setText("Outstanding Low");
-			}else if((totalScore / 3) < 100){
-				scoreLBL.setText("Outstanding Medium");
-			}else if((totalScore / 3) == 100){
-				scoreLBL.setText("Outstanding High");
+			
+			if((totalScore / 3) < 45){
+				scoreLBL.setText("Failure");
+				scoreLBL.setBackgroundColor(Color.RED);
+				scoreLBL.setTextColor(Color.BLACK);
+				scoreLBL.getBackground().setAlpha(100);
+			}else{
+				scoreLBL.setBackgroundColor(Color.GREEN);
+				scoreLBL.setTextColor(Color.BLACK);
+				scoreLBL.getBackground().setAlpha(100);
+				if((totalScore / 3) < 60){
+					scoreLBL.setText("Satisfactory");
+				}else if((totalScore / 3)< 75){
+					scoreLBL.setText("Good");
+				}else if((totalScore / 3)< 90){
+					scoreLBL.setText("Excellent");
+				}else if((totalScore / 3)< 100){
+					scoreLBL.setText("Outstanding");
+				}else if((totalScore / 3)>= 100){
+					scoreLBL.setText("Maximum");
+				}
 			}
+			
 		}else if(changed()){
-			scoreLBL.setText("Fail");
+			scoreLBL.setText("Failure");
+			scoreLBL.setBackgroundColor(Color.RED);
+			scoreLBL.setTextColor(Color.BLACK);
+			scoreLBL.getBackground().setAlpha(100);
 		}
-	
 		
 		
 	}
@@ -498,11 +501,11 @@ public class PRTActivity extends Activity {
 
 	private void calculateFemale(int[] pushupFemale, int[] situpFemale, int[] runFemale) {
 		int totalScore = 0;
-		int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
+		int[] Scores = {45, 60, 75, 90, 100};
 		boolean fail0 = true;//pushups
 		boolean fail1 = true;//situps
 		boolean fail2 = true;//run
-		for(int i = 11; i >= 0; i--){
+		for(int i = 4; i >= 0; i--){
 			if(pushups >= pushupFemale[i]){
 				if(i > 0){
 					totalScore += Scores[i];
@@ -511,7 +514,7 @@ public class PRTActivity extends Activity {
 				break;
 			}
 		}
-		for(int i = 11; i >= 0; i--){
+		for(int i = 4; i >= 0; i--){
 			if(situps >= situpFemale[i]){
 				if(i > 0){
 					totalScore += Scores[i];
@@ -521,7 +524,7 @@ public class PRTActivity extends Activity {
 				break;
 			}
 		}
-		for(int i = 11; i >= 0; i--){
+		for(int i = 4; i >= 0; i--){
 			if(runtime <= runFemale[i]){
 				if(i > 0){
 					totalScore += Scores[i];
@@ -532,34 +535,34 @@ public class PRTActivity extends Activity {
 		}
 		
 		if(!fail0 && !fail1 && !fail2 && changed()){
-
-			if((totalScore / 3) < 50){
-				scoreLBL.setText("Probationary");
-			}else if((totalScore / 3) < 55){
-				scoreLBL.setText("Satisfactory Medium");
-			}else if((totalScore / 3)< 60){
-				scoreLBL.setText("Satisfactory High");
-			}else if((totalScore / 3)< 65){
-				scoreLBL.setText("Good Low");
-			}else if((totalScore / 3)< 70){
-				scoreLBL.setText("Good Medium");
-			}else if((totalScore / 3)< 75){
-				scoreLBL.setText("Good High");
-			}else if((totalScore / 3)< 80){
-				scoreLBL.setText("Excellent Low");
-			}else if((totalScore / 3)< 85){
-				scoreLBL.setText("Excellent Medium");
-			}else if((totalScore / 3)< 90){
-				scoreLBL.setText("Excellent High");
-			}else if((totalScore / 3) < 95){
-				scoreLBL.setText("Outstanding Low");
-			}else if((totalScore / 3) < 100){
-				scoreLBL.setText("Outstanding Medium");
-			}else if((totalScore / 3) == 100){
-				scoreLBL.setText("Outstanding High");
+			
+			if((totalScore / 3) < 45){
+				scoreLBL.setText("Failure");
+				scoreLBL.setBackgroundColor(Color.RED);
+				scoreLBL.setTextColor(Color.BLACK);
+				scoreLBL.getBackground().setAlpha(100);
+			}else{
+				scoreLBL.setBackgroundColor(Color.GREEN);
+				scoreLBL.setTextColor(Color.BLACK);
+				scoreLBL.getBackground().setAlpha(100);
+				if((totalScore / 3) < 60){
+					scoreLBL.setText("Satisfactory");
+				}else if((totalScore / 3)< 75){
+					scoreLBL.setText("Good");
+				}else if((totalScore / 3)< 90){
+					scoreLBL.setText("Excellent");
+				}else if((totalScore / 3)< 100){
+					scoreLBL.setText("Outstanding");
+				}else if((totalScore / 3)>= 100){
+					scoreLBL.setText("Maximum");
+				}
 			}
+			
 		}else if(changed()){
-			scoreLBL.setText("Fail");
+			scoreLBL.setText("Failure");
+			scoreLBL.setBackgroundColor(Color.RED);
+			scoreLBL.setTextColor(Color.BLACK);
+			scoreLBL.getBackground().setAlpha(100);
 		}
 	
 		

@@ -66,7 +66,7 @@ public class InstructionsActivity extends Activity {
 				            "Link",  // Action
 				            "OPNAV INST", // Label
 				            0);       // Value
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/files/6110.1H.pdf"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://navy-fitness.com/wp-content/uploads/2011/07/6110.1J-Physical-Readiness-program.pdf"));
 				startActivity(browserIntent);
 			}
 			

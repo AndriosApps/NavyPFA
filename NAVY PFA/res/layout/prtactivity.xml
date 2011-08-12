@@ -11,8 +11,6 @@
             <RadioButton android:layout_width="wrap_content" android:text="Female" android:layout_height="wrap_content" android:id="@+id/calculatorFemaleRDO"></RadioButton>
         </RadioGroup>
         <LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/linearLayout2" android:orientation="vertical">
-            <CheckBox android:layout_width="wrap_content" android:text="Weight in Standards" android:layout_height="wrap_content" android:id="@+id/calculatorWeightCheckBox"></CheckBox>
-            <CheckBox android:layout_width="wrap_content" android:text="Sit and Reach" android:layout_height="wrap_content" android:id="@+id/calculatorSitReachCheckBox"></CheckBox>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:gravity="center">

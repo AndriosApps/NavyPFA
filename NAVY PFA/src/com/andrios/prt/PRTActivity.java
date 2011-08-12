@@ -22,7 +22,6 @@ import android.widget.TextView;
 public class PRTActivity extends Activity {
 	
 	RadioButton maleRDO, femaleRDO;
-	CheckBox weightCheckBox, SitReachCheckBox;
 	SeekBar ageSeekBar, pushupSeekBar, situpSeekBar, runSeekBar;
 	TextView ageLBL, pushupLBL, situpLBL, minutesLBL, runLBL, scoreLBL;
 	Button minuteUpBTN, minuteDownBTN, secondUpBTN, secondDownBTN;
@@ -72,9 +71,6 @@ public class PRTActivity extends Activity {
 
 		maleRDO  = (RadioButton) findViewById(R.id.calculatorMaleRDO); 
 		femaleRDO  = (RadioButton) findViewById(R.id.calculatorFemaleRDO);
-
-		weightCheckBox  = (CheckBox) findViewById(R.id.calculatorWeightCheckBox);
-		SitReachCheckBox  = (CheckBox) findViewById(R.id.calculatorSitReachCheckBox);
 
 		ageSeekBar = (SeekBar) findViewById(R.id.calculatorAgeSeekBar); 
 		pushupSeekBar = (SeekBar) findViewById(R.id.calculatorPushupSeekBar); 
@@ -325,22 +321,7 @@ public class PRTActivity extends Activity {
 			}
 			
 		});
-		weightCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				calculateScore();
-				
-			}
-			
-		});
-		SitReachCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				calculateScore();
-				
-			}
-			
-		});
 		
 		
 	}
@@ -414,14 +395,7 @@ public class PRTActivity extends Activity {
 			}
 		}
 		
-		if(!weightCheckBox.isChecked() || !SitReachCheckBox.isChecked()){
-			if(changed()){
-				scoreLBL.setText("Failure");
-				scoreLBL.setBackgroundColor(Color.RED);
-				scoreLBL.setTextColor(Color.BLACK);
-				scoreLBL.getBackground().setAlpha(100);
-			}
-		}
+		
 		
 	}
 

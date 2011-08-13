@@ -24,6 +24,7 @@ public class PRTActivity extends Activity {
 	RadioButton maleRDO, femaleRDO;
 	SeekBar ageSeekBar, pushupSeekBar, situpSeekBar, runSeekBar;
 	TextView ageLBL, pushupLBL, situpLBL, minutesLBL, runLBL, scoreLBL;
+	TextView pushupScoreLBL, runScoreLBL, situpScoreLBL;
 	Button minuteUpBTN, minuteDownBTN, secondUpBTN, secondDownBTN;
 	Button ageUpBTN, ageDownBTN, pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
 	AndriosData mData;
@@ -82,6 +83,11 @@ public class PRTActivity extends Activity {
 		pushupLBL = (TextView) findViewById(R.id.calculatorPushUpLBL); 
 		situpLBL = (TextView) findViewById(R.id.calculatorSitUpLBL);
 		runLBL = (TextView) findViewById(R.id.calculatorRunLBL);
+		
+
+		pushupScoreLBL = (TextView) findViewById(R.id.prtActivityPushupScoreLBL);
+		situpScoreLBL = (TextView) findViewById(R.id.prtActivitySitupScoreActivity);
+		runScoreLBL = (TextView) findViewById(R.id.prtActivityRunScoreActivity);
 		
 
 		ageUpBTN = (Button) findViewById(R.id.calculatorAgeUpBTN);
@@ -403,39 +409,63 @@ public class PRTActivity extends Activity {
 
 	private void calculateMale(int[] pushupMale, int[] situpMale, int[] runMale) {
 		int totalScore = 0;
+		int pushupScore = 0;
+		int situpScore = 0;
+		int runScore =0;
 		int[] Scores = {45, 60, 75, 90, 100};
 		boolean fail0 = true;//pushups
 		boolean fail1 = true;//situps
 		boolean fail2 = true;//run
-		for(int i = 4; i >= 0; i--){
-			if(pushups >= pushupMale[i]){
-				if(i > 0){
-					totalScore += Scores[i];
-					fail0 = false;
-				}
-				
-				break;
-			}
-		}
-		for(int i = 4; i >= 0; i--){
-			if(situps >= situpMale[i]){
-				if(i > 0){
-					totalScore += Scores[i];
-					fail1 = false;
-				}	
+		
+		if(pushupchanged){
 			
-				break;
-			}
-		}
-		for(int i = 4; i >= 0; i--){
-			if(runtime <= runMale[i]){
-				if(i > 0){
+		
+			for(int i = 4; i >= 0; i--){
+				System.out.println(Integer.toString(pushupMale[i]));
+				if(pushups >= pushupMale[i]){
 					totalScore += Scores[i];
-					fail2 = false;
+					pushupScore = Scores[i];
+					pushupScoreLBL.setText(Integer.toString(pushupScore));
+					fail0 = false;
+					break;
 				}
-				break;
+			}
+			if(fail0){
+				pushupScoreLBL.setText("Failure");
 			}
 		}
+		
+		if(situpchanged){
+			for(int i = 4; i >= 0; i--){
+				if(situps >= situpMale[i]){
+					totalScore += Scores[i];
+					situpScore = Scores[i];
+					situpScoreLBL.setText(Integer.toString(situpScore));
+					fail1 = false;
+					break;
+				}
+			}
+			if(fail1){
+				situpScoreLBL.setText("Failure");
+			}
+		}
+		
+		if(runchanged){
+			for(int i = 4; i >= 0; i--){
+				if(runtime <= runMale[i]){
+					totalScore += Scores[i];
+					runScore = Scores[i];
+					runScoreLBL.setText(Integer.toString(runScore));
+					fail2 = false;
+					break;
+				}
+			}
+			if(fail2){
+				runScoreLBL.setText("Failure");
+			}
+		}
+		
+		
 		
 		if(!fail0 && !fail1 && !fail2 && changed()){
 			
@@ -475,36 +505,59 @@ public class PRTActivity extends Activity {
 
 	private void calculateFemale(int[] pushupFemale, int[] situpFemale, int[] runFemale) {
 		int totalScore = 0;
+		int pushupScore = 0;
+		int situpScore = 0;
+		int runScore =0;
 		int[] Scores = {45, 60, 75, 90, 100};
 		boolean fail0 = true;//pushups
 		boolean fail1 = true;//situps
 		boolean fail2 = true;//run
-		for(int i = 4; i >= 0; i--){
-			if(pushups >= pushupFemale[i]){
-				if(i > 0){
+		
+		if(pushupchanged){
+			
+			
+			for(int i = 4; i >= 0; i--){
+				System.out.println(Integer.toString(pushupFemale[i]));
+				if(pushups >= pushupFemale[i]){
 					totalScore += Scores[i];
+					pushupScore = Scores[i];
+					pushupScoreLBL.setText(Integer.toString(pushupScore));
 					fail0 = false;
+					break;
 				}
-				break;
+			}
+			if(fail0){
+				pushupScoreLBL.setText("Failure");
 			}
 		}
-		for(int i = 4; i >= 0; i--){
-			if(situps >= situpFemale[i]){
-				if(i > 0){
+		
+		if(situpchanged){
+			for(int i = 4; i >= 0; i--){
+				if(situps >= situpFemale[i]){
 					totalScore += Scores[i];
-					fail1=false;
-				}	
-				
-				break;
+					situpScore = Scores[i];
+					situpScoreLBL.setText(Integer.toString(situpScore));
+					fail1 = false;
+					break;
+				}
+			}
+			if(fail1){
+				situpScoreLBL.setText("Failure");
 			}
 		}
-		for(int i = 4; i >= 0; i--){
-			if(runtime <= runFemale[i]){
-				if(i > 0){
+		
+		if(runchanged){
+			for(int i = 4; i >= 0; i--){
+				if(runtime <= runFemale[i]){
 					totalScore += Scores[i];
+					runScore = Scores[i];
+					runScoreLBL.setText(Integer.toString(runScore));
 					fail2 = false;
+					break;
 				}
-				break;
+			}
+			if(fail2){
+				runScoreLBL.setText("Failure");
 			}
 		}
 		

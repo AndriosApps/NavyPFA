@@ -211,6 +211,26 @@ public class CardioActivity extends Activity{
 		}
 		bikeLBL.setText(Integer.toString(minutes)+":"+ second);
 	}
+	
+	private int CT9500HR(int kcal){
+		//TODO Finish this equation
+		int mySeconds= 0;
+		double totalEnergy = 0; 
+		double rawRuntimeEstimate = 0;
+				
+										//step 2 Unchanged for CT 9500 HR
+		mySeconds = kcal / 12; 			// Step 3 energy production rate in kcal/min
+		totalEnergy = weight * 1.09; 	// Step 4 total energy required to run 1.5 mi.
+		rawRuntimeEstimate = totalEnergy / mySeconds; // Step 5 calculate raw Runtime Estimate
+		rawRuntimeEstimate = rawRuntimeEstimate * 60;    // Step 6 runtime in seconds. 
+		if(maleRDO.isChecked()){
+			
+			mySeconds += 68;		//Add 1:08 for males. 
+		}else{
+			mySeconds += 135;		//Add 2:15 for females.
+		}
+		return mySeconds;
+	}
 
 
 	private void setTracker() {

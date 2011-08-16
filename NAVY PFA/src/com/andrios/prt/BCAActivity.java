@@ -42,7 +42,7 @@ public class BCAActivity extends Activity {
 	
 	SeekBar heightSeekBar, weightSeekBar;
 	Button heightUpBTN, heightDownBTN, weightUpBTN, weightDownBTN;
-	int height = 69, weight = 100;
+	int height = 69, weight = 100, age = 17;
 	TextView maleNeckLBL, maleWaistLBL, femaleNeckLBL, femaleWaistLBL, femaleHipsLBL;
 	TextView differenceLBL, percentFatLBL, femaleDifferenceLBL, femalePercentFatLBL;
 	TextView weightLBL, heightInchLBL, heightFeetLBL;
@@ -435,6 +435,9 @@ public class BCAActivity extends Activity {
 			percentFat = (double) Math.round(percentFat);
 			percentFatLBL.setText(Double.toString(percentFat)+ "%");
 			if(maleBFchanged){
+				if(age == 17){
+					
+				}
 				if(percentFat > 22.0){
 					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
 				}else{

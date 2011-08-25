@@ -33,7 +33,7 @@ public class BCAActivity extends Activity {
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	ViewFlipper flipper;//Used to Show animation between Back / Front of card. 
-	RadioButton maleRDO;
+	SegmentedControlButton maleRDO;
 	Button maleNeckPlusBTN, maleNeckMinusBTN, femaleNeckPlusBTN, femaleNeckMinusBTN;
 	Button maleWaistPlusBTN, maleWaistMinusBTN, femaleWaistPlusBTN, femaleWaistMinusBTN;
 	Button femaleHipsPlusBTN, femaleHipsMinusBTN;
@@ -73,7 +73,7 @@ public class BCAActivity extends Activity {
 			flipper = (ViewFlipper) findViewById(R.id.details); 
 			flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 		    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
-			maleRDO = (RadioButton) findViewById(R.id.bcaActivityrMaleRDO);
+			maleRDO = (SegmentedControlButton) findViewById(R.id.bcaActivityrMaleRDO);
 		
 			maleNeckPlusBTN = (Button) findViewById(R.id.bcaActivityMaleNeckPlusBTN);
 			maleNeckMinusBTN = (Button) findViewById(R.id.bcaActivityMaleNeckMinusBTN);

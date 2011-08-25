@@ -28,7 +28,7 @@ public class CardioActivity extends Activity{
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	Button weightUpBTN, weightDownBTN, calorieUpBTN, calorieDownBTN;
-	RadioButton maleRDO;
+	SegmentedControlButton maleRDO;
 	SeekBar weightSeekBar, calorieSeekBar;
 	
 	int weight = MINWEIGHT, calories = MINCAL;
@@ -64,13 +64,12 @@ public class CardioActivity extends Activity{
 		weightDownBTN = (Button) findViewById(R.id.cardioActivityWeightMinusBTN);
 		calorieUpBTN = (Button) findViewById(R.id.cardioActivityCaloriePlusBTN);
 		calorieDownBTN = (Button) findViewById(R.id.cardioActivityCalorieMinusBTN);
-		
 
 		weightSeekBar = (SeekBar) findViewById(R.id.cardioActivityWeightSeekBar);
 		weightSeekBar.setMax(MAXWEIGHT - MINWEIGHT);
 		calorieSeekBar = (SeekBar) findViewById(R.id.cardioActivityCalorieSeekBar);
 		calorieSeekBar.setMax(MAXCAL - MINCAL);
-		maleRDO = (RadioButton) findViewById(R.id.cardioActivityMaleRDO);
+		maleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityMaleRDO);
 	}
 
 

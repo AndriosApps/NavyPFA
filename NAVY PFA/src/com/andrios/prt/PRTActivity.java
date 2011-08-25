@@ -10,27 +10,33 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class PRTActivity extends Activity {
 	
-	RadioButton maleRDO, femaleRDO;
-	SeekBar ageSeekBar, pushupSeekBar, situpSeekBar, runSeekBar;
-	TextView ageLBL, pushupLBL, situpLBL, minutesLBL, runLBL, scoreLBL;
+	SegmentedControlButton maleRDO;
+
+	Spinner ageSpinner;
+	SeekBar pushupSeekBar, situpSeekBar, runSeekBar;
+	TextView pushupLBL, situpLBL, minutesLBL, runLBL, scoreLBL;
 	TextView pushupScoreLBL, runScoreLBL, situpScoreLBL;
 	Button minuteUpBTN, minuteDownBTN, secondUpBTN, secondDownBTN;
-	Button ageUpBTN, ageDownBTN, pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
+	Button pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
 	AndriosData mData;
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
+
+	private String array_spinner[];
 	boolean pushupchanged = false, situpchanged = false, runchanged = false;
 	
 	int age = 18, pushups = 0, situps = 0, runtime = 0, minutes, seconds;
@@ -68,18 +74,31 @@ public class PRTActivity extends Activity {
 	}
 
 	private void setConnections() {
+		array_spinner=new String[11];
+		array_spinner[0]="17-19";
+		array_spinner[1]="20-24";
+		array_spinner[2]="25-29";
+		array_spinner[3]="30-34";
+		array_spinner[4]="35-39";
+		array_spinner[5]="40-44";
+		array_spinner[6]="45-49";
+		array_spinner[7]="50-54";
+		array_spinner[8]="55-59";
+		array_spinner[9]="60-64";
+		array_spinner[10]="65+";
+		ageSpinner = (Spinner) findViewById(R.id.prtActivityAgeSpinner); 
+		ArrayAdapter adapter = new ArrayAdapter(this,
+				R.layout.my_spinner_item, array_spinner);
+		ageSpinner.setAdapter(adapter);
 
 
-		maleRDO  = (RadioButton) findViewById(R.id.calculatorMaleRDO); 
-		femaleRDO  = (RadioButton) findViewById(R.id.calculatorFemaleRDO);
+		maleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrMaleRDO); 
 
-		ageSeekBar = (SeekBar) findViewById(R.id.calculatorAgeSeekBar); 
 		pushupSeekBar = (SeekBar) findViewById(R.id.calculatorPushupSeekBar); 
 		situpSeekBar = (SeekBar) findViewById(R.id.calculatorSitUpSeekBar);
 		runSeekBar = (SeekBar) findViewById(R.id.calculatorRunTimeSeekBar);
 		 
 		scoreLBL = (TextView) findViewById(R.id.calculatorScoreLBL);
-		ageLBL = (TextView) findViewById(R.id.calculatorAgeLBL);
 		pushupLBL = (TextView) findViewById(R.id.calculatorPushUpLBL); 
 		situpLBL = (TextView) findViewById(R.id.calculatorSitUpLBL);
 		runLBL = (TextView) findViewById(R.id.calculatorRunLBL);
@@ -90,18 +109,14 @@ public class PRTActivity extends Activity {
 		runScoreLBL = (TextView) findViewById(R.id.prtActivityRunScoreActivity);
 		
 
-		ageUpBTN = (Button) findViewById(R.id.calculatorAgeUpBTN);
 		pushupUpBTN = (Button) findViewById(R.id.calculatorPushupsUpBTN);
 		situpUpBTN = (Button) findViewById(R.id.calculatorSitupsUpBTN);
 		secondUpBTN = (Button) findViewById(R.id.calculatorSecondsUpBTN);
 
-		ageDownBTN = (Button) findViewById(R.id.calculatorAgeDownBTN);
 		pushupDownBTN = (Button) findViewById(R.id.calculatorPushupsDownBTN);
 		situpDownBTN = (Button) findViewById(R.id.calculatorSitupsDownBTN);
 		secondDownBTN = (Button) findViewById(R.id.calculatorSecondsDownBTN);
 		
-		ageSeekBar.setMax(80);//max age 100
-		ageSeekBar.setProgress(18);
 		
 		pushupSeekBar.setMax(100);//max pushups is 92
 		situpSeekBar.setMax(110);//max situps is 109 (19 yr male)
@@ -115,24 +130,46 @@ public class PRTActivity extends Activity {
 	}
 	
 	private void setOnClickListeners() {
-		ageSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
+		ageSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
 
-			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				age = arg1;
-				ageLBL.setText(Integer.toString(age));
-				calculateScore();
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				int posit = ageSpinner.getSelectedItemPosition();
+				if(posit == 0){
+					age=19;
+				}else if(posit == 1){
+					age=24;
+				}else if(posit == 2){
+					age=29;
+				}else if(posit == 3){
+					age=34;
+				}else if(posit == 4){
+					age=39;
+				}else if(posit == 5){
+					age=44;
+				}else if(posit == 6){
+					age=49;
+				}else if(posit == 7){
+					age=54;
+				}else if(posit == 8){
+					age=59;
+				}else if(posit == 9){
+					age=64;
+				}else if(posit == 10){
+					age=65;
+				}
+				
+				
+				
 				
 			}
 
-			public void onStartTrackingTouch(SeekBar seekBar) {
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
 				
 			}
-
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				
-			}
-			
-		});
+	 });
+	
 		
 		pushupSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
 
@@ -195,20 +232,7 @@ public class PRTActivity extends Activity {
 			}
 			
 		});
-		ageUpBTN.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				age += 1;
-				if(age > 80){
-					age = 80;
-				}
-				
-				ageSeekBar.setProgress(age);
-				
-				calculateScore();
-			}
-			
-		});
+	
 		
 		pushupUpBTN.setOnClickListener(new OnClickListener(){
 
@@ -257,20 +281,7 @@ public class PRTActivity extends Activity {
 			
 		});
 		
-		ageDownBTN.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				age -= 1;
-				if(age < 0){
-					age = 0;
-				}
-				
-				ageSeekBar.setProgress(age);
-				
-				calculateScore();
-			}
-			
-		});
+	
 		
 		pushupDownBTN.setOnClickListener(new OnClickListener(){
 

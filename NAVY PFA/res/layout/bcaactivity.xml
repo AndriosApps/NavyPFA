@@ -4,10 +4,12 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background" android:id="@+id/topLayout">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_weight="0" android:layout_height="wrap_content">
-        <RadioGroup android:layout_height="wrap_content" android:id="@+id/radioGroup1" android:layout_weight="1" android:layout_width="75dip">
-            <RadioButton android:layout_width="wrap_content" android:text="Male" android:layout_height="wrap_content" android:checked="true" android:id="@+id/bcaActivityrMaleRDO"></RadioButton>
-            <RadioButton android:layout_width="wrap_content" android:id="@+id/calculatorFemaleRDO" android:text="Female" android:layout_height="wrap_content"></RadioButton>
-        </RadioGroup>
+        <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="wrap_content">
+            <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup1" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="75dip">
+                <com.andrios.prt.SegmentedControlButton android:checked="true" android:text="Male" android:id="@+id/bcaActivityrMaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
+                <com.andrios.prt.SegmentedControlButton android:text="Female" android:id="@+id/calculatorFemaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
+            </RadioGroup>
+        </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:orientation="vertical" android:layout_height="wrap_content">
             <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout09" android:layout_width="200dip">
                 <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout07" android:layout_width="match_parent">

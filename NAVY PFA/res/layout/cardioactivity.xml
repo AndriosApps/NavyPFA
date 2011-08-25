@@ -4,10 +4,13 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background">
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_weight="0">
-        <RadioGroup android:layout_weight="1" android:layout_width="75dip" android:layout_height="wrap_content" android:id="@+id/radioGroup1">
-            <RadioButton android:layout_height="wrap_content" android:checked="true" android:layout_width="wrap_content" android:text="Male" android:id="@+id/cardioActivityMaleRDO"></RadioButton>
-            <RadioButton android:layout_height="wrap_content" android:id="@+id/calculatorFemaleRDO" android:layout_width="wrap_content" android:text="Female"></RadioButton>
-        </RadioGroup>
+        
+         <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="wrap_content">
+            <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup1" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="75dip">
+                <com.andrios.prt.SegmentedControlButton android:checked="true" android:text="Male" android:id="@+id/cardioActivityrMaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
+                <com.andrios.prt.SegmentedControlButton android:text="Female" android:id="@+id/calculatorFemaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
+            </RadioGroup>
+        </LinearLayout>
         <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_height="wrap_content">
             <LinearLayout android:layout_weight="1" android:layout_width="200dip" android:id="@+id/LinearLayout05" android:gravity="center" android:orientation="vertical" android:layout_height="match_parent">
                 <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout03" android:layout_height="wrap_content">

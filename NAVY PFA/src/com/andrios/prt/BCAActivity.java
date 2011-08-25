@@ -26,7 +26,7 @@ public class BCAActivity extends Activity {
 	private static int MIN_HEIGHT = 51;
 	private static int MAX_HEIGHT = 86;
 	private static int MIN_WEIGHT = 90;
-	private static int MAX_WEIGHT = 275;
+	private static int MAX_WEIGHT = 300;
 	
 	AndriosData mData;
 	AdView adView;

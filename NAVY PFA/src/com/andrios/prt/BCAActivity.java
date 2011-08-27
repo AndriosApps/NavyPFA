@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
@@ -39,6 +40,7 @@ public class BCAActivity extends Activity {
 	Button femaleHipsPlusBTN, femaleHipsMinusBTN;
 	Double neck = 10.0, waist= 30.0, difference = 20.0, percentFat = 0.0;
 	Double fneck = 15.0, fwaist= 30.0, fhips = 35.0, fdifference = 50.0, fpercentFat = 0.0;
+	CheckBox ageCheckBox;
 	
 	SeekBar heightSeekBar, weightSeekBar;
 	Button heightUpBTN, heightDownBTN, weightUpBTN, weightDownBTN;
@@ -70,6 +72,7 @@ public class BCAActivity extends Activity {
 		}
 
 		private void setConnections() {
+			ageCheckBox = (CheckBox) findViewById(R.id.bcaActivityAgeCheckBox);
 			flipper = (ViewFlipper) findViewById(R.id.details); 
 			flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 		    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
@@ -146,7 +149,18 @@ public class BCAActivity extends Activity {
 		}
 
 		private void setOnClickListeners() {
-			
+			ageCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+
+				public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+					if(maleRDO.isChecked()){
+						calculateMale();
+					}else{
+						calculateFemale();
+					}
+					
+				}
+				
+			});
 			maleNeckPlusBTN.setOnClickListener(new OnClickListener(){
 
 				public void onClick(View arg0) {
@@ -441,14 +455,16 @@ public class BCAActivity extends Activity {
 			percentFat = (double) Math.round(percentFat);
 			percentFatLBL.setText(Double.toString(percentFat)+ "%");
 			if(maleBFchanged){
-				if(age == 17){
-					
+				double allowableFat = 22.0;
+				if(ageCheckBox.isChecked()){
+					allowableFat = 23.0;
 				}
-				if(percentFat > 22.0){
+				if(percentFat > allowableFat){
 					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
 				}else{
 					bodyFatLL.setBackgroundResource(R.drawable.passbtn);
 				}
+				
 			}else{
 				bodyFatLL.setBackgroundResource(R.drawable.grey_button);
 			}
@@ -461,7 +477,11 @@ public class BCAActivity extends Activity {
 			fpercentFat = (double) Math.round(fpercentFat);
 			femalePercentFatLBL.setText(Double.toString(fpercentFat)+ "%");
 			if(femaleBFchanged){
-				if(fpercentFat > 33.0){
+				double allowableFat = 33.0;
+				if(ageCheckBox.isChecked()){
+					allowableFat = 34.0;
+				}
+				if(fpercentFat > allowableFat){
 					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
 				}else{
 					bodyFatLL.setBackgroundResource(R.drawable.passbtn);

@@ -4,11 +4,16 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background" android:id="@+id/topLayout">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_weight="0" android:layout_height="wrap_content">
-        <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="wrap_content">
-            <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup1" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="75dip">
-                <com.andrios.prt.SegmentedControlButton android:checked="true" android:text="Male" android:id="@+id/bcaActivityrMaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
-                <com.andrios.prt.SegmentedControlButton android:text="Female" android:id="@+id/calculatorFemaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
-            </RadioGroup>
+        <LinearLayout android:id="@+id/linearLayout8" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:orientation="vertical">
+            <LinearLayout android:id="@+id/linearLayout7" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
+                <RadioGroup android:layout_weight="1" android:layout_height="40dip" android:layout_width="75dip" android:id="@+id/radioGroup1" android:orientation="horizontal">
+                    <com.andrios.prt.SegmentedControlButton android:checked="true" android:layout_height="match_parent" android:id="@+id/bcaActivityrMaleRDO" android:text="Male" android:layout_width="25dip" android:layout_weight="1"></com.andrios.prt.SegmentedControlButton>
+                    <com.andrios.prt.SegmentedControlButton android:layout_height="match_parent" android:id="@+id/calculatorFemaleRDO" android:text="Female" android:layout_width="25dip" android:layout_weight="1"></com.andrios.prt.SegmentedControlButton>
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/linearLayout13" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
+                <CheckBox android:layout_height="wrap_content" android:text="Age &gt; 39" android:layout_width="wrap_content" android:id="@+id/bcaActivityAgeCheckBox"></CheckBox>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:orientation="vertical" android:layout_height="wrap_content">
             <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout09" android:layout_width="200dip">

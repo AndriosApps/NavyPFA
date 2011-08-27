@@ -3,23 +3,14 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:orientation="vertical"
-  android:background="@drawable/background" android:layout_height="match_parent">
- <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_weight="0">
-        
-         <LinearLayout android:id="@+id/linearLayout7" android:layout_height="wrap_content" android:layout_width="75dip" android:layout_weight="1">
-            <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup1" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="75dip">
-                <com.andrios.prt.SegmentedControlButton android:checked="true" android:text="Male" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip" android:id="@+id/prtActivityrMaleRDO"></com.andrios.prt.SegmentedControlButton>
-                <com.andrios.prt.SegmentedControlButton android:text="Female" android:id="@+id/calculatorFemaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
-            </RadioGroup>
-        </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="75dip" android:layout_weight="1">
-            <Spinner android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/prtActivityAgeSpinner"></Spinner>
-        </LinearLayout>
+  android:background="@drawable/background" android:layout_height="match_parent" android:gravity="center">
+    <LinearLayout android:id="@+id/linearLayout10" android:layout_width="match_parent" android:gravity="center" android:layout_weight="0" android:layout_height="55dip">
+        <TextView android:text="Enter required metrics" android:id="@+id/calculatorScoreLBL" android:layout_height="wrap_content" android:textSize="22dip" android:layout_width="260dip" android:gravity="center"></TextView>
     </LinearLayout>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:gravity="center">
-        <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:id="@+id/linearLayout4" android:layout_width="260dip">
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:layout_height="100dip" android:layout_weight="1" android:gravity="center">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/linearLayout4" android:layout_width="260dip" android:layout_weight="1" android:layout_height="wrap_content">
         </LinearLayout>
-        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="260dip">
+        <LinearLayout android:id="@+id/linearLayout5" android:orientation="vertical" android:gravity="center" android:layout_width="260dip" android:layout_weight="0" android:layout_height="wrap_content">
             <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout11">
                 <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout14" android:layout_weight="1" android:layout_width="1px" android:gravity="right">
                     <TextView android:layout_height="wrap_content" android:text="" android:id="@+id/prtActivityPushupScoreLBL" android:layout_width="wrap_content" android:gravity="right"></TextView>
@@ -33,7 +24,7 @@
                 <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_height="30dip" android:id="@+id/calculatorPushupsUpBTN"></Button>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout6" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="260dip">
+        <LinearLayout android:id="@+id/linearLayout6" android:orientation="vertical" android:gravity="center" android:layout_width="260dip" android:layout_weight="0" android:layout_height="wrap_content">
             <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout8">
                 <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout15" android:layout_weight="1" android:layout_width="1px" android:gravity="right">
                     <TextView android:layout_height="wrap_content" android:text="" android:id="@+id/prtActivitySitupScoreActivity" android:layout_width="wrap_content" android:gravity="right"></TextView>
@@ -47,7 +38,7 @@
                 <Button android:layout_width="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_height="30dip" android:id="@+id/calculatorSitupsUpBTN"></Button>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center" android:orientation="vertical" android:id="@+id/LinearLayout02" android:layout_width="260dip">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/LinearLayout02" android:layout_width="260dip" android:layout_weight="0" android:layout_height="wrap_content">
             <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout7">
                 <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout16" android:layout_weight="1" android:layout_width="1px" android:gravity="right">
                     <TextView android:layout_height="wrap_content" android:text="" android:layout_width="wrap_content" android:id="@+id/prtActivityRunScoreActivity" android:gravity="right"></TextView>
@@ -61,13 +52,27 @@
                 <Button android:layout_height="30dip" android:background="@drawable/plus" android:id="@+id/calculatorSecondsUpBTN" android:layout_width="30dip" android:layout_weight="0"></Button>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center" android:orientation="horizontal" android:id="@+id/linearLayout9">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/linearLayout9" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="260dip">
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout10" android:gravity="center" android:layout_weight="1">
-        <TextView android:text="Enter required metrics" android:layout_height="wrap_content" android:textSize="22dip" android:id="@+id/calculatorScoreLBL" android:layout_width="260dip" android:gravity="center"></TextView>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_weight="0" android:layout_height="wrap_content" android:layout_width="260dip" android:orientation="vertical">
+        <LinearLayout android:id="@+id/linearLayout12" android:layout_height="match_parent" android:orientation="horizontal" android:layout_width="260dip" android:gravity="center">
+            <TextView android:textSize="18dip" android:id="@+id/TextView02" android:text="Gender" android:layout_height="wrap_content" android:layout_width="75dip" android:gravity="center"></TextView>
+            <LinearLayout android:id="@+id/linearLayout7" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="match_parent" android:gravity="center">
+                <RadioGroup android:id="@+id/radioGroup1" android:orientation="horizontal" android:layout_weight="0" android:layout_width="150dip" android:layout_height="40dip">
+                    <com.andrios.prt.SegmentedControlButton android:checked="true" android:layout_height="match_parent" android:id="@+id/prtActivityrMaleRDO" android:text="Male" android:layout_weight="1" android:layout_width="35dip"></com.andrios.prt.SegmentedControlButton>
+                    <com.andrios.prt.SegmentedControlButton android:layout_height="match_parent" android:id="@+id/calculatorFemaleRDO" android:text="Female" android:layout_weight="1" android:layout_width="35dip"></com.andrios.prt.SegmentedControlButton>
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout13" android:layout_height="match_parent" android:orientation="horizontal" android:layout_width="260dip" android:gravity="center">
+            <TextView android:textSize="18dip" android:id="@+id/textView2" android:text="Age" android:layout_height="wrap_content" android:layout_width="75dip" android:gravity="center"></TextView>
+            <LinearLayout android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="75dip" android:gravity="center">
+                <Spinner android:layout_height="wrap_content" android:id="@+id/prtActivityAgeSpinner" android:layout_width="150dip"></Spinner>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout18" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout18" android:layout_weight="0" android:layout_height="54dip">
     	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 		android:id="@+id/homeAdView"

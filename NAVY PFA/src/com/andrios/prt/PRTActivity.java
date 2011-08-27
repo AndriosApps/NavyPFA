@@ -159,7 +159,7 @@ public class PRTActivity extends Activity {
 					age=65;
 				}
 				
-				
+				calculateScore();
 				
 				
 			}

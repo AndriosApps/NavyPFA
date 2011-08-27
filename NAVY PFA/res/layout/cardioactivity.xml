@@ -2,7 +2,7 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background">
+  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background" android:id="@+id/LL">
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_weight="0">
         
          <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="wrap_content">
@@ -40,20 +40,35 @@
     </LinearLayout>
     <LinearLayout android:id="@+id/linearLayout8" android:layout_width="match_parent" android:orientation="vertical" android:gravity="center" android:layout_weight="1" android:layout_height="100dip">
         <TextView android:gravity="center" android:textSize="24dip" android:layout_width="match_parent" android:id="@+id/textView2" android:layout_height="50dip" android:text="Equivalent Run Times"></TextView>
-        <LinearLayout android:id="@+id/linearLayout3" android:orientation="horizontal" android:gravity="center_vertical|left" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="75dip">
-            <ImageView android:scaleType="fitXY" android:src="@drawable/cardio_bike_2" android:id="@+id/imageView1" android:layout_width="50dip" android:layout_height="50dip"></ImageView>
-            <LinearLayout android:id="@+id/linearLayout6" android:gravity="center" android:layout_width="75dip" android:layout_weight="1" android:layout_height="match_parent">
-                <TextView android:textSize="18dip" android:layout_width="wrap_content" android:id="@+id/cardioActivityBikeLBL" android:layout_height="wrap_content" android:text="TextView"></TextView>
+        <LinearLayout android:id="@+id/linearLayout6" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
+            <TextView android:text="Bike" android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center" android:textSize="18dip"></TextView>
+            <LinearLayout android:id="@+id/linearLayout3" android:orientation="horizontal" android:layout_weight="1" android:layout_height="75dip" android:layout_width="match_parent" android:gravity="center_vertical|left">
+                <LinearLayout android:id="@+id/LinearLayout01" android:orientation="horizontal" android:layout_weight="1" android:layout_height="match_parent" android:layout_width="75dip" android:gravity="center">
+                    <LinearLayout android:id="@+id/LinearLayout06" android:layout_weight="0" android:layout_height="match_parent" android:layout_width="wrap_content" android:gravity="center">
+                        <TextView android:text="00:00" android:layout_height="wrap_content" android:textSize="18dip" android:layout_width="125dip" android:gravity="center" android:id="@+id/cardioActivityBikeLBL"></TextView>
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/LinearLayout02" android:layout_height="match_parent" android:layout_width="150dip" android:gravity="center|right">
+                        <Spinner android:layout_weight="0" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/cardioActivityBikeSpinner"></Spinner>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout4" android:orientation="horizontal" android:gravity="center_vertical|left" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="75dip">
-            <ImageView android:scaleType="fitXY" android:src="@drawable/elliptical_2" android:id="@+id/ImageView01" android:layout_width="50dip" android:layout_height="50dip"></ImageView>
-            <LinearLayout android:id="@+id/linearLayout7" android:gravity="center" android:layout_width="75dip" android:layout_weight="1" android:layout_height="match_parent">
-                <TextView android:textSize="18dip" android:layout_width="wrap_content" android:id="@+id/TextView02" android:layout_height="wrap_content" android:text="Coming Soon!"></TextView>
+        <LinearLayout android:id="@+id/linearLayout12" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
+            <TextView android:text="Elliptical" android:id="@+id/textView4" android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center" android:textSize="18dip"></TextView>
+            <LinearLayout android:id="@+id/linearLayout4" android:orientation="horizontal" android:layout_weight="1" android:layout_height="75dip" android:layout_width="match_parent" android:gravity="center_vertical|left">
+                <LinearLayout android:id="@+id/linearLayout7" android:orientation="horizontal" android:layout_weight="1" android:layout_height="match_parent" android:layout_width="75dip" android:gravity="center">
+                    <LinearLayout android:id="@+id/linearLayout10" android:layout_weight="0" android:layout_height="match_parent" android:layout_width="wrap_content" android:gravity="center">
+                        <TextView android:text="00:00" android:layout_height="wrap_content" android:textSize="18dip" android:layout_width="125dip" android:gravity="center" android:id="@+id/cardioActivityEllipticalLBL"></TextView>
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/linearLayout11" android:layout_height="match_parent" android:layout_width="150dip" android:gravity="center|right">
+                        <Spinner android:layout_weight="0" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/cardioActivityEllipticalSpinner"></Spinner>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:layout_width="match_parent" android:background="#FF0000" android:id="@+id/linearLayout5" android:layout_height="wrap_content" android:gravity="center">
+    <LinearLayout android:layout_width="match_parent" android:background="#FF0000" android:id="@+id/linearLayout5" android:gravity="center" android:layout_height="wrap_content" android:orientation="vertical">
+            
         <TextView android:text="Not to be used for official PFA Scoring" android:textColor="#000000" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout9" android:layout_weight="0" android:layout_height="54dip">

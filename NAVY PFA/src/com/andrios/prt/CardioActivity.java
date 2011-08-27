@@ -8,8 +8,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
@@ -20,17 +24,19 @@ public class CardioActivity extends Activity{
 
 	private static int MAXWEIGHT = 300;
 	private static int MINWEIGHT = 75;
-	private static int MAXCAL = 1000;
+	private static int MAXCAL = 400;
 	private static int MINCAL = 25;
 	
-	TextView weightLBL, calorieLBL, bikeLBL;
+	Spinner bikeSpinner, ellipticalSpinner;
+	TextView weightLBL, calorieLBL, bikeLBL, ellipticalLBL;
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	Button weightUpBTN, weightDownBTN, calorieUpBTN, calorieDownBTN;
 	SegmentedControlButton maleRDO;
 	SeekBar weightSeekBar, calorieSeekBar;
-	
+
+	private String bikeArray[], ellipticalArray[];
 	int weight = MINWEIGHT, calories = MINCAL;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,8 @@ public class CardioActivity extends Activity{
 
         setConnections();
         setOnClickListeners();
+        weightSeekBar.setProgress(200-MINWEIGHT);
+		calorieSeekBar.setProgress(200-MINCAL);
         setTracker();
         
         adView = (AdView)this.findViewById(R.id.cardioAdView);
@@ -53,12 +61,37 @@ public class CardioActivity extends Activity{
     
     
 	private void setConnections() {
+		bikeArray=new String[1];
+		bikeArray[0]="95 CI";
+		
+		bikeSpinner = (Spinner) findViewById(R.id.cardioActivityBikeSpinner); 
+		ArrayAdapter adapter = new ArrayAdapter(this,
+				R.layout.my_spinner_item, bikeArray);
+		bikeSpinner.setAdapter(adapter);
+		
+		ellipticalArray=new String[5];
+		ellipticalArray[0]="CT 9500 HR";
+		ellipticalArray[1]="CT 9500";
+		ellipticalArray[2]="95 XI";
+		ellipticalArray[3]="E9 16";
+		ellipticalArray[4]="EFX 556";
+		
+		ellipticalSpinner = (Spinner) findViewById(R.id.cardioActivityEllipticalSpinner); 
+		ArrayAdapter adapter2 = new ArrayAdapter(this,
+				R.layout.my_spinner_item, ellipticalArray);
+		ellipticalSpinner.setAdapter(adapter2);
+
+		
 		weightLBL = (TextView) findViewById(R.id.cardioActivityWeightLBL);
 		weightLBL.setText(Integer.toString(weight));
 		calorieLBL = (TextView) findViewById(R.id.cardioActivityCalorieLBL);
 		calorieLBL.setText(Integer.toString(calories));
 		bikeLBL = (TextView) findViewById(R.id.cardioActivityBikeLBL);
 		bikeLBL.setText("");
+		
+		
+		ellipticalLBL = (TextView) findViewById(R.id.cardioActivityEllipticalLBL);
+		ellipticalLBL.setText("");
 		
 		weightUpBTN = (Button) findViewById(R.id.cardioActivityWeightPlusBTN);
 		weightDownBTN = (Button) findViewById(R.id.cardioActivityWeightMinusBTN);
@@ -67,8 +100,10 @@ public class CardioActivity extends Activity{
 
 		weightSeekBar = (SeekBar) findViewById(R.id.cardioActivityWeightSeekBar);
 		weightSeekBar.setMax(MAXWEIGHT - MINWEIGHT);
+		
 		calorieSeekBar = (SeekBar) findViewById(R.id.cardioActivityCalorieSeekBar);
 		calorieSeekBar.setMax(MAXCAL - MINCAL);
+		
 		maleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityMaleRDO);
 	}
 
@@ -76,6 +111,20 @@ public class CardioActivity extends Activity{
 
 
 	private void setOnClickListeners() {
+		ellipticalSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
+
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				calcTimes();
+			}
+
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		weightSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
 
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
@@ -184,7 +233,9 @@ public class CardioActivity extends Activity{
 	private void calcTimes(){
 		if(calories != 0){
 			calcBike();
+			calcElliptical(calories);
 		}
+		
 		
 	}
 	
@@ -211,24 +262,37 @@ public class CardioActivity extends Activity{
 		bikeLBL.setText(Integer.toString(minutes)+":"+ second);
 	}
 	
-	private int CT9500HR(int kcal){
-		//TODO Finish this equation
-		int mySeconds= 0;
-		double totalEnergy = 0; 
-		double rawRuntimeEstimate = 0;
-				
-										//step 2 Unchanged for CT 9500 HR
-		mySeconds = kcal / 12; 			// Step 3 energy production rate in kcal/min
-		totalEnergy = weight * 1.09; 	// Step 4 total energy required to run 1.5 mi.
-		rawRuntimeEstimate = totalEnergy / mySeconds; // Step 5 calculate raw Runtime Estimate
-		rawRuntimeEstimate = rawRuntimeEstimate * 60;    // Step 6 runtime in seconds. 
+	private int calcRawRunTime(int calories, int weight){
+		double myCalories = (double) calories;
+		int posit = ellipticalSpinner.getSelectedItemPosition();
+		if(posit == 2){
+			myCalories += 13;
+		}else if(posit == 3){
+			myCalories += 20;
+		}if(posit == 4){
+			myCalories += 7;
+		}
+		//TODO Add rest of ellipticals here. 
+		double myWeight = weight * 0.45359237; // convert to kg
+		double ER = 2.413 * myWeight;
+		double EER = (double) myCalories / 12.0;
+		double T = ER / EER;
+		
+		int totalSeconds = (int) (T*60);
+		return totalSeconds;
+	}
+	
+	private void calcElliptical(int kcal){
+		
+		int mySeconds = calcRawRunTime(kcal,weight);
+		System.out.println("Raw Run Time: " + mySeconds);
 		if(maleRDO.isChecked()){
 			
 			mySeconds += 68;		//Add 1:08 for males. 
 		}else{
 			mySeconds += 135;		//Add 2:15 for females.
 		}
-		return mySeconds;
+		ellipticalLBL.setText(formatTimer(mySeconds));
 	}
 
 
@@ -248,5 +312,26 @@ public class CardioActivity extends Activity{
 	public void onPause(){
 		super.onPause();
 		tracker.dispatch();
+	}
+	
+	private String formatTimer(int seconds){
+		String minutesTXT, secondsTXT;
+		int minutes = (int) Math.floor(seconds/60);
+		int secondsPrep = seconds % 60;
+		if(minutes < 10){
+			minutesTXT = "0"+Integer.toString(minutes);
+		}else{
+			minutesTXT = Integer.toString(minutes);
+		}
+		if(secondsPrep < 10){
+			secondsTXT = "0"+Integer.toString(secondsPrep);
+		}else{
+			secondsTXT = Integer.toString(secondsPrep);
+		}
+		
+		String formattedTime = minutesTXT + ":" + secondsTXT;
+		return formattedTime;
+		
+		
 	}
 }

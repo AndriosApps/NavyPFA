@@ -1,5 +1,8 @@
 package com.andrios.prt;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
@@ -21,9 +24,9 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class PRTActivity extends Activity {
+public class PRTActivity extends Activity implements Observer {
 	
-	SegmentedControlButton maleRDO;
+	SegmentedControlButton maleRDO, femaleRDO;
 
 	Spinner ageSpinner;
 	SeekBar pushupSeekBar, situpSeekBar, runSeekBar;
@@ -47,9 +50,10 @@ public class PRTActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prtactivity);
         
-        getExtras();
+        
         setConnections();
         setOnClickListeners();
+        getExtras();
         setTracker();
     }
 
@@ -70,6 +74,37 @@ public class PRTActivity extends Activity {
 		Intent intent = this.getIntent();
 		
 		mData = (AndriosData) intent.getSerializableExtra("data");
+		mData.addObserver(this);
+		age = mData.getAge();
+		male = mData.getGender();
+		
+		if(age == 19){
+			ageSpinner.setSelection(0);
+		}else if(age == 24){
+			ageSpinner.setSelection(1);
+		}else if(age == 29){
+			ageSpinner.setSelection(2);
+		}else if(age == 34){
+			ageSpinner.setSelection(3);
+		}else if(age == 39){
+			ageSpinner.setSelection(4);
+		}else if(age == 44){
+			ageSpinner.setSelection(5);
+		}else if(age == 49){
+			ageSpinner.setSelection(6);
+		}else if(age == 54){
+			ageSpinner.setSelection(7);
+		}else if(age == 59){
+			ageSpinner.setSelection(8);
+		}else if(age == 64){
+			ageSpinner.setSelection(9);
+		}else if(age == 65){
+			ageSpinner.setSelection(10);
+		}
+		
+		if(!male){
+			femaleRDO.setChecked(true);
+		}
 		
 	}
 
@@ -90,9 +125,12 @@ public class PRTActivity extends Activity {
 		ArrayAdapter adapter = new ArrayAdapter(this,
 				R.layout.my_spinner_item, array_spinner);
 		ageSpinner.setAdapter(adapter);
+		
+		
 
 
-		maleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrMaleRDO); 
+		maleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrMaleRDO);
+		femaleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrFemaleRDO); 
 
 		pushupSeekBar = (SeekBar) findViewById(R.id.calculatorPushupSeekBar); 
 		situpSeekBar = (SeekBar) findViewById(R.id.calculatorSitUpSeekBar);
@@ -121,6 +159,10 @@ public class PRTActivity extends Activity {
 		pushupSeekBar.setMax(100);//max pushups is 92
 		situpSeekBar.setMax(110);//max situps is 109 (19 yr male)
 		runSeekBar.setMax(1260);//max runtime 17:23 (50yr female) 18 min * 60 = 1080
+		
+
+		
+		
 		
 		adView = (AdView)this.findViewById(R.id.homeAdView);
 	      
@@ -159,6 +201,7 @@ public class PRTActivity extends Activity {
 					age=65;
 				}
 				
+				mData.setAge(age);
 				calculateScore();
 				
 				
@@ -334,7 +377,7 @@ public class PRTActivity extends Activity {
 
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 				calculateScore();
-				
+				mData.setGender(maleRDO.isChecked());
 			}
 			
 		});
@@ -623,6 +666,40 @@ public class PRTActivity extends Activity {
 	public void onPause(){
 		super.onPause();
 		tracker.dispatch();
+	}
+
+
+
+	public void update(Observable observable, Object data) {
+		age = mData.getAge();
+		if(age == 19){
+			ageSpinner.setSelection(0);
+		}else if(age == 24){
+			ageSpinner.setSelection(1);
+		}else if(age == 29){
+			ageSpinner.setSelection(2);
+		}else if(age == 34){
+			ageSpinner.setSelection(3);
+		}else if(age == 39){
+			ageSpinner.setSelection(4);
+		}else if(age == 44){
+			ageSpinner.setSelection(5);
+		}else if(age == 49){
+			ageSpinner.setSelection(6);
+		}else if(age == 54){
+			ageSpinner.setSelection(7);
+		}else if(age == 59){
+			ageSpinner.setSelection(8);
+		}else if(age == 64){
+			ageSpinner.setSelection(9);
+		}else if(age == 65){
+			ageSpinner.setSelection(10);
+		}
+		
+		femaleRDO.setChecked(!mData.getGender());
+		maleRDO.setChecked(mData.getGender());
+		
+		
 	}
 
 }

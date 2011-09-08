@@ -8,7 +8,7 @@
          <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="wrap_content">
             <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup1" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="75dip">
                 <com.andrios.prt.SegmentedControlButton android:checked="true" android:text="Male" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip" android:id="@+id/cardioActivityMaleRDO"></com.andrios.prt.SegmentedControlButton>
-                <com.andrios.prt.SegmentedControlButton android:text="Female" android:id="@+id/calculatorFemaleRDO" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip"></com.andrios.prt.SegmentedControlButton>
+                <com.andrios.prt.SegmentedControlButton android:text="Female" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="25dip" android:id="@+id/cardioActivityFemaleRDO"></com.andrios.prt.SegmentedControlButton>
             </RadioGroup>
         </LinearLayout>
         <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_height="wrap_content">
@@ -19,9 +19,13 @@
                     <TextView android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="1px" android:text="18" android:id="@+id/cardioActivityWeightLBL"></TextView>
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout04" android:layout_height="wrap_content">
-                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/cardioActivityWeightMinusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout15" android:gravity="center" android:layout_width="40dip">
+                        <Button android:id="@+id/cardioActivityWeightMinusBTN"  android:background="@drawable/minus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                     <SeekBar android:layout_weight="1" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/cardioActivityWeightSeekBar"></SeekBar>
-                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/cardioActivityWeightPlusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout16" android:gravity="center" android:layout_width="40dip">
+                        <Button android:id="@+id/cardioActivityWeightPlusBTN"  android:background="@drawable/plus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout android:layout_weight="1" android:layout_width="200dip" android:id="@+id/LinearLayout09" android:gravity="center" android:orientation="vertical" android:layout_height="match_parent">
@@ -31,9 +35,13 @@
                     <TextView android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="1px" android:text="18" android:id="@+id/cardioActivityCalorieLBL"></TextView>
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout08" android:layout_height="wrap_content">
-                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/minus" android:layout_width="30dip" android:id="@+id/cardioActivityCalorieMinusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout14" android:gravity="center" android:layout_width="40dip">
+                        <Button android:id="@+id/cardioActivityCalorieMinusBTN"  android:background="@drawable/minus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                     <SeekBar android:layout_weight="1" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/cardioActivityCalorieSeekBar"></SeekBar>
-                    <Button  android:layout_height="30dip" android:layout_weight="0" android:background="@drawable/plus" android:layout_width="30dip" android:id="@+id/cardioActivityCaloriePlusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout13" android:gravity="center" android:layout_width="40dip">
+                        <Button android:id="@+id/cardioActivityCaloriePlusBTN"  android:background="@drawable/plus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

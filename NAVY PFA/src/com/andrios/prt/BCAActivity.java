@@ -21,8 +21,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 import java.lang.Math;
+import java.util.Observable;
+import java.util.Observer;
 
-public class BCAActivity extends Activity {
+public class BCAActivity extends Activity implements Observer{
 	
 	private static int MIN_HEIGHT = 51;
 	private static int MAX_HEIGHT = 86;
@@ -34,7 +36,7 @@ public class BCAActivity extends Activity {
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	ViewFlipper flipper;//Used to Show animation between Back / Front of card. 
-	SegmentedControlButton maleRDO;
+	SegmentedControlButton maleRDO, femaleRDO;
 	Button maleNeckPlusBTN, maleNeckMinusBTN, femaleNeckPlusBTN, femaleNeckMinusBTN;
 	Button maleWaistPlusBTN, maleWaistMinusBTN, femaleWaistPlusBTN, femaleWaistMinusBTN;
 	Button femaleHipsPlusBTN, femaleHipsMinusBTN;
@@ -58,9 +60,10 @@ public class BCAActivity extends Activity {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.bcaactivity);
 	        
-	        getExtras();
+	        
 	        setConnections();
 	        setOnClickListeners();
+	        getExtras();
 	        setTracker();
 	    }
 	
@@ -68,7 +71,19 @@ public class BCAActivity extends Activity {
 			Intent intent = this.getIntent();
 			
 			mData = (AndriosData) intent.getSerializableExtra("data");
+			mData.addObserver(this);
+			age = mData.getAge();
+			if(age > 39){
+				ageCheckBox.setChecked(true);
+			}else{
+				ageCheckBox.setChecked(false);
+			}
 			
+			
+			
+			if(!mData.getGender()){
+				femaleRDO.setChecked(true);
+			}
 		}
 
 		private void setConnections() {
@@ -77,6 +92,7 @@ public class BCAActivity extends Activity {
 			flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 		    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
 			maleRDO = (SegmentedControlButton) findViewById(R.id.bcaActivityrMaleRDO);
+			femaleRDO = (SegmentedControlButton) findViewById(R.id.bcaActivityrFemaleRDO);
 		
 			maleNeckPlusBTN = (Button) findViewById(R.id.bcaActivityMaleNeckPlusBTN);
 			maleNeckMinusBTN = (Button) findViewById(R.id.bcaActivityMaleNeckMinusBTN);
@@ -335,7 +351,7 @@ public class BCAActivity extends Activity {
 				}else{
 					calculateFemale();
 				}
-				
+				mData.setGender(maleRDO.isChecked());
 			}
 			
 		});
@@ -554,6 +570,22 @@ public class BCAActivity extends Activity {
 			}else{
 				HWLL.setBackgroundResource(R.drawable.failbtn);
 			}
+		}
+
+		public void update(Observable observable, Object data) {
+			age = mData.getAge();
+			if(age > 39){
+				ageCheckBox.setChecked(true);
+			}else{
+				ageCheckBox.setChecked(false);
+			}
+			
+			
+			
+			
+			femaleRDO.setChecked(!mData.getGender());
+			maleRDO.setChecked(mData.getGender());
+			
 		}
 	  
 }

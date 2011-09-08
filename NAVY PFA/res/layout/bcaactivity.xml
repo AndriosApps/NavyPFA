@@ -5,13 +5,13 @@
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/background" android:id="@+id/topLayout">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_weight="0" android:layout_height="wrap_content">
         <LinearLayout android:id="@+id/linearLayout8" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:orientation="vertical">
-            <LinearLayout android:id="@+id/linearLayout7" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
+            <LinearLayout android:id="@+id/linearLayout7" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="50dip" android:gravity="center">
                 <RadioGroup android:layout_weight="1" android:layout_height="40dip" android:layout_width="75dip" android:id="@+id/radioGroup1" android:orientation="horizontal">
-                    <com.andrios.prt.SegmentedControlButton android:checked="true" android:layout_height="match_parent" android:id="@+id/bcaActivityrMaleRDO" android:text="Male" android:layout_width="25dip" android:layout_weight="1"></com.andrios.prt.SegmentedControlButton>
-                    <com.andrios.prt.SegmentedControlButton android:layout_height="match_parent" android:id="@+id/calculatorFemaleRDO" android:text="Female" android:layout_width="25dip" android:layout_weight="1"></com.andrios.prt.SegmentedControlButton>
+                    <com.andrios.prt.SegmentedControlButton android:checked="true" android:layout_height="match_parent" android:text="Male" android:layout_width="25dip" android:layout_weight="1" android:id="@+id/bcaActivityrMaleRDO"></com.andrios.prt.SegmentedControlButton>
+                    <com.andrios.prt.SegmentedControlButton android:layout_height="match_parent" android:text="Female" android:layout_width="25dip" android:layout_weight="1" android:id="@+id/bcaActivityrFemaleRDO"></com.andrios.prt.SegmentedControlButton>
                 </RadioGroup>
             </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout13" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
+            <LinearLayout android:id="@+id/linearLayout13" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="50dip" android:gravity="center">
                 <CheckBox android:layout_height="wrap_content" android:text="Age &gt; 39" android:layout_width="wrap_content" android:id="@+id/bcaActivityAgeCheckBox"></CheckBox>
             </LinearLayout>
         </LinearLayout>
@@ -23,9 +23,13 @@
                     <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/bcaActivityHeightInchesLBL"></TextView>
                 </LinearLayout>
                 <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout08" android:layout_width="match_parent">
-                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityHeightMinusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout15" android:layout_width="40dip" android:gravity="center">
+                        <Button android:id="@+id/bcaActivityHeightMinusBTN" android:text="" android:background="@drawable/minus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                     <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/bcaActivityHeightSeekBar"></SeekBar>
-                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityHeightPlusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout26" android:layout_width="40dip" android:gravity="center">
+                        <Button android:id="@+id/bcaActivityHeightPlusBTN" android:text="" android:background="@drawable/plus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/LinearLayout05" android:layout_width="200dip">
@@ -35,9 +39,13 @@
                     <TextView android:text="18" android:layout_width="1px" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/bcaActivityWeightLBL"></TextView>
                 </LinearLayout>
                 <LinearLayout android:layout_height="wrap_content" android:id="@+id/LinearLayout04" android:layout_width="match_parent">
-                    <Button android:background="@drawable/minus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityWeightMinusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout35" android:layout_width="40dip" android:gravity="center">
+                        <Button android:id="@+id/bcaActivityWeightMinusBTN" android:text="" android:background="@drawable/minus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                     <SeekBar android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent" android:id="@+id/bcaActivityWeightSeekBar"></SeekBar>
-                    <Button android:background="@drawable/plus" android:layout_width="30dip" android:layout_height="30dip" android:layout_weight="0" android:id="@+id/bcaActivityWeightPlusBTN"></Button>
+                    <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout36" android:layout_width="40dip" android:gravity="center">
+                        <Button android:id="@+id/bcaActivityWeightPlusBTN" android:text="" android:background="@drawable/plus" android:layout_weight="0" android:layout_width="35dip" android:layout_height="25dip"></Button>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -53,17 +61,17 @@
                     <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout27" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Neck (Inches)" android:id="@+id/TextView16" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout25" android:layout_width="match_parent">
-                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityMaleNeckMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityMaleNeckMinusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityMaleNeckLBL" android:gravity="center"></TextView>
-                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityMaleNeckPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityMaleNeckPlusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout10" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Waist (Inches)" android:id="@+id/TextView06" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout19" android:layout_width="match_parent">
-                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityMaleWaistMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityMaleWaistMinusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityMaleWaistLBL" android:gravity="center"></TextView>
-                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityMaleWaistPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityMaleWaistPlusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="15dip" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout21" android:layout_width="match_parent">
@@ -98,25 +106,25 @@
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/linearLayout10" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Neck (Inches)" android:id="@+id/textView5" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/linearLayout12" android:layout_width="match_parent">
-                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleNeckMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleNeckMinusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleNeckLBL" android:gravity="center"></TextView>
-                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleNeckPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleNeckPlusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout14" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Waist (Inches)" android:id="@+id/TextView08" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout12" android:layout_width="match_parent">
-                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleWaistMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleWaistMinusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleWaistLBL" android:gravity="center"></TextView>
-                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleWaistPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleWaistPlusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout17" android:layout_width="match_parent">
                         <TextView android:layout_width="match_parent" android:textSize="16dip" android:layout_height="wrap_content" android:text="Hips (Inches)" android:id="@+id/TextView09" android:gravity="center"></TextView>
                         <LinearLayout android:layout_height="match_parent" android:gravity="center_vertical" android:id="@+id/LinearLayout16" android:layout_width="match_parent">
-                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleHipMinusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/minus" android:id="@+id/bcaActivityFemaleHipMinusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                             <TextView android:layout_weight="1" android:layout_width="wrap_content" android:textSize="16dip" android:layout_height="wrap_content" android:text="14" android:id="@+id/bcaActivityFemaleHipLBL" android:gravity="center"></TextView>
-                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleHipPlusBTN" android:layout_height="30dip" android:layout_width="30dip"></Button>
+                            <Button  android:background="@drawable/plus" android:id="@+id/bcaActivityFemaleHipPlusBTN" android:layout_width="50dip" android:layout_height="25dip"></Button>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/LinearLayout11" android:layout_width="match_parent">

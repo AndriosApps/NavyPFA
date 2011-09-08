@@ -1,10 +1,14 @@
 package com.andrios.prt;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,25 +19,25 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class CardioActivity extends Activity{
+public class CardioActivity extends Activity implements Observer{
 
 	private static int MAXWEIGHT = 300;
 	private static int MINWEIGHT = 75;
 	private static int MAXCAL = 400;
 	private static int MINCAL = 25;
 	
+	AndriosData mData;
 	Spinner bikeSpinner, ellipticalSpinner;
 	TextView weightLBL, calorieLBL, bikeLBL, ellipticalLBL;
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	Button weightUpBTN, weightDownBTN, calorieUpBTN, calorieDownBTN;
-	SegmentedControlButton maleRDO;
+	SegmentedControlButton maleRDO, femaleRDO;
 	SeekBar weightSeekBar, calorieSeekBar;
 
 	private String bikeArray[], ellipticalArray[];
@@ -46,6 +50,7 @@ public class CardioActivity extends Activity{
 
         setConnections();
         setOnClickListeners();
+        getExtras();
         weightSeekBar.setProgress(200-MINWEIGHT);
 		calorieSeekBar.setProgress(200-MINCAL);
         setTracker();
@@ -57,7 +62,20 @@ public class CardioActivity extends Activity{
 		adView.loadAd(request);
     }
 
-    
+	private void getExtras() {
+		Intent intent = this.getIntent();
+		
+		mData = (AndriosData) intent.getSerializableExtra("data");
+		mData.addObserver(this);
+		
+		
+		
+		
+		
+		femaleRDO.setChecked(!mData.getGender());
+		
+		
+	}
     
     
 	private void setConnections() {
@@ -105,6 +123,7 @@ public class CardioActivity extends Activity{
 		calorieSeekBar.setMax(MAXCAL - MINCAL);
 		
 		maleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityMaleRDO);
+		femaleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityFemaleRDO);
 	}
 
 
@@ -222,7 +241,7 @@ public class CardioActivity extends Activity{
 
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 				calcTimes();
-				
+				mData.setGender(maleRDO.isChecked());
 			}
 			
 		});
@@ -332,6 +351,12 @@ public class CardioActivity extends Activity{
 		String formattedTime = minutesTXT + ":" + secondsTXT;
 		return formattedTime;
 		
+		
+	}
+
+	public void update(Observable observable, Object data) {
+		femaleRDO.setChecked(!mData.getGender());
+		maleRDO.setChecked(mData.getGender());
 		
 	}
 }

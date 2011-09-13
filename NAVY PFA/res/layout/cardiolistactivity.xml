@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent" android:background="@drawable/background" android:orientation="vertical">
-    <TextView android:id="@+id/textView1" android:layout_width="match_parent" android:text="Alternate Cardio" android:layout_height="25dip" android:gravity="center" android:textSize="24dip"></TextView>
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-            <LinearLayout android:id="@+id/linearLayout9" android:layout_height="match_parent" android:gravity="center" android:layout_width="100dip">
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/background" android:orientation="vertical">
+    <TextView android:id="@+id/textView1" android:layout_width="fill_parent" android:text="Alternate Cardio" android:layout_height="25dip" android:gravity="center" android:textSize="24dip"></TextView>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1">
+            <LinearLayout android:id="@+id/linearLayout9" android:layout_height="fill_parent" android:gravity="center" android:layout_width="100dip">
                 <Button android:id="@+id/button1" android:layout_width="wrap_content" android:text="Button" android:layout_height="wrap_content"></Button>
             </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout6" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
+            <LinearLayout android:id="@+id/linearLayout6" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" android:gravity="center">
                 <TextView android:textSize="22dip" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Swimming"></TextView>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-            <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1">
+            <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" android:gravity="center">
                 <TextView android:textSize="22dip" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Exercise Bike"></TextView>
             </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout10" android:layout_height="match_parent" android:gravity="center" android:layout_width="100dip">
+            <LinearLayout android:id="@+id/linearLayout10" android:layout_height="fill_parent" android:gravity="center" android:layout_width="100dip">
                 <Button android:id="@+id/button2" android:layout_width="wrap_content" android:text="Button" android:layout_height="wrap_content"></Button>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-            <LinearLayout android:id="@+id/linearLayout11" android:layout_height="match_parent" android:gravity="center" android:layout_width="100dip">
+        <LinearLayout android:id="@+id/linearLayout5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1">
+            <LinearLayout android:id="@+id/linearLayout11" android:layout_height="fill_parent" android:gravity="center" android:layout_width="100dip">
                 <Button android:id="@+id/button3" android:layout_width="wrap_content" android:text="Button" android:layout_height="wrap_content"></Button>
             </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout8" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center">
+            <LinearLayout android:id="@+id/linearLayout8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" android:gravity="center">
                 <TextView android:textSize="22dip" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Elliptical"></TextView>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_weight="0" android:layout_height="54dip">
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="fill_parent" android:layout_weight="0" android:layout_height="54dip">
     <com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 		android:id="@+id/cardioListAdView"

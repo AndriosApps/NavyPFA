@@ -46,9 +46,9 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <TextView android:id="@+id/textView2" android:text="Equivalent Run Times" android:layout_height="35dip" android:textSize="24dip" android:gravity="center" android:layout_weight="0" android:layout_width="fill_parent"></TextView>
     <LinearLayout android:id="@+id/linearLayout8" android:layout_width="fill_parent" android:orientation="vertical" android:gravity="center" android:layout_height="100dip" android:layout_weight="1">
-        <TextView android:gravity="center" android:textSize="24dip" android:layout_width="fill_parent" android:id="@+id/textView2" android:text="Equivalent Run Times" android:layout_weight="0" android:layout_height="35dip"></TextView>
-        <LinearLayout android:id="@+id/linearLayout6" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="0">
+        <LinearLayout android:id="@+id/linearLayout6" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="1" android:gravity="center">
             <TextView android:text="Bike" android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center" android:textSize="18dip" android:layout_weight="0"></TextView>
             <LinearLayout android:id="@+id/linearLayout3" android:orientation="horizontal" android:layout_width="fill_parent" android:gravity="center" android:layout_weight="0" android:layout_height="wrap_content">
                 <LinearLayout android:id="@+id/LinearLayout06" android:gravity="center" android:layout_height="fill_parent" android:layout_width="wrap_content" android:layout_weight="0">
@@ -59,7 +59,7 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout12" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="0">
+        <LinearLayout android:id="@+id/linearLayout12" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="1" android:gravity="center">
             <TextView android:text="Elliptical" android:id="@+id/textView4" android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center" android:textSize="18dip" android:layout_weight="0"></TextView>
             <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_height="fill_parent" android:id="@+id/linearLayout7" android:layout_width="fill_parent" android:layout_weight="0">
                 <LinearLayout android:layout_width="wrap_content" android:gravity="center" android:layout_height="fill_parent" android:id="@+id/linearLayout10" android:layout_weight="0">

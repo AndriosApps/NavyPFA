@@ -9,7 +9,7 @@
   
   
   <!--  End Chris' change for Gender and Age  -->
-    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center" android:text="Scores" android:id="@+id/textView8"></TextView>
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center" android:text="Small" android:id="@+id/textView8"></TextView>
     <LinearLayout android:layout_width="fill_parent" android:orientation="horizontal" android:layout_height="75dip" android:gravity="center" android:layout_weight="0" android:id="@+id/LinearLayout01">
         <LinearLayout android:layout_width="100dip" android:orientation="vertical" android:layout_height="wrap_content" android:gravity="center|top" android:layout_weight="1" android:id="@+id/linearLayout28">
             <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center" android:id="@+id/textView1" android:text="Component"></TextView>

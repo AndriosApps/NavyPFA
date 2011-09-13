@@ -32,9 +32,9 @@
         </LinearLayout>
     </LinearLayout>
   
-    <LinearLayout android:id="@+id/linearLayout10" android:layout_width="fill_parent" android:gravity="center" android:layout_weight="0" android:layout_height="55dip">
+    <LinearLayout android:id="@+id/linearLayout10" android:layout_width="fill_parent" android:gravity="center" android:layout_height="15dip" android:layout_weight="1">
     </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:layout_height="100dip" android:gravity="center" android:layout_weight="2">
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:gravity="center" android:layout_weight="0" android:layout_height="150dip">
         <LinearLayout android:id="@+id/linearLayout5" android:orientation="vertical" android:gravity="center" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1">
             <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout11">
                 <LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout14" android:layout_weight="1" android:layout_width="1px" android:gravity="right">
@@ -89,8 +89,6 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/linearLayout9" android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="260dip">
-        </LinearLayout>
     </LinearLayout>
     
 
@@ -98,8 +96,8 @@
 <!--  Start Chris' change for Bike, Elliptical and Run seg Controller  -->
     
 <!--  End Chris' change for Bike, Elliptical and Run seg Controller  -->
-    <LinearLayout android:gravity="center" android:layout_weight="0" android:layout_width="fill_parent" android:layout_height="55dip" android:id="@+id/LinearLayout03"></LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_weight="0" android:gravity="center" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:id="@+id/LinearLayout03" android:layout_height="15dip" android:layout_weight="1"></LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_weight="0" android:gravity="center" android:layout_height="50dip">
         <RadioGroup android:layout_width="150dip" android:layout_weight="1" android:id="@+id/radioGroup1" android:layout_height="35dip" android:orientation="horizontal" android:gravity="center">
             <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:text="Male" android:checked="true" android:layout_height="fill_parent" android:id="@+id/prtActivityrMaleRDO"></com.andrios.prt.SegmentedControlButton>
             <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:text="Female" android:layout_height="fill_parent" android:id="@+id/prtActivityrFemaleRDO"></com.andrios.prt.SegmentedControlButton>

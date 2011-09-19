@@ -103,11 +103,16 @@
             <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:text="Female" android:layout_height="fill_parent" android:id="@+id/prtActivityrFemaleRDO"></com.andrios.prt.SegmentedControlButton>
         </RadioGroup>
         <Spinner android:layout_width="150dip" android:layout_weight="1" android:layout_height="35dip" android:id="@+id/prtActivityAgeSpinner"></Spinner>
-    </LinearLayout>    
-    
-   
-    
-    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout18" android:layout_weight="0" android:layout_height="54dip">
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:id="@+id/relativeLayout1" android:layout_height="50dip" android:layout_weight="0">
+        <Button 
+        	android:id="@+id/prtActivityLogBTN" 
+        	android:layout_width="wrap_content" 
+        	android:layout_height="wrap_content"
+        	android:layout_centerInParent="true" 
+        	android:visibility="invisible"
+        	android:text="Log">
+        </Button>
     	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 		android:id="@+id/homeAdView"
@@ -115,6 +120,9 @@
         android:layout_height="wrap_content"
         ads:adUnitId="a14debe274d41b2"
         ads:adSize="BANNER"
-        android:layout_weight="0" />	
-    </LinearLayout>
+        
+        	android:layout_centerInParent="true"
+        android:layout_weight="0" >
+    	</com.google.ads.AdView>	
+    </RelativeLayout>
 </LinearLayout>

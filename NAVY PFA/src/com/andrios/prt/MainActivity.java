@@ -2,29 +2,227 @@ package com.andrios.prt;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
-import android.app.TabActivity;
+import net.robotmedia.billing.BillingController;
+import net.robotmedia.billing.BillingRequest.ResponseCode;
+import net.robotmedia.billing.helper.AbstractBillingActivity;
+import net.robotmedia.billing.model.Transaction;
+import net.robotmedia.billing.model.Transaction.PurchaseState;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.widget.TabHost;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 
-public class MainActivity extends TabActivity {
-    
-	private AndriosData mData; //Read in from saved file, passed to all future intents.
+public class MainActivity extends AbstractBillingActivity implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3088858143996312467L;
 	
+	Button profileBTN, logBTN, calcBTN, aboutBTN, instructionBTN;
+	boolean premium;
+	AndriosData mData;
 	
-	/** Called when the activity is first created. */
-   
-    public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.mainactivity);
         
-        readData();
+
+        
         setConnections();
+        setOnClickListeners();
+        //setTracker();
+        restoreTransactions();
+        readData();
+    	updateOwnedItems();
     }
 
+
+
+	private void setConnections() {
+		profileBTN = (Button) findViewById(R.id.mainActivityProfileBTN);
+		logBTN = (Button) findViewById(R.id.mainActivityLogBTN);
+		calcBTN = (Button) findViewById(R.id.mainActivityCalculatorsBTN);
+		aboutBTN = (Button) findViewById(R.id.mainActivityAboutBTN);
+		instructionBTN = (Button) findViewById(R.id.mainActivityInstructionsBTN);
+		
+	}
+
+
+
+	private void setOnClickListeners() {
+		profileBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				if(true){//TODO change to premium
+					Intent intent = new Intent(v.getContext(), ProfileActivity.class);
+					
+					startActivity(intent);
+				}else{
+					setAlertDialog();
+				}
+				
+				
+			}
+			
+		});
+		logBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				
+				if(premium){
+					Intent intent = new Intent(v.getContext(), LogActivity.class);
+					
+					startActivity(intent);
+				}else{
+					setAlertDialog();
+				}
+			
+				
+			}
+			
+		});
+		calcBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), CalculatorTabsActivity.class);
+				intent.putExtra("premium", premium);
+				intent.putExtra("data", mData);
+				startActivity(intent);
+				
+			}
+			
+		});
+		aboutBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), AboutActivity.class);
+				
+				startActivity(intent);
+				
+			}
+			
+		});
+		instructionBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), InstructionsActivity.class);
+				startActivity(intent);
+				
+			}
+			
+		});
+		
+	}
+
+
+
+	public byte[] getObfuscationSalt() {
+		return new byte[] {41, -90, -116, -41, 66, -53, 122, -110, -127, -96, -88, 77, 127, 115, 1, 73, 57, 110, 48, -116};
+		}
+
+
+
+	public String getPublicKey() {
+		System.out.println("Get Public Key ");//TODO REMOVE
+		
+		return "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsWpPBgnPmwEHkkfcy11L5/gdEzeVGy/xxFA719PrQeX8a1VlJAQeWjvxVd5xgpcmcUXnt4t+0IWAfL1plRIH6OUCYWbZlhJv/QdqmC5v7WAH8U925Yl6o0GNxdgZDfVyBDw/wboSbQ1dxbEMXZ0Jqpfz2DApszhxC9vj9xLIo6hBm1dGYWkTVPn7LLiRfnCkxJgRNxtMrEP8FwnebV3Lvk8520/0VQj8wVU3QZaGPEQ3yO+z664D3Zlx9p0hMk54xeoJo86OwvXw1lKA8vlXBCc1eHhHa6QhAUn0SNVq9e1sF3rsxKJWbT1tUvK9qHHinrMjXF5095jx+evH58pn7wIDAQAB";
+	}
+
+
+
+	@Override
+	public void onBillingChecked(boolean supported) {
+		
+		System.out.println("ON BILLING CHECKED? " + supported);//TODO REMOVE
+		
+	}
+
+
+
+	@Override
+	public void onPurchaseStateChanged(String itemId, PurchaseState state) {
+		System.out.println("ON PURCHASE STATE CHANGED");//TODO REMOVE
+		if(itemId.equals("premium_features") && PurchaseState.PURCHASED.equals(state)){
+			System.out.println(itemId + " Purchased");
+			premium = true;
+		}else if(itemId.equals("premium_features") && PurchaseState.CANCELLED.equals(state)){
+			System.out.println(itemId + " Cancelled");
+		}if(itemId.equals("premium_features") && PurchaseState.REFUNDED.equals(state)){
+			System.out.println(itemId + " Refunded");
+		}
+	}
+
+
+
+	@Override
+	public void onRequestPurchaseResponse(String itemId, ResponseCode response) {
+		System.out.println("ONREQUESTPURCHASERESPONSE " + itemId + " " + response);//TODO REMOVE
+		
+	}
+	
+	private void updateOwnedItems() {
+		
+		List<Transaction> transactions = BillingController.getTransactions(this);
+		final ArrayList<String> ownedItems = new ArrayList<String>();
+		premium = false;
+		for (Transaction t : transactions) {
+			System.out.println("Product Id: " + t.productId);
+			if (t.purchaseState == PurchaseState.PURCHASED) {
+				if(t.productId.equals("premium_features")){
+					System.out.println("Premium Features Unlocked");
+					premium = true;
+					break;
+				}
+				
+				
+			}
+		}
+		
+
+		
+	}
+	private void setAlertDialog() {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		LayoutInflater inflater = LayoutInflater.from(this);
+		final View layout = inflater.inflate(R.layout.alert_dialog_premium_features, null);
+		
+		builder.setView(layout)
+				.setTitle("Premium Features")
+				.setPositiveButton("Buy Now!", new DialogInterface.OnClickListener(){
+					
+					
+					public void onClick(DialogInterface dialog, int which) {	
+						requestPurchase("premium_features");
+					}
+				})
+				.setNegativeButton("No Thanks", new DialogInterface.OnClickListener(){
+
+					public void onClick(DialogInterface dialog, int which) {
+						
+						
+					}
+					
+				});
+		AlertDialog ad = builder.create();
+		ad.show();
+	}
+	
 	private void readData() {
 		try {
 			FileInputStream fis = openFileInput("data");
@@ -41,44 +239,5 @@ public class MainActivity extends TabActivity {
 		}
 		
 	}
-
-	private void setConnections() {
-		TabHost mTabHost = getTabHost();
-        Intent intent;
-        Resources res = getResources(); 
-        
-        //Setup for Home Tab (Tab 0)
-        intent = new Intent().setClass(this, PRTActivity.class);
-        intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("PRT").setIndicator("",res.getDrawable(R.drawable.calculator2))
-        		.setContent(intent));
-        
-        //Setup for Workout Tab (Tab 1)
-        intent = new Intent().setClass(this, BCAActivity.class);
-        intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("BCA").setIndicator("",res.getDrawable(R.drawable.weight2))
-        		.setContent(intent));
-        
-        //Setup for Profile Tab (Tab 2)
-        intent = new Intent().setClass(this, CardioActivity.class);
-        intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("Alternate Cardio").setIndicator("",res.getDrawable(R.drawable.cardio2))
-        		.setContent(intent));
-             
-        //Setup for Exercise Tab (Tab 3)
-        intent = new Intent().setClass(this, InstructionsActivity.class);
-        intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("Instructions").setIndicator("",res.getDrawable(R.drawable.instructions2))
-        		.setContent(intent));
-       
-
-        //Set Tab host to Home Tab
-        mTabHost.setCurrentTab(0);
-	}
 	
-	public void onDestroy(){
-		super.onDestroy();
-		mData.write(this);
-		
-	}
 }

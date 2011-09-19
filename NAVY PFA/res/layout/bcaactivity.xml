@@ -145,12 +145,15 @@
             </LinearLayout>
         </LinearLayout>
     </ViewFlipper>
-    <LinearLayout android:gravity="center" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/linearLayout4" android:layout_width="fill_parent">
-        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityHeightWeightLL" android:background="@drawable/grey_button" android:layout_height="50dip">
-            <TextView android:text="Height/Weight" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:id="@+id/HeightWeightLBL" android:textSize="18dip"></TextView>
+    <LinearLayout android:layout_height="wrap_content" android:gravity="center" android:layout_width="fill_parent" android:id="@+id/linearLayout4" android:layout_weight="0">
+        <LinearLayout android:layout_height="50dip" android:gravity="center" android:layout_width="1dip" android:background="@drawable/grey_button" android:id="@+id/bcaActivityHeightWeightLL" android:layout_weight="1">
+            <TextView android:textColor="#000000" android:layout_width="wrap_content" android:textSize="18dip" android:id="@+id/HeightWeightLBL" android:layout_height="wrap_content" android:text="Height/Weight"></TextView>
         </LinearLayout>
-        <LinearLayout android:gravity="center" android:layout_weight="1" android:layout_width="1dip" android:id="@+id/bcaActivityBodyFatLL" android:layout_height="50dip" android:background="@drawable/grey_button">
-            <TextView android:text="BodyFat%" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:id="@+id/BodyFatLBL" android:textSize="18dip"></TextView>
+        <LinearLayout android:layout_height="50dip" android:gravity="center" android:layout_width="1dip" android:background="@drawable/grey_button" android:id="@+id/bcaActivityBodyFatLL" android:layout_weight="1">
+            <TextView android:textColor="#000000" android:layout_width="wrap_content" android:textSize="18dip" android:id="@+id/BodyFatLBL" android:layout_height="wrap_content" android:text="BodyFat%"></TextView>
         </LinearLayout>
     </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:id="@+id/relativeLayout1" android:layout_height="50dip">
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:text="Button" android:id="@+id/button1"></Button>
+    </RelativeLayout>
 </LinearLayout>

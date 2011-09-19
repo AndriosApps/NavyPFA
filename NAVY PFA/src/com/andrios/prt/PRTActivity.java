@@ -34,6 +34,7 @@ public class PRTActivity extends Activity implements Observer {
 	TextView pushupScoreLBL, runScoreLBL, situpScoreLBL;
 	Button minuteUpBTN, minuteDownBTN, secondUpBTN, secondDownBTN;
 	Button pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
+	Button logBTN;
 	AndriosData mData;
 	AdView adView;
 	AdRequest request;
@@ -41,6 +42,7 @@ public class PRTActivity extends Activity implements Observer {
 
 	private String array_spinner[];
 	boolean pushupchanged = false, situpchanged = false, runchanged = false;
+	boolean isPremium = false, isLog = false;
 	
 	int age = 18, pushups = 0, situps = 0, runtime = 0, minutes, seconds;
 	boolean male;
@@ -50,34 +52,17 @@ public class PRTActivity extends Activity implements Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prtactivity);
         
-        
+        getExtras();
         setConnections();
         setOnClickListeners();
-        getExtras();
+        finishSetup();
+        
         setTracker();
     }
 
 
 
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-2", this);
-	    
-		
-	}
-
-
-
-	private void getExtras() {
-		Intent intent = this.getIntent();
-		
-		mData = (AndriosData) intent.getSerializableExtra("data");
-		mData.addObserver(this);
-		age = mData.getAge();
-		male = mData.getGender();
-		
+	private void finishSetup() {
 		if(age == 19){
 			ageSpinner.setSelection(0);
 		}else if(age == 24){
@@ -105,6 +90,39 @@ public class PRTActivity extends Activity implements Observer {
 		if(!male){
 			femaleRDO.setChecked(true);
 		}
+		if(isLog){
+			maleRDO.setEnabled(false);
+			femaleRDO.setEnabled(false);
+			ageSpinner.setEnabled(false);
+		}
+		
+		
+	}
+
+
+
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-2", this);
+	    
+		
+	}
+
+
+
+	private void getExtras() {
+		Intent intent = this.getIntent();
+		isLog = intent.getBooleanExtra("log", false);
+		isPremium = intent.getBooleanExtra("premium", false);	
+		System.out.println("Is Premium " + isPremium);
+		mData = (AndriosData) intent.getSerializableExtra("data");
+		mData.addObserver(this);
+		age = mData.getAge();
+		male = mData.getGender();
+		
+		
 		
 	}
 
@@ -127,7 +145,7 @@ public class PRTActivity extends Activity implements Observer {
 		ageSpinner.setAdapter(adapter);
 		
 		
-
+		logBTN = (Button) findViewById(R.id.prtActivityLogBTN);
 
 		maleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrMaleRDO);
 		femaleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrFemaleRDO); 
@@ -160,15 +178,24 @@ public class PRTActivity extends Activity implements Observer {
 		situpSeekBar.setMax(110);//max situps is 109 (19 yr male)
 		runSeekBar.setMax(1260);//max runtime 17:23 (50yr female) 18 min * 60 = 1080
 		
-
-		
-		
-		
 		adView = (AdView)this.findViewById(R.id.homeAdView);
 	      
 	    request = new AdRequest();
 		request.setTesting(false);
-		adView.loadAd(request);
+		
+		if(!isPremium){
+			adView = (AdView)this.findViewById(R.id.homeAdView);
+		      
+		    request = new AdRequest();
+			request.setTesting(false);
+			adView.loadAd(request);
+		}else{
+			adView.setVisibility(View.INVISIBLE);
+			logBTN.setVisibility(View.VISIBLE);
+		}
+			
+		
+		
 	}
 	
 	private void setOnClickListeners() {
@@ -381,12 +408,40 @@ public class PRTActivity extends Activity implements Observer {
 			}
 			
 		});
+		
+		logBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				PrtEntry p = new PrtEntry(
+						Integer.toString(pushups), 
+						Integer.toString(situps), 
+						formatTimer(), 
+						pushupScoreLBL.getText().toString(), 
+						situpScoreLBL.getText().toString(), 
+						runScoreLBL.getText().toString(), 
+						scoreLBL.getText().toString()
+				);
+				Intent intent = new Intent();
+				
+				
+				
+				
+				
+				intent.putExtra("entry", p);
+			System.out.println("SAVE BUTTON CLICKED");
+				PRTActivity.this.setResult(RESULT_OK, intent);
+				PRTActivity.this.finish();
+				
+			}
+			
+		});
 
 		
 		
 	}
 	
-	private void formatTimer(){
+
+	private String formatTimer(){
 		String minutesTXT, secondsTXT;
 		if(minutes < 10){
 			minutesTXT = "0"+Integer.toString(minutes);
@@ -398,9 +453,10 @@ public class PRTActivity extends Activity implements Observer {
 		}else{
 			secondsTXT = Integer.toString(seconds);
 		}
-		runLBL.setText(minutesTXT + ":" + secondsTXT);
+		String s = minutesTXT + ":" + secondsTXT;
+		runLBL.setText(s);
 		
-		
+		return s;
 	}
 	
 	private void calculateScore(){

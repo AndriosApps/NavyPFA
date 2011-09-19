@@ -39,7 +39,7 @@ public class CardioActivity extends Activity implements Observer{
 	Button weightUpBTN, weightDownBTN, calorieUpBTN, calorieDownBTN;
 	SegmentedControlButton maleRDO, femaleRDO;
 	SeekBar weightSeekBar, calorieSeekBar;
-
+	boolean isPremium;
 	private String bikeArray[], ellipticalArray[];
 	int weight = MINWEIGHT, calories = MINCAL;
     @Override
@@ -55,16 +55,12 @@ public class CardioActivity extends Activity implements Observer{
 		calorieSeekBar.setProgress(200-MINCAL);
         setTracker();
         
-        adView = (AdView)this.findViewById(R.id.cardioAdView);
-	      
-	    request = new AdRequest();
-		request.setTesting(false);
-		adView.loadAd(request);
+        
     }
 
 	private void getExtras() {
 		Intent intent = this.getIntent();
-		
+		isPremium = intent.getBooleanExtra("premium", false);
 		mData = (AndriosData) intent.getSerializableExtra("data");
 		mData.addObserver(this);
 		
@@ -124,6 +120,13 @@ public class CardioActivity extends Activity implements Observer{
 		
 		maleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityMaleRDO);
 		femaleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityFemaleRDO);
+		if(!isPremium){
+			adView = (AdView)this.findViewById(R.id.cardioAdView);
+		      
+		    request = new AdRequest();
+			request.setTesting(false);
+			adView.loadAd(request);
+		}
 	}
 
 

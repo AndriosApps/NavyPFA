@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 
 import net.robotmedia.billing.BillingController;
@@ -24,17 +26,19 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
-public class MainActivity extends AbstractBillingActivity implements Serializable{
+public class MainActivity extends AbstractBillingActivity implements Serializable, Observer{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3088858143996312467L;
-	
+	protected static final int PROFILEVIEW = 1;
 	Button profileBTN, logBTN, calcBTN, aboutBTN, instructionBTN;
 	boolean premium;
 	AndriosData mData;
+	Profile profile;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +52,41 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
         //setTracker();
         restoreTransactions();
         readData();
+        
     	updateOwnedItems();
+    	testProfile();
     }
+
+
+
+	private void testProfile() {
+		if(profile.getName().equals("Click to Set Name")){
+			createProfileDialog();
+		}
+		
+	}
+	
+	private void createProfileDialog(){
+		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		
+		alert.setTitle("Please create a profile");
+		alert.setMessage("Your profile will allow you to set defaults for the calculators and track upcoming PFAs");
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				Intent intent = new Intent(MainActivity.this.getBaseContext(), ProfileActivity.class);
+				intent.putExtra("profile", profile);
+				startActivityForResult(intent, PROFILEVIEW);
+				
+			}
+		});
+		alert.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						dialog.cancel();
+					}
+				});
+		alert.show();
+	}
 
 
 
@@ -68,15 +105,9 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 		profileBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				if(true){//TODO change to premium
-					Intent intent = new Intent(v.getContext(), ProfileActivity.class);
-					
-					startActivity(intent);
-				}else{
-					setAlertDialog();
-				}
-				
-				
+				Intent intent = new Intent(v.getContext(), ProfileActivity.class);
+				intent.putExtra("profile", profile);
+				startActivityForResult(intent, PROFILEVIEW);
 			}
 			
 		});
@@ -84,9 +115,12 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 
 			public void onClick(View v) {
 				
-				if(premium){
+				if(true){//TODO change to premium
 					Intent intent = new Intent(v.getContext(), LogActivity.class);
-					
+					mData.setAge(profile.getAge());
+					mData.setGender(profile.isMale());
+					System.out.println("Main Age" + mData.getAge());
+					intent.putExtra("data", mData);
 					startActivity(intent);
 				}else{
 					setAlertDialog();
@@ -101,6 +135,8 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), CalculatorTabsActivity.class);
 				intent.putExtra("premium", premium);
+				mData.setAge(profile.getAge());
+				mData.setGender(profile.isMale());
 				intent.putExtra("data", mData);
 				startActivity(intent);
 				
@@ -121,6 +157,7 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), InstructionsActivity.class);
+				intent.putExtra("premium", premium);
 				startActivity(intent);
 				
 			}
@@ -238,6 +275,40 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 			
 		}
 		
+		try {
+			FileInputStream fis = openFileInput("profile");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			profile = (Profile) ois.readObject();
+			profile.addObserver(MainActivity.this);
+			ois.close();
+			fis.close();
+			
+		} catch (Exception e) {
+			profile = new Profile();
+			
+		
+	}
+	}
+
+
+
+	public void update(Observable observable, Object data) {
+		System.out.println("PROFILE UPDATED");
+		
 	}
 	
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		
+    	if (requestCode == PROFILEVIEW) {
+    		if (resultCode == RESULT_OK) {
+    			profile = (Profile) intent.getSerializableExtra("profile");
+    			//setConnections();
+    		} else {
+    			
+    			Toast.makeText(this, "Add  Canceled", Toast.LENGTH_SHORT).show();
+    		}
+    	}
+    }
 }

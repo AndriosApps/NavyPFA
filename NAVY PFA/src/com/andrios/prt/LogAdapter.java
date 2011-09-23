@@ -33,13 +33,14 @@ public class LogAdapter extends ArrayAdapter<LogEntry>{
 	
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-            View v = convertView;
-            if (v == null) {
-                LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.log_entry_list_item, null);
-            }
-            LogEntry b;
-            b = items.get(position);
+    	LogEntry b;
+        b = items.get(position);   
+    	View v = convertView;
+        if (v == null) {
+            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(b.getLayout(), null);
+        }
+            
       
             if (b != null) {
                     TextView titleTXT = (TextView) v.findViewById(R.id.journal_entry_list_item_titleLBL);

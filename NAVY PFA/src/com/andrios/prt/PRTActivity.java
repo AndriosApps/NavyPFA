@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
@@ -63,27 +64,28 @@ public class PRTActivity extends Activity implements Observer {
 
 
 	private void finishSetup() {
-		if(age == 19){
+		System.out.println("AGE " + mData.getAge());
+		if(age <= 19){
 			ageSpinner.setSelection(0);
-		}else if(age == 24){
+		}else if(age <= 24){
 			ageSpinner.setSelection(1);
-		}else if(age == 29){
+		}else if(age <= 29){
 			ageSpinner.setSelection(2);
-		}else if(age == 34){
+		}else if(age <= 34){
 			ageSpinner.setSelection(3);
-		}else if(age == 39){
+		}else if(age <= 39){
 			ageSpinner.setSelection(4);
-		}else if(age == 44){
+		}else if(age <= 44){
 			ageSpinner.setSelection(5);
-		}else if(age == 49){
+		}else if(age <= 49){
 			ageSpinner.setSelection(6);
-		}else if(age == 54){
+		}else if(age <= 54){
 			ageSpinner.setSelection(7);
-		}else if(age == 59){
+		}else if(age <= 59){
 			ageSpinner.setSelection(8);
-		}else if(age == 64){
+		}else if(age <= 64){
 			ageSpinner.setSelection(9);
-		}else if(age == 65){
+		}else if(age >= 65){
 			ageSpinner.setSelection(10);
 		}
 		
@@ -412,25 +414,29 @@ public class PRTActivity extends Activity implements Observer {
 		logBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				PrtEntry p = new PrtEntry(
-						Integer.toString(pushups), 
-						Integer.toString(situps), 
-						formatTimer(), 
-						pushupScoreLBL.getText().toString(), 
-						situpScoreLBL.getText().toString(), 
-						runScoreLBL.getText().toString(), 
-						scoreLBL.getText().toString()
-				);
-				Intent intent = new Intent();
+				if(changed()){
+					PrtEntry p = new PrtEntry(
+							Integer.toString(pushups), 
+							Integer.toString(situps), 
+							formatTimer(), 
+							pushupScoreLBL.getText().toString(), 
+							situpScoreLBL.getText().toString(), 
+							runScoreLBL.getText().toString(), 
+							scoreLBL.getText().toString()
+					);
+					Intent intent = new Intent();
+					
+					
+					
+					
+					
+					intent.putExtra("entry", p);
+					PRTActivity.this.setResult(RESULT_OK, intent);
+					PRTActivity.this.finish();
+				}else{
+					Toast.makeText(PRTActivity.this, "Enter Required Metrics", Toast.LENGTH_SHORT).show();
+				}
 				
-				
-				
-				
-				
-				intent.putExtra("entry", p);
-			System.out.println("SAVE BUTTON CLICKED");
-				PRTActivity.this.setResult(RESULT_OK, intent);
-				PRTActivity.this.finish();
 				
 			}
 			

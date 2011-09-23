@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class InstructionsActivity extends Activity {
@@ -20,17 +21,26 @@ public class InstructionsActivity extends Activity {
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	Button rateBTN;
+	boolean isPremium;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instructionsactivity);
         
-
+        getExtras();
         setConnections();
         setOnClickListeners();
         setTracker();
     }
     
+
+	private void getExtras() {
+		Intent intent = this.getIntent();
+		
+		isPremium = intent.getBooleanExtra("premium", false);	
+		
+	}
+
 
 	private void setConnections() {
 		rateBTN = (Button) findViewById(R.id.instructionActivityRateBTN);
@@ -41,11 +51,17 @@ public class InstructionsActivity extends Activity {
 		navadmin2LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN2LBL);
 		navadmin3LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN3LBL);
 		
-		adView = (AdView)this.findViewById(R.id.instructionsAdView);
-	      
-	    request = new AdRequest();
-		request.setTesting(false);
-		adView.loadAd(request);
+		if(!isPremium){
+			adView = (AdView)this.findViewById(R.id.instructionsAdView);
+		      
+		    request = new AdRequest();
+			request.setTesting(false);
+			adView.loadAd(request);
+		}else{
+			LinearLayout adLL = (LinearLayout) findViewById(R.id.instructionActivityAdLL);
+			adLL.setVisibility(View.GONE);
+		}
+		
 		
 	}
 

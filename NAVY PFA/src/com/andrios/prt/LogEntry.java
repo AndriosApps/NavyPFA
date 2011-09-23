@@ -15,7 +15,8 @@ abstract class LogEntry implements Serializable{
 	int score;
 	Calendar c;
 	int mood;
-	
+	int layout;
+	int age;
 	
 	/*
 	 * Abstract Methods
@@ -47,6 +48,14 @@ abstract class LogEntry implements Serializable{
 	
 	public int getScore(){
 		return score;
+	}
+	
+	public int getLayout(){
+		return layout;
+	}
+	
+	public int getAge(){
+		return age;
 	}
 	
 	public String getDateString(){
@@ -115,6 +124,10 @@ abstract class LogEntry implements Serializable{
 	
 	public void setScore(int score){
 		this.score = score;
+	}
+	
+	public void setLayout(int layout){
+		this.layout = layout;
 	}
 	
 	

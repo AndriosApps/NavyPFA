@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
@@ -39,7 +40,7 @@ public class BCAActivity extends Activity implements Observer{
 	SegmentedControlButton maleRDO, femaleRDO;
 	Button maleNeckPlusBTN, maleNeckMinusBTN, femaleNeckPlusBTN, femaleNeckMinusBTN;
 	Button maleWaistPlusBTN, maleWaistMinusBTN, femaleWaistPlusBTN, femaleWaistMinusBTN;
-	Button femaleHipsPlusBTN, femaleHipsMinusBTN;
+	Button femaleHipsPlusBTN, femaleHipsMinusBTN, logBTN;
 	Double neck = 10.0, waist= 30.0, difference = 20.0, percentFat = 0.0;
 	Double fneck = 15.0, fwaist= 30.0, fhips = 35.0, fdifference = 50.0, fpercentFat = 0.0;
 	CheckBox ageCheckBox;
@@ -52,6 +53,9 @@ public class BCAActivity extends Activity implements Observer{
 	TextView weightLBL, heightInchLBL, heightFeetLBL;
 	TextView HWLBL, bodyFatLBL;
 	boolean HWchanged, maleBFchanged, femaleBFchanged;
+	boolean isLog, isPremium, passHW, passBF;
+	boolean inStandards;
+	RelativeLayout bottomBar;
 	
 	LinearLayout HWLL, bodyFatLL;
 	
@@ -60,19 +64,14 @@ public class BCAActivity extends Activity implements Observer{
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.bcaactivity);
 	        
-	        
+	        getExtras();
 	        setConnections();
 	        setOnClickListeners();
-	        getExtras();
+	        finishSetup();
 	        setTracker();
 	    }
 	
-		private void getExtras() {
-			Intent intent = this.getIntent();
-			
-			mData = (AndriosData) intent.getSerializableExtra("data");
-			mData.addObserver(this);
-			age = mData.getAge();
+		private void finishSetup() {
 			if(age > 39){
 				ageCheckBox.setChecked(true);
 			}else{
@@ -84,6 +83,21 @@ public class BCAActivity extends Activity implements Observer{
 			if(!mData.getGender()){
 				femaleRDO.setChecked(true);
 			}
+		
+	}
+
+		private void getExtras() {
+			Intent intent = this.getIntent();
+			isLog = intent.getBooleanExtra("log", false);
+			isPremium = intent.getBooleanExtra("premium", false);	
+			mData = (AndriosData) intent.getSerializableExtra("data");
+			mData.addObserver(this);
+			age = mData.getAge();
+			
+			
+			
+			
+			
 		}
 
 		private void setConnections() {
@@ -161,7 +175,16 @@ public class BCAActivity extends Activity implements Observer{
 
 			bodyFatLL = (LinearLayout) findViewById(R.id.bcaActivityBodyFatLL);
 			
-			
+
+			logBTN = (Button) findViewById(R.id.bcaActivityLogBTN);
+			bottomBar = (RelativeLayout) findViewById(R.id.bcaActivityBottomBar);
+			if(!isLog){
+				bottomBar.setVisibility(View.GONE);	
+			}else{
+				maleRDO.setEnabled(false);
+				femaleRDO.setEnabled(false);
+				ageCheckBox.setEnabled(false);
+			}
 		}
 
 		private void setOnClickListeners() {
@@ -456,7 +479,59 @@ public class BCAActivity extends Activity implements Observer{
 			}
 			
 		});
-		
+		logBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Double myNeck = null;
+				Double myWaist = null;
+				String myHips = null;
+				Double myDiff = null;
+				String myCircum = null;
+				String myFat = null;
+				if(maleRDO.isChecked()){
+					myNeck = neck;
+					myWaist = waist;
+					myDiff = difference;
+					myCircum = differenceLBL.getText().toString().trim();
+					myHips = " ";
+					myFat = percentFatLBL.getText().toString().trim();
+				}else{
+					myNeck = fneck;
+					myWaist = fwaist;
+					myHips = Double.toString(fhips);
+					myDiff = fdifference;
+					myCircum = femaleDifferenceLBL.getText().toString().trim();
+					myFat = femalePercentFatLBL.getText().toString().trim();
+				}
+				
+				
+				BcaEntry b = new BcaEntry(
+						(formatInches() + " / " + Integer.toString(height)+"\""), 
+						Integer.toString(weight) + "lbs", 
+						Double.toString(myNeck), 
+						Double.toString(myWaist),
+						myHips,
+						myCircum,
+						myFat,
+						inStandards,
+						passBF
+				);
+				
+				
+				Intent intent = new Intent();
+				
+				
+				
+				
+				
+				intent.putExtra("entry", b);
+			System.out.println("SAVE BUTTON CLICKED");
+				BCAActivity.this.setResult(RESULT_OK, intent);
+				BCAActivity.this.finish();
+				
+			}
+			
+		});
 	}
 		private void calcBodyFat(){
 			if(maleRDO.isChecked() && maleBFchanged){
@@ -477,8 +552,10 @@ public class BCAActivity extends Activity implements Observer{
 				}
 				if(percentFat > allowableFat){
 					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
+					passBF = false;
 				}else{
 					bodyFatLL.setBackgroundResource(R.drawable.passbtn);
+					passBF = true;
 				}
 				
 			}else{
@@ -499,8 +576,10 @@ public class BCAActivity extends Activity implements Observer{
 				}
 				if(fpercentFat > allowableFat){
 					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
+					passBF = false;
 				}else{
 					bodyFatLL.setBackgroundResource(R.drawable.passbtn);
+					passBF = true;
 					
 				}
 			}else{
@@ -547,7 +626,7 @@ public class BCAActivity extends Activity implements Observer{
 		}
 		
 		private void calcHeightWeight(){
-			boolean inStandards = false;
+			inStandards = false;
 			
 			if(maleRDO.isChecked()){
 			

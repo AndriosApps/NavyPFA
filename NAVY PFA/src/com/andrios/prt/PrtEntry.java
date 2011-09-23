@@ -40,7 +40,7 @@ public class PrtEntry extends LogEntry{
 		this.situpScore = situpScore;
 		this.runScore = runScore;
 		this.totalScore = totalScore;
-		
+		this.layout = R.layout.list_item_prt_entry;
 	}
 	
 	/*

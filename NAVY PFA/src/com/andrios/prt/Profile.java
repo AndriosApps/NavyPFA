@@ -3,8 +3,11 @@ package com.andrios.prt;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Observable;
 
-public class Profile implements Serializable{
+import android.net.Uri;
+
+public class Profile extends Observable implements Serializable{
 
 	/**
 	 * 
@@ -14,14 +17,21 @@ public class Profile implements Serializable{
 	
 	String name;
 	String rank;
-	Calendar c;
+	Calendar birthday;
+	Calendar nextPFA;
 	ArrayList<LogEntry> logList;
 	boolean isMale;
+	boolean isPinProtected;
+	int pin;
+	Uri profilePic;
 	
 	public Profile(){
 		this.name = "Click to Set Name";
-		c = Calendar.getInstance();
+		birthday = Calendar.getInstance();
+		nextPFA = Calendar.getInstance();
 		logList = new ArrayList<LogEntry>();
+		this.isPinProtected = false;
+		//this.profilePic = "profile";
 	}
 	
 	/*
@@ -33,14 +43,19 @@ public class Profile implements Serializable{
 	}
 	
 	public Calendar getDate(){
-		return c;
+		return birthday;
 	}
+	
+	public Calendar getNextPFA(){
+		return nextPFA;
+	}
+	
 	public int getAge(){
 		int age = 0;
 		Calendar today = Calendar.getInstance();
-		int year = today.get(Calendar.YEAR) - c.get(Calendar.YEAR);
-		int month = today.get(Calendar.MONTH) - c.get(Calendar.MONTH);
-		int day = today.get(Calendar.DAY_OF_MONTH) - c.get(Calendar.DAY_OF_MONTH);
+		int year = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
+		int month = today.get(Calendar.MONTH) - birthday.get(Calendar.MONTH);
+		int day = today.get(Calendar.DAY_OF_MONTH) - birthday.get(Calendar.DAY_OF_MONTH);
 		
 		if(month < 0) {
 			age = year-1;
@@ -58,12 +73,16 @@ public class Profile implements Serializable{
 	}
 	
 	public boolean isMale(){
-		return isMale();
+		return isMale;
+	}
+	
+	public boolean isPinProtected(){
+		return this.isPinProtected;
 	}
 	
 	
 	
-	public String getDateString(){
+	public String getDateString(Calendar c){
 		String dateString = "";
 		int day = c.get(Calendar.DAY_OF_MONTH);
 		int month = c.get(Calendar.MONTH)+1;
@@ -100,6 +119,10 @@ public class Profile implements Serializable{
 		return dateString;
 	}
 	
+	public int getPin(){
+		return this.pin;
+	}
+	
 	
 	/*
 	 * Setter Methods
@@ -110,13 +133,26 @@ public class Profile implements Serializable{
 	}
 	
 	public void setDate(Calendar c){
-		this.c = c;
+		this.birthday = c;
+	}
+	
+	public void setPFA(Calendar c){
+		this.nextPFA = c;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void setMale(boolean isMale){
 		this.isMale = isMale;
 	}
 	
+	public void setPinProtection(boolean isPinProtected){
+		this.isPinProtected = isPinProtected;
+	}
+	
+	public void setPin(int pin){
+		this.pin = pin;
+	}
 
 	
 	

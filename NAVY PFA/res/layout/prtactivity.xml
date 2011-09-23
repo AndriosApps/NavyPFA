@@ -9,30 +9,34 @@
   
   
   <!--  End Chris' change for Gender and Age  -->
-    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center" android:text="Scores" android:id="@+id/textView8"></TextView>
+    <TextView android:layout_width="fill_parent"  android:layout_height="wrap_content" android:textSize="18dip" android:gravity="center" android:text="My Scores" android:id="@+id/textView8"></TextView>
     <LinearLayout android:layout_width="fill_parent" android:orientation="horizontal" android:layout_height="75dip" android:gravity="center" android:layout_weight="0" android:id="@+id/LinearLayout01">
-        <LinearLayout android:layout_width="100dip" android:orientation="vertical" android:layout_height="wrap_content" android:gravity="center|top" android:layout_weight="1" android:id="@+id/linearLayout28">
-            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center" android:id="@+id/textView1" android:text="Component"></TextView>
+        <LinearLayout android:layout_width="100dip" android:orientation="vertical" android:layout_height="wrap_content" android:gravity="center|top" android:id="@+id/linearLayout28" android:layout_weight="1">
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/textView1" android:text="Components" android:gravity="center" android:textSize="16dip"></TextView>
+            <LinearLayout android:layout_width="fill_parent" android:background="#ffffff" android:id="@+id/linearLayout18" android:layout_height="2dip"></LinearLayout>
             <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center|left" android:layout_weight="1" android:id="@+id/linearLayout30">
-                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:gravity="center" android:id="@+id/pullupScoreLBL" android:text="Pushups"></TextView>
-                <TextView android:gravity="right" android:text="" android:layout_width="wrap_content" android:id="@+id/prtActivityPushupScoreLBL" android:layout_height="wrap_content"></TextView>
+                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/pullupScoreLBL" android:text="Pushups" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="15dip"></TextView>
+                <TextView android:text="" android:id="@+id/prtActivityPushupScoreLBL" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="50dip" android:gravity="left"></TextView>
             </LinearLayout>
             <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center|left" android:layout_weight="1" android:id="@+id/linearLayout31">
-                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:gravity="center" android:id="@+id/textView4" android:text="Crunches"></TextView>
-                <TextView android:gravity="right" android:text="" android:layout_width="wrap_content" android:id="@+id/prtActivitySitupScoreActivity" android:layout_height="wrap_content"></TextView>
+                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView4" android:text="Crunches" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="15dip"></TextView>
+                <TextView android:text="" android:id="@+id/prtActivitySitupScoreActivity" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="50dip" android:gravity="left"></TextView>
             </LinearLayout>
             <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center|left" android:layout_weight="1" android:id="@+id/linearLayout32">
-                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:gravity="center" android:id="@+id/textView5" android:text="Run"></TextView>
-                <TextView android:gravity="right" android:text="" android:layout_width="wrap_content" android:id="@+id/prtActivityRunScoreActivity" android:layout_height="wrap_content"></TextView>
+                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView5" android:text="Run" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="15dip"></TextView>
+                <TextView android:text="" android:id="@+id/prtActivityRunScoreActivity" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="50dip" android:gravity="left"></TextView>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:layout_width="100dip" android:orientation="vertical" android:layout_height="fill_parent" android:gravity="center|top" android:layout_weight="1" android:id="@+id/linearLayout29">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextView03" android:text="Total"></TextView>
-            <TextView android:gravity="center" android:text="" android:id="@+id/calculatorScoreLBL" android:layout_height="wrap_content" android:textSize="22dip" android:layout_width="150dip"></TextView>
+        <LinearLayout android:id="@+id/linearLayout9" android:layout_height="fill_parent" android:layout_width="25dip"></LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_height="fill_parent" android:gravity="center|top" android:id="@+id/linearLayout29" android:layout_weight="1" android:layout_width="100dip">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextView03" android:text="Total" android:textSize="16dip"></TextView>
+            <LinearLayout android:background="#ffffff" android:id="@+id/linearLayout23" android:layout_height="2dip" android:layout_width="120dip"></LinearLayout>
+            <TextView android:gravity="center" android:text="" android:id="@+id/calculatorScoreLBL" android:layout_height="wrap_content" android:textSize="20dip" android:layout_weight="1" android:layout_width="120dip"></TextView>
         </LinearLayout>
     </LinearLayout>
   
-    <LinearLayout android:id="@+id/linearLayout10" android:layout_width="fill_parent" android:gravity="center" android:layout_height="15dip" android:layout_weight="1">
+    <LinearLayout android:id="@+id/linearLayout10" android:layout_width="fill_parent" android:layout_height="15dip" android:layout_weight="1" android:gravity="center|bottom">
+        <TextView android:id="@+id/TextView02" android:layout_height="wrap_content" android:textSize="18dip" android:layout_width="fill_parent" android:text="My Performance" android:gravity="center"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:gravity="center" android:layout_height="150dip" android:layout_weight="1">
         <LinearLayout android:id="@+id/linearLayout5" android:orientation="vertical" android:gravity="center" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1">

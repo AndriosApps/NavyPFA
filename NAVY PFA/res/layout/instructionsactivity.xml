@@ -57,7 +57,7 @@
             <Button android:text="Rate Now" android:textColor="#ffffff" android:layout_width="wrap_content" android:background="@drawable/grey_button" android:layout_height="50dip" android:id="@+id/instructionActivityRateBTN"></Button>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="0" android:id="@+id/linearLayout5" android:layout_height="wrap_content" android:gravity="center|bottom">
+    <LinearLayout android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="0" android:layout_height="wrap_content" android:gravity="center|bottom" android:id="@+id/instructionActivityAdLL">
     	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 		android:id="@+id/instructionsAdView"

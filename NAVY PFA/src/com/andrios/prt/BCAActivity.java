@@ -427,7 +427,6 @@ public class BCAActivity extends Activity implements Observer{
 				if(height > MAX_HEIGHT){
 					height = (MAX_HEIGHT);
 				}
-				System.out.println("Height " + height);
 				heightSeekBar.setProgress(height - MIN_HEIGHT);
 				
 				
@@ -472,7 +471,6 @@ public class BCAActivity extends Activity implements Observer{
 				if(weight < MIN_WEIGHT){
 					weight = MIN_WEIGHT;
 				}
-				System.out.println("Weight: "+ weight);
 				weightSeekBar.setProgress(weight - MIN_WEIGHT);
 				
 				
@@ -516,7 +514,7 @@ public class BCAActivity extends Activity implements Observer{
 						inStandards,
 						passBF
 				);
-				
+				b.setAge(age);
 				
 				Intent intent = new Intent();
 				
@@ -525,7 +523,6 @@ public class BCAActivity extends Activity implements Observer{
 				
 				
 				intent.putExtra("entry", b);
-			System.out.println("SAVE BUTTON CLICKED");
 				BCAActivity.this.setResult(RESULT_OK, intent);
 				BCAActivity.this.finish();
 				

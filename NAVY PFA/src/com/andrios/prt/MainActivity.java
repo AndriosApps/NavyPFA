@@ -115,7 +115,7 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 
 			public void onClick(View v) {
 				
-				if(true){//TODO change to premium
+				if(premium){
 					Intent intent = new Intent(v.getContext(), LogActivity.class);
 					mData.setAge(profile.getAge());
 					mData.setGender(profile.isMale());

@@ -75,7 +75,7 @@
             
         <TextView android:text="Not to be used for official PFA Scoring" android:textColor="#000000" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout9" android:layout_weight="0" android:layout_height="54dip">
+    <LinearLayout android:layout_width="fill_parent" android:layout_weight="0" android:layout_height="54dip" android:id="@+id/cardioActivityBottomBar">
     
     <com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"

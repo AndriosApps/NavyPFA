@@ -102,20 +102,19 @@
 <!--  End Chris' change for Bike, Elliptical and Run seg Controller  -->
     <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:id="@+id/LinearLayout03" android:layout_height="15dip" android:layout_weight="1"></LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_weight="0" android:gravity="center" android:layout_height="50dip">
-        <RadioGroup android:layout_width="150dip" android:layout_weight="1" android:id="@+id/radioGroup1" android:layout_height="35dip" android:orientation="horizontal" android:gravity="center">
+        <RadioGroup android:layout_width="150dip" android:layout_weight="1" android:id="@+id/radioGroup1" android:orientation="horizontal" android:gravity="center" android:layout_height="fill_parent">
             <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:text="Male" android:checked="true" android:layout_height="fill_parent" android:id="@+id/prtActivityrMaleRDO"></com.andrios.prt.SegmentedControlButton>
             <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:text="Female" android:layout_height="fill_parent" android:id="@+id/prtActivityrFemaleRDO"></com.andrios.prt.SegmentedControlButton>
         </RadioGroup>
-        <Spinner android:layout_width="150dip" android:layout_weight="1" android:layout_height="35dip" android:id="@+id/prtActivityAgeSpinner"></Spinner>
+        <Spinner android:layout_width="150dip" android:layout_weight="1" android:id="@+id/prtActivityAgeSpinner" android:layout_height="fill_parent"></Spinner>
     </LinearLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:id="@+id/relativeLayout1" android:layout_height="50dip" android:layout_weight="0">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="50dip" android:layout_weight="0" android:id="@+id/prtActivityBottomBar">
         <Button 
         	android:id="@+id/prtActivityLogBTN" 
-        	android:layout_width="wrap_content" 
         	android:layout_height="wrap_content"
         	android:layout_centerInParent="true" 
         	android:visibility="invisible"
-        	android:text="Log">
+        	android:text="Log PRT" android:layout_width="125dip">
         </Button>
     	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"

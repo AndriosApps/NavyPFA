@@ -10,7 +10,7 @@
         <LinearLayout android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="fill_parent" android:id="@+id/journalListActivityListView"></LinearLayout>
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content">
-        <TextView android:text="AndriOS is a team of developers who write apps for Android and iPhone platforms." android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <TextView android:text="We are a team of developers who write apps for Android and iPhone platforms.  We have a military background and want to write apps that members of the armed forces find useful. If you like our apps, leave us a good comment, or 'buy us a beer' by purchasing the premium features where available!" android:textColor="#000000" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:gravity="bottom|right" android:layout_weight="1">
         <ImageView android:id="@+id/imageView1" android:src="@drawable/andrios" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY"></ImageView>

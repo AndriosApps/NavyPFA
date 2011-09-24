@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -44,7 +45,7 @@ public class PRTActivity extends Activity implements Observer {
 	private String array_spinner[];
 	boolean pushupchanged = false, situpchanged = false, runchanged = false;
 	boolean isPremium = false, isLog = false;
-	
+	RelativeLayout bottomBar;
 	int age = 18, pushups = 0, situps = 0, runtime = 0, minutes, seconds;
 	boolean male;
 	
@@ -193,8 +194,17 @@ public class PRTActivity extends Activity implements Observer {
 			adView.loadAd(request);
 		}else{
 			adView.setVisibility(View.INVISIBLE);
-			logBTN.setVisibility(View.VISIBLE);
+			if(!isLog){
+				
+				bottomBar = (RelativeLayout) findViewById(R.id.prtActivityBottomBar);
+				bottomBar.setVisibility(View.GONE);
+				
+			}else{
+				logBTN.setVisibility(View.VISIBLE);
+			}
 		}
+		
+		
 			
 		
 		
@@ -424,6 +434,7 @@ public class PRTActivity extends Activity implements Observer {
 							runScoreLBL.getText().toString(), 
 							scoreLBL.getText().toString()
 					);
+					p.setAge(age);
 					Intent intent = new Intent();
 					
 					

@@ -25,8 +25,8 @@
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1">
             <LinearLayout android:id="@+id/linearLayout10" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical">
-                <Button android:background="@drawable/andrios" android:layout_height="75dip" android:layout_width="75dip" android:text=" " android:id="@+id/mainActivityAboutBTN"></Button>
-                <TextView android:text="About" android:id="@+id/textView6" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+                <Button android:background="@drawable/andrios" android:layout_height="75dip" android:layout_width="75dip" android:text=" " android:id="@+id/mainActivityAboutBTN" android:gravity="center"></Button>
+                <TextView android:text="AndriOS" android:id="@+id/textView6" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
             </LinearLayout>
             <LinearLayout android:id="@+id/linearLayout11" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical"></LinearLayout>
         </LinearLayout>

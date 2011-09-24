@@ -17,6 +17,9 @@ abstract class LogEntry implements Serializable{
 	int mood;
 	int layout;
 	int age;
+	boolean isAltitude;
+	boolean isMale;
+	
 	
 	/*
 	 * Abstract Methods
@@ -56,6 +59,14 @@ abstract class LogEntry implements Serializable{
 	
 	public int getAge(){
 		return age;
+	}
+	
+	public boolean isAltitude(){
+		return isAltitude;
+	}
+	
+	public boolean isMale(){
+		return isMale;
 	}
 	
 	public String getDateString(){
@@ -130,7 +141,17 @@ abstract class LogEntry implements Serializable{
 		this.layout = layout;
 	}
 	
+	public void setAge(int age){
+		this.age = age;
+	}
 	
+	public void setAltitude(boolean isAltitude){
+		this.isAltitude = isAltitude;
+	}
+	
+	public void setIsMale(boolean isMale){
+		this.isMale = isMale;
+	}
 	
 	
 	

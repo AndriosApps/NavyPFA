@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.andrios.prt"
       android:versionCode="12"
-      android:versionName="1.4.3">
+      android:versionName="1.5">
     <uses-sdk android:minSdkVersion="4" />
     
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -36,7 +36,8 @@
         <activity android:name="CardioActivity" android:screenOrientation="portrait" />
         <activity android:name="LogActivity" android:screenOrientation="portrait" />
         <activity android:name="AboutActivity" android:screenOrientation="portrait" />
-         <activity android:name="LogViewActivity" android:screenOrientation="portrait" />
+         <activity android:name="PrtLogViewActivity" android:screenOrientation="portrait" />
+         <activity android:name="BcaLogViewActivity" android:screenOrientation="portrait" />
         <activity android:name="ProfileActivity" android:screenOrientation="portrait" />
         
 

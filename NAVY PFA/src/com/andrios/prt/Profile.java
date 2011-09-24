@@ -1,10 +1,12 @@
 package com.andrios.prt;
 
 import java.io.Serializable;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Observable;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 public class Profile extends Observable implements Serializable{
@@ -24,6 +26,7 @@ public class Profile extends Observable implements Serializable{
 	boolean isPinProtected;
 	int pin;
 	Uri profilePic;
+	Bitmap profileBitmap;
 	
 	public Profile(){
 		this.name = "Click to Set Name";
@@ -123,6 +126,14 @@ public class Profile extends Observable implements Serializable{
 		return this.pin;
 	}
 	
+	public Uri getProfilePic(){
+		return profilePic;
+	}
+	
+	public Bitmap getProfileBitmap(){
+		return profileBitmap;
+	}
+	
 	
 	/*
 	 * Setter Methods
@@ -155,7 +166,13 @@ public class Profile extends Observable implements Serializable{
 	}
 
 	
+	public void setProfilePic(Uri profilePic){
+		this.profilePic = profilePic;
+	}
 	
+	public void setProfileBitmap(Bitmap profileBitmap){
+		this.profileBitmap = profileBitmap;
+	}
 	
 	
 }

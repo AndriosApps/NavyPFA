@@ -154,6 +154,6 @@
         </LinearLayout>
     </LinearLayout>
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="50dip" android:gravity="center" android:id="@+id/bcaActivityBottomBar">
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:text="Log" android:id="@+id/bcaActivityLogBTN"></Button>
+        <Button android:layout_height="wrap_content" android:layout_alignParentTop="true" android:text="Log BCA" android:id="@+id/bcaActivityLogBTN" android:layout_width="125dip"></Button>
     </RelativeLayout>
 </LinearLayout>

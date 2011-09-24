@@ -17,6 +17,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
@@ -51,12 +53,27 @@ public class CardioActivity extends Activity implements Observer{
         setConnections();
         setOnClickListeners();
         getExtras();
+        finishSetup();
         weightSeekBar.setProgress(200-MINWEIGHT);
 		calorieSeekBar.setProgress(200-MINCAL);
         setTracker();
         
         
     }
+
+	private void finishSetup() {
+		if(!isPremium){
+			adView = (AdView)this.findViewById(R.id.cardioAdView);
+		      
+		    request = new AdRequest();
+			request.setTesting(false);
+			adView.loadAd(request);
+		}else{
+			LinearLayout bottomBar = (LinearLayout) findViewById(R.id.cardioActivityBottomBar);
+			bottomBar.setVisibility(View.GONE);
+		}
+		
+	}
 
 	private void getExtras() {
 		Intent intent = this.getIntent();
@@ -120,13 +137,7 @@ public class CardioActivity extends Activity implements Observer{
 		
 		maleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityMaleRDO);
 		femaleRDO = (SegmentedControlButton) findViewById(R.id.cardioActivityFemaleRDO);
-		if(!isPremium){
-			adView = (AdView)this.findViewById(R.id.cardioAdView);
-		      
-		    request = new AdRequest();
-			request.setTesting(false);
-			adView.loadAd(request);
-		}
+		
 	}
 
 

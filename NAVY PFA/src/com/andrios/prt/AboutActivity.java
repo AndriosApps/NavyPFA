@@ -1,6 +1,5 @@
 package com.andrios.prt;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -13,12 +12,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 public class AboutActivity extends Activity {
@@ -45,6 +42,7 @@ public class AboutActivity extends Activity {
 		twitterBTN = (Button) findViewById(R.id.aboutActivityTwitterBTN);
 		emailBTN = (Button) findViewById(R.id.aboutActivityEmailBTN);
 		marketBTN = (Button) findViewById(R.id.aboutActivityMarketBTN);
+		facebookBTN.setVisibility(View.INVISIBLE);
 	}
 
 
@@ -58,7 +56,7 @@ public class AboutActivity extends Activity {
 			     
 			    emailIntent .putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"andriosapps@gmail.com"});
 			     
-			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "RE: "+ "@string/app_name");
+			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Navy PRT Android App");
 			     
 			    //emailIntent .putExtra(android.content.Intent.EXTRA_TEXT, myBodyText);
 			     
@@ -87,13 +85,17 @@ public class AboutActivity extends Activity {
 			public void onClick(View v) {
 				//Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.facebook.com/pages/AndriOS/224807700868604"));
 				//startActivity(browserIntent);
-
+/*
 				Intent intent = new Intent(Intent.ACTION_VIEW);
 				intent.setClassName("com.facebook.katana", "com.facebook.katana.ProfileTabHostActivity");
-				intent.putExtra("extra_user_id", "kristen.korpacz");
+				intent.putExtra("extra_user_id", "224807700868604");
 				startActivity(intent);
-
-				
+*/
+				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+				sharingIntent.setType("text/plain");
+				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "AndriOS Apps");
+				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Navy PRT");
+				startActivity(Intent.createChooser(sharingIntent, "Share using"));
 
 				
 			}
@@ -103,103 +105,76 @@ public class AboutActivity extends Activity {
 		twitterBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				//System.out.println("CLICK CLICK");
-				//System.out.println(intentTwitter("@AndriOS_Apps"));
+			
+				String message = "@AndriOS_Apps";
+				Context context = AboutActivity.this;
+				/*	
+				try{
+				    Intent intent = new Intent(Intent.ACTION_SEND);
+				    intent.putExtra(Intent.EXTRA_TEXT, message);
+				    intent.setType("text/plain");
+				    final PackageManager pm = context.getPackageManager();
+				    final List activityList = pm.queryIntentActivities(intent, 0);
+				        int len =  activityList.size();
+				    for (int i = 0; i < len; i++) {
+				        final ResolveInfo app = (ResolveInfo) activityList.get(i);
+				        if ("com.twitter.android.PostActivity".equals(app.activityInfo.name)) {
+				            final ActivityInfo activity=app.activityInfo;
+				            final ComponentName name=new ComponentName(activity.applicationInfo.packageName, activity.name);
+				            intent=new Intent(Intent.ACTION_SEND);
+				            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+				            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				            intent.setComponent(name);
+				            intent.putExtra(Intent.EXTRA_TEXT, message);
+				            context.startActivity(intent);
+				            break;
+				        }
+				        //TODO Add search for other twitter clients here.
+				    }
+				}
+				catch(final ActivityNotFoundException e) {
+					Toast.makeText(AboutActivity.this, "We currently only support the official Twitter Client. Tweet us @AndriOS_Apps", Toast.LENGTH_SHORT).show();
+				}
 
-				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-				sharingIntent.setType("text/html");
-				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml("<p>Hello!.</p>"));
-				startActivity(Intent.createChooser(sharingIntent,"Share using"));
-
-
+*/
+				
+				Intent intent = findTwitterClient();
+				intent.putExtra(Intent.EXTRA_TEXT, message);
+				startActivity(Intent.createChooser(intent, null)); 
+	            //context.startActivity(intent);
 			}
 			
 		});
 		
 		
 	}
-    public boolean intentTwitter(String message){  
-        // Boolean to show if we succeeded or not  
-        // we assume we did until proven otherwise.  
-        boolean success=true;  
-         
-        Context context = getApplication();
-        Intent intent;
-        /*
-        try {
-       intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
-        intent.setType("text/plain");
-        final PackageManager pm = context.getPackageManager();
-        final List activityList = pm.queryIntentActivities(intent, 0);
-        int len = activityList.size();
-        for (int i = 0; i < len; i++) {
-        final ResolveInfo app = (ResolveInfo) activityList.get(i);
-        if ("com.twitter.android.PostActivity"
-        .equals(app.activityInfo.name)) {
-        final ActivityInfo activity = app.activityInfo;
-        final ComponentName name = new ComponentName(
-        activity.applicationInfo.packageName, activity.name);
-        intent = new Intent(Intent.ACTION_SEND);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-        | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-        intent.setComponent(name);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
-        context.startActivity(intent);
-        break;
+	
+	public Intent findTwitterClient() {
+        final String[] twitterApps = {
+                // package // name
+                "com.twitter.android", // official
+                "com.levelup.touiteur", // Plume 
+                "com.twidroid", // twidroyd
+                "com.handmark.tweetcaster", //
+                "com.thedeck.android"   };
+        Intent tweetIntent = new Intent();
+        tweetIntent.setType("text/plain");
+        final PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> list = packageManager.queryIntentActivities(
+                tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
+
+        for (int i = 0; i <twitterApps.length; i++) {
+            for (ResolveInfo resolveInfo : list) {
+                String p = resolveInfo.activityInfo.packageName;
+                if (p != null && p.startsWith(twitterApps[i])) {
+                    tweetIntent.setPackage(p);
+                    return tweetIntent;
+                }
+            }
         }
-        }
-        } catch (final ActivityNotFoundException e) {
-        	success = false;
-        Toast.makeText(this, "Damn! no suitable Twitter apps found.",
-        Toast.LENGTH_SHORT) .show();
-        }
-        */
-        if(true){
-        	 //Try twidroidpro first  
-            intent = new Intent("com.twidroidpro.SendTweet");  
-            intent.putExtra("com.twidroidpro.extra.MESSAGE", message);   
-            intent.setType("application/twitter");   
-              try{  
-               startActivityForResult(intent, 1);  
-              }  
-              catch(ActivityNotFoundException e){  
-               success=false;  
-              }  
-             
-            // Then twidroid if we failed  
-            if (!success){  
-             success=true;  
-             intent = new Intent("com.twidroid.SendTweet");  
-             intent.putExtra("com.twidroid.extra.MESSAGE", message);   
-             intent.setType("application/twitter");   
-               try{  
-                startActivityForResult(intent, 1);  
-               }  
-               catch(ActivityNotFoundException e){  
-                success=false;  
-               }  
-            }  
-        }
-       
-            
-            
-        //Then send general intent if we failed again  
-        if (!success){  
-         success=true;  
-          try {  
-           intent = new Intent(Intent.ACTION_SEND);   
-           intent.putExtra(Intent.EXTRA_TEXT, message);   
-           //intent.setType("application/twitter");   
-           startActivity(Intent.createChooser(intent, null));  
-          } catch (ActivityNotFoundException e) {  
-           success=false;  
-          }  
-        }  
-       // return indicating if we were successful in bringing up an intent  
-       // of some description  
-       return success;  
-       }  
+        return null;
+    }
+
+    
     
 }

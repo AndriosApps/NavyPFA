@@ -1,9 +1,5 @@
 package com.andrios.prt;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-
-
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;

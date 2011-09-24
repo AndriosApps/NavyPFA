@@ -266,8 +266,60 @@ public class ProfileActivity extends Activity {
 
 		
 		//Set Background for Birthday Calendar
-		int month = profile.getDate().get(Calendar.MONTH) +1;
-		
+		int month = profile.getDate().get(Calendar.MONTH);
+		 if(month == 0){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_0);
+         }else if(month == 1){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_1);
+         }else if(month == 2){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_2);
+         }else if(month == 3){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_3);
+         }else if(month == 4){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_4);
+         }else if(month == 5){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_5);
+         }else if(month == 6){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_6);
+         }else if(month == 7){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_7);
+         }else if(month == 8){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_8);
+         }else if(month == 9){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_9);
+         }else if(month == 10){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_10);
+         }else if(month == 111){
+         	birthdayLL.setBackgroundResource(R.drawable.cal_11);
+         }
+		 
+		//Set Background for Birthday Calendar
+			month = profile.getNextPFA().get(Calendar.MONTH);
+			 if(month == 0){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_0);
+	         }else if(month == 1){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_1);
+	         }else if(month == 2){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_2);
+	         }else if(month == 3){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_3);
+	         }else if(month == 4){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_4);
+	         }else if(month == 5){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_5);
+	         }else if(month == 6){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_6);
+	         }else if(month == 7){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_7);
+	         }else if(month == 8){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_8);
+	         }else if(month == 9){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_9);
+	         }else if(month == 10){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_10);
+	         }else if(month == 111){
+	         	nextPFALL.setBackgroundResource(R.drawable.cal_11);
+	         }
        
 		
 	}

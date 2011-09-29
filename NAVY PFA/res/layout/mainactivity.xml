@@ -1,35 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/linearLayout1" android:orientation="vertical" android:layout_height="fill_parent" android:layout_width="fill_parent" android:background="@drawable/background">
-        <LinearLayout android:id="@+id/linearLayout2" android:background="#000000" android:layout_width="fill_parent" android:layout_height="50dip" android:gravity="center|left">
-            <TextView android:text="Navy PFT" android:id="@+id/textView1" android:textSize="22dip" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-        </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1">
-            <LinearLayout android:id="@+id/linearLayout6" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical">
-                <Button android:layout_height="75dip" android:layout_width="75dip" android:text=" " android:background="@drawable/icon_profile" android:id="@+id/mainActivityProfileBTN"></Button>
-                <TextView android:text="Profile" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout7" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical">
-                <Button android:text="" android:background="@drawable/button_calculator" android:layout_width="75dip" android:layout_height="75dip" android:id="@+id/mainActivityCalculatorsBTN"></Button>
-                <TextView android:text="Calculators" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1">
-            <LinearLayout android:id="@+id/linearLayout8" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical">
-                <Button android:text=" " android:layout_width="75dip" android:layout_height="75dip" android:id="@+id/mainActivityLogBTN" android:background="@drawable/button_log"></Button>
-                <TextView android:text="Log" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout9" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical">
-                <Button android:text="" android:layout_width="75dip" android:layout_height="75dip" android:id="@+id/mainActivityInstructionsBTN" android:background="@drawable/button_instructions"></Button>
-                <TextView android:text="Instructions" android:id="@+id/textView5" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1">
-            <LinearLayout android:id="@+id/linearLayout10" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical">
-                <Button android:background="@drawable/andrios" android:layout_height="75dip" android:layout_width="75dip" android:text=" " android:id="@+id/mainActivityAboutBTN" android:gravity="center"></Button>
-                <TextView android:text="AndriOS" android:id="@+id/textView6" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout11" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:layout_height="fill_parent" android:orientation="vertical"></LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/linearLayout1" android:orientation="vertical"
+	android:layout_height="fill_parent" android:layout_width="fill_parent"
+	android:background="@drawable/background">
+	<LinearLayout android:id="@+id/linearLayout2"
+		android:background="#000000" android:layout_width="fill_parent"
+		android:layout_height="50dip" android:gravity="center|left">
+		<TextView android:text="Navy PFT" android:id="@+id/textView1"
+			android:textSize="22dip" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout3"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+		<LinearLayout android:id="@+id/linearLayout6"
+			android:layout_weight="1" android:gravity="center"
+			android:layout_width="75dip" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<Button android:layout_height="75dip" android:layout_width="75dip"
+				android:text=" " android:background="@drawable/icon_profile"
+				android:id="@+id/mainActivityProfileBTN"></Button>
+			<TextView android:text="Profile" android:id="@+id/textView2"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout7"
+			android:layout_weight="1" android:gravity="center"
+			android:layout_width="75dip" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<Button android:text="" android:background="@drawable/button_calculator"
+				android:layout_width="75dip" android:layout_height="75dip"
+				android:id="@+id/mainActivityCalculatorsBTN"></Button>
+			<TextView android:text="Calculators" android:id="@+id/textView3"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout4"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+		<LinearLayout android:id="@+id/linearLayout8"
+			android:layout_weight="1" android:gravity="center"
+			android:layout_width="75dip" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<Button android:text=" " android:layout_width="75dip"
+				android:layout_height="75dip" android:id="@+id/mainActivityLogBTN"
+				android:background="@drawable/button_log"></Button>
+			<TextView android:text="Log" android:id="@+id/textView4"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout9"
+			android:layout_weight="1" android:gravity="center"
+			android:layout_width="75dip" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<Button android:text="" android:layout_width="75dip"
+				android:layout_height="75dip" android:id="@+id/mainActivityInstructionsBTN"
+				android:background="@drawable/button_instructions"></Button>
+			<TextView android:text="Instructions" android:id="@+id/textView5"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout5"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+		<LinearLayout android:id="@+id/linearLayout10"
+			android:layout_weight="1" android:gravity="center"
+			android:layout_width="75dip" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<Button android:background="@drawable/andrios"
+				android:layout_height="75dip" android:layout_width="75dip"
+				android:text=" " android:id="@+id/mainActivityAboutBTN"
+				android:gravity="center"></Button>
+			<TextView android:text="AndriOS" android:id="@+id/textView6"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout11"
+			android:layout_weight="1" android:gravity="center"
+			android:layout_width="75dip" android:layout_height="fill_parent"
+			android:orientation="vertical"></LinearLayout>
+	</LinearLayout>
+</LinearLayout>
 
  

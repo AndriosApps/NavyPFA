@@ -73,8 +73,15 @@ public class BcaEntry extends LogEntry{
 	
 	@Override
 	public String getScoreString() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isHeightWeight()){
+			return "Height Weight\nin Standards";
+		}else if(isBodyFat()){
+			return "Bodyfat \nin Standards";
+		}else{
+			return "Failure";
+		}
+		
+		
 	}
 
 }

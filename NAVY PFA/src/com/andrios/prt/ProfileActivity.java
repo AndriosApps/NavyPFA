@@ -253,7 +253,8 @@ public class ProfileActivity extends Activity {
 		}
 		
 		nameLBL.setText(profile.getName());
-		date1LBL.setText(Integer.toString(profile.getDate().get(Calendar.DAY_OF_MONTH)));
+		String myName = Integer.toString(profile.getDate().get(Calendar.DAY_OF_MONTH));
+		date1LBL.setText(myName);
 		ageLBL.setText(Integer.toString(profile.getAge()));
 		nextPfaDateLBL.setText(Integer.toString(profile.getNextPFA().get(Calendar.DAY_OF_MONTH)));
 		birthdayYearLBL.setText(Integer.toString(profile.getDate().get(Calendar.YEAR)));

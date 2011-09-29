@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  
+  <item android:id="@+id/menuRunBTN"
+          android:title="Run" />
+  <item android:id="@+id/menuBikeBTN"
+          android:title="Bike" />
+  <item android:id="@+id/menuEllipticalBTN"
+          android:title="Elliptical" />
+</menu>

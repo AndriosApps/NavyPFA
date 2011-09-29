@@ -8,24 +8,20 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-
 import net.robotmedia.billing.BillingController;
 import net.robotmedia.billing.BillingRequest.ResponseCode;
 import net.robotmedia.billing.helper.AbstractBillingActivity;
 import net.robotmedia.billing.model.Transaction;
 import net.robotmedia.billing.model.Transaction.PurchaseState;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 public class MainActivity extends AbstractBillingActivity implements Serializable, Observer{
@@ -40,6 +36,11 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 	AndriosData mData;
 	Profile profile;
 	
+	/*
+	 * LifeCycle
+	 * 
+	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -56,40 +57,29 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
     	updateOwnedItems();
     	testProfile();
     }
-
-
-
-	private void testProfile() {
-		if(profile.getName().equals("Click to Set Name")){
-			createProfileDialog();
-		}
-		
-	}
 	
-	private void createProfileDialog(){
-		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		
-		alert.setTitle("Please create a profile");
-		alert.setMessage("Your profile will allow you to set defaults for the calculators and track upcoming PFAs");
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
-				Intent intent = new Intent(MainActivity.this.getBaseContext(), ProfileActivity.class);
-				intent.putExtra("profile", profile);
-				startActivityForResult(intent, PROFILEVIEW);
-				
-			}
-		});
-		alert.setNegativeButton("Cancel",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						dialog.cancel();
-					}
-				});
-		alert.show();
-	}
-
-
-
+    	if (requestCode == PROFILEVIEW) {
+    		if (resultCode == RESULT_OK) {
+    			profile = (Profile) intent.getSerializableExtra("profile");
+    			//setConnections();
+    		} else {
+    			if(profile.getName().equals("Click to Set Name")){
+    				Toast.makeText(this, "Profile Inclomplete", Toast.LENGTH_SHORT).show();
+    			}
+    			
+    		}
+    	}
+    }
+	
+	
+	
+	/*
+	 * Interface
+	 */
+	
 	private void setConnections() {
 		profileBTN = (Button) findViewById(R.id.mainActivityProfileBTN);
 		logBTN = (Button) findViewById(R.id.mainActivityLogBTN);
@@ -98,9 +88,7 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 		instructionBTN = (Button) findViewById(R.id.mainActivityInstructionsBTN);
 		
 	}
-
-
-
+	
 	private void setOnClickListeners() {
 		profileBTN.setOnClickListener(new OnClickListener(){
 
@@ -165,6 +153,121 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 		});
 		
 	}
+	
+	
+	
+	
+	/*
+	 * Model Access
+	 */
+
+
+	private void testProfile() {
+		if(profile.getName().equals("Click to Set Name")){
+			createProfileDialog();
+		}
+		
+	}
+	
+	public void update(Observable observable, Object data) {
+		System.out.println("PROFILE UPDATED");
+		
+	}
+	
+	private void readData() {
+		try {
+			FileInputStream fis = openFileInput("data");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			mData = (AndriosData) ois.readObject();
+			ois.close();
+			fis.close();
+			
+		} catch (Exception e) {
+			mData = new AndriosData();
+			
+			
+		}
+		
+		try {
+			FileInputStream fis = openFileInput("profile");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			profile = (Profile) ois.readObject();
+			profile.addObserver(MainActivity.this);
+			ois.close();
+			fis.close();
+			
+		} catch (Exception e) {
+			profile = new Profile();
+			
+		
+	}
+	}
+	
+	
+	
+	/*
+	 * Dialogs
+	 */
+	
+	private void createProfileDialog(){
+		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		
+		alert.setTitle("Please create a profile");
+		alert.setMessage("Your profile will allow you to set defaults for the calculators and track upcoming PFAs");
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				Intent intent = new Intent(MainActivity.this.getBaseContext(), ProfileActivity.class);
+				intent.putExtra("profile", profile);
+				startActivityForResult(intent, PROFILEVIEW);
+				
+			}
+		});
+		alert.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						dialog.cancel();
+					}
+				});
+		alert.show();
+	}
+
+	private void setAlertDialog() {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		LayoutInflater inflater = LayoutInflater.from(this);
+		final View layout = inflater.inflate(R.layout.alert_dialog_premium_features, null);
+		
+		builder.setView(layout)
+				.setTitle("Premium Features")
+				.setPositiveButton("Buy Now!", new DialogInterface.OnClickListener(){
+					
+					
+					public void onClick(DialogInterface dialog, int which) {	
+						requestPurchase("premium_features");
+					}
+				})
+				.setNegativeButton("No Thanks", new DialogInterface.OnClickListener(){
+
+					public void onClick(DialogInterface dialog, int which) {
+						
+						
+					}
+					
+				});
+		AlertDialog ad = builder.create();
+		ad.show();
+	}
+
+
+
+
+
+	/*
+	 * (non-Javadoc)
+	 * @see net.robotmedia.billing.BillingController.IConfiguration#getObfuscationSalt()
+	 */
 
 
 
@@ -233,82 +336,5 @@ public class MainActivity extends AbstractBillingActivity implements Serializabl
 
 		
 	}
-	private void setAlertDialog() {
-		
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		LayoutInflater inflater = LayoutInflater.from(this);
-		final View layout = inflater.inflate(R.layout.alert_dialog_premium_features, null);
-		
-		builder.setView(layout)
-				.setTitle("Premium Features")
-				.setPositiveButton("Buy Now!", new DialogInterface.OnClickListener(){
-					
-					
-					public void onClick(DialogInterface dialog, int which) {	
-						requestPurchase("premium_features");
-					}
-				})
-				.setNegativeButton("No Thanks", new DialogInterface.OnClickListener(){
 
-					public void onClick(DialogInterface dialog, int which) {
-						
-						
-					}
-					
-				});
-		AlertDialog ad = builder.create();
-		ad.show();
-	}
-	
-	private void readData() {
-		try {
-			FileInputStream fis = openFileInput("data");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-
-			mData = (AndriosData) ois.readObject();
-			ois.close();
-			fis.close();
-			
-		} catch (Exception e) {
-			mData = new AndriosData();
-			
-			
-		}
-		
-		try {
-			FileInputStream fis = openFileInput("profile");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-
-			profile = (Profile) ois.readObject();
-			profile.addObserver(MainActivity.this);
-			ois.close();
-			fis.close();
-			
-		} catch (Exception e) {
-			profile = new Profile();
-			
-		
-	}
-	}
-
-
-
-	public void update(Observable observable, Object data) {
-		System.out.println("PROFILE UPDATED");
-		
-	}
-	
-	@Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		
-    	if (requestCode == PROFILEVIEW) {
-    		if (resultCode == RESULT_OK) {
-    			profile = (Profile) intent.getSerializableExtra("profile");
-    			//setConnections();
-    		} else {
-    			
-    			Toast.makeText(this, "Add  Canceled", Toast.LENGTH_SHORT).show();
-    		}
-    	}
-    }
 }

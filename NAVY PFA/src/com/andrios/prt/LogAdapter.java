@@ -49,6 +49,8 @@ public class LogAdapter extends ArrayAdapter<LogEntry>{
                     TextView dateLBL = (TextView) v.findViewById(R.id.journal_entry_list_item_dateLBL);
                     TextView yearLBL = (TextView) v.findViewById(R.id.journal_entry_list_item_yearLBL);
                     ImageView importantIMG = (ImageView) v.findViewById(R.id.journal_entry_list_item_importantIMG);
+                    TextView scoreTXT = (TextView) v.findViewById(R.id.journal_entry_list_item_scoreLBL);
+                    
                     
                     if (titleTXT != null) {
                           titleTXT.setText(b.getName());                            
@@ -95,6 +97,16 @@ public class LogAdapter extends ArrayAdapter<LogEntry>{
                     }else{
                     	importantIMG.setImageResource(R.drawable.nothing);
                     }
+                    
+                    
+                    try{
+                    	
+                    	scoreTXT.setText(b.getScoreString());
+                    }catch(Exception e){
+                    		e.printStackTrace();
+                    }
+                    	 
+                    
                     
             }
             return v;

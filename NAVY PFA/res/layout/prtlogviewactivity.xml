@@ -4,7 +4,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent" 
   android:orientation="vertical" android:background="@drawable/background">
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="50dip" android:background="#0099cc" android:gravity="center" android:layout_width="fill_parent">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="50dip" android:background="#000000" android:gravity="center" android:layout_width="fill_parent">
         <TextView android:textSize="22dip" android:layout_height="wrap_content" android:id="@+id/journalEntryViewActivityDateLBL" android:text="10 SEP 2011" android:layout_weight="0" android:textColor="#ffffff" android:layout_width="wrap_content"></TextView>
         <LinearLayout android:id="@+id/linearLayout3" android:layout_height="fill_parent" android:layout_weight="1" android:layout_width="wrap_content"></LinearLayout>
         <Button android:id="@+id/journalEntryViewActivitySaveBTN" android:text="" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="wrap_content" android:background="@drawable/button_save"></Button>
@@ -23,7 +23,8 @@
                     <LinearLayout android:layout_weight="1" android:layout_width="fill_parent" android:gravity="center|left" android:id="@+id/linearLayout22" android:layout_height="wrap_content">
                         <CheckBox android:text="Official" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewActivityImportantCheckBox"></CheckBox>
                     </LinearLayout>
-                    <LinearLayout android:layout_weight="1" android:layout_width="fill_parent" android:gravity="center|left" android:id="@+id/linearLayout23" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_weight="1" android:layout_width="fill_parent" android:id="@+id/linearLayout23" android:layout_height="wrap_content" android:gravity="center">
+                        <TextView android:text=">5000ft" android:textColor="#00aa00" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_width="wrap_content" android:id="@+id/journalEntryViewActivityAltitudeLBL"></TextView>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -71,7 +72,7 @@
                 </LinearLayout>
                 <LinearLayout android:layout_weight="1" android:layout_width="fill_parent" android:id="@+id/linearLayout16" android:layout_height="wrap_content">
                     <LinearLayout android:layout_weight="1" android:layout_width="75dip" android:gravity="center" android:id="@+id/linearLayout17" android:layout_height="fill_parent">
-                        <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="1.5 Mile Run"></TextView>
+                        <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="1.5 Mile Run" android:id="@+id/prtLogViewActivityCardioLBL"></TextView>
                     </LinearLayout>
                     <LinearLayout android:layout_weight="1" android:layout_width="75dip" android:gravity="center" android:id="@+id/linearLayout18" android:layout_height="fill_parent">
                         <TextView android:id="@+id/logViewActivityRunLBL" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="11:21"></TextView>

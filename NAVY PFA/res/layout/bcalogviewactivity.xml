@@ -4,7 +4,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent" 
   android:orientation="vertical" android:background="@drawable/background">
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="50dip" android:background="#0099cc" android:gravity="center" android:layout_width="fill_parent">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="50dip" android:background="#000000" android:gravity="center" android:layout_width="fill_parent">
         <TextView android:textSize="22dip" android:layout_height="wrap_content" android:text="10 SEP 2011" android:layout_weight="0" android:textColor="#ffffff" android:layout_width="wrap_content" android:id="@+id/bcaLogViewActivityDateLBL"></TextView>
         <LinearLayout android:id="@+id/linearLayout3" android:layout_height="fill_parent" android:layout_weight="1" android:layout_width="wrap_content"></LinearLayout>
         <Button android:text="" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="wrap_content" android:background="@drawable/button_save" android:id="@+id/bcaLogViewActivitySaveBTN"></Button>

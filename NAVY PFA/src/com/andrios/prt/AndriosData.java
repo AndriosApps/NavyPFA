@@ -66,6 +66,20 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] runMale60 = {1132, 1034, 833, 724, 681};
 	int[] runMale65 = {1252, 1194, 1050, 979, 885};
 	
+	// 5000+ feet altitude
+	
+	int[] altRunMale17 = {820, 720, 640, 590, 500};
+	int[] altRunMale20 = {885, 785, 685, 615, 515};
+	int[] altRunMale25 = {918, 843, 710, 640, 543};
+	int[] altRunMale30 = {950, 900, 735, 665, 570};
+	int[] altRunMale35 = {983, 925, 753, 673, 575};
+	int[] altRunMale40 = {1015, 950, 770, 680, 580};
+	int[] altRunMale45 = {1055, 975, 795, 698, 583};
+	int[] altRunMale50 = {1095, 1000, 820, 705, 625};
+	int[] altRunMale55 = {1132, 1073, 871, 754, 706};
+	int[] altRunMale60 = {1245, 1137, 916, 796, 749};
+	int[] altRunMale65 = {1359, 1202, 961, 839, 771};
+	
 	//Female
 	int[] weightFemale = {102, 106, 110, 114, 118, 123, 127, 131, 136, 141, 145,
 			149, 152, 156, 160, 163, 167, 170, 174, 177, 181, 185, 189, 194, 200,
@@ -96,8 +110,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] situpFemale60 = {20, 26, 56, 70, 75};
 	int[] situpFemale65 = {10, 20, 44, 60, 65};
 	
-	// 1  2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18   19    20   21
-	//60 120 180 240 300 360 420 480 540 600 660 720 780 840 900 960 1020 1080 1140 1200 1260
+	
 	int[] runFemale17 = {900, 810, 750, 690, 569};
 	int[] runFemale20 = {930, 855, 795, 690, 587};
 	int[] runFemale25 = {968, 893, 803, 705, 617};
@@ -110,6 +123,20 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] runFemale60 = {1183, 1131, 985, 908, 814};
 	int[] runFemale65 = {1252, 1194, 1050, 979, 885};
 	
+	// 5000+ feet altitude
+	// 1  2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18   19    20   21
+	//60 120 180 240 300 360 420 480 540 600 660 720 780 840 900 960 1020 1080 1140 1200 1260
+	int[] altRunFemale17 = {980, 885, 820, 750, 620};
+	int[] altRunFemale20 = {1015, 930, 865, 750, 640};
+	int[] altRunFemale25 = {1055, 973, 875, 768, 673};
+	int[] altRunFemale30 = {1095, 1015, 885, 785, 705};
+	int[] altRunFemale35 = {1088, 1040, 900, 793, 710};
+	int[] altRunFemale40 = {1130, 1065, 915, 800, 715};
+	int[] altRunFemale45 = {1138, 1080, 923, 818, 718};
+	int[] altRunFemale50 = {1145, 1095, 930, 835, 720};
+	int[] altRunFemale55 = {1225, 1175, 1012, 921, 817};
+	int[] altRunFemale60 = {1301, 1244, 1084, 999, 895};
+	int[] altRunFemale65 = {1377, 1313, 1155, 1077, 954};
 	
 	public AndriosData(){
 		isMale = true;

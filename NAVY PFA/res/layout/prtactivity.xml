@@ -36,7 +36,7 @@
     </LinearLayout>
   
     <LinearLayout android:id="@+id/linearLayout10" android:layout_width="fill_parent" android:layout_height="15dip" android:layout_weight="1" android:gravity="center|bottom">
-        <TextView android:id="@+id/TextView02" android:layout_height="wrap_content" android:textSize="18dip" android:layout_width="fill_parent" android:text="My Performance" android:gravity="center"></TextView>
+        <TextView android:id="@+id/TextView02" android:layout_height="wrap_content" android:textSize="18dip" android:text="My Performance" android:gravity="center" android:layout_width="wrap_content"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout3" android:orientation="vertical" android:gravity="center" android:layout_height="150dip" android:layout_weight="1">
         <LinearLayout android:id="@+id/linearLayout5" android:orientation="vertical" android:gravity="center" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1">
@@ -80,7 +80,7 @@
             <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout7">
                 <LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout16" android:layout_weight="1" android:layout_width="1px" android:gravity="right">
                 </LinearLayout>
-                <TextView android:layout_height="wrap_content" android:text="Run Time" android:id="@+id/TextView01" android:layout_weight="1" android:layout_width="1px" android:gravity="center"></TextView>
+                <TextView android:layout_height="wrap_content" android:text="Run Time" android:layout_weight="1" android:layout_width="1px" android:gravity="center" android:id="@+id/prtActivityCardioLBL"></TextView>
                 <TextView android:layout_height="wrap_content" android:text="00:00" android:layout_weight="1" android:layout_width="1px" android:id="@+id/calculatorRunLBL"></TextView>
             </LinearLayout>
             <LinearLayout android:id="@+id/linearLayout17" android:layout_width="fill_parent" android:gravity="center" android:layout_height="wrap_content">
@@ -100,13 +100,17 @@
 <!--  Start Chris' change for Bike, Elliptical and Run seg Controller  -->
     
 <!--  End Chris' change for Bike, Elliptical and Run seg Controller  -->
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:id="@+id/LinearLayout03" android:layout_height="15dip" android:layout_weight="1"></LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/LinearLayout03" android:layout_height="15dip" android:layout_weight="1" android:gravity="center|right">
+        <LinearLayout android:id="@+id/linearLayout24" android:layout_height="fill_parent" android:orientation="vertical" android:layout_weight="1" android:layout_width="75dip">
+        </LinearLayout>
+        <CheckBox android:layout_height="wrap_content" android:text="&gt;5000ft" android:id="@+id/prtActivityAltitudeCheckBox" android:layout_weight="1" android:layout_width="75dip"></CheckBox>
+    </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_weight="0" android:gravity="center" android:layout_height="50dip">
         <RadioGroup android:layout_width="150dip" android:layout_weight="1" android:id="@+id/radioGroup1" android:orientation="horizontal" android:gravity="center" android:layout_height="fill_parent">
             <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:text="Male" android:checked="true" android:layout_height="fill_parent" android:id="@+id/prtActivityrMaleRDO"></com.andrios.prt.SegmentedControlButton>
             <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:text="Female" android:layout_height="fill_parent" android:id="@+id/prtActivityrFemaleRDO"></com.andrios.prt.SegmentedControlButton>
         </RadioGroup>
-        <Spinner android:layout_width="150dip" android:layout_weight="1" android:id="@+id/prtActivityAgeSpinner" android:layout_height="fill_parent"></Spinner>
+        <Spinner android:layout_width="150dip" android:layout_weight="1" android:layout_height="fill_parent" android:id="@+id/prtActivityAgeSpinner"></Spinner>
     </LinearLayout>
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="50dip" android:layout_weight="0" android:id="@+id/prtActivityBottomBar">
         <Button 

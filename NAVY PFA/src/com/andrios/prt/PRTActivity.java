@@ -11,11 +11,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -33,7 +37,7 @@ public class PRTActivity extends Activity implements Observer {
 	Spinner ageSpinner;
 	SeekBar pushupSeekBar, situpSeekBar, runSeekBar;
 	TextView pushupLBL, situpLBL, minutesLBL, runLBL, scoreLBL;
-	TextView pushupScoreLBL, runScoreLBL, situpScoreLBL;
+	TextView pushupScoreLBL, runScoreLBL, situpScoreLBL, cardioLBL;
 	Button minuteUpBTN, minuteDownBTN, secondUpBTN, secondDownBTN;
 	Button pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
 	Button logBTN;
@@ -44,10 +48,12 @@ public class PRTActivity extends Activity implements Observer {
 
 	private String array_spinner[];
 	boolean pushupchanged = false, situpchanged = false, runchanged = false;
-	boolean isPremium = false, isLog = false;
+	boolean isPremium = false, isLog = false, alternate = false;
 	RelativeLayout bottomBar;
 	int age = 18, pushups = 0, situps = 0, runtime = 0, minutes, seconds;
 	boolean male;
+	CheckBox altitudeCheckBox;
+	String cardio = "Run";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,13 @@ public class PRTActivity extends Activity implements Observer {
         
         setTracker();
     }
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.prtmenu, menu);
+	    return true;
+	}
 
 
 
@@ -147,9 +160,11 @@ public class PRTActivity extends Activity implements Observer {
 				R.layout.my_spinner_item, array_spinner);
 		ageSpinner.setAdapter(adapter);
 		
+		altitudeCheckBox = (CheckBox) findViewById(R.id.prtActivityAltitudeCheckBox);
 		
 		logBTN = (Button) findViewById(R.id.prtActivityLogBTN);
-
+		cardioLBL = (TextView) findViewById(R.id.prtActivityCardioLBL);
+		
 		maleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrMaleRDO);
 		femaleRDO  = (SegmentedControlButton) findViewById(R.id.prtActivityrFemaleRDO); 
 
@@ -211,6 +226,17 @@ public class PRTActivity extends Activity implements Observer {
 	}
 	
 	private void setOnClickListeners() {
+		
+		altitudeCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				calculateScore();
+				
+			}
+			
+		});
+		
 		ageSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
 
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
@@ -435,6 +461,13 @@ public class PRTActivity extends Activity implements Observer {
 							scoreLBL.getText().toString()
 					);
 					p.setAge(age);
+					p.alternateCardio = cardio;
+					if(altitudeCheckBox.isChecked()){
+						p.setAltitude(true);
+					}else{
+						p.setAltitude(false);
+					}
+					
 					Intent intent = new Intent();
 					
 					
@@ -478,54 +511,108 @@ public class PRTActivity extends Activity implements Observer {
 	
 	private void calculateScore(){
 		if(maleRDO.isChecked()){
-			if(age < 20){
-				calculateMale(mData.pushupMale17, mData.situpMale17, mData.runMale17);
-			}else if(age < 25){
-				calculateMale(mData.pushupMale20, mData.situpMale20, mData.runMale20);
-			}else if(age < 30){
-				calculateMale(mData.pushupMale25, mData.situpMale25, mData.runMale25);
-			}else if(age < 35){
-				calculateMale(mData.pushupMale30, mData.situpMale30, mData.runMale30);
-			}else if(age < 40){
-				calculateMale(mData.pushupMale35, mData.situpMale35, mData.runMale35);
-			}else if(age < 45){
-				calculateMale(mData.pushupMale40, mData.situpMale40, mData.runMale40);
-			}else if(age < 50){
-				calculateMale(mData.pushupMale45, mData.situpMale45, mData.runMale45);
-			}else if(age < 55){
-				calculateMale(mData.pushupMale50, mData.situpMale50, mData.runMale50);
-			}else if(age < 60){
-				calculateMale(mData.pushupMale55, mData.situpMale55, mData.runMale55);
-			}else if(age < 65){
-				calculateMale(mData.pushupMale60, mData.situpMale60, mData.runMale60);
+			if(altitudeCheckBox.isChecked()){
+				if(age < 20){
+					calculateMale(mData.pushupMale17, mData.situpMale17, mData.altRunMale17);
+				}else if(age < 25){
+					calculateMale(mData.pushupMale20, mData.situpMale20, mData.altRunMale20);
+				}else if(age < 30){
+					calculateMale(mData.pushupMale25, mData.situpMale25, mData.altRunMale25);
+				}else if(age < 35){
+					calculateMale(mData.pushupMale30, mData.situpMale30, mData.altRunMale30);
+				}else if(age < 40){
+					calculateMale(mData.pushupMale35, mData.situpMale35, mData.altRunMale35);
+				}else if(age < 45){
+					calculateMale(mData.pushupMale40, mData.situpMale40, mData.altRunMale40);
+				}else if(age < 50){
+					calculateMale(mData.pushupMale45, mData.situpMale45, mData.altRunMale45);
+				}else if(age < 55){
+					calculateMale(mData.pushupMale50, mData.situpMale50, mData.altRunMale50);
+				}else if(age < 60){
+					calculateMale(mData.pushupMale55, mData.situpMale55, mData.altRunMale55);
+				}else if(age < 65){
+					calculateMale(mData.pushupMale60, mData.situpMale60, mData.altRunMale60);
+				}else{
+					calculateMale(mData.pushupMale65, mData.situpMale65, mData.altRunMale65);
+				}
 			}else{
-				calculateMale(mData.pushupMale65, mData.situpMale65, mData.runMale65);
+				if(age < 20){
+					calculateMale(mData.pushupMale17, mData.situpMale17, mData.runMale17);
+				}else if(age < 25){
+					calculateMale(mData.pushupMale20, mData.situpMale20, mData.runMale20);
+				}else if(age < 30){
+					calculateMale(mData.pushupMale25, mData.situpMale25, mData.runMale25);
+				}else if(age < 35){
+					calculateMale(mData.pushupMale30, mData.situpMale30, mData.runMale30);
+				}else if(age < 40){
+					calculateMale(mData.pushupMale35, mData.situpMale35, mData.runMale35);
+				}else if(age < 45){
+					calculateMale(mData.pushupMale40, mData.situpMale40, mData.runMale40);
+				}else if(age < 50){
+					calculateMale(mData.pushupMale45, mData.situpMale45, mData.runMale45);
+				}else if(age < 55){
+					calculateMale(mData.pushupMale50, mData.situpMale50, mData.runMale50);
+				}else if(age < 60){
+					calculateMale(mData.pushupMale55, mData.situpMale55, mData.runMale55);
+				}else if(age < 65){
+					calculateMale(mData.pushupMale60, mData.situpMale60, mData.runMale60);
+				}else{
+					calculateMale(mData.pushupMale65, mData.situpMale65, mData.runMale65);
+				}
 			}
 			
+			
 		}else{
-			if(age < 20){
-				calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.runFemale17);
-			}else if(age < 25){
-				calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.runFemale20);
-			}else if(age < 30){
-				calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.runFemale25);
-			}else if(age < 35){
-				calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.runFemale30);
-			}else if(age < 40){
-				calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.runFemale35);
-			}else if(age < 45){
-				calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.runFemale40);
-			}else if(age < 50){
-				calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.runFemale45);
-			}else if(age < 55){
-				calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.runFemale50);
-			}else if(age < 60){
-				calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.runFemale55);
-			}else if(age < 65){
-				calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.runFemale60);
+			if(altitudeCheckBox.isChecked()){
+				if(age < 20){
+					calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altRunFemale17);
+				}else if(age < 25){
+					calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altRunFemale20);
+				}else if(age < 30){
+					calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altRunFemale25);
+				}else if(age < 35){
+					calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altRunFemale30);
+				}else if(age < 40){
+					calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altRunFemale35);
+				}else if(age < 45){
+					calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altRunFemale40);
+				}else if(age < 50){
+					calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altRunFemale45);
+				}else if(age < 55){
+					calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altRunFemale50);
+				}else if(age < 60){
+					calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altRunFemale55);
+				}else if(age < 65){
+					calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altRunFemale60);
+				}else{
+					calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altRunFemale65);
+				}
 			}else{
-				calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.runFemale65);
+				if(age < 20){
+					calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.runFemale17);
+				}else if(age < 25){
+					calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.runFemale20);
+				}else if(age < 30){
+					calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.runFemale25);
+				}else if(age < 35){
+					calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.runFemale30);
+				}else if(age < 40){
+					calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.runFemale35);
+				}else if(age < 45){
+					calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.runFemale40);
+				}else if(age < 50){
+					calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.runFemale45);
+				}else if(age < 55){
+					calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.runFemale50);
+				}else if(age < 60){
+					calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.runFemale55);
+				}else if(age < 65){
+					calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.runFemale60);
+				}else{
+					calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.runFemale65);
+				}
 			}
+			
 		}
 		
 		
@@ -773,6 +860,33 @@ public class PRTActivity extends Activity implements Observer {
 		maleRDO.setChecked(mData.getGender());
 		
 		
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.menuRunBTN:
+	    	cardioLBL.setText("Run Time");
+	    	alternate = false;
+	    	cardio = "1.5 Mile Run";	    	
+	        return true;
+	        
+	    case R.id.menuBikeBTN:
+	    	cardioLBL.setText("Bike Time");
+	    	alternate = true;
+	    	cardio = "Bike";
+        return true;
+        
+	    case R.id.menuEllipticalBTN:
+	    	cardioLBL.setText("Elliptical Time");
+	    	alternate = true;
+	    	cardio = "Elliptical";
+	        return true;
+	        
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
 	}
 
 }

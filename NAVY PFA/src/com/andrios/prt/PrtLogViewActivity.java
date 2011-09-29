@@ -14,8 +14,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -23,8 +21,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 public class PrtLogViewActivity extends Activity {
 	
@@ -37,7 +33,7 @@ public class PrtLogViewActivity extends Activity {
 	int index, mMonth, mDay, mYear;
 	PrtEntry entry;
 	TextView dateLBL;
-	TextView pushupsLBL, situpsLBL, runLBL;
+	TextView pushupsLBL, situpsLBL, runLBL, cardioLBL, altitudeLBL;
 	TextView pushupScoreLBL, situpScoreLBL, runScoreLBL, totalScoreLBL;
 	Profile profile;
 	
@@ -48,7 +44,7 @@ public class PrtLogViewActivity extends Activity {
 	CheckBox officialCheckBox;
 	boolean changes;
 
-	private String array_spinner[];
+
 	
     /** Called when the activity is first created. */
     @Override
@@ -86,6 +82,10 @@ public class PrtLogViewActivity extends Activity {
 	}
 	
 	private void setConnections() {
+		altitudeLBL = (TextView) findViewById(R.id.journalEntryViewActivityAltitudeLBL);
+		if(!entry.isAltitude()){
+			altitudeLBL.setVisibility(View.GONE);
+		}
 		pushupsLBL = (TextView)findViewById(R.id.logViewActivityPushupsLBL);
 		pushupsLBL.setText(entry.getPushups());
 		situpsLBL = (TextView)findViewById(R.id.logViewActivitySitupsLBL);
@@ -127,7 +127,17 @@ public class PrtLogViewActivity extends Activity {
 		
 		officialCheckBox = (CheckBox) findViewById(R.id.journalEntryViewActivityImportantCheckBox);
 		officialCheckBox.setChecked(entry.isOfficial());
+		
+		cardioLBL = (TextView) findViewById(R.id.prtLogViewActivityCardioLBL);
+		try{
+			cardioLBL.setText(entry.alternateCardio);
+		}catch(Exception e){
+			cardioLBL.setText("1.5 Mile Run");
+		}
+		
+		
 		setOnClickListeners();
+		
 		
 	}
 	

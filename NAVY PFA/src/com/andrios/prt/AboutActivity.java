@@ -2,6 +2,8 @@ package com.andrios.prt;
 
 import java.util.List;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -22,6 +24,7 @@ public class AboutActivity extends Activity {
 	
 	
 	Button facebookBTN, twitterBTN, emailBTN, marketBTN;
+	GoogleAnalyticsTracker tracker;
 	
 	
     /** Called when the activity is first created. */
@@ -33,8 +36,23 @@ public class AboutActivity extends Activity {
         
         setConnections();
         setOnClickListeners();
-    
+        setTracker();
     }
+    
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
+	}
+	
+	public void onResume(){
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+	
+	public void onPause(){
+		super.onPause();
+		tracker.dispatch();
+	}
 
 
 	private void setConnections() {
@@ -50,6 +68,13 @@ public class AboutActivity extends Activity {
 		emailBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				
+				tracker.trackEvent(
+			            "Clicks",  // Category
+			            "Link",  // Action
+			            "Email", // Label
+			            0);       // Value
+				
 			    final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 			     
 			    emailIntent .setType("plain/text");
@@ -69,6 +94,12 @@ public class AboutActivity extends Activity {
 		marketBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				
+				tracker.trackEvent(
+			            "Clicks",  // Category
+			            "Link",  // Action
+			            "Market", // Label
+			            0);       // Value
 				Intent intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse("market://search?q=pub:AndriOS"));
 				startActivity(intent);
@@ -91,6 +122,11 @@ public class AboutActivity extends Activity {
 				intent.putExtra("extra_user_id", "224807700868604");
 				startActivity(intent);
 */
+				tracker.trackEvent(
+			            "Clicks",  // Category
+			            "Link",  // Action
+			            "Facebook", // Label
+			            0);       // Value
 				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
 				sharingIntent.setType("text/plain");
 				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "AndriOS Apps");
@@ -105,7 +141,11 @@ public class AboutActivity extends Activity {
 		twitterBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-			
+				tracker.trackEvent(
+			            "Clicks",  // Category
+			            "Link",  // Action
+			            "Twitter", // Label
+			            0);       // Value
 				String message = "@AndriOS_Apps";
 				Context context = AboutActivity.this;
 				/*	

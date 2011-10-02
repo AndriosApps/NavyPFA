@@ -150,15 +150,12 @@ public class InstructionsActivity extends Activity {
 	
 	private void setTracker() {
 		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-2", this);
+		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
 	}
-
 	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("Instructions");
+		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){

@@ -590,16 +590,12 @@ public class BCAActivity extends Activity implements Observer{
 
 		private void setTracker() {
 			tracker = GoogleAnalyticsTracker.getInstance();
-
-		    // Start the tracker in manual dispatch mode...
-		    tracker.start("UA-23366060-2", this);
-		    
-			
+			tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
 		}
 		
 		public void onResume(){
 			super.onResume();
-			tracker.trackPageView("BCA");
+			tracker.trackPageView("/" + this.getLocalClassName());
 		}
 		
 		public void onPause(){

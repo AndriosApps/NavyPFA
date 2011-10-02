@@ -117,14 +117,7 @@ public class PRTActivity extends Activity implements Observer {
 
 
 
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-2", this);
-	    
-		
-	}
 
 
 
@@ -818,9 +811,15 @@ public class PRTActivity extends Activity implements Observer {
 		
 		return changed;
 	}
+	
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
+	}
+	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("PRT");
+		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){

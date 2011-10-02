@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -34,6 +36,7 @@ public class LogActivity extends Activity {
 	LogAdapter logAdapter;
 	Button newBTN;
 	AndriosData mData;
+	GoogleAnalyticsTracker tracker;
 	
     /** Called when the activity is first created. */
     @Override
@@ -46,7 +49,23 @@ public class LogActivity extends Activity {
         readData();
         setConnections();
         setOnClickListeners();
+        setTracker();
     }
+    
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
+	}
+	
+	public void onResume(){
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+	
+	public void onPause(){
+		super.onPause();
+		tracker.dispatch();
+	}
     
     
 

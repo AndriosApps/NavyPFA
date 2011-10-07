@@ -15,16 +15,16 @@
             <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/textView1" android:text="Components" android:gravity="center" android:textSize="16dip"></TextView>
             <LinearLayout android:layout_width="fill_parent" android:background="#ffffff" android:id="@+id/linearLayout18" android:layout_height="2dip"></LinearLayout>
             <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center|left" android:layout_weight="1" android:id="@+id/linearLayout30">
-                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/pullupScoreLBL" android:text="Pushups" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="15dip"></TextView>
-                <TextView android:text="" android:id="@+id/prtActivityPushupScoreLBL" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="50dip" android:gravity="left"></TextView>
+                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/pullupScoreLBL" android:text="Pushups" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="10dip"></TextView>
+                <TextView android:text="" android:id="@+id/prtActivityPushupScoreLBL" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="77dip" android:gravity="center"></TextView>
             </LinearLayout>
             <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center|left" android:layout_weight="1" android:id="@+id/linearLayout31">
-                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView4" android:text="Crunches" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="15dip"></TextView>
-                <TextView android:text="" android:id="@+id/prtActivitySitupScoreActivity" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="50dip" android:gravity="left"></TextView>
+                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView4" android:text="Crunches" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="10dip"></TextView>
+                <TextView android:text="" android:id="@+id/prtActivitySitupScoreActivity" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="77dip" android:gravity="center"></TextView>
             </LinearLayout>
             <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center|left" android:layout_weight="1" android:id="@+id/linearLayout32">
-                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView5" android:text="Run" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="15dip"></TextView>
-                <TextView android:text="" android:id="@+id/prtActivityRunScoreActivity" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="50dip" android:gravity="left"></TextView>
+                <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView5" android:text="Run" android:gravity="center|left" android:layout_weight="1" android:paddingLeft="10dip"></TextView>
+                <TextView android:text="" android:id="@+id/prtActivityRunScoreActivity" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="77dip" android:gravity="center"></TextView>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout9" android:layout_height="fill_parent" android:layout_width="25dip"></LinearLayout>

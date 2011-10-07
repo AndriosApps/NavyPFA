@@ -16,11 +16,36 @@ import android.widget.TextView;
 
 public class InstructionsActivity extends Activity {
 
-	TextView opnavLBL, navadmin203_11LBL, navadmin1LBL, navadmin2LBL, navadmin3LBL;
+	
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	Button rateBTN;
+	
+	LinearLayout OPNAVINST_6110j;
+	LinearLayout NAVADMIN_203_11;
+	LinearLayout NAVADMIN_118_11;
+	LinearLayout NAVADMIN_338_10;
+	LinearLayout NAVADMIN_256_10;
+	LinearLayout NAVADMIN_193_10;
+	LinearLayout NAVADMIN_131_10;
+	LinearLayout NAVADMIN_247_09;
+	LinearLayout NAVADMIN_073_09;
+	LinearLayout NAVADMIN_007_09;
+	LinearLayout NAVADMIN_312_08;
+	LinearLayout NAVADMIN_277_08;
+	LinearLayout NAVADMIN_256_08;
+	LinearLayout NAVADMIN_191_08;
+	LinearLayout NAVADMIN_011_07;
+	LinearLayout NAVADMIN_293_06;
+	LinearLayout NAVADMIN_072_06;
+	LinearLayout NAVADMIN_041_06;
+	
+	
+	
+	
+	
+	
 	boolean isPremium;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,12 +69,26 @@ public class InstructionsActivity extends Activity {
 
 	private void setConnections() {
 		rateBTN = (Button) findViewById(R.id.instructionActivityRateBTN);
-		opnavLBL = (TextView) findViewById(R.id.instructionActivityOPNAVLBL);
+		OPNAVINST_6110j = (LinearLayout) findViewById(R.id.OPNAVINST_6110j);
 
-		navadmin203_11LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN20311LBL);
-		navadmin1LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN1LBL);
-		navadmin2LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN2LBL);
-		navadmin3LBL = (TextView) findViewById(R.id.instructionActivityNAVADMIN3LBL);
+		NAVADMIN_203_11 = (LinearLayout) findViewById(R.id.NAVADMIN_203_11);
+		NAVADMIN_118_11 = (LinearLayout) findViewById(R.id.NAVADMIN_118_11);
+		NAVADMIN_338_10 = (LinearLayout) findViewById(R.id.NAVADMIN_338_10);
+		NAVADMIN_256_10 = (LinearLayout) findViewById(R.id.NAVADMIN_256_10);
+		NAVADMIN_193_10 = (LinearLayout) findViewById(R.id.NAVADMIN_193_10);
+		NAVADMIN_131_10 = (LinearLayout) findViewById(R.id.NAVADMIN_131_10);
+		NAVADMIN_247_09 = (LinearLayout) findViewById(R.id.NAVADMIN_247_09);
+		NAVADMIN_073_09 = (LinearLayout) findViewById(R.id.NAVADMIN_073_09);
+		NAVADMIN_007_09 = (LinearLayout) findViewById(R.id.NAVADMIN_007_09);
+		NAVADMIN_312_08 = (LinearLayout) findViewById(R.id.NAVADMIN_312_08);
+		NAVADMIN_277_08 = (LinearLayout) findViewById(R.id.NAVADMIN_277_08);
+		NAVADMIN_256_08 = (LinearLayout) findViewById(R.id.NAVADMIN_256_08);
+		NAVADMIN_191_08 = (LinearLayout) findViewById(R.id.NAVADMIN_191_08);
+		NAVADMIN_011_07 = (LinearLayout) findViewById(R.id.NAVADMIN_011_07);
+		NAVADMIN_293_06 = (LinearLayout) findViewById(R.id.NAVADMIN_293_06);
+		NAVADMIN_072_06 = (LinearLayout) findViewById(R.id.NAVADMIN_072_06);
+		NAVADMIN_041_06 = (LinearLayout) findViewById(R.id.NAVADMIN_041_06);
+		
 		
 		if(!isPremium){
 			adView = (AdView)this.findViewById(R.id.instructionsAdView);
@@ -77,7 +116,8 @@ public class InstructionsActivity extends Activity {
 			
 		});
 		
-		navadmin203_11LBL.setOnClickListener(new OnClickListener(){
+		
+		NAVADMIN_203_11.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
 				 tracker.trackEvent(
@@ -89,9 +129,220 @@ public class InstructionsActivity extends Activity {
 				startActivity(browserIntent);
 			}
 			
-		});
+		}); 
+		NAVADMIN_118_11.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2011/NAV11118.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_338_10.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10338.txt"));
+				startActivity(browserIntent);
+			}
+			
+		}); 
+		NAVADMIN_256_10.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10256.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_193_10.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10193.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_131_10.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10131.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_247_09.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2009/NAV09247.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_073_09.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2009/NAV09073.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_007_09.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2009/NAV09007.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_312_08.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08312.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_277_08.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08277.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_256_08.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08256.txt"));
+				startActivity(browserIntent);
+			}
+			
+		}); 
+		NAVADMIN_191_08.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08191.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_011_07.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2007/NAV07011.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_293_06.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2006/NAV06293.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_072_06.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2006/NAV06072.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
+		NAVADMIN_041_06.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Link",  // Action
+				            "NAVADMIN 203/11", // Label
+				            0);       // Value
+				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2006/NAV06041.txt"));
+				startActivity(browserIntent);
+			}
+			
+		});  
 		
-		opnavLBL.setOnClickListener(new OnClickListener(){
+		
+		
+		
+		OPNAVINST_6110j.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
 				 tracker.trackEvent(
@@ -104,45 +355,7 @@ public class InstructionsActivity extends Activity {
 			}
 			
 		});
-		navadmin1LBL.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				 tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Link",  // Action
-				            "NAVADMIN 180-05", // Label
-				            0);       // Value
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/navadmin180-05.html"));
-				startActivity(browserIntent);
-			}
-			
-		});
-		navadmin2LBL.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				 tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Link",  // Action
-				            "NAVADMIN 293-06", // Label
-				            0);       // Value
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/navadmin293-06.html"));
-				startActivity(browserIntent);
-			}
-			
-		});
-		navadmin3LBL.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				 tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Link",  // Action
-				            "NAVADMIN 011-07", // Label
-				            0);       // Value
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.navy-prt.com/navadmin011-07.html"));
-				startActivity(browserIntent);
-			}
-			
-		});
+		
 
 
 		

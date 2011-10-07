@@ -78,7 +78,6 @@ public class PRTActivity extends Activity implements Observer {
 
 
 	private void finishSetup() {
-		System.out.println("AGE " + mData.getAge());
 		if(age <= 19){
 			ageSpinner.setSelection(0);
 		}else if(age <= 24){
@@ -125,7 +124,6 @@ public class PRTActivity extends Activity implements Observer {
 		Intent intent = this.getIntent();
 		isLog = intent.getBooleanExtra("log", false);
 		isPremium = intent.getBooleanExtra("premium", false);	
-		System.out.println("Is Premium " + isPremium);
 		mData = (AndriosData) intent.getSerializableExtra("data");
 		mData.addObserver(this);
 		age = mData.getAge();
@@ -628,11 +626,10 @@ public class PRTActivity extends Activity implements Observer {
 			
 		
 			for(int i = 4; i >= 0; i--){
-				System.out.println(Integer.toString(pushupMale[i]));
 				if(pushups >= pushupMale[i]){
 					totalScore += Scores[i];
 					pushupScore = Scores[i];
-					pushupScoreLBL.setText(Integer.toString(pushupScore));
+					pushupScoreLBL.setText(getCategory(pushupScore));
 					fail0 = false;
 					break;
 				}
@@ -647,7 +644,7 @@ public class PRTActivity extends Activity implements Observer {
 				if(situps >= situpMale[i]){
 					totalScore += Scores[i];
 					situpScore = Scores[i];
-					situpScoreLBL.setText(Integer.toString(situpScore));
+					situpScoreLBL.setText(getCategory(situpScore));
 					fail1 = false;
 					break;
 				}
@@ -662,7 +659,7 @@ public class PRTActivity extends Activity implements Observer {
 				if(runtime <= runMale[i]){
 					totalScore += Scores[i];
 					runScore = Scores[i];
-					runScoreLBL.setText(Integer.toString(runScore));
+					runScoreLBL.setText(getCategory(runScore));
 					fail2 = false;
 					break;
 				}
@@ -677,7 +674,6 @@ public class PRTActivity extends Activity implements Observer {
 		if(!fail0 && !fail1 && !fail2 && changed()){
 			
 			if((totalScore / 3) < 45){
-				scoreLBL.setText("Failure");
 				scoreLBL.setBackgroundColor(Color.RED);
 				scoreLBL.setTextColor(Color.BLACK);
 				scoreLBL.getBackground().setAlpha(100);
@@ -685,18 +681,9 @@ public class PRTActivity extends Activity implements Observer {
 				scoreLBL.setBackgroundColor(Color.GREEN);
 				scoreLBL.setTextColor(Color.BLACK);
 				scoreLBL.getBackground().setAlpha(100);
-				if((totalScore / 3) < 60){
-					scoreLBL.setText("Satisfactory");
-				}else if((totalScore / 3)< 75){
-					scoreLBL.setText("Good");
-				}else if((totalScore / 3)< 90){
-					scoreLBL.setText("Excellent");
-				}else if((totalScore / 3)< 100){
-					scoreLBL.setText("Outstanding");
-				}else if((totalScore / 3)>= 100){
-					scoreLBL.setText("Maximum");
-				}
 			}
+			
+			scoreLBL.setText(getCategory(totalScore / 3));
 			
 		}else if(changed()){
 			scoreLBL.setText("Failure");
@@ -724,11 +711,10 @@ public class PRTActivity extends Activity implements Observer {
 			
 			
 			for(int i = 4; i >= 0; i--){
-				System.out.println(Integer.toString(pushupFemale[i]));
 				if(pushups >= pushupFemale[i]){
 					totalScore += Scores[i];
 					pushupScore = Scores[i];
-					pushupScoreLBL.setText(Integer.toString(pushupScore));
+					pushupScoreLBL.setText(getCategory(pushupScore));
 					fail0 = false;
 					break;
 				}
@@ -743,7 +729,7 @@ public class PRTActivity extends Activity implements Observer {
 				if(situps >= situpFemale[i]){
 					totalScore += Scores[i];
 					situpScore = Scores[i];
-					situpScoreLBL.setText(Integer.toString(situpScore));
+					situpScoreLBL.setText(getCategory(situpScore));
 					fail1 = false;
 					break;
 				}
@@ -758,7 +744,7 @@ public class PRTActivity extends Activity implements Observer {
 				if(runtime <= runFemale[i]){
 					totalScore += Scores[i];
 					runScore = Scores[i];
-					runScoreLBL.setText(Integer.toString(runScore));
+					runScoreLBL.setText(getCategory(runScore));
 					fail2 = false;
 					break;
 				}
@@ -771,7 +757,6 @@ public class PRTActivity extends Activity implements Observer {
 		if(!fail0 && !fail1 && !fail2 && changed()){
 			
 			if((totalScore / 3) < 45){
-				scoreLBL.setText("Failure");
 				scoreLBL.setBackgroundColor(Color.RED);
 				scoreLBL.setTextColor(Color.BLACK);
 				scoreLBL.getBackground().setAlpha(100);
@@ -779,18 +764,8 @@ public class PRTActivity extends Activity implements Observer {
 				scoreLBL.setBackgroundColor(Color.GREEN);
 				scoreLBL.setTextColor(Color.BLACK);
 				scoreLBL.getBackground().setAlpha(100);
-				if((totalScore / 3) < 60){
-					scoreLBL.setText("Satisfactory");
-				}else if((totalScore / 3)< 75){
-					scoreLBL.setText("Good");
-				}else if((totalScore / 3)< 90){
-					scoreLBL.setText("Excellent");
-				}else if((totalScore / 3)< 100){
-					scoreLBL.setText("Outstanding");
-				}else if((totalScore / 3)>= 100){
-					scoreLBL.setText("Maximum");
-				}
 			}
+			scoreLBL.setText(getCategory(totalScore / 3));
 			
 		}else if(changed()){
 			scoreLBL.setText("Failure");
@@ -886,6 +861,28 @@ public class PRTActivity extends Activity implements Observer {
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }
+	}
+	
+	public String getCategory(int score){
+		String scoreString = "Failure";
+		
+		if((score) < 45){
+			scoreString = "Failure";
+		}else if((score) < 60){
+			scoreString = "Satisfactory";
+		}else if((score)< 75){
+			scoreString = "Good";
+		}else if((score)< 90){
+			scoreString = "Excellent";
+		}else if((score)< 100){
+			scoreString = "Outstanding";
+		}else if((score)>= 100){
+			scoreString = "Maximum";
+		}
+		
+		
+		return scoreString;
+		
 	}
 
 }

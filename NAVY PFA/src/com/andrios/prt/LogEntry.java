@@ -3,6 +3,7 @@ package com.andrios.prt;
 import java.io.Serializable;
 import java.util.Calendar;
 
+
 abstract class LogEntry implements Serializable{
 
 	/**
@@ -106,6 +107,8 @@ abstract class LogEntry implements Serializable{
 		return dateString;
 	}
 	
+
+	
 	/*
 	 * Setter Methods
 	 */
@@ -152,6 +155,8 @@ abstract class LogEntry implements Serializable{
 	public void setIsMale(boolean isMale){
 		this.isMale = isMale;
 	}
+	
+
 	
 	
 	

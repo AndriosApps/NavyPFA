@@ -1,21 +1,28 @@
 package com.andrios.prt;
 
+import java.io.File;
+
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InstructionsActivity extends Activity {
 
+	private static String OPNAVINST6110J = "6110.1J-Physical-Readiness-program.pdf";
+	private static String OPNAVINST6110JURL = "http://navy-fitness.com/wp-content/uploads/2011/07/6110.1J-Physical-Readiness-program.pdf";
 	
 	AdView adView;
 	AdRequest request;
@@ -125,6 +132,8 @@ public class InstructionsActivity extends Activity {
 				            "Link",  // Action
 				            "NAVADMIN 203/11", // Label
 				            0);       // Value
+				
+					
 				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2011/NAV11203.txt"));
 				startActivity(browserIntent);
 			}
@@ -350,8 +359,15 @@ public class InstructionsActivity extends Activity {
 				            "Link",  // Action
 				            "OPNAV INST 6110.1J", // Label
 				            0);       // Value
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://navy-fitness.com/wp-content/uploads/2011/07/6110.1J-Physical-Readiness-program.pdf"));
-				startActivity(browserIntent);
+				 
+				 
+				 try{
+					 open(OPNAVINST6110J);
+				 }catch(Exception e){
+					 Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse(OPNAVINST6110JURL));
+					startActivity(browserIntent);
+				 }
+				
 			}
 			
 		});
@@ -374,5 +390,31 @@ public class InstructionsActivity extends Activity {
 	public void onPause(){
 		super.onPause();
 		tracker.dispatch();
+	}
+	
+	private void open(String filename){
+		
+		String PATH = Environment.getExternalStorageDirectory()
+                + "/download/";
+		
+		File file = new File(PATH + filename);
+		if (file.exists()) {
+			 System.out.println("file exists");
+            Uri path = Uri.fromFile(file);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(path, "application/pdf");
+
+            try {
+            	System.out.println("Start Activity");
+                startActivity(intent);
+            } 
+            catch (ActivityNotFoundException e) {
+                Toast.makeText(InstructionsActivity.this, 
+                    "No Application Available to View PDF", 
+                    Toast.LENGTH_SHORT).show();
+            }
+		}else{
+			float f = 1/0;
+		}
 	}
 }

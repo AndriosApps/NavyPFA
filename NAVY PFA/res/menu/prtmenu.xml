@@ -8,4 +8,8 @@
           android:title="Bike" />
   <item android:id="@+id/menuEllipticalBTN"
           android:title="Elliptical" />
+  <item android:id="@+id/menuSwim500BTN"
+          android:title="500m Swim" />
+  <item android:id="@+id/menuSwim450BTN"
+          android:title="450m Swim" />
 </menu>

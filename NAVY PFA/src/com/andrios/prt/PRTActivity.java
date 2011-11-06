@@ -503,104 +503,304 @@ public class PRTActivity extends Activity implements Observer {
 	private void calculateScore(){
 		if(maleRDO.isChecked()){
 			if(altitudeCheckBox.isChecked()){
-				if(age < 20){
-					calculateMale(mData.pushupMale17, mData.situpMale17, mData.altRunMale17);
-				}else if(age < 25){
-					calculateMale(mData.pushupMale20, mData.situpMale20, mData.altRunMale20);
-				}else if(age < 30){
-					calculateMale(mData.pushupMale25, mData.situpMale25, mData.altRunMale25);
-				}else if(age < 35){
-					calculateMale(mData.pushupMale30, mData.situpMale30, mData.altRunMale30);
-				}else if(age < 40){
-					calculateMale(mData.pushupMale35, mData.situpMale35, mData.altRunMale35);
-				}else if(age < 45){
-					calculateMale(mData.pushupMale40, mData.situpMale40, mData.altRunMale40);
-				}else if(age < 50){
-					calculateMale(mData.pushupMale45, mData.situpMale45, mData.altRunMale45);
-				}else if(age < 55){
-					calculateMale(mData.pushupMale50, mData.situpMale50, mData.altRunMale50);
-				}else if(age < 60){
-					calculateMale(mData.pushupMale55, mData.situpMale55, mData.altRunMale55);
-				}else if(age < 65){
-					calculateMale(mData.pushupMale60, mData.situpMale60, mData.altRunMale60);
+				if(cardio.equals("500m Swim")){
+					if(age < 20){
+						calculateMale(mData.pushupMale17, mData.situpMale17, mData.altSwim500Male17);
+					}else if(age < 25){
+						calculateMale(mData.pushupMale20, mData.situpMale20, mData.altSwim500Male20);
+					}else if(age < 30){
+						calculateMale(mData.pushupMale25, mData.situpMale25, mData.altSwim500Male25);
+					}else if(age < 35){
+						calculateMale(mData.pushupMale30, mData.situpMale30, mData.altSwim500Male30);
+					}else if(age < 40){
+						calculateMale(mData.pushupMale35, mData.situpMale35, mData.altSwim500Male35);
+					}else if(age < 45){
+						calculateMale(mData.pushupMale40, mData.situpMale40, mData.altSwim500Male40);
+					}else if(age < 50){
+						calculateMale(mData.pushupMale45, mData.situpMale45, mData.altSwim500Male45);
+					}else if(age < 55){
+						calculateMale(mData.pushupMale50, mData.situpMale50, mData.altSwim500Male50);
+					}else if(age < 60){
+						calculateMale(mData.pushupMale55, mData.situpMale55, mData.altSwim500Male55);
+					}else if(age < 65){
+						calculateMale(mData.pushupMale60, mData.situpMale60, mData.altSwim500Male60);
+					}else{
+						calculateMale(mData.pushupMale65, mData.situpMale65, mData.altSwim500Male65);
+					}
+				}else if(cardio.equals("450m Swim")){
+					if(age < 20){
+						calculateMale(mData.pushupMale17, mData.situpMale17, mData.altSwim450Male17);
+					}else if(age < 25){
+						calculateMale(mData.pushupMale20, mData.situpMale20, mData.altSwim450Male20);
+					}else if(age < 30){
+						calculateMale(mData.pushupMale25, mData.situpMale25, mData.altSwim450Male25);
+					}else if(age < 35){
+						calculateMale(mData.pushupMale30, mData.situpMale30, mData.altSwim450Male30);
+					}else if(age < 40){
+						calculateMale(mData.pushupMale35, mData.situpMale35, mData.altSwim450Male35);
+					}else if(age < 45){
+						calculateMale(mData.pushupMale40, mData.situpMale40, mData.altSwim450Male40);
+					}else if(age < 50){
+						calculateMale(mData.pushupMale45, mData.situpMale45, mData.altSwim450Male45);
+					}else if(age < 55){
+						calculateMale(mData.pushupMale50, mData.situpMale50, mData.altSwim450Male50);
+					}else if(age < 60){
+						calculateMale(mData.pushupMale55, mData.situpMale55, mData.altSwim450Male55);
+					}else if(age < 65){
+						calculateMale(mData.pushupMale60, mData.situpMale60, mData.altSwim450Male60);
+					}else{
+						calculateMale(mData.pushupMale65, mData.situpMale65, mData.altSwim450Male65);
+					}
 				}else{
-					calculateMale(mData.pushupMale65, mData.situpMale65, mData.altRunMale65);
+					if(age < 20){
+						calculateMale(mData.pushupMale17, mData.situpMale17, mData.altRunMale17);
+					}else if(age < 25){
+						calculateMale(mData.pushupMale20, mData.situpMale20, mData.altRunMale20);
+					}else if(age < 30){
+						calculateMale(mData.pushupMale25, mData.situpMale25, mData.altRunMale25);
+					}else if(age < 35){
+						calculateMale(mData.pushupMale30, mData.situpMale30, mData.altRunMale30);
+					}else if(age < 40){
+						calculateMale(mData.pushupMale35, mData.situpMale35, mData.altRunMale35);
+					}else if(age < 45){
+						calculateMale(mData.pushupMale40, mData.situpMale40, mData.altRunMale40);
+					}else if(age < 50){
+						calculateMale(mData.pushupMale45, mData.situpMale45, mData.altRunMale45);
+					}else if(age < 55){
+						calculateMale(mData.pushupMale50, mData.situpMale50, mData.altRunMale50);
+					}else if(age < 60){
+						calculateMale(mData.pushupMale55, mData.situpMale55, mData.altRunMale55);
+					}else if(age < 65){
+						calculateMale(mData.pushupMale60, mData.situpMale60, mData.altRunMale60);
+					}else{
+						calculateMale(mData.pushupMale65, mData.situpMale65, mData.altRunMale65);
+					}
 				}
 			}else{
-				if(age < 20){
-					calculateMale(mData.pushupMale17, mData.situpMale17, mData.runMale17);
-				}else if(age < 25){
-					calculateMale(mData.pushupMale20, mData.situpMale20, mData.runMale20);
-				}else if(age < 30){
-					calculateMale(mData.pushupMale25, mData.situpMale25, mData.runMale25);
-				}else if(age < 35){
-					calculateMale(mData.pushupMale30, mData.situpMale30, mData.runMale30);
-				}else if(age < 40){
-					calculateMale(mData.pushupMale35, mData.situpMale35, mData.runMale35);
-				}else if(age < 45){
-					calculateMale(mData.pushupMale40, mData.situpMale40, mData.runMale40);
-				}else if(age < 50){
-					calculateMale(mData.pushupMale45, mData.situpMale45, mData.runMale45);
-				}else if(age < 55){
-					calculateMale(mData.pushupMale50, mData.situpMale50, mData.runMale50);
-				}else if(age < 60){
-					calculateMale(mData.pushupMale55, mData.situpMale55, mData.runMale55);
-				}else if(age < 65){
-					calculateMale(mData.pushupMale60, mData.situpMale60, mData.runMale60);
+				if(cardio.equals("500m Swim")){
+					if(age < 20){
+						calculateMale(mData.pushupMale17, mData.situpMale17, mData.swim500Male17);
+					}else if(age < 25){
+						calculateMale(mData.pushupMale20, mData.situpMale20, mData.swim500Male20);
+					}else if(age < 30){
+						calculateMale(mData.pushupMale25, mData.situpMale25, mData.swim500Male25);
+					}else if(age < 35){
+						calculateMale(mData.pushupMale30, mData.situpMale30, mData.swim500Male30);
+					}else if(age < 40){
+						calculateMale(mData.pushupMale35, mData.situpMale35, mData.swim500Male35);
+					}else if(age < 45){
+						calculateMale(mData.pushupMale40, mData.situpMale40, mData.swim500Male40);
+					}else if(age < 50){
+						calculateMale(mData.pushupMale45, mData.situpMale45, mData.swim500Male45);
+					}else if(age < 55){
+						calculateMale(mData.pushupMale50, mData.situpMale50, mData.swim500Male50);
+					}else if(age < 60){
+						calculateMale(mData.pushupMale55, mData.situpMale55, mData.swim500Male55);
+					}else if(age < 65){
+						calculateMale(mData.pushupMale60, mData.situpMale60, mData.swim500Male60);
+					}else{
+						calculateMale(mData.pushupMale65, mData.situpMale65, mData.swim500Male65);
+					}
+				}else if(cardio.equals("450m swim")){
+					if(age < 20){
+						calculateMale(mData.pushupMale17, mData.situpMale17, mData.swim450Male17);
+					}else if(age < 25){
+						calculateMale(mData.pushupMale20, mData.situpMale20, mData.swim450Male20);
+					}else if(age < 30){
+						calculateMale(mData.pushupMale25, mData.situpMale25, mData.swim450Male25);
+					}else if(age < 35){
+						calculateMale(mData.pushupMale30, mData.situpMale30, mData.swim450Male30);
+					}else if(age < 40){
+						calculateMale(mData.pushupMale35, mData.situpMale35, mData.swim450Male35);
+					}else if(age < 45){
+						calculateMale(mData.pushupMale40, mData.situpMale40, mData.swim450Male40);
+					}else if(age < 50){
+						calculateMale(mData.pushupMale45, mData.situpMale45, mData.swim450Male45);
+					}else if(age < 55){
+						calculateMale(mData.pushupMale50, mData.situpMale50, mData.swim450Male50);
+					}else if(age < 60){
+						calculateMale(mData.pushupMale55, mData.situpMale55, mData.swim450Male55);
+					}else if(age < 65){
+						calculateMale(mData.pushupMale60, mData.situpMale60, mData.swim450Male60);
+					}else{
+						calculateMale(mData.pushupMale65, mData.situpMale65, mData.swim450Male65);
+					}
 				}else{
-					calculateMale(mData.pushupMale65, mData.situpMale65, mData.runMale65);
+					if(age < 20){
+						calculateMale(mData.pushupMale17, mData.situpMale17, mData.runMale17);
+					}else if(age < 25){
+						calculateMale(mData.pushupMale20, mData.situpMale20, mData.runMale20);
+					}else if(age < 30){
+						calculateMale(mData.pushupMale25, mData.situpMale25, mData.runMale25);
+					}else if(age < 35){
+						calculateMale(mData.pushupMale30, mData.situpMale30, mData.runMale30);
+					}else if(age < 40){
+						calculateMale(mData.pushupMale35, mData.situpMale35, mData.runMale35);
+					}else if(age < 45){
+						calculateMale(mData.pushupMale40, mData.situpMale40, mData.runMale40);
+					}else if(age < 50){
+						calculateMale(mData.pushupMale45, mData.situpMale45, mData.runMale45);
+					}else if(age < 55){
+						calculateMale(mData.pushupMale50, mData.situpMale50, mData.runMale50);
+					}else if(age < 60){
+						calculateMale(mData.pushupMale55, mData.situpMale55, mData.runMale55);
+					}else if(age < 65){
+						calculateMale(mData.pushupMale60, mData.situpMale60, mData.runMale60);
+					}else{
+						calculateMale(mData.pushupMale65, mData.situpMale65, mData.runMale65);
+					}
 				}
 			}
 			
 			
 		}else{
 			if(altitudeCheckBox.isChecked()){
-				if(age < 20){
-					calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altRunFemale17);
-				}else if(age < 25){
-					calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altRunFemale20);
-				}else if(age < 30){
-					calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altRunFemale25);
-				}else if(age < 35){
-					calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altRunFemale30);
-				}else if(age < 40){
-					calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altRunFemale35);
-				}else if(age < 45){
-					calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altRunFemale40);
-				}else if(age < 50){
-					calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altRunFemale45);
-				}else if(age < 55){
-					calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altRunFemale50);
-				}else if(age < 60){
-					calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altRunFemale55);
-				}else if(age < 65){
-					calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altRunFemale60);
+				if(cardio.equals("500m Swim")){
+					if(age < 20){
+						calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altSwim500Female17);
+					}else if(age < 25){
+						calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altSwim500Female20);
+					}else if(age < 30){
+						calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altSwim500Female25);
+					}else if(age < 35){
+						calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altSwim500Female30);
+					}else if(age < 40){
+						calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altSwim500Female35);
+					}else if(age < 45){
+						calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altSwim500Female40);
+					}else if(age < 50){
+						calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altSwim500Female45);
+					}else if(age < 55){
+						calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altSwim500Female50);
+					}else if(age < 60){
+						calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altSwim500Female55);
+					}else if(age < 65){
+						calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altSwim500Female60);
+					}else{
+						calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altSwim500Female65);
+					}
+				}else if(cardio.equals("450m Swim")){
+					if(age < 20){
+						calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altSwim450Female17);
+					}else if(age < 25){
+						calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altSwim450Female20);
+					}else if(age < 30){
+						calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altSwim450Female25);
+					}else if(age < 35){
+						calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altSwim450Female30);
+					}else if(age < 40){
+						calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altSwim450Female35);
+					}else if(age < 45){
+						calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altSwim450Female40);
+					}else if(age < 50){
+						calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altSwim450Female45);
+					}else if(age < 55){
+						calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altSwim450Female50);
+					}else if(age < 60){
+						calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altSwim450Female55);
+					}else if(age < 65){
+						calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altSwim450Female60);
+					}else{
+						calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altSwim450Female65);
+					}
 				}else{
-					calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altRunFemale65);
+					if(age < 20){
+						calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altRunFemale17);
+					}else if(age < 25){
+						calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altRunFemale20);
+					}else if(age < 30){
+						calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altRunFemale25);
+					}else if(age < 35){
+						calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altRunFemale30);
+					}else if(age < 40){
+						calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altRunFemale35);
+					}else if(age < 45){
+						calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altRunFemale40);
+					}else if(age < 50){
+						calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altRunFemale45);
+					}else if(age < 55){
+						calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altRunFemale50);
+					}else if(age < 60){
+						calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altRunFemale55);
+					}else if(age < 65){
+						calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altRunFemale60);
+					}else{
+						calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altRunFemale65);
+					}
 				}
 			}else{
-				if(age < 20){
-					calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.runFemale17);
-				}else if(age < 25){
-					calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.runFemale20);
-				}else if(age < 30){
-					calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.runFemale25);
-				}else if(age < 35){
-					calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.runFemale30);
-				}else if(age < 40){
-					calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.runFemale35);
-				}else if(age < 45){
-					calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.runFemale40);
-				}else if(age < 50){
-					calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.runFemale45);
-				}else if(age < 55){
-					calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.runFemale50);
-				}else if(age < 60){
-					calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.runFemale55);
-				}else if(age < 65){
-					calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.runFemale60);
+				if(cardio.equals("500m Swim")){
+					if(age < 20){
+						calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.swim500Female17);
+					}else if(age < 25){
+						calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.swim500Female20);
+					}else if(age < 30){
+						calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.swim500Female25);
+					}else if(age < 35){
+						calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.swim500Female30);
+					}else if(age < 40){
+						calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.swim500Female35);
+					}else if(age < 45){
+						calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.swim500Female40);
+					}else if(age < 50){
+						calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.swim500Female45);
+					}else if(age < 55){
+						calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.swim500Female50);
+					}else if(age < 60){
+						calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.swim500Female55);
+					}else if(age < 65){
+						calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.swim500Female60);
+					}else{
+						calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.swim500Female65);
+					}
+				}else if(cardio.equals("450m swim")){
+					if(age < 20){
+						calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.swim450Female17);
+					}else if(age < 25){
+						calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.swim450Female20);
+					}else if(age < 30){
+						calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.swim450Female25);
+					}else if(age < 35){
+						calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.swim450Female30);
+					}else if(age < 40){
+						calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.swim450Female35);
+					}else if(age < 45){
+						calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.swim450Female40);
+					}else if(age < 50){
+						calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.swim450Female45);
+					}else if(age < 55){
+						calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.swim450Female50);
+					}else if(age < 60){
+						calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.swim450Female55);
+					}else if(age < 65){
+						calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.swim450Female60);
+					}else{
+						calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.swim450Female65);
+					}
 				}else{
-					calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.runFemale65);
+					if(age < 20){
+						calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.runFemale17);
+					}else if(age < 25){
+						calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.runFemale20);
+					}else if(age < 30){
+						calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.runFemale25);
+					}else if(age < 35){
+						calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.runFemale30);
+					}else if(age < 40){
+						calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.runFemale35);
+					}else if(age < 45){
+						calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.runFemale40);
+					}else if(age < 50){
+						calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.runFemale45);
+					}else if(age < 55){
+						calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.runFemale50);
+					}else if(age < 60){
+						calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.runFemale55);
+					}else if(age < 65){
+						calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.runFemale60);
+					}else{
+						calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.runFemale65);
+					}
 				}
 			}
 			
@@ -843,19 +1043,36 @@ public class PRTActivity extends Activity implements Observer {
 	    case R.id.menuRunBTN:
 	    	cardioLBL.setText("Run Time");
 	    	alternate = false;
-	    	cardio = "1.5 Mile Run";	    	
+	    	cardio = "1.5 Mile Run";
+	    	calculateScore();
 	        return true;
 	        
 	    case R.id.menuBikeBTN:
 	    	cardioLBL.setText("Bike Time");
 	    	alternate = true;
 	    	cardio = "Bike";
+	    	calculateScore();
         return true;
         
 	    case R.id.menuEllipticalBTN:
 	    	cardioLBL.setText("Elliptical Time");
 	    	alternate = true;
 	    	cardio = "Elliptical";
+	    	calculateScore();
+	        return true;
+	        
+	    case R.id.menuSwim500BTN:
+	    	cardioLBL.setText("500m Swim Time");
+	    	alternate = true;
+	    	cardio = "500m Swim";
+	    	calculateScore();
+	        return true;
+	        
+	    case R.id.menuSwim450BTN:
+	    	cardioLBL.setText("450m Swim Time");
+	    	alternate = true;
+	    	cardio = "450m Swim";
+	    	calculateScore();
 	        return true;
 	        
 	    default:

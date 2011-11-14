@@ -49,6 +49,7 @@ public class MainActivity extends AbstractBillingActivity implements
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.mainactivity);
 
+		AppRater.app_launched(this);
 		setConnections();
 		setOnClickListeners();
 		setTracker();

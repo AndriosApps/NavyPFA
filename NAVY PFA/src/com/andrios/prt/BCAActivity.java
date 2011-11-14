@@ -21,6 +21,9 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.lang.Math;
 import java.util.Observable;
 import java.util.Observer;
@@ -91,6 +94,9 @@ public class BCAActivity extends Activity implements Observer{
 			isLog = intent.getBooleanExtra("log", false);
 			isPremium = intent.getBooleanExtra("premium", false);	
 			mData = (AndriosData) intent.getSerializableExtra("data");
+			if(mData == null){
+				readData();
+			}
 			mData.addObserver(this);
 			age = mData.getAge();
 			
@@ -540,6 +546,8 @@ public class BCAActivity extends Activity implements Observer{
 		private void calculateMale(){
 			//Equation derived from DoD Instruction 1308.3 Page 13
 			percentFat = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
+
+			System.out.println("PERCENT FAT: " + percentFat);
 			percentFat = (double) Math.round(percentFat);
 			percentFatLBL.setText(Double.toString(percentFat)+ "%");
 			if(maleBFchanged){
@@ -547,6 +555,7 @@ public class BCAActivity extends Activity implements Observer{
 				if(ageCheckBox.isChecked()){
 					allowableFat = 23.0;
 				}
+				System.out.println("PERCENT FAT ROUNDED: " + percentFat);
 				if(percentFat > allowableFat){
 					bodyFatLL.setBackgroundResource(R.drawable.failbtn);
 					passBF = false;
@@ -658,6 +667,27 @@ public class BCAActivity extends Activity implements Observer{
 			femaleRDO.setChecked(!mData.getGender());
 			maleRDO.setChecked(mData.getGender());
 			
+		}
+		
+		private void readData() {
+
+			try {
+				FileInputStream fis = openFileInput("profile");
+				ObjectInputStream ois = new ObjectInputStream(fis);
+
+				Profile profile = (Profile) ois.readObject();
+				ois.close();
+				fis.close();
+
+				mData = new AndriosData();
+				mData.setAge(profile.getAge());
+				mData.setGender(profile.isMale());
+				
+				
+			} catch (Exception e) {
+				Profile profile = new Profile();
+				mData = new AndriosData();
+			}
 		}
 	  
 }

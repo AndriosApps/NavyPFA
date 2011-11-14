@@ -1,5 +1,7 @@
 package com.andrios.prt;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -125,6 +127,9 @@ public class PRTActivity extends Activity implements Observer {
 		isLog = intent.getBooleanExtra("log", false);
 		isPremium = intent.getBooleanExtra("premium", false);	
 		mData = (AndriosData) intent.getSerializableExtra("data");
+		if(mData == null){
+			readData();
+		}
 		mData.addObserver(this);
 		age = mData.getAge();
 		male = mData.getGender();
@@ -1102,4 +1107,25 @@ public class PRTActivity extends Activity implements Observer {
 		
 	}
 
+	private void readData() {
+
+		try {
+			FileInputStream fis = openFileInput("profile");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			Profile profile = (Profile) ois.readObject();
+			ois.close();
+			fis.close();
+
+			mData = new AndriosData();
+			mData.setAge(profile.getAge());
+			mData.setGender(profile.isMale());
+			
+			
+		} catch (Exception e) {
+			Profile profile = new Profile();
+			mData = new AndriosData();
+		}
+	}
+	
 }

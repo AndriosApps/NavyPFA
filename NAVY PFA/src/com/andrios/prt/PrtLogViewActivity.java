@@ -1,5 +1,7 @@
 package com.andrios.prt;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -11,14 +13,23 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -61,6 +72,13 @@ public class PrtLogViewActivity extends Activity {
         setTracker();
         
     }
+    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.share_menu, menu);
+	    return true;
+	}
     
 	private void setTracker() {
 		tracker = GoogleAnalyticsTracker.getInstance();
@@ -123,22 +141,7 @@ public class PrtLogViewActivity extends Activity {
 		totalScoreLBL = (TextView)findViewById(R.id.logViewActivityTotalScoreLBL);
 		totalScoreLBL.setText(entry.getTotalScore());
 		
-		/*
-		array_spinner=new String[8];
-		array_spinner[0]="Excited";
-		array_spinner[1]="Happy";
-		array_spinner[2]="Scared";
-		array_spinner[3]="Hopeful";
-		array_spinner[4]="Worried";
-		array_spinner[5]="Crying";
-		array_spinner[6]="Uncertain";
-		array_spinner[7]="Mad";
-		moodSpinner = (Spinner) findViewById(R.id.journalEntryViewActivityMoodSpinner);
-		ArrayAdapter adapter = new ArrayAdapter(this,
-				android.R.layout.simple_spinner_item, array_spinner);
-		moodSpinner.setAdapter(adapter);
-		moodSpinner.setSelection(entry.getMood());
-		*/
+		
 		saveBTN = (Button) findViewById(R.id.journalEntryViewActivitySaveBTN);
 		
 		dateLBL = (TextView) findViewById(R.id.journalEntryViewActivityDateLBL);
@@ -299,5 +302,99 @@ public class PrtLogViewActivity extends Activity {
 		    }
 
 		    return super.onKeyDown(keyCode, event);
+		}
+		
+	public void shareLog(){
+			
+			LayoutInflater inflater = LayoutInflater.from(this);	
+			final View share_card_layout = inflater.inflate(R.layout.share_card_prt_view, null);
+			
+			// Populate Data
+			final TextView dateLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_dateLBL);
+			dateLBL.setText(entry.getDateString());
+
+			final TextView pushupMetricLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_pushups_metricLBL);
+			pushupMetricLBL.setText(entry.getPushups());
+
+			final TextView crunchesMetricLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_crunches_metricLBL);
+			crunchesMetricLBL.setText(entry.getSitups());
+
+			final TextView cardioMetricLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_cardio_metricLBL);
+			cardioMetricLBL.setText(entry.getRun());
+
+			final TextView pushupScoreLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_pushups_scoreLBL);
+			pushupScoreLBL.setText(entry.getPushupScore());
+
+			final TextView crunchScoreLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_crunches_scoreLBL);
+			crunchScoreLBL.setText(entry.getSitupScore());
+
+			final TextView cardioScoreLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_cardio_scoreLBL);
+			cardioScoreLBL.setText(entry.getRunScore());
+
+			final TextView totalScoreLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_total_scoreLBL);
+			totalScoreLBL.setText(entry.getTotalScore());
+
+			final TextView cardioLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_cardioLBL);
+			cardioLBL.setText(entry.alternateCardio);
+			
+			
+			
+			
+			
+			//End Populate Data
+			share_card_layout.setDrawingCacheEnabled(true);
+			share_card_layout.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), 
+		            MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+
+			share_card_layout.layout(0, 0, share_card_layout.getMeasuredWidth(), share_card_layout.getMeasuredHeight());
+			share_card_layout.buildDrawingCache(true);
+
+			saveBTN.setVisibility(View.GONE);
+			
+			
+			File root = android.os.Environment.getExternalStorageDirectory();               
+
+			 File dir = new File (root.getAbsolutePath() + "/download/");
+			try {
+				Bitmap bitmap = Bitmap.createBitmap(share_card_layout.getDrawingCache());
+
+				share_card_layout.setDrawingCacheEnabled(false);
+				bitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(dir+"PFT.png"));
+				Toast.makeText(this, "Saved Image to " + dir,Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				Toast.makeText(this, "Image Output failed",Toast.LENGTH_LONG).show();
+				e.printStackTrace();
+			}
+			saveBTN.setVisibility(View.VISIBLE);
+			Intent picMessageIntent = new Intent(android.content.Intent.ACTION_SEND);  
+			picMessageIntent.setType("image/jpeg");  
+			
+			File downloadedPic =  new File(  
+					dir+"PFT.png");  
+			  
+			picMessageIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(downloadedPic)); 
+			picMessageIntent.putExtra(Intent.EXTRA_SUBJECT, "AndriOS Apps Navy PFA app for Android");
+			picMessageIntent.putExtra(Intent.EXTRA_TEXT, "PRT Score: " + entry.getTotalScore() + " @Andrios_Apps http://bit.ly/q21voC #USNAVY");
+			 tracker.trackEvent(
+			            "Social",  // Category
+			            "Share",  // Action
+			            "Share PRT", // Label
+			            0);       // Value
+		    startActivity(Intent.createChooser(picMessageIntent, "Share Your PRT Score:"));
+		    
+		}
+		
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+		    // Handle item selection
+		    switch (item.getItemId()) {
+		    case R.id.menuShareBTN:
+		    	shareLog();
+		    	
+		        return true;
+		   
+		    default:
+		        return super.onOptionsItemSelected(item);
+		    }
 		}
 }

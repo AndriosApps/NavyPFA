@@ -124,12 +124,11 @@ public class MainActivity extends AbstractBillingActivity implements
 
 			public void onClick(View v) {
 
-				if (premium) {
+				if (true) {
 					Intent intent = new Intent(v.getContext(),
 							LogActivity.class);
 					mData.setAge(profile.getAge());
 					mData.setGender(profile.isMale());
-					System.out.println("Main Age" + mData.getAge());
 					intent.putExtra("data", mData);
 					startActivity(intent);
 				} else {
@@ -190,7 +189,6 @@ public class MainActivity extends AbstractBillingActivity implements
 	}
 
 	public void update(Observable observable, Object data) {
-		System.out.println("PROFILE UPDATED");
 
 	}
 
@@ -289,7 +287,6 @@ public class MainActivity extends AbstractBillingActivity implements
 	}
 
 	public String getPublicKey() {
-		System.out.println("Get Public Key ");// TODO REMOVE
 
 		return "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsWpPBgnPmwEHkkfcy11L5/gdEzeVGy/xxFA719PrQeX8a1VlJAQeWjvxVd5xgpcmcUXnt4t+0IWAfL1plRIH6OUCYWbZlhJv/QdqmC5v7WAH8U925Yl6o0GNxdgZDfVyBDw/wboSbQ1dxbEMXZ0Jqpfz2DApszhxC9vj9xLIo6hBm1dGYWkTVPn7LLiRfnCkxJgRNxtMrEP8FwnebV3Lvk8520/0VQj8wVU3QZaGPEQ3yO+z664D3Zlx9p0hMk54xeoJo86OwvXw1lKA8vlXBCc1eHhHa6QhAUn0SNVq9e1sF3rsxKJWbT1tUvK9qHHinrMjXF5095jx+evH58pn7wIDAQAB";
 	}
@@ -297,31 +294,24 @@ public class MainActivity extends AbstractBillingActivity implements
 	@Override
 	public void onBillingChecked(boolean supported) {
 
-		System.out.println("ON BILLING CHECKED? " + supported);// TODO REMOVE
 
 	}
 
 	@Override
 	public void onPurchaseStateChanged(String itemId, PurchaseState state) {
-		System.out.println("ON PURCHASE STATE CHANGED");// TODO REMOVE
 		if (itemId.equals("premium_features")
 				&& PurchaseState.PURCHASED.equals(state)) {
-			System.out.println(itemId + " Purchased");
 			premium = true;
 		} else if (itemId.equals("premium_features")
 				&& PurchaseState.CANCELLED.equals(state)) {
-			System.out.println(itemId + " Cancelled");
 		}
 		if (itemId.equals("premium_features")
 				&& PurchaseState.REFUNDED.equals(state)) {
-			System.out.println(itemId + " Refunded");
 		}
 	}
 
 	@Override
 	public void onRequestPurchaseResponse(String itemId, ResponseCode response) {
-		System.out.println("ONREQUESTPURCHASERESPONSE " + itemId + " "
-				+ response);// TODO REMOVE
 
 	}
 
@@ -332,10 +322,8 @@ public class MainActivity extends AbstractBillingActivity implements
 		final ArrayList<String> ownedItems = new ArrayList<String>();
 		premium = false;
 		for (Transaction t : transactions) {
-			System.out.println("Product Id: " + t.productId);
 			if (t.purchaseState == PurchaseState.PURCHASED) {
 				if (t.productId.equals("premium_features")) {
-					System.out.println("Premium Features Unlocked");
 					premium = true;
 					break;
 				}

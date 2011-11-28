@@ -91,7 +91,6 @@ public class Profile extends Observable implements Serializable{
 		int month = c.get(Calendar.MONTH)+1;
 		int year = c.get(Calendar.YEAR);
 		String monthString = "";
-		System.out.println("Month Is " + month);
 		if(month == 1){
 			monthString = "January";
 		}else if(month == 2){

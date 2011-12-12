@@ -31,6 +31,7 @@ public class Profile extends Observable implements Serializable{
 	public Profile(){
 		this.name = "Click to Set Name";
 		birthday = Calendar.getInstance();
+		birthday.add(Calendar.YEAR, -20);
 		nextPFA = Calendar.getInstance();
 		logList = new ArrayList<LogEntry>();
 		this.isPinProtected = false;

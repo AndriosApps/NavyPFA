@@ -6,9 +6,27 @@
   android:orientation="vertical" 
   android:id="@+id/ll"
   android:background="@drawable/background">
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent"  android:id="@+id/linearLayout1" android:gravity="center">
-        <TextView android:layout_height="wrap_content" android:text="2011 Navy Physical Fitness Standards" android:id="@+id/tv" android:textSize="18dip" android:layout_width="wrap_content"></TextView>
-    </LinearLayout>
+	<LinearLayout
+	    android:id="@+id/linearLayout2"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+	    android:background="@color/task_bar"
+	    android:gravity="center|left" >
+
+		<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="50dp"
+		    android:layout_height="40dp"
+		    android:src="@drawable/icon" />
+
+		<TextView
+		    android:id="@+id/textView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/title_instructions"
+		    android:textSize="22dip" >
+</TextView>
+	</LinearLayout>
     <ScrollView android:layout_width="fill_parent" android:id="@+id/scrollView1" android:layout_height="wrap_content" android:layout_weight="1">
         <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout9" android:layout_height="fill_parent" android:orientation="vertical">
            
@@ -95,10 +113,6 @@
             
         </LinearLayout>
     </ScrollView>
-    <LinearLayout android:layout_height="wrap_content" android:background="#000000" android:layout_width="fill_parent" android:id="@+id/linearLayout5" android:gravity="center" android:layout_weight="0" android:orientation="horizontal">
-        <TextView android:text="Comments and Ratings help us improve this app.  Please take a minute to rate it." android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"></TextView>
-        <Button android:textColor="#000000" android:background="@drawable/button_star" android:layout_width="75dip" android:id="@+id/instructionActivityRateBTN" android:layout_height="75dip" android:text="Rate" android:layout_weight="0"></Button>
-    </LinearLayout>
     <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_weight="0">
         <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout6" android:layout_height="fill_parent" android:layout_weight="1" android:gravity="center">
         </LinearLayout>

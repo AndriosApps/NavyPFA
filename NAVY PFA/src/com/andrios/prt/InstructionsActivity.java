@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -27,7 +28,7 @@ public class InstructionsActivity extends Activity {
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
-	Button rateBTN;
+	
 	
 	LinearLayout OPNAVINST_6110j;
 	LinearLayout NAVADMIN_203_11;
@@ -57,6 +58,7 @@ public class InstructionsActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.instructionsactivity);
         
         getExtras();
@@ -75,7 +77,7 @@ public class InstructionsActivity extends Activity {
 
 
 	private void setConnections() {
-		rateBTN = (Button) findViewById(R.id.instructionActivityRateBTN);
+		
 		OPNAVINST_6110j = (LinearLayout) findViewById(R.id.OPNAVINST_6110j);
 
 		NAVADMIN_203_11 = (LinearLayout) findViewById(R.id.NAVADMIN_203_11);
@@ -112,16 +114,6 @@ public class InstructionsActivity extends Activity {
 	}
 
 	private void setOnClickListeners() {
-		rateBTN.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse("market://details?id=com.andrios.prt"));
-				startActivity(intent);
-				
-			}
-			
-		});
 		
 		
 		NAVADMIN_203_11.setOnClickListener(new OnClickListener(){

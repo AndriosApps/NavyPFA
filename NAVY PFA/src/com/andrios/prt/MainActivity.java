@@ -124,7 +124,7 @@ public class MainActivity extends AbstractBillingActivity implements
 
 			public void onClick(View v) {
 
-				if (true) {
+				if (premium) {
 					Intent intent = new Intent(v.getContext(),
 							LogActivity.class);
 					mData.setAge(profile.getAge());

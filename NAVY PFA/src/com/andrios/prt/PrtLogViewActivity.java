@@ -51,6 +51,7 @@ public class PrtLogViewActivity extends Activity {
 	Profile profile;
 	
 	Button saveBTN;
+	Button shareBTN;
 	OnClickListener myOnClickListener;
 
 	Spinner moodSpinner;
@@ -143,6 +144,7 @@ public class PrtLogViewActivity extends Activity {
 		
 		
 		saveBTN = (Button) findViewById(R.id.journalEntryViewActivitySaveBTN);
+		shareBTN = (Button) findViewById(R.id.journalEntryViewActivityShareBTN);
 		
 		dateLBL = (TextView) findViewById(R.id.journalEntryViewActivityDateLBL);
 		dateLBL.setText(entry.getDateString());
@@ -202,6 +204,19 @@ public class PrtLogViewActivity extends Activity {
 					PrtLogViewActivity.this.setResult(RESULT_OK, intent);
 					PrtLogViewActivity.this.finish();
 				}
+				
+			}
+
+			
+
+			
+			
+		});
+		
+		shareBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				shareLog();
 				
 			}
 

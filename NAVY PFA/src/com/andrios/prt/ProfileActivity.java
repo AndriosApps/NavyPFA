@@ -315,7 +315,7 @@ public class ProfileActivity extends Activity {
          	birthdayLL.setBackgroundResource(R.drawable.cal_11);
          }
 		 
-		//Set Background for Birthday Calendar
+		//Set Background for Next PFA
 			month = profile.getNextPFA().get(Calendar.MONTH);
 			 if(month == 0){
 	         	nextPFALL.setBackgroundResource(R.drawable.cal_0);

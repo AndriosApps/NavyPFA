@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/linearLayout1" android:orientation="vertical"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+	<LinearLayout android:id="@+id/linearLayout3"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+
+		<LinearLayout
+		    android:id="@+id/linearLayout7"
+		    android:layout_width="75dip"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1"
+		    android:gravity="center|left"
+		    android:orientation="horizontal" >
+
+		    <Button
+		        android:id="@+id/mainActivityCalculatorsBTN"
+		        android:layout_width="34dp"
+		        android:layout_height="75dp"
+		        android:layout_weight="0.16"
+		        android:text="Calculators" />
+		</LinearLayout>
+
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout4"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+
+		<LinearLayout
+		    android:id="@+id/linearLayout8"
+		    android:layout_width="75dip"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1"
+		    android:gravity="center|left"
+		    android:orientation="horizontal" >
+		    <Button
+		        android:id="@+id/mainActivityLogBTN"
+		        android:layout_width="34dp"
+		        android:layout_height="75dp"
+		        android:layout_weight="0.16"
+		        android:text="Log" />
+			
+
+		</LinearLayout>
+
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout5"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+
+		<LinearLayout
+		    android:id="@+id/linearLayout9"
+		    android:layout_width="75dip"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1"
+		    android:gravity="center|left"
+		    android:orientation="horizontal" >
+
+		   
+		   <Button
+		        android:id="@+id/mainActivityInstructionsBTN"
+		        android:layout_width="34dp"
+		        android:layout_height="75dp"
+		        android:layout_weight="0.16"
+		        android:text="Instructions" />
+
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>
+
+ 

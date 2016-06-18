@@ -6,7 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import com.google.ads.AdRequest;
-import com.google.ads.AdView;
+//import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
@@ -45,7 +45,7 @@ public class PRTActivity extends Activity implements Observer {
 	Button pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
 	Button logBTN;
 	AndriosData mData;
-	AdView adView;
+	//AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 
@@ -194,19 +194,22 @@ public class PRTActivity extends Activity implements Observer {
 		situpSeekBar.setMax(110);//max situps is 109 (19 yr male)
 		runSeekBar.setMax(1260);//max runtime 17:23 (50yr female) 18 min * 60 = 1080
 		
-		adView = (AdView)this.findViewById(R.id.homeAdView);
+		//adView = (AdView)this.findViewById(R.id.homeAdView);
 	      
-	    request = new AdRequest();
-		request.setTesting(false);
-		
+	    //request = new AdRequest();
+		//request.setTesting(false);
+
+		//Removing Ad View For everyone.
 		if(!isPremium){
-			adView = (AdView)this.findViewById(R.id.homeAdView);
+			//adView = (AdView)this.findViewById(R.id.homeAdView);
 		      
-		    request = new AdRequest();
-			request.setTesting(false);
-			adView.loadAd(request);
+		   // request = new AdRequest();
+			//request.setTesting(false);
+			//adView.loadAd(request);
+            bottomBar = (RelativeLayout) findViewById(R.id.prtActivityBottomBar);
+            bottomBar.setVisibility(View.GONE);
 		}else{
-			adView.setVisibility(View.INVISIBLE);
+			//adView.setVisibility(View.INVISIBLE);
 			if(!isLog){
 				
 				bottomBar = (RelativeLayout) findViewById(R.id.prtActivityBottomBar);

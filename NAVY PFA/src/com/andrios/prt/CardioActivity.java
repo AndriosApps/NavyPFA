@@ -36,8 +36,8 @@ public class CardioActivity extends Activity implements Observer{
 	AndriosData mData;
 	Spinner bikeSpinner, ellipticalSpinner;
 	TextView weightLBL, calorieLBL, bikeLBL, ellipticalLBL;
-	AdView adView;
-	AdRequest request;
+	//AdView adView;
+	//AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	Button weightUpBTN, weightDownBTN, calorieUpBTN, calorieDownBTN;
 	SegmentedControlButton maleRDO, femaleRDO;
@@ -65,14 +65,16 @@ public class CardioActivity extends Activity implements Observer{
 
 	private void finishSetup() {
 		if(!isPremium){
-			adView = (AdView)this.findViewById(R.id.cardioAdView);
+			/*adView = (AdView)this.findViewById(R.id.cardioAdView);
 		      
 		    request = new AdRequest();
 			request.setTesting(false);
-			adView.loadAd(request);
+			adView.loadAd(request);*/
+
+
 		}else{
-			LinearLayout bottomBar = (LinearLayout) findViewById(R.id.cardioActivityBottomBar);
-			bottomBar.setVisibility(View.GONE);
+			//LinearLayout bottomBar = (LinearLayout) findViewById(R.id.cardioActivityBottomBar);
+			//bottomBar.setVisibility(View.GONE);
 		}
 		
 	}

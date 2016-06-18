@@ -124,6 +124,9 @@ public class MainActivity extends AbstractBillingActivity implements
 
 			public void onClick(View v) {
 
+				Toast.makeText(getApplicationContext(), "Coming Soon!",
+						Toast.LENGTH_SHORT).show();
+				/*
 				if (premium) {
 					Intent intent = new Intent(v.getContext(),
 							LogActivity.class);
@@ -134,7 +137,7 @@ public class MainActivity extends AbstractBillingActivity implements
 				} else {
 
 					setAlertDialog();
-				}
+				}*/
 
 			}
 

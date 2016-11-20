@@ -1,5 +1,21 @@
 package com.andrios.prt;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,24 +24,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class LogActivity extends Activity {
 	
@@ -36,7 +34,6 @@ public class LogActivity extends Activity {
 	LogAdapter logAdapter;
 	Button newBTN;
 	AndriosData mData;
-	GoogleAnalyticsTracker tracker;
 	
     /** Called when the activity is first created. */
     @Override
@@ -49,22 +46,16 @@ public class LogActivity extends Activity {
         readData();
         setConnections();
         setOnClickListeners();
-        setTracker();
     }
     
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-	}
+
 	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
     
     

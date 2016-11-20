@@ -1,20 +1,5 @@
 package com.andrios.prt;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
-import net.robotmedia.billing.BillingController;
-import net.robotmedia.billing.BillingRequest.ResponseCode;
-import net.robotmedia.billing.helper.AbstractBillingActivity;
-import net.robotmedia.billing.model.Transaction;
-import net.robotmedia.billing.model.Transaction.PurchaseState;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +10,20 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
+
+import net.robotmedia.billing.BillingController;
+import net.robotmedia.billing.BillingRequest.ResponseCode;
+import net.robotmedia.billing.helper.AbstractBillingActivity;
+import net.robotmedia.billing.model.Transaction;
+import net.robotmedia.billing.model.Transaction.PurchaseState;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 public class MainActivity extends AbstractBillingActivity implements
 		Serializable, Observer {
@@ -38,7 +37,6 @@ public class MainActivity extends AbstractBillingActivity implements
 	boolean premium;
 	AndriosData mData;
 	Profile profile;
-	private GoogleAnalyticsTracker tracker;
 
 	/*
 	 * LifeCycle
@@ -52,7 +50,6 @@ public class MainActivity extends AbstractBillingActivity implements
 		AppRater.app_launched(this);
 		setConnections();
 		setOnClickListeners();
-		setTracker();
 		restoreTransactions();
 
 		readData();
@@ -61,22 +58,16 @@ public class MainActivity extends AbstractBillingActivity implements
 		testProfile();
 	}
 
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key),
-				getApplicationContext());
-	}
+
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		tracker.dispatch();
 	}
 
 	@Override
@@ -253,10 +244,7 @@ public class MainActivity extends AbstractBillingActivity implements
 
 							public void onClick(DialogInterface dialog,
 									int which) {
-								tracker.trackEvent("Purchase", // Category
-										"Alert Dialog", // Action
-										"Yes", // Label
-										0); // Value
+
 								requestPurchase("premium_features");
 							}
 						})
@@ -265,10 +253,7 @@ public class MainActivity extends AbstractBillingActivity implements
 
 							public void onClick(DialogInterface dialog,
 									int which) {
-								tracker.trackEvent("Purchase", // Category
-										"Alert Dialog", // Action
-										"No", // Label
-										0); // Value
+
 							}
 
 						});

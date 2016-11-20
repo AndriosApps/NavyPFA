@@ -1,14 +1,5 @@
 package com.andrios.prt;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.util.Observable;
-import java.util.Observer;
-
-import com.google.ads.AdRequest;
-//import com.google.ads.AdView;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,21 +8,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.Observable;
+import java.util.Observer;
 
 public class PRTActivity extends Activity implements Observer {
 	
@@ -45,9 +41,6 @@ public class PRTActivity extends Activity implements Observer {
 	Button pushupUpBTN, pushupDownBTN, situpUpBTN, situpDownBTN;
 	Button logBTN;
 	AndriosData mData;
-	//AdView adView;
-	AdRequest request;
-	GoogleAnalyticsTracker tracker;
 
 	private String array_spinner[];
 	boolean pushupchanged = false, situpchanged = false, runchanged = false;
@@ -68,8 +61,6 @@ public class PRTActivity extends Activity implements Observer {
         setConnections();
         setOnClickListeners();
         finishSetup();
-        
-        setTracker();
     }
     
     @Override
@@ -78,7 +69,6 @@ public class PRTActivity extends Activity implements Observer {
 	    inflater.inflate(R.menu.prtmenu, menu);
 	    return true;
 	}
-
 
 
 	private void finishSetup() {
@@ -997,19 +987,14 @@ public class PRTActivity extends Activity implements Observer {
 		return changed;
 	}
 	
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-	}
+
 	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
 
 

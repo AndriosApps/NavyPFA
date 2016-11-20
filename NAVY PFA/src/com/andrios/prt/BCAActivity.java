@@ -1,15 +1,11 @@
 package com.andrios.prt;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,15 +13,13 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.RadioButton;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-import java.lang.Math;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -37,9 +31,6 @@ public class BCAActivity extends Activity implements Observer{
 	private static int MAX_WEIGHT = 300;
 	
 	AndriosData mData;
-	AdView adView;
-	AdRequest request;
-	GoogleAnalyticsTracker tracker;
 	ViewFlipper flipper;//Used to Show animation between Back / Front of card. 
 	SegmentedControlButton maleRDO, femaleRDO;
 	Button maleNeckPlusBTN, maleNeckMinusBTN, femaleNeckPlusBTN, femaleNeckMinusBTN;
@@ -73,7 +64,6 @@ public class BCAActivity extends Activity implements Observer{
 	        setConnections();
 	        setOnClickListeners();
 	        finishSetup();
-	        setTracker();
 	    }
 	
 		private void finishSetup() {
@@ -593,25 +583,15 @@ public class BCAActivity extends Activity implements Observer{
 			}else{
 				bodyFatLL.setBackgroundResource(R.drawable.grey_button);
 			}
-			
-		
-			
-		
 		}
 
-		private void setTracker() {
-			tracker = GoogleAnalyticsTracker.getInstance();
-			tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-		}
 		
 		public void onResume(){
 			super.onResume();
-			tracker.trackPageView("/" + this.getLocalClassName());
 		}
 		
 		public void onPause(){
 			super.onPause();
-			tracker.dispatch();
 		}
 		
 		//returns string of type 5'9"

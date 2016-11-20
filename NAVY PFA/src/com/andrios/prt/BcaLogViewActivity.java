@@ -1,32 +1,25 @@
 package com.andrios.prt;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class BcaLogViewActivity extends Activity {
 	
@@ -47,7 +40,6 @@ public class BcaLogViewActivity extends Activity {
 	OnClickListener myOnClickListener;
 	boolean changes;
 	CheckBox officialCheckBox;
-	GoogleAnalyticsTracker tracker;
 
 	
     /** Called when the activity is first created. */
@@ -59,25 +51,19 @@ public class BcaLogViewActivity extends Activity {
         
      
         getExtras();
-        setTracker();
         //setConnections();
         //setOnClickListeners();
         
     }
     
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-	}
+
 	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
     
 	@SuppressWarnings("unchecked")

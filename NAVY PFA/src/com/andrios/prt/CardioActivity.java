@@ -1,30 +1,24 @@
 package com.andrios.prt;
 
-import java.util.Observable;
-import java.util.Observer;
-
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class CardioActivity extends Activity implements Observer{
 
@@ -36,9 +30,6 @@ public class CardioActivity extends Activity implements Observer{
 	AndriosData mData;
 	Spinner bikeSpinner, ellipticalSpinner;
 	TextView weightLBL, calorieLBL, bikeLBL, ellipticalLBL;
-	//AdView adView;
-	//AdRequest request;
-	GoogleAnalyticsTracker tracker;
 	Button weightUpBTN, weightDownBTN, calorieUpBTN, calorieDownBTN;
 	SegmentedControlButton maleRDO, femaleRDO;
 	SeekBar weightSeekBar, calorieSeekBar;
@@ -58,7 +49,6 @@ public class CardioActivity extends Activity implements Observer{
         finishSetup();
         weightSeekBar.setProgress(200-MINWEIGHT);
 		calorieSeekBar.setProgress(200-MINCAL);
-        setTracker();
         
         
     }
@@ -333,19 +323,13 @@ public class CardioActivity extends Activity implements Observer{
 	}
 
 
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-	}
-	
+
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
 	
 	private String formatTimer(int seconds){

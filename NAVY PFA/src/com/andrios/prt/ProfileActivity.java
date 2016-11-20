@@ -1,13 +1,5 @@
 package com.andrios.prt;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.Calendar;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -16,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -34,6 +25,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Calendar;
+
 public class ProfileActivity extends Activity {
 	
 
@@ -47,7 +44,6 @@ public class ProfileActivity extends Activity {
 	int whichDate = 0;
 	ImageView profileIMG;
 	boolean changes= false;
-	GoogleAnalyticsTracker tracker;
 	
 	SegmentedControlButton maleRDO, femaleRDO;
 	
@@ -64,29 +60,20 @@ public class ProfileActivity extends Activity {
         
         setConnections();
         setOnClickListeners();
-        setTracker();
         
     }
-    
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-	}
+
 	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){
 		super.onPause();
 		write(ProfileActivity.this);
-		tracker.dispatch();
 	}
     
-    
-    
-    
+
 	private void setConnections() {
 
 		birthdayYearLBL = (TextView) findViewById(R.id.profileActivityBirthdayYearLBL);

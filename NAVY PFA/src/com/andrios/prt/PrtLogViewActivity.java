@@ -1,12 +1,5 @@
 package com.andrios.prt;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -23,17 +16,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PrtLogViewActivity extends Activity {
 	
@@ -57,7 +55,6 @@ public class PrtLogViewActivity extends Activity {
 	Spinner moodSpinner;
 	CheckBox officialCheckBox;
 	boolean changes;
-	GoogleAnalyticsTracker tracker;
 
 
 	
@@ -67,11 +64,8 @@ public class PrtLogViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.prtlogviewactivity);
-        
-     
+
         getExtras();
-        setTracker();
-        
     }
     
 	@Override
@@ -80,20 +74,13 @@ public class PrtLogViewActivity extends Activity {
 	    inflater.inflate(R.menu.share_menu, menu);
 	    return true;
 	}
-    
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-	}
 	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
     
 	@SuppressWarnings("unchecked")
@@ -390,11 +377,6 @@ public class PrtLogViewActivity extends Activity {
 			picMessageIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(downloadedPic)); 
 			picMessageIntent.putExtra(Intent.EXTRA_SUBJECT, "AndriOS Apps Navy PFA app for Android");
 			picMessageIntent.putExtra(Intent.EXTRA_TEXT, "PRT Score: " + entry.getTotalScore() + " @Andrios_Apps http://bit.ly/q21voC #USNAVY");
-			 tracker.trackEvent(
-			            "Social",  // Category
-			            "Share",  // Action
-			            "Share PRT", // Label
-			            0);       // Value
 		    startActivity(Intent.createChooser(picMessageIntent, "Share Your PRT Score:"));
 		    
 		}

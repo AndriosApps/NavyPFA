@@ -1,30 +1,22 @@
 package com.andrios.prt;
 
-import java.util.List;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
+
+import java.util.List;
 
 public class AboutActivity extends Activity {
 	
 	
 	Button facebookBTN, twitterBTN, emailBTN, marketBTN;
-	GoogleAnalyticsTracker tracker;
 	
 	
     /** Called when the activity is first created. */
@@ -36,22 +28,16 @@ public class AboutActivity extends Activity {
         
         setConnections();
         setOnClickListeners();
-        setTracker();
     }
     
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key), getApplicationContext());
-	}
+
 	
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
 
 
@@ -67,12 +53,6 @@ public class AboutActivity extends Activity {
 		emailBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				
-				tracker.trackEvent(
-			            "Clicks",  // Category
-			            "Link",  // Action
-			            "Email", // Label
-			            0);       // Value
 				
 			    final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 			     
@@ -93,12 +73,7 @@ public class AboutActivity extends Activity {
 		marketBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				
-				tracker.trackEvent(
-			            "Clicks",  // Category
-			            "Link",  // Action
-			            "Market", // Label
-			            0);       // Value
+
 				Intent intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse("market://search?q=pub:AndriOS"));
 				startActivity(intent);
@@ -129,11 +104,7 @@ public class AboutActivity extends Activity {
 		twitterBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				tracker.trackEvent(
-			            "Clicks",  // Category
-			            "Link",  // Action
-			            "Twitter", // Label
-			            0);       // Value
+
 				String message = "@AndriOS_Apps";
 
 				

@@ -30,7 +30,7 @@
             android:id="@+id/linearLayout28"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center|top"
             android:orientation="vertical">
 
@@ -50,7 +50,7 @@
                 android:orientation="horizontal" />
 
             <LinearLayout
-                android:id="@+id/linearLayout30"
+                android:id="@+id/pullupScoreLinearLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -58,24 +58,23 @@
 
                 <TextView
                     android:id="@+id/pullupScoreLBL"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="70dp"
+                    android:layout_height="fill_parent"
                     android:gravity="center|left"
                     android:paddingLeft="10dp"
                     android:text="@string/pushups"/>
 
                 <TextView
                     android:id="@+id/prtActivityPushupScoreLBL"
-                    android:layout_width="77dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text=""/>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout31"
+                android:id="@+id/SitupScoreLinearLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -83,24 +82,23 @@
 
                 <TextView
                     android:id="@+id/textView4"
-                    android:layout_width="100dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center|left"
                     android:paddingLeft="10dp"
                     android:text="@string/crunches"/>
 
                 <TextView
-                    android:id="@+id/prtActivitySitupScoreActivity"
-                    android:layout_width="77dp"
+                    android:id="@+id/prtActivitySitupScoreLBL"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text=""/>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout32"
+                android:id="@+id/RunScoreLinearLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -108,18 +106,17 @@
 
                 <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="100dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center|left"
                     android:paddingLeft="10dp"
                     android:text="@string/run"/>
 
                 <TextView
                     android:id="@+id/prtActivityRunScoreActivity"
-                    android:layout_width="77dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text=""/>
             </LinearLayout>

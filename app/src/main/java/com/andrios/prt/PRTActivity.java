@@ -171,7 +171,7 @@ public class PRTActivity extends Activity implements Observer {
 		
 
 		pushupScoreLBL = (TextView) findViewById(R.id.prtActivityPushupScoreLBL);
-		situpScoreLBL = (TextView) findViewById(R.id.prtActivitySitupScoreActivity);
+		situpScoreLBL = (TextView) findViewById(R.id.prtActivitySitupScoreLBL);
 		runScoreLBL = (TextView) findViewById(R.id.prtActivityRunScoreActivity);
 		
 

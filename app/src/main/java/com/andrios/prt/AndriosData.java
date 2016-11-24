@@ -1,13 +1,13 @@
 package com.andrios.prt;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Observable;
-
-import android.content.Context;
-import android.widget.Toast;
 
 
 public class AndriosData extends Observable implements Serializable, Cloneable {
@@ -305,10 +305,6 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 		System.out.println("MODEL UPDATE RUNTIME");
 	}
 	
-	
-
-
-	
 	public void write(Context ctx){
 		AndriosData writableData = null;
 		try {
@@ -316,10 +312,8 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 		} catch (CloneNotSupportedException e1) {
 			e1.printStackTrace();
 		}
-		
-		
+
 		try {
-		
 			FileOutputStream fos;
 			fos = ctx.openFileOutput("data", Context.MODE_PRIVATE);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);

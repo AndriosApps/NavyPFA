@@ -77,7 +77,8 @@ abstract class LogEntry implements Serializable{
 		int year = c.get(Calendar.YEAR);
 		String monthString = "";
 		System.out.println("Month Is " + month);
-		if(month == 1){
+
+		if(month == 1){                             //TODO Make this a switch statement
 			monthString = "January";
 		}else if(month == 2){
 			monthString = "February";

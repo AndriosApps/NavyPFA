@@ -57,7 +57,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] runMale17 = {765, 735, 720, 660, 630, 600, 585, 570, 555, 540, 525, 495};
 	int[] runMale20 = {810, 795, 765, 720, 690, 645, 630, 600, 585, 555, 540, 510};
 	int[] runMale25 = {840, 825, 803, 773, 735, 683, 652, 630, 615, 578, 563, 535};
-	int[] runMale30 = {870, 825, 675, 600, 560};
+	int[] runMale30 = {870, 855, 840, 825, 780, 720, 675, 660, 630, 600, 585, 560};
 	int[] runMale35 = {900, 848, 683, 608, 565};
 	int[] runMale40 = {930, 870, 705, 615, 570};
 	int[] runMale45 = {968, 893, 728, 630, 573};

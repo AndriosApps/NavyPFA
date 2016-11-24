@@ -28,7 +28,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 			236, 241, 246, 251, 256, 261, 266, 271, 271};
 			
 	
-	int[] pushupMale17 = {42, 51, 76, 86, 92};
+	int[] pushupMale17 = {42, 46, 49, 51, 60, 68, 76, 79, 82, 86, 91, 92};
 	int[] pushupMale20 = {37, 47, 71, 81, 87};
 	int[] pushupMale25 = {34, 44, 67, 77, 84};
 	int[] pushupMale30 = {31, 41, 64, 74, 80};
@@ -40,7 +40,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] pushupMale60 = { 8, 14, 44, 52, 57};
 	int[] pushupMale65 = { 4, 10, 36, 44, 48};
 	
-	int[] situpMale17 = {50, 62, 90, 102, 109};
+	int[] situpMale17 = {50, 54, 59, 62, 71, 81, 90, 93, 98, 102, 107, 109};
 	int[] situpMale20 = {46, 58, 87, 98, 105};
 	int[] situpMale25 = {43, 54, 84, 95, 101};
 	int[] situpMale30 = {40, 51, 81, 92, 98};
@@ -54,7 +54,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	
 	// 1  2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18   19    20   21
 	//60 120 180 240 300 360 420 480 540 600 660 720 780 840 900 960 1020 1080 1140 1200 1260
-	int[] runMale17 = {750, 660, 585, 540, 495};
+	int[] runMale17 = {765, 735, 720, 660, 630, 600, 585, 570, 555, 540, 525, 495};
 	int[] runMale20 = {810, 720, 630, 555, 510};
 	int[] runMale25 = {840, 773, 652, 573, 535};
 	int[] runMale30 = {870, 825, 675, 600, 560};

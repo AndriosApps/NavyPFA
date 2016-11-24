@@ -50,6 +50,10 @@ public class PRTActivity extends Activity implements Observer {
 	boolean male;
 	CheckBox altitudeCheckBox;
 	String cardio = "Run";
+
+
+	int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
+
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -817,15 +821,12 @@ public class PRTActivity extends Activity implements Observer {
 		int pushupScore = 0;
 		int situpScore = 0;
 		int runScore =0;
-		int[] Scores = {45, 60, 75, 90, 100};
 		boolean fail0 = true;//pushups
 		boolean fail1 = true;//situps
 		boolean fail2 = true;//run
 		
 		if(pushupchanged){
-			
-		
-			for(int i = 4; i >= 0; i--){
+			for(int i = 11; i >= 0; i--){
 				if(pushups >= pushupMale[i]){
 					totalScore += Scores[i];
 					pushupScore = Scores[i];
@@ -840,7 +841,7 @@ public class PRTActivity extends Activity implements Observer {
 		}
 		
 		if(situpchanged){
-			for(int i = 4; i >= 0; i--){
+			for(int i = 11; i >= 0; i--){
 				if(situps >= situpMale[i]){
 					totalScore += Scores[i];
 					situpScore = Scores[i];
@@ -855,7 +856,7 @@ public class PRTActivity extends Activity implements Observer {
 		}
 		
 		if(runchanged){
-			for(int i = 4; i >= 0; i--){
+			for(int i = 11; i >= 0; i--){
 				if(runtime <= runMale[i]){
 					totalScore += Scores[i];
 					runScore = Scores[i];
@@ -902,7 +903,6 @@ public class PRTActivity extends Activity implements Observer {
 		int pushupScore = 0;
 		int situpScore = 0;
 		int runScore =0;
-		int[] Scores = {45, 60, 75, 90, 100};
 		boolean fail0 = true;//pushups
 		boolean fail1 = true;//situps
 		boolean fail2 = true;//run
@@ -910,7 +910,7 @@ public class PRTActivity extends Activity implements Observer {
 		if(pushupchanged){
 			
 			
-			for(int i = 4; i >= 0; i--){
+			for(int i = 11; i >= 0; i--){
 				if(pushups >= pushupFemale[i]){
 					totalScore += Scores[i];
 					pushupScore = Scores[i];
@@ -925,7 +925,7 @@ public class PRTActivity extends Activity implements Observer {
 		}
 		
 		if(situpchanged){
-			for(int i = 4; i >= 0; i--){
+			for(int i = 11; i >= 0; i--){
 				if(situps >= situpFemale[i]){
 					totalScore += Scores[i];
 					situpScore = Scores[i];
@@ -940,7 +940,7 @@ public class PRTActivity extends Activity implements Observer {
 		}
 		
 		if(runchanged){
-			for(int i = 4; i >= 0; i--){
+			for(int i = 11; i >= 0; i--){
 				if(runtime <= runFemale[i]){
 					totalScore += Scores[i];
 					runScore = Scores[i];
@@ -973,9 +973,6 @@ public class PRTActivity extends Activity implements Observer {
 			scoreLBL.setTextColor(Color.BLACK);
 			scoreLBL.getBackground().setAlpha(100);
 		}
-	
-		
-		
 	}
 	
 	private boolean changed(){
@@ -983,12 +980,9 @@ public class PRTActivity extends Activity implements Observer {
 		if(runchanged && situpchanged && pushupchanged){
 			changed = true;
 		}
-		
 		return changed;
 	}
-	
 
-	
 	public void onResume(){
 		super.onResume();
 	}
@@ -996,8 +990,6 @@ public class PRTActivity extends Activity implements Observer {
 	public void onPause(){
 		super.onPause();
 	}
-
-
 
 	public void update(Observable observable, Object data) {
 		age = mData.getAge();
@@ -1080,16 +1072,30 @@ public class PRTActivity extends Activity implements Observer {
 		
 		if((score) < 45){
 			scoreString = "Failure";
-		}else if((score) < 60){
-			scoreString = "Satisfactory";
+		}else if((score)< 50){
+			scoreString = "Probationary";
+		}else if((score)< 55){
+			scoreString = "Satisfactory, Medium";
+		}else if((score)< 60){
+			scoreString = "Satisfactory, High";
+		}else if((score)< 65){
+			scoreString = "Good, Low";
+		}else if((score)< 70){
+			scoreString = "Good, Medium";
 		}else if((score)< 75){
-			scoreString = "Good";
+			scoreString = "Good, High";
+		}else if((score)< 80){
+			scoreString = "Excellent, Low";
+		}else if((score)< 85){
+			scoreString = "Excellent, Medium";
 		}else if((score)< 90){
-			scoreString = "Excellent";
+			scoreString = "Excellent High";
+		}else if((score)< 95){
+			scoreString = "Outstanding, Low";
 		}else if((score)< 100){
-			scoreString = "Outstanding";
+			scoreString = "Outstanding, Medium";
 		}else if((score)>= 100){
-			scoreString = "Maximum";
+			scoreString = "Outstanding, High";
 		}
 		
 		

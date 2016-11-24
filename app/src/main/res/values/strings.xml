@@ -10,4 +10,17 @@
     <string name="calculators">Calculators</string>
     <string name="profile">Profile</string>
     <string name="andrios">AndriOS</string>
+    <string name="crunches">Crunches</string>
+    <string name="run">Run</string>
+    <string name="my_scores">My Scores</string>
+    <string name="components">Components</string>
+    <string name="pushups">Pushups</string>
+    <string name="total">Total</string>
+    <string name="my_performance">My Performance</string>
+    <string name="situps">Situps</string>
+    <string name="run_time">Run Time</string>
+    <string name="_00_00">00:00</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="log_prt">Log PRT</string>
 </resources>

@@ -4,4 +4,10 @@
     <string name="app_name">Navy PFA</string>
     <string name="ga_api_key">UA-23366060-2</string>
     <string name="title_instructions">Instructuctions</string>
+    <string name="emtpy_string" />
+    <string name="instructions">Instructions</string>
+    <string name="log">Log</string>
+    <string name="calculators">Calculators</string>
+    <string name="profile">Profile</string>
+    <string name="andrios">AndriOS</string>
 </resources>

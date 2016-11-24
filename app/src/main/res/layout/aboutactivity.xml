@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#ffffff" android:orientation="vertical">
+  
+   <LinearLayout android:id="@+id/linearLayout1" android:background="#33cc00" android:layout_width="fill_parent" android:layout_height="50dip" android:gravity="center">
+        <TextView android:layout_weight="0" android:textColor="#000000" android:layout_height="wrap_content" android:text="AndriOS" android:textSize="22dip" android:id="@+id/textView1" android:layout_width="wrap_content"></TextView>
+        <LinearLayout android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="fill_parent" android:id="@+id/journalListActivityListView"></LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content">
+        <TextView android:text="We are a team of developers who write apps for Android and iPhone platforms.  We have a military background and want to write apps that members of the armed forces find useful. If you like our apps, leave us a good comment, or 'buy us a beer' by purchasing the premium features where available!" android:textColor="#000000" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:gravity="bottom|right" android:layout_weight="1">
+        <ImageView android:id="@+id/imageView1" android:src="@drawable/andrios" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY"></ImageView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout3" android:layout_height="wrap_content" android:layout_weight="0" android:gravity="center">
+        <Button android:background="@drawable/facebook" android:layout_width="75dip" android:layout_height="75dip" android:id="@+id/aboutActivityFacebookBTN"></Button>
+        <Button android:layout_width="75dip"  android:layout_height="75dip" android:background="@drawable/twitter" android:id="@+id/aboutActivityTwitterBTN"></Button>
+        <Button android:layout_width="75dip"  android:layout_height="75dip" android:background="@drawable/email" android:id="@+id/aboutActivityEmailBTN"></Button>
+        <Button android:layout_width="75dip"  android:layout_height="75dip" android:background="@drawable/google_market" android:id="@+id/aboutActivityMarketBTN"></Button>
+    </LinearLayout>
+  
+  
+</LinearLayout>

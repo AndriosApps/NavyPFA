@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.andrios.prt"
+        minSdkVersion 9
+        targetSdkVersion 25
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v4'
+    }
+
+    dependencies {
+        compile 'com.android.support:support-v4:25.+'
+        compile 'com.android.support:appcompat-v7:25.+'
+    }
+}

@@ -50,17 +50,17 @@
                 android:orientation="horizontal" />
 
             <LinearLayout
-                android:id="@+id/pullupScoreLinearLayout"
+                android:id="@+id/pushupScoreLinearLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:gravity="center|left">
+                android:gravity="left">
 
                 <TextView
-                    android:id="@+id/pullupScoreLBL"
+                    android:id="@+id/pushupScoreLBL"
                     android:layout_width="70dp"
                     android:layout_height="fill_parent"
-                    android:gravity="center|left"
+                    android:gravity="left"
                     android:paddingLeft="10dp"
                     android:text="@string/pushups"/>
 
@@ -78,13 +78,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:gravity="center|left">
+                android:gravity="left">
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center|left"
+                    android:gravity="left"
                     android:paddingLeft="10dp"
                     android:text="@string/crunches"/>
 
@@ -102,13 +102,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:gravity="center|left">
+                android:gravity="left">
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center|left"
+                    android:gravity="left"
                     android:paddingLeft="10dp"
                     android:text="@string/run"/>
 

@@ -54,7 +54,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	
 	// 1  2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18   19    20   21
 	//60 120 180 240 300 360 420 480 540 600 660 720 780 840 900 960 1020 1080 1140 1200 1260
-	int[] runMale17 = {765, 735, 720, 660, 630, 600, 585, 570, 555, 540, 525, 495};
+	int[] runMale17 = {765,     735,     720,    660,    630,    600,    585,    570,    555,    540,    525,    495};
 	int[] runMale20 = {810, 795, 765, 720, 690, 645, 630, 600, 585, 555, 540, 510};
 	int[] runMale25 = {840, 825, 803, 773, 735, 683, 652, 630, 615, 578, 563, 535};
 	int[] runMale30 = {870, 855, 840, 825, 780, 720, 675, 660, 630, 600, 585, 560};
@@ -144,17 +144,17 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 			205, 277, 216, 222, 227, 233, 239, 245, 251, 257, 263};
 	
 	
-	int[] pushupFemale17 = {19, 24, 42, 47, 51};
-	int[] pushupFemale20 = {16, 21, 39, 44, 48};
-	int[] pushupFemale25 = {13, 19, 37, 43, 46};
-	int[] pushupFemale30 = {11, 17, 35, 41, 44};
-	int[] pushupFemale35 = { 9, 14, 34, 39, 43};
-	int[] pushupFemale40 = { 7, 12, 32, 37, 41};
-	int[] pushupFemale45 = {5, 11, 30, 35, 40};
-	int[] pushupFemale50 = {2, 10, 28, 33, 38};
-	int[] pushupFemale55 = {2, 6, 20, 26, 30};
-	int[] pushupFemale60 = {2, 5, 16, 22, 26};
-	int[] pushupFemale65 = {1, 4, 12, 18, 22};
+	int[] pushupFemale17 = {19, 20, 22, 24, 30, 36, 42, 43, 45, 47, 50, 51};
+	int[] pushupFemale20 = {16, 17, 20, 21, 28, 33, 39, 40, 43, 44, 47, 48};
+	int[] pushupFemale25 = {13, 15, 18, 19, 26, 30, 37, 39, 41, 43, 45, 46};
+	int[] pushupFemale30 = {11, 13, 15, 17, 24, 28, 35, 37, 39, 41, 43, 44};
+	int[] pushupFemale35 = { 9, 11, 13, 14, 22, 26, 34, 35, 37, 39, 42, 43};
+	int[] pushupFemale40 = { 7,  9, 11, 12, 20, 24, 32, 33, 35, 37, 40, 41};
+	int[] pushupFemale45 = { 5,  7,  8, 11, 18, 22, 30, 32, 33, 35, 39, 40};
+	int[] pushupFemale50 = { 2,  5,  6, 10, 16, 20, 28, 30, 31, 33, 37, 38};
+	int[] pushupFemale55 = { 2,  3,  5,  6, 10, 16, 20, 22, 24, 26, 28, 30};
+	int[] pushupFemale60 = { 2,  3,  4,  5,  8, 12, 16, 18, 20, 22, 24, 26};
+	int[] pushupFemale65 = { 1,  2,  3,  4,  6,  9, 12, 14, 16, 18, 20, 22};
 	
 	int[] situpFemale17 = {50, 62, 90, 102, 109};
 	int[] situpFemale20 = {46, 58, 87, 98, 105};

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/my_scores"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <LinearLayout
         android:id="@+id/LinearLayout01"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/components"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/linearLayout18"
@@ -62,7 +62,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="left"
                     android:paddingLeft="10dp"
-                    android:text="@string/pushups"/>
+                    android:text="@string/pushups" />
 
                 <TextView
                     android:id="@+id/prtActivityPushupScoreLBL"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text=""/>
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:paddingLeft="10dp"
-                    android:text="@string/crunches"/>
+                    android:text="@string/crunches" />
 
                 <TextView
                     android:id="@+id/prtActivitySitupScoreLBL"
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text=""/>
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:paddingLeft="10dp"
-                    android:text="@string/run"/>
+                    android:text="@string/run" />
 
                 <TextView
                     android:id="@+id/prtActivityRunScoreActivity"
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text=""/>
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/total"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/linearLayout23"
@@ -151,7 +151,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text=""
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -168,7 +168,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/my_performance"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -206,14 +206,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/pushups"/>
+                    android:text="@string/pushups" />
 
                 <TextView
                     android:id="@+id/calculatorPushUpLBL"
                     android:layout_width="1px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0"/>
+                    android:text="0" />
             </LinearLayout>
 
             <LinearLayout
@@ -222,41 +222,31 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout2"
-                    android:layout_width="60dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/calculatorPushupsDownBTN"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_weight="0"
-                        android:background="@drawable/minus"
-                        android:text=""/>
-                </LinearLayout>
+                <Button
+                    android:id="@+id/calculatorPushupsDownBTN"
+                    android:layout_width="@dimen/button_prt_width"
+                    android:layout_height="@dimen/button_prt_height"
+                    android:layout_weight="0"
+                    android:background="@drawable/minus"
+                    android:text="" />
+
 
                 <SeekBar
                     android:id="@+id/calculatorPushupSeekBar"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout4"
-                    android:layout_width="60dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/calculatorPushupsUpBTN"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_weight="0"
-                        android:background="@drawable/plus"
-                        android:text=""/>
-                </LinearLayout>
+                <Button
+                    android:id="@+id/calculatorPushupsUpBTN"
+                    android:layout_width="@dimen/button_prt_width"
+                    android:layout_height="@dimen/button_prt_height"
+                    android:layout_weight="0"
+                    android:background="@drawable/plus"
+                    android:text="" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -287,14 +277,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/situps"/>
+                    android:text="@string/situps" />
 
                 <TextView
                     android:id="@+id/calculatorSitUpLBL"
                     android:layout_width="1px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0"/>
+                    android:text="0" />
             </LinearLayout>
 
             <LinearLayout
@@ -303,41 +293,31 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout12"
-                    android:layout_width="60dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/calculatorSitupsDownBTN"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_weight="0"
-                        android:background="@drawable/minus"
-                        android:text=""/>
-                </LinearLayout>
+                <Button
+                    android:id="@+id/calculatorSitupsDownBTN"
+                    android:layout_width="@dimen/button_prt_width"
+                    android:layout_height="@dimen/button_prt_height"
+                    android:layout_weight="0"
+                    android:background="@drawable/minus"
+                    android:text="" />
+
 
                 <SeekBar
                     android:id="@+id/calculatorSitUpSeekBar"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout13"
-                    android:layout_width="60dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/calculatorSitupsUpBTN"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_weight="0"
-                        android:background="@drawable/plus"
-                        android:text=""/>
-                </LinearLayout>
+                <Button
+                    android:id="@+id/calculatorSitupsUpBTN"
+                    android:layout_width="@dimen/button_prt_width"
+                    android:layout_height="@dimen/button_prt_height"
+                    android:layout_weight="0"
+                    android:background="@drawable/plus"
+                    android:text="" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -369,14 +349,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/run_time"/>
+                    android:text="@string/run_time" />
 
                 <TextView
                     android:id="@+id/calculatorRunLBL"
                     android:layout_width="1px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/_00_00"/>
+                    android:text="@string/_00_00" />
             </LinearLayout>
 
             <LinearLayout
@@ -385,41 +365,31 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout21"
-                    android:layout_width="60dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/calculatorSecondsDownBTN"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_weight="0"
-                        android:background="@drawable/minus"
-                        android:text=""/>
-                </LinearLayout>
+                <Button
+                    android:id="@+id/calculatorSecondsDownBTN"
+                    android:layout_width="@dimen/button_prt_width"
+                    android:layout_height="@dimen/button_prt_height"
+                    android:layout_weight="0"
+                    android:background="@drawable/minus"
+                    android:text="" />
+
 
                 <SeekBar
                     android:id="@+id/calculatorRunTimeSeekBar"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout22"
-                    android:layout_width="60dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center">
 
-                    <Button
-                        android:id="@+id/calculatorSecondsUpBTN"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:layout_weight="0"
-                        android:background="@drawable/plus"
-                        android:text=""/>
-                </LinearLayout>
+                <Button
+                    android:id="@+id/calculatorSecondsUpBTN"
+                    android:layout_width="@dimen/button_prt_width"
+                    android:layout_height="@dimen/button_prt_height"
+                    android:layout_weight="0"
+                    android:background="@drawable/plus"
+                    android:text="" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -436,14 +406,14 @@
             android:layout_width="75dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
         <CheckBox
             android:id="@+id/prtActivityAltitudeCheckBox"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="&gt;5000ft"/>
+            android:text="&gt;5000ft" />
     </LinearLayout>
 
     <LinearLayout
@@ -467,20 +437,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:checked="true"
-                android:text="@string/male"/>
+                android:text="@string/male" />
 
             <com.andrios.prt.SegmentedControlButton
                 android:id="@+id/prtActivityrFemaleRDO"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:text="@string/female"/>
+                android:text="@string/female" />
         </RadioGroup>
 
         <Spinner
             android:id="@+id/prtActivityAgeSpinner"
             android:layout_width="150dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
     </LinearLayout>
 
     <RelativeLayout
@@ -495,7 +465,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/log_prt"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
     </RelativeLayout>
 </LinearLayout>

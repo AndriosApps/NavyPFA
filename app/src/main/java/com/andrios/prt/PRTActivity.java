@@ -42,7 +42,6 @@ public class PRTActivity extends Activity implements Observer {
 	Button logBTN;
 	AndriosData mData;
 
-	private String array_spinner[];
 	boolean pushupchanged = false, situpchanged = false, runchanged = false;
 	boolean isPremium = false, isLog = false, alternate = false;
 	RelativeLayout bottomBar;
@@ -135,7 +134,8 @@ public class PRTActivity extends Activity implements Observer {
 	}
 
 	private void setConnections() {
-		array_spinner=new String[11];
+		String[] array_spinner = new String[11];
+
 		array_spinner[0]="17-19";
 		array_spinner[1]="20-24";
 		array_spinner[2]="25-29";
@@ -820,10 +820,10 @@ public class PRTActivity extends Activity implements Observer {
 		int totalScore = 0;
 		int pushupScore = 0;
 		int situpScore = 0;
-		int runScore =0;
-		boolean fail0 = true;//pushups
-		boolean fail1 = true;//situps
-		boolean fail2 = true;//run
+		int cardioScore =0;
+		boolean pushupsFailed = true;
+		boolean situpsFailed = true;
+		boolean cardioFailed = true;
 		
 		if(pushupchanged){
 			for(int i = 11; i >= 0; i--){
@@ -831,11 +831,11 @@ public class PRTActivity extends Activity implements Observer {
 					totalScore += Scores[i];
 					pushupScore = Scores[i];
 					pushupScoreLBL.setText(getCategory(pushupScore));
-					fail0 = false;
+					pushupsFailed = false;
 					break;
 				}
 			}
-			if(fail0){
+			if(pushupsFailed){
 				pushupScoreLBL.setText("Failure");
 			}
 		}
@@ -846,11 +846,11 @@ public class PRTActivity extends Activity implements Observer {
 					totalScore += Scores[i];
 					situpScore = Scores[i];
 					situpScoreLBL.setText(getCategory(situpScore));
-					fail1 = false;
+					situpsFailed = false;
 					break;
 				}
 			}
-			if(fail1){
+			if(situpsFailed){
 				situpScoreLBL.setText("Failure");
 			}
 		}
@@ -859,20 +859,20 @@ public class PRTActivity extends Activity implements Observer {
 			for(int i = 11; i >= 0; i--){
 				if(runtime <= runMale[i]){
 					totalScore += Scores[i];
-					runScore = Scores[i];
-					runScoreLBL.setText(getCategory(runScore));
-					fail2 = false;
+					cardioScore = Scores[i];
+					runScoreLBL.setText(getCategory(cardioScore));
+					cardioFailed = false;
 					break;
 				}
 			}
-			if(fail2){
+			if(cardioFailed){
 				runScoreLBL.setText("Failure");
 			}
 		}
 		
 		
 		
-		if(!fail0 && !fail1 && !fail2 && changed()){
+		if(!pushupsFailed && !situpsFailed && !cardioFailed && changed()){
 			
 			if((totalScore / 3) < 45){
 				scoreLBL.setBackgroundColor(Color.RED);
@@ -1089,7 +1089,7 @@ public class PRTActivity extends Activity implements Observer {
 		}else if((score)< 85){
 			scoreString = "Excellent, Medium";
 		}else if((score)< 90){
-			scoreString = "Excellent High";
+			scoreString = "Excellent, High";
 		}else if((score)< 95){
 			scoreString = "Outstanding, Low";
 		}else if((score)< 100){

@@ -38,7 +38,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] pushupMale50 = {19, 23, 25, 30, 34, 43, 49, 51, 53, 59, 62, 64};
 	int[] pushupMale55 = {10, 12, 14, 16, 32, 38, 46, 48, 52, 56, 59, 60};
 	int[] pushupMale60 = { 8, 10, 12, 14, 23, 32, 44, 46, 48, 52, 56, 57};
-	int[] pushupMale65 = { 4, 6, 8, 10, 18, 25, 36, 39, 41, 44, 46, 48};
+	int[] pushupMale65 = { 4,  6,  8, 10, 18, 25, 36, 39, 41, 44, 46, 48};
 	
 	int[] situpMale17 = {50, 54, 59, 62, 71, 81, 90, 93, 98, 102, 107, 109};
 	int[] situpMale20 = {46, 50, 54, 58, 66, 78, 87, 90, 94, 98, 103, 105};

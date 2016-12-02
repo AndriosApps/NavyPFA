@@ -155,18 +155,18 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] pushupFemale55 = { 2,  3,  5,  6, 10, 16, 20, 22, 24, 26, 28, 30};
 	int[] pushupFemale60 = { 2,  3,  4,  5,  8, 12, 16, 18, 20, 22, 24, 26};
 	int[] pushupFemale65 = { 1,  2,  3,  4,  6,  9, 12, 14, 16, 18, 20, 22};
-	
-	int[] situpFemale17 = {50, 62, 90, 102, 109};
-	int[] situpFemale20 = {46, 58, 87, 98, 105};
-	int[] situpFemale25 = {13, 54, 84, 95, 101};
-	int[] situpFemale30 = {40, 51, 81, 92, 98};
-	int[] situpFemale35 = {37, 47, 78, 88, 95};
-	int[] situpFemale40 = {35, 44, 76, 85, 92};
-	int[] situpFemale45 = {31, 40, 73, 81, 88};
-	int[] situpFemale50 = {29, 37, 71, 78, 85};
-	int[] situpFemale55 = {26, 36, 62, 74, 81};
-	int[] situpFemale60 = {20, 26, 56, 70, 75};
-	int[] situpFemale65 = {10, 20, 44, 60, 65};
+
+    int[] situpFemale17 = {50, 54, 59, 62, 71, 81, 90, 93, 98, 102, 107, 109};
+    int[] situpFemale20 = {46, 50, 54, 58, 66, 78, 87, 90, 94, 98, 103, 105};
+    int[] situpFemale25 = {43, 47, 50, 54, 62, 75, 84, 87, 91, 95, 100, 101};
+    int[] situpFemale30 = {40, 44, 47, 51, 59, 73, 81, 85, 88, 92, 97, 98};
+    int[] situpFemale35 = {37, 40, 43, 47, 55, 70, 78, 83, 85, 88, 93, 95};
+    int[] situpFemale40 = {35, 37, 39, 44, 51, 68, 76, 80, 83, 85, 90, 92};
+    int[] situpFemale45 = {31, 33, 35, 40, 47, 65, 73, 78, 80, 81, 86, 88};
+    int[] situpFemale50 = {29, 30, 32, 37, 44, 63, 71, 76, 77, 78, 84, 85};
+    int[] situpFemale55 = {26, 28, 30, 36, 40, 54, 62, 66, 70, 74, 80, 81};
+    int[] situpFemale60 = {20, 22, 24, 26, 32, 40, 56, 62, 66, 70, 74, 75};
+    int[] situpFemale65 = {10, 13, 17, 20, 28, 36, 44, 50, 55, 60, 64, 65};
 	
 	
 	int[] runFemale17 = {900, 	885, 	855, 	810, 	780, 	765, 	750, 	720, 	705, 	690, 	675, 	569};

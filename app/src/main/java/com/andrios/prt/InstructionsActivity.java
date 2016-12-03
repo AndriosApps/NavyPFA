@@ -20,21 +20,21 @@ public class InstructionsActivity extends Activity {
 	private static String OPNAVINST6110JURL = "http://navy-fitness.com/wp-content/uploads/2011/07/6110.1J-Physical-Readiness-program.pdf";
 	
 	LinearLayout OPNAVINST_6110j;
-	LinearLayout NAVADMIN_203_11;
-	LinearLayout NAVADMIN_118_11;
-	LinearLayout NAVADMIN_338_10;
-	LinearLayout NAVADMIN_256_10;
-	LinearLayout NAVADMIN_193_10;
-	LinearLayout NAVADMIN_131_10;
-	LinearLayout NAVADMIN_247_09;
-	LinearLayout NAVADMIN_073_09;
-	LinearLayout NAVADMIN_007_09;
-	LinearLayout NAVADMIN_312_08;
-	LinearLayout NAVADMIN_277_08;
-	LinearLayout NAVADMIN_256_08;
-	LinearLayout NAVADMIN_191_08;
-	LinearLayout NAVADMIN_011_07;
-	LinearLayout NAVADMIN_293_06;
+	LinearLayout Guide_1;
+	LinearLayout Guide_2;
+	LinearLayout Guide_3;
+	LinearLayout Guide_4;
+	LinearLayout Guide_5;
+	LinearLayout Guide_6;
+	LinearLayout Guide_7;
+	LinearLayout Guide_8;
+	LinearLayout Guide_9;
+	LinearLayout Guide_10;
+	LinearLayout Guide_11;
+	LinearLayout Guide_12;
+	LinearLayout Guide_13;
+	LinearLayout Guide_14;
+	LinearLayout Forms;
 	LinearLayout NAVADMIN_072_06;
 	LinearLayout NAVADMIN_041_06;
 	
@@ -68,23 +68,21 @@ public class InstructionsActivity extends Activity {
 		
 		OPNAVINST_6110j = (LinearLayout) findViewById(R.id.OPNAVINST_6110j);
 
-		NAVADMIN_203_11 = (LinearLayout) findViewById(R.id.NAVADMIN_203_11);
-		NAVADMIN_118_11 = (LinearLayout) findViewById(R.id.NAVADMIN_118_11);
-		NAVADMIN_338_10 = (LinearLayout) findViewById(R.id.NAVADMIN_338_10);
-		NAVADMIN_256_10 = (LinearLayout) findViewById(R.id.NAVADMIN_256_10);
-		NAVADMIN_193_10 = (LinearLayout) findViewById(R.id.NAVADMIN_193_10);
-		NAVADMIN_131_10 = (LinearLayout) findViewById(R.id.NAVADMIN_131_10);
-		NAVADMIN_247_09 = (LinearLayout) findViewById(R.id.NAVADMIN_247_09);
-		NAVADMIN_073_09 = (LinearLayout) findViewById(R.id.NAVADMIN_073_09);
-		NAVADMIN_007_09 = (LinearLayout) findViewById(R.id.NAVADMIN_007_09);
-		NAVADMIN_312_08 = (LinearLayout) findViewById(R.id.NAVADMIN_312_08);
-		NAVADMIN_277_08 = (LinearLayout) findViewById(R.id.NAVADMIN_277_08);
-		NAVADMIN_256_08 = (LinearLayout) findViewById(R.id.NAVADMIN_256_08);
-		NAVADMIN_191_08 = (LinearLayout) findViewById(R.id.NAVADMIN_191_08);
-		NAVADMIN_011_07 = (LinearLayout) findViewById(R.id.NAVADMIN_011_07);
-		NAVADMIN_293_06 = (LinearLayout) findViewById(R.id.NAVADMIN_293_06);
-		NAVADMIN_072_06 = (LinearLayout) findViewById(R.id.NAVADMIN_072_06);
-		NAVADMIN_041_06 = (LinearLayout) findViewById(R.id.NAVADMIN_041_06);
+		Guide_1 = (LinearLayout) findViewById(R.id.linear_guide_1);
+		Guide_2 = (LinearLayout) findViewById(R.id.linear_guide_2);
+		Guide_3 = (LinearLayout) findViewById(R.id.linear_guide_3);
+		Guide_4 = (LinearLayout) findViewById(R.id.linear_guide_4);
+		Guide_5 = (LinearLayout) findViewById(R.id.linear_guide_5);
+		Guide_6 = (LinearLayout) findViewById(R.id.linear_guide_6);
+		Guide_7 = (LinearLayout) findViewById(R.id.linear_guide_7);
+		Guide_8 = (LinearLayout) findViewById(R.id.linear_guide_8);
+		Guide_9 = (LinearLayout) findViewById(R.id.linear_guide_9);
+		Guide_10 = (LinearLayout) findViewById(R.id.linear_guide_10);
+		Guide_11 = (LinearLayout) findViewById(R.id.linear_guide_11);
+		Guide_12 = (LinearLayout) findViewById(R.id.linear_guide_12);
+		Guide_13 = (LinearLayout) findViewById(R.id.linear_guide_13);
+		Guide_14 = (LinearLayout) findViewById(R.id.linear_guide_14);
+		Forms = (LinearLayout) findViewById(R.id.linear_forms);
 		
 		
 		if(!isPremium){
@@ -100,124 +98,139 @@ public class InstructionsActivity extends Activity {
 	private void setOnClickListeners() {
 		
 		
-		NAVADMIN_203_11.setOnClickListener(new OnClickListener(){
+		Guide_1.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
 				
 					
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2011/NAV11203.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%201-%20CFLAdministrative%20Duties%20and%20Responsibilities%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		}); 
-		NAVADMIN_118_11.setOnClickListener(new OnClickListener(){
+		Guide_2.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2011/NAV11118.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%202-%20Inspection%20and%20Command%20Self%20Assessment%20Checklist%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_338_10.setOnClickListener(new OnClickListener(){
+		Guide_3.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10338.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%203-PFA%20Checklist%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		}); 
-		NAVADMIN_256_10.setOnClickListener(new OnClickListener(){
+		Guide_4.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10256.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%204-%20Body%20Composition%20Assessment%20(BCA)%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_193_10.setOnClickListener(new OnClickListener(){
+		Guide_5.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10193.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%205-%20Physical%20Readiness%20Test%20%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_131_10.setOnClickListener(new OnClickListener(){
+		Guide_6.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10131.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%206-%20PFA%20Medical%20Waiver%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_247_09.setOnClickListener(new OnClickListener(){
+		Guide_7.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2009/NAV09247.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%207-%20Adminstrative%20Separation%20(ADSEP)%202016%20(F).pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_073_09.setOnClickListener(new OnClickListener(){
+		Guide_8.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2009/NAV09073.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%208-%20Managing%20PFA%20Records%20for%20Pregnant%20Service%20Women%202016%20(F).pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_007_09.setOnClickListener(new OnClickListener(){
+		Guide_9.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2009/NAV09007.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%209-%20Managing%20PFA%20Records%20for%20IA%20GSA%20OSA%20PEP%20and%20Mobilized%20Reservists%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_312_08.setOnClickListener(new OnClickListener(){
+		Guide_10.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08312.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2010-%20Alternate%20Cardio%20Options%20Procedures%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_277_08.setOnClickListener(new OnClickListener(){
+		Guide_11.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08277.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2011-%20Member%27s%20Responsibilities%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_256_08.setOnClickListener(new OnClickListener(){
+		Guide_12.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08256.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2012-%20Glossary%20of%20Physical%20Readiness%20Program%20Related%20Terms%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		}); 
-		NAVADMIN_191_08.setOnClickListener(new OnClickListener(){
+		Guide_13.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2008/NAV08191.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2013-%20Command%20PT%20and%20FEP%20Guide%202016%20(F).pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_011_07.setOnClickListener(new OnClickListener(){
+		Guide_14.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2007/NAV07011.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2014-%20Nutrition%20Resource%20Guide%202016.pdf"));
 				startActivity(browserIntent);
 			}
 			
 		});  
-		NAVADMIN_293_06.setOnClickListener(new OnClickListener(){
+		Forms.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2006/NAV06293.txt"));
+				Intent browserIntent = new Intent("android.intent.action.VIEW",
+						Uri.parse("http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Pages/Guide13Forms.aspx"));
 				startActivity(browserIntent);
 			}
 			

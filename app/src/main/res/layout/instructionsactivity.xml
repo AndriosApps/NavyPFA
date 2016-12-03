@@ -100,7 +100,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_203_11"
+                android:id="@+id/linear_guide_1"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -122,7 +122,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_118_11"
+                android:id="@+id/linear_guide_2"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -144,7 +144,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_338_10"
+                android:id="@+id/linear_guide_3"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -166,7 +166,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_256_10"
+                android:id="@+id/linear_guide_4"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -188,7 +188,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_193_10"
+                android:id="@+id/linear_guide_5"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -210,7 +210,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_131_10"
+                android:id="@+id/linear_guide_6"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -232,7 +232,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_247_09"
+                android:id="@+id/linear_guide_7"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -254,7 +254,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_073_09"
+                android:id="@+id/linear_guide_8"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -276,7 +276,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_007_09"
+                android:id="@+id/linear_guide_9"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -298,7 +298,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_312_08"
+                android:id="@+id/linear_guide_10"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -318,7 +318,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_277_08"
+                android:id="@+id/linear_guide_11"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -338,7 +338,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_256_08"
+                android:id="@+id/linear_guide_12"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -358,7 +358,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_191_08"
+                android:id="@+id/linear_guide_13"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -378,7 +378,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_011_07"
+                android:id="@+id/linear_guide_14"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -398,7 +398,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/NAVADMIN_293_06"
+                android:id="@+id/linear_forms"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -481,13 +481,5 @@
         android:layout_weight="0"
         android:gravity="center|bottom"
         android:orientation="vertical">
-
-        <com.google.ads.AdView xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-            android:id="@+id/instructionsAdView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            ads:adSize="BANNER"
-            ads:adUnitId="a14debe274d41b2" />
     </LinearLayout>
 </LinearLayout>

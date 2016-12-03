@@ -11,11 +11,9 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
@@ -100,11 +98,7 @@ public class ProfileActivity extends Activity {
 		
 		
 		dateTypeLBL = (TextView) findViewById(R.id.profileActivityDateTypeLBL);
-		
-		saveBTN = (Button) findViewById(R.id.profileActivitySaveBTN);
-	
-		
-		
+
 		
 		setDataField();
 	}
@@ -149,18 +143,7 @@ public class ProfileActivity extends Activity {
 			
 		});
 		
-		saveBTN.setOnClickListener(new OnClickListener(){
 
-			public void onClick(View v) {
-				write(ProfileActivity.this);
-				Intent intent = new Intent();
-				intent.putExtra("profile", profile);
-				ProfileActivity.this.setResult(RESULT_OK, intent);
-				ProfileActivity.this.finish();
-				
-			}
-			
-		});
 		
 		nameLBL.setOnClickListener(new OnClickListener(){
 
@@ -176,8 +159,8 @@ public class ProfileActivity extends Activity {
 
 
 	private void getExtras() {
-			Intent intent = this.getIntent();
-			profile = (Profile) intent.getSerializableExtra("profile");
+		Intent intent = this.getIntent();
+		profile = (Profile) intent.getSerializableExtra("profile");
 	}
 		
 		
@@ -231,17 +214,21 @@ public class ProfileActivity extends Activity {
 	private void createExitDialog(){
 		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		
-		alert.setTitle("Quit Without Saving?");
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		alert.setTitle("Save?");
+		alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
+				write(ProfileActivity.this);
+				Intent intent = new Intent();
+				intent.putExtra("profile", profile);
+				ProfileActivity.this.setResult(RESULT_OK, intent);
 				ProfileActivity.this.finish();
 				
 			}
 		});
-		alert.setNegativeButton("Cancel",
+		alert.setNegativeButton("No",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
-						dialog.cancel();
+						ProfileActivity.this.finish();
 					}
 				});
 		alert.show();
@@ -424,20 +411,15 @@ public class ProfileActivity extends Activity {
 	    		}
 	    	}
 	    }
-		
-		@Override
-		public boolean onKeyDown(int keyCode, KeyEvent event)  {
-		    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-		        if(changes){
-		        	createExitDialog();
-		        }else{
-		        	ProfileActivity.this.finish();
-		        }
-		        return true;
-		    }
 
-		    return super.onKeyDown(keyCode, event);
-		}
+    @Override
+    public void onBackPressed() {
+        if(changes){
+            createExitDialog();
+        }else{
+            ProfileActivity.this.finish();
+        }
+    }
 		
     
 }

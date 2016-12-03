@@ -1,51 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent" android:background="@drawable/background" android:orientation="vertical" android:id="@+id/LinearLayout0">
-
-<LinearLayout
-    android:id="@+id/linearLayout1"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout0"
     android:layout_width="fill_parent"
-    android:layout_height="50dip"
-    android:background="@color/task_bar"
-    android:gravity="center" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical">
 
-        <TextView android:text="Click to Set Name" android:textSize="22dip" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/ProfileActivityNameLBL"></TextView>
-        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1">
-            <LinearLayout android:layout_height="fill_parent" android:layout_width="wrap_content" android:id="@+id/linearLayout8" android:layout_weight="1"></LinearLayout>
-            <Button android:layout_width="wrap_content" android:text="" android:layout_height="wrap_content" android:background="@drawable/button_save" android:id="@+id/profileActivitySaveBTN"></Button>
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/task_bar"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/ProfileActivityNameLBL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to Set Name"
+            android:textColor="@color/text_light"
+            android:textSize="22sp"></TextView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/profileActivityImageView"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_profile"></ImageView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:id="@+id/radioGroup1"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.andrios.prt.SegmentedControlButton
+                        android:id="@+id/profileMaleRDO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:checked="true"
+                        android:text="Male"></com.andrios.prt.SegmentedControlButton>
+
+                    <com.andrios.prt.SegmentedControlButton
+                        android:id="@+id/profileFemaleRDO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="Female"></com.andrios.prt.SegmentedControlButton>
+                </RadioGroup>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-<LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="fill_parent">
-    <LinearLayout android:id="@+id/linearLayout6" android:layout_height="fill_parent" android:layout_width="fill_parent">
-        <LinearLayout android:id="@+id/linearLayout11" android:layout_height="fill_parent" android:layout_weight="1" android:layout_width="100dip" android:gravity="center">
-            <ImageView android:src="@drawable/icon_profile" android:layout_width="125dip" android:layout_height="125dip" android:scaleType="fitXY" android:id="@+id/profileActivityImageView"></ImageView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#ffffff">
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center|top"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/profileActivityDateTypeLBL"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:text="Age"
+                android:textColor="@color/text_light"
+                android:textSize="18sp"></TextView>
+
+            <TextView
+                android:id="@+id/profileActivityAgeLBL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="27"
+                android:textColor="@color/text_light"
+                android:textSize="22sp"></TextView>
+
+            <LinearLayout
+                android:id="@+id/profileActivityBirthdayLL"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/cal_0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profileActivityDateLBL"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="5dp"
+                    android:text="07"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"></TextView>
+
+                <TextView
+                    android:id="@+id/profileActivityBirthdayYearLBL"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:text="1984"
+                    android:textColor="@color/text_dark"></TextView>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout7" android:layout_height="fill_parent" android:orientation="vertical" android:layout_weight="1" android:layout_width="100dip" android:gravity="center">
-            <RadioGroup android:layout_weight="0" android:id="@+id/radioGroup1" android:layout_width="150dip" android:gravity="center" android:orientation="horizontal" android:layout_height="45dip">
-                <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="true" android:text="Male" android:id="@+id/profileMaleRDO"></com.andrios.prt.SegmentedControlButton>
-                <com.andrios.prt.SegmentedControlButton android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Female" android:id="@+id/profileFemaleRDO"></com.andrios.prt.SegmentedControlButton>
-            </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center|top"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next PFA"
+                android:textColor="@color/text_light"
+                android:textSize="18sp"></TextView>
+
+            <TextView
+                android:id="@+id/profileActivityDaysToPFALBL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25 Days"
+                android:textColor="@color/text_light"
+                android:textSize="22sp"></TextView>
+
+            <LinearLayout
+                android:id="@+id/profileActivityPFALL"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/cal_0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profileActivityNextPfaDateLBL"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="5dp"
+                    android:text="07"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"></TextView>
+
+                <TextView
+                    android:id="@+id/profileActivityNextPFAYearLBL"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:text="2011"
+                    android:textColor="@color/text_dark"></TextView>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
-<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout4" android:textColor="#ffffff" android:layout_height="wrap_content" android:layout_weight="1">
-    <LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout9" android:layout_weight="1" android:layout_width="100dip" android:orientation="vertical" android:gravity="center|top">
-        <TextView android:text="Age" android:textColor="#ffffff" android:textSize="18dip" android:layout_height="wrap_content" android:id="@+id/profileActivityDateTypeLBL" android:gravity="center" android:layout_weight="0" android:layout_width="fill_parent"></TextView>
-        <TextView android:textColor="#ffffff" android:layout_height="wrap_content" android:textSize="22dip" android:layout_width="wrap_content" android:text="27" android:id="@+id/profileActivityAgeLBL"></TextView>
-        <LinearLayout android:background="@drawable/cal_0" android:layout_width="75dip" android:layout_height="75dip" android:orientation="vertical" android:id="@+id/profileActivityBirthdayLL">
-            <TextView android:id="@+id/profileActivityDateLBL" android:textColor="#000000" android:layout_height="wrap_content" android:layout_width="fill_parent" android:textSize="18dip" android:text="07" android:layout_weight="1" android:gravity="center|bottom" android:paddingBottom="5dip"></TextView>
-            <TextView android:layout_height="wrap_content" android:textColor="#000000" android:layout_width="fill_parent" android:text="1984" android:gravity="center" android:layout_weight="0" android:id="@+id/profileActivityBirthdayYearLBL"></TextView>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout5" android:layout_weight="1" android:layout_width="100dip" android:orientation="vertical" android:layout_height="fill_parent" android:gravity="center|top">
-        <TextView android:id="@+id/textView1" android:textColor="#ffffff" android:layout_height="wrap_content" android:textSize="18dip" android:layout_width="wrap_content" android:text="Next PFA"></TextView>
-        <TextView android:id="@+id/profileActivityDaysToPFALBL" android:textColor="#ffffff" android:layout_height="wrap_content" android:textSize="22dip" android:layout_width="wrap_content" android:text="25 Days"></TextView>
-        <LinearLayout android:background="@drawable/cal_0" android:layout_width="75dip" android:orientation="vertical" android:layout_height="75dip" android:id="@+id/profileActivityPFALL">
-            <TextView android:paddingBottom="5dip" android:layout_width="fill_parent" android:textSize="18dip" android:gravity="center|bottom" android:layout_weight="1" android:textColor="#000000" android:id="@+id/profileActivityNextPfaDateLBL" android:layout_height="wrap_content" android:text="07"></TextView>
-            <TextView android:textColor="#000000" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="fill_parent" android:text="2011" android:gravity="center" android:id="@+id/profileActivityNextPFAYearLBL"></TextView>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
 </LinearLayout>

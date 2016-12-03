@@ -23,4 +23,22 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="log_prt">Log PRT</string>
+    <string name="score_failure">Failure</string>
+    <string name="score_probationary">Probationary</string>
+    <string name="score_sat_med">Satisfactory, Medium</string>
+    <string name="score_sat_high">Satisfactory, High</string>
+    <string name="score_good_low">Good, Low</string>
+    <string name="score_good_med">Good, Medium</string>
+    <string name="score_good_high">Good, High</string>
+    <string name="score_excellent_low">Excellent, Low</string>
+    <string name="score_excellent_med">Excellent, Medium</string>
+    <string name="score_excellent_high">Excellent, High</string>
+    <string name="score_outstanding_low">Outstanding, Low</string>
+    <string name="score_outstanding_med">Outstanding, Medium</string>
+    <string name="score_outstanding_high">Outstanding, High</string>
+    <string name="label_450_swim">450m Swim Time</string>
+    <string name="label_500_swim_time">500m Swim Time</string>
+    <string name="label_cardio_elliptical_time">Elliptical Time</string>
+    <string name="label_cardio_bike_time">Bike Time</string>
+    <string name="label_cardio_run_time">Run Time</string>
 </resources>

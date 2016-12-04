@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Observable;
 
 
@@ -331,99 +333,117 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	}
 
 
-public ArrayList<Instruction> getInstructions(){
+public static ArrayList<Instruction> getInstructions(){
     ArrayList<Instruction> instructionList = new ArrayList<>();
+
+    Calendar jan2016 = new GregorianCalendar(2016, 00, 15);
+
 
     instructionList.add(
             new Instruction(
                     "Command Fitness Leader Administrative Duties and Responsibilities",
             "Guide 1",
-            "http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%201-%20CFLAdministrative%20Duties%20and%20Responsibilities%202016.pdf"
+            "http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%201-%20CFLAdministrative%20Duties%20and%20Responsibilities%202016.pdf",
+                    jan2016.getTimeInMillis()
             )
     );
     instructionList.add(
             new Instruction(
                     "Command Inspection Self - Assessment Checklist",
                     "Guide 2",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%202-%20Inspection%20and%20Command%20Self%20Assessment%20Checklist%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%202-%20Inspection%20and%20Command%20Self%20Assessment%20Checklist%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "PFA Checklist 2016",
                     "Guide 3",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%203-PFA%20Checklist%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%203-PFA%20Checklist%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Body Composition Assessment (BCA)",
                     "Guide 4",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%204-%20Body%20Composition%20Assessment%20(BCA)%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%204-%20Body%20Composition%20Assessment%20(BCA)%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Physical Readiness Test 2016",
                     "Guide 5",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%205-%20Physical%20Readiness%20Test%20%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%205-%20Physical%20Readiness%20Test%20%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "PFA Medical Clearance/Waiver",
                     "Guide 6",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%206-%20PFA%20Medical%20Waiver%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%206-%20PFA%20Medical%20Waiver%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     " PFA Administrative Actions/Administrative Separation",
                     "Guide 7",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%207-%20Adminstrative%20Separation%20(ADSEP)%202016%20(F).pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%207-%20Adminstrative%20Separation%20(ADSEP)%202016%20(F).pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Managing PFA Records for Pregnant Service Women",
                     "Guide 8",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%208-%20Managing%20PFA%20Records%20for%20Pregnant%20Service%20Women%202016%20(F).pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%208-%20Managing%20PFA%20Records%20for%20Pregnant%20Service%20Women%202016%20(F).pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
-                    "Managing PFA Records for IA/OSA/GSA/PEP/Mobilized Reservist\n",
+                    "Managing PFA Records for IA/OSA/GSA/PEP/Mobilized Reservist",
                     "Guide 9",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%209-%20Managing%20PFA%20Records%20for%20IA%20GSA%20OSA%20PEP%20and%20Mobilized%20Reservists%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%209-%20Managing%20PFA%20Records%20for%20IA%20GSA%20OSA%20PEP%20and%20Mobilized%20Reservists%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Alternate Cardio Options Procedures",
                     "Guide 10",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2010-%20Alternate%20Cardio%20Options%20Procedures%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2010-%20Alternate%20Cardio%20Options%20Procedures%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Member's Responsibilities 2016.pdf",
                     "Guide 11",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2011-%20Member%27s%20Responsibilities%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2011-%20Member%27s%20Responsibilities%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Glossary of Physical Readiness Program Related Terms",
                     "Guide 12",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2012-%20Glossary%20of%20Physical%20Readiness%20Program%20Related%20Terms%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2012-%20Glossary%20of%20Physical%20Readiness%20Program%20Related%20Terms%202016.pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Command Fitness and Fitness Enhancement Program (FEP) Guide",
                     "Guide 13",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2013-%20Command%20PT%20and%20FEP%20Guide%202016%20(F).pdf"            )
-    );
-    instructionList.add(
-            new Instruction(
-                    "",
-                    "Guide 14",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2014-%20Nutrition%20Resource%20Guide%202016.pdf"            )
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2013-%20Command%20PT%20and%20FEP%20Guide%202016%20(F).pdf",
+                    jan2016.getTimeInMillis()            )
     );
     instructionList.add(
             new Instruction(
                     "Nutrition Resource Guide",
+                    "Guide 14",
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2014-%20Nutrition%20Resource%20Guide%202016.pdf",
+                    jan2016.getTimeInMillis()            )
+    );
+    instructionList.add(
+            new Instruction(
                     "Forms",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Pages/Guide13Forms.aspx"            )
+                    "Forms",
+"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Pages/Guide13Forms.aspx",
+                    jan2016.getTimeInMillis()            )
     );
 
 

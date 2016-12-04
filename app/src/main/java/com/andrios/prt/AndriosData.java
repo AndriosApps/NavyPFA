@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.Observable;
 
@@ -338,7 +339,16 @@ public static ArrayList<Instruction> getInstructions(){
 
     Calendar jan2016 = new GregorianCalendar(2016, 00, 15);
 
-
+    jan2016.set(2011, 6, 11);
+    instructionList.add(
+            new Instruction(
+                    "Physical Readiness Program",
+                    "OPNAVINST 6110.1J",
+                    "http://www.jag.navy.mil/distrib/instructions/OPNAV6110.1JPRTprogram.pdf",
+                    jan2016.getTimeInMillis()
+            )
+    );
+    jan2016.set(2016, 0, 15);
     instructionList.add(
             new Instruction(
                     "Command Fitness Leader Administrative Duties and Responsibilities",
@@ -438,13 +448,81 @@ public static ArrayList<Instruction> getInstructions(){
 "http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Documents/Guide%2014-%20Nutrition%20Resource%20Guide%202016.pdf",
                     jan2016.getTimeInMillis()            )
     );
+	jan2016.set(2016,4,26);
+	instructionList.add(
+			new Instruction(
+					"Physical Readiness Program Update #3",
+					"NAVADMIN 124/16 ",
+					"http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2016/NAV16124.txt",
+					jan2016.getTimeInMillis()            )
+	);
+    jan2016.set(2016,2,9);
     instructionList.add(
             new Instruction(
-                    "Forms",
-                    "Forms",
-"http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Pages/Guide13Forms.aspx",
+                    "Implementation of Physical Readiness Program Policy Changes Update #2",
+                    "NAVADMIN 061/16",
+                    "http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2016/NAV16061.txt",
                     jan2016.getTimeInMillis()            )
     );
+    jan2016.set(2015,9,7);
+    instructionList.add(
+            new Instruction(
+                    "Physical Readiness Program Policy Changes Update #1: Enlisted Policies",
+                    "NAVADMIN 233/15",
+                    "http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2015/NAV15233.txt",
+                    jan2016.getTimeInMillis()            )
+    );
+    jan2016.set(2015,7,3);
+    instructionList.add(
+            new Instruction(
+                    "Physical Readiness Program Policy Changes",
+                    "NAVADMIN 178/15",
+                    "http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2015/NAV15178.txt",
+                    jan2016.getTimeInMillis()            )
+    );
+    jan2016.set(2013,8,12);
+    instructionList.add(
+            new Instruction(
+                    "Physical Readiness Program Policy Changes",
+                    "NAVADMIN 231/13",
+                    "http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2013/NAV13231.txt",
+                    jan2016.getTimeInMillis()            )
+    );
+    jan2016.set(2011,6,11);
+    instructionList.add(
+            new Instruction(
+                    "OPNAVINST 6110.1J Physical Readiness Program Policy Changes",
+                    "NAVADMIN 203/11",
+                    "http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2011/NAV11203.txt",
+                    jan2016.getTimeInMillis()            )
+    );
+    jan2016.set(2011,3,6);
+    instructionList.add(
+            new Instruction(
+                    "Command Fitness Certification Course Update",
+                    "NAVADMIN ",
+                    "http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2011/NAV11118.txt",
+                    jan2016.getTimeInMillis()            )
+    );
+    jan2016.set(2010,4,28);
+    instructionList.add(
+            new Instruction(
+                    "Change to Physical Fitness Assessment Documentation on Fitness Reports",
+                    "NAVADMIN ",
+                    "http://www.public.navy.mil/bupers-npc/reference/messages/Documents/NAVADMINS/NAV2010/NAV10193.txt",
+                    jan2016.getTimeInMillis()            )
+    );
+    jan2016.set(2016,10,22);
+    instructionList.add(
+            new Instruction(
+                    "Navy Physical Readiness Program Website",
+                    "Official Website",
+                    "http://www.public.navy.mil/bupers-npc/support/21st_Century_Sailor/physical/Pages/default2.aspx",
+                    jan2016.getTimeInMillis()            )
+    );
+
+    Collections.sort(instructionList);
+
 
 
 

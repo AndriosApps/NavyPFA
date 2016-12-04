@@ -1,6 +1,6 @@
 package com.andrios.prt;
 
-public class Instruction {
+public class Instruction implements Comparable<Instruction>{
 
 	private static final long serialVersionUID = -1538116430747812374L;
     private String url;
@@ -46,5 +46,16 @@ public class Instruction {
 
     public void setUpdateDate(long updateDate) {
         this.updateDate = updateDate;
+    }
+
+
+    @Override
+    public int compareTo(Instruction instruction) {
+        if (instruction.getUpdateDate() > updateDate){
+            return 1;
+        }else if (instruction.getUpdateDate() < updateDate){
+            return -1;
+        }
+        return 0;
     }
 }

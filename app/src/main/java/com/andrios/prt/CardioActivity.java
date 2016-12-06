@@ -17,6 +17,8 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.andrios.prt.R;
+
 import java.util.Observable;
 import java.util.Observer;
 

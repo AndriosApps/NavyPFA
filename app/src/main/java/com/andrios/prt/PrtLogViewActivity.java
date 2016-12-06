@@ -28,6 +28,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andrios.prt.R;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -142,7 +144,7 @@ public class PrtLogViewActivity extends Activity {
 		
 		cardioLBL = (TextView) findViewById(R.id.prtLogViewActivityCardioLBL);
 		try{
-			cardioLBL.setText(entry.alternateCardio);
+			cardioLBL.setText(entry.getAlternateCardio());
 		}catch(Exception e){
 			cardioLBL.setText("1.5 Mile Run");
 		}
@@ -337,7 +339,7 @@ public class PrtLogViewActivity extends Activity {
 			totalScoreLBL.setText(entry.getTotalScore());
 
 			final TextView cardioLBL = (TextView) share_card_layout.findViewById(R.id.share_card_prt_cardioLBL);
-			cardioLBL.setText(entry.alternateCardio);
+			cardioLBL.setText(entry.getAlternateCardio());
 			
 			
 			

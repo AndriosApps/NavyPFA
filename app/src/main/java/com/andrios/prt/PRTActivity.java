@@ -451,7 +451,7 @@ public class PRTActivity extends Activity implements Observer {
                             scoreLBL.getText().toString()
                     );
                     p.setAge(age);
-                    p.alternateCardio = cardio;
+                    p.setAlternateCardio(cardio);
                     if (altitudeCheckBox.isChecked()) {
                         p.setAltitude(true);
                     } else {

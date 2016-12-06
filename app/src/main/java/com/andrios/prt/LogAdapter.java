@@ -1,14 +1,6 @@
 package com.andrios.prt;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.opengl.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class LogAdapter extends ArrayAdapter<LogEntry>{
 
@@ -64,29 +59,30 @@ public class LogAdapter extends ArrayAdapter<LogEntry>{
                     	Calendar c = b.getDate();
                     	dateLBL.setText(Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
                     	yearLBL.setText(Integer.toString(c.get(Calendar.YEAR)));
-	                    if(c.get(Calendar.MONTH) == 0){
+						int i = c.get(Calendar.MONTH);
+	                    if(i == Calendar.JANUARY){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_0);
-	                    }else if(c.get(Calendar.MONTH) == 1){
+	                    }else if(i == Calendar.FEBRUARY){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_1);
-	                    }else if(c.get(Calendar.MONTH) == 2){
+	                    }else if(i == Calendar.MARCH){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_2);
-	                    }else if(c.get(Calendar.MONTH) == 3){
+	                    }else if(i == Calendar.APRIL){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_3);
-	                    }else if(c.get(Calendar.MONTH) == 4){
+	                    }else if(i == Calendar.MAY){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_4);
-	                    }else if(c.get(Calendar.MONTH) == 5){
+	                    }else if(i == Calendar.JUNE){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_5);
-	                    }else if(c.get(Calendar.MONTH) == 6){
+	                    }else if(i == Calendar.JULY){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_6);
-	                    }else if(c.get(Calendar.MONTH) == 7){
+	                    }else if(i == Calendar.AUGUST){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_7);
-	                    }else if(c.get(Calendar.MONTH) == 8){
+	                    }else if(i == Calendar.SEPTEMBER){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_8);
-	                    }else if(c.get(Calendar.MONTH) == 9){
+	                    }else if(i == Calendar.OCTOBER){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_9);
-	                    }else if(c.get(Calendar.MONTH) == 10){
+	                    }else if(i == Calendar.NOVEMBER){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_10);
-	                    }else if(c.get(Calendar.MONTH) == 111){
+	                    }else if(i == Calendar.DECEMBER){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_11);
 	                    }
                     

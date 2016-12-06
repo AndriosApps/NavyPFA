@@ -136,7 +136,7 @@ public class MainActivity extends Activity implements
 		aboutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), AboutActivity.class);
+				Intent intent = new Intent(v.getContext(), BCA_Activity.class);
 
 				startActivity(intent);
 

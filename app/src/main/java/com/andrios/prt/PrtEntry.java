@@ -84,4 +84,11 @@ public class PrtEntry extends LogEntry{
 		return totalScore;
 	}
 
+	public String getAlternateCardio() {
+		return alternateCardio;
+	}
+
+	public void setAlternateCardio(String alternateCardio) {
+		this.alternateCardio = alternateCardio;
+	}
 }

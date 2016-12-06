@@ -18,6 +18,8 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.andrios.prt.R;
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Observable;
@@ -614,13 +616,13 @@ public class BCAActivity extends Activity implements Observer{
 			
 			if(maleRDO.isChecked()){
 			
-				if(weight > mData.weightMale[height-MIN_HEIGHT]){
+				if(weight > mData.getWeightMale()[height-MIN_HEIGHT]){
 					inStandards = false;
 				}else{
 					inStandards = true;
 				}
 			}else{
-				if(weight > mData.weightFemale[height-MIN_HEIGHT]){
+				if(weight > mData.getWeightFemale()[height-MIN_HEIGHT]){
 					inStandards = false;
 				}else{
 					inStandards = true;

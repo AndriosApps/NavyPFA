@@ -1,13 +1,14 @@
 package com.andrios.prt;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
+import com.andrios.prt.LogEntry;
+
 import java.io.Serializable;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Observable;
-
-import android.graphics.Bitmap;
-import android.net.Uri;
 
 public class Profile extends Observable implements Serializable{
 

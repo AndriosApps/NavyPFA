@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 
-abstract class LogEntry implements Serializable{
+public abstract class LogEntry implements Serializable{
 
 	/**
 	 * 

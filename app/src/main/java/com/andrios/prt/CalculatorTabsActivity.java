@@ -1,14 +1,13 @@
 package com.andrios.prt;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TabHost;
+
+import com.andrios.prt.R;
 
 public class CalculatorTabsActivity extends TabActivity {
     

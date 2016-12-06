@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andrios.prt.R;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 

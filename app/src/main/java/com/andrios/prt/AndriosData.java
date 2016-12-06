@@ -531,13 +531,11 @@ public static ArrayList<Instruction> getInstructions(){
 }
 
 
+	public int[] getWeightMale() {
+		return weightMale;
+	}
 
-
-
-
-
-
-
-
-	
+	public int[] getWeightFemale() {
+		return weightFemale;
+	}
 }

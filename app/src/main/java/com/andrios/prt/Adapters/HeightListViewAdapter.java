@@ -24,7 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.andrios.prt.Instruction;
+import com.andrios.prt.Classes.Instruction;
 import com.andrios.prt.R;
 
 import java.util.ArrayList;

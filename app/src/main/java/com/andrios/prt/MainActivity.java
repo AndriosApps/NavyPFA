@@ -101,8 +101,12 @@ public class MainActivity extends Activity implements
 
 			public void onClick(View v) {
 
-				Toast.makeText(getApplicationContext(), "Coming Soon!",
-						Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(v.getContext(),
+						VideoStreamActivity.class);
+				//mData.setAge(profile.getAge());
+				//mData.setGender(profile.isMale());
+				//intent.putExtra("data", mData);
+				startActivity(intent);
 				/*
 				if (premium) {
 					Intent intent = new Intent(v.getContext(),

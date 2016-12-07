@@ -9,12 +9,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_margin="16dp"
         android:padding="16dp"
         android:gravity="center|left"
         android:background="@color/white"
-        android:elevation="15dp">
+        android:elevation="5dp">
 
         <TextView
             android:text="TextView"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/my_recycler_view"
+                    android:id="@+id/height_recycler_view"
                     android:scrollbars="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -48,7 +48,7 @@
             android:layout_height="match_parent">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/my_recycler_view_3"
+                    android:id="@+id/weight_recycler_view"
                     android:scrollbars="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -78,7 +78,7 @@
         android:padding="16dp"
         android:gravity="center|left"
         android:background="@color/white"
-        android:elevation="15dp">
+        android:elevation="5dp">
         <TextView
             android:text="2."
             android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
             android:gravity="top|center"
             android:layout_height="wrap_content">
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/my_recycler_view_1"
+                android:id="@+id/waist_recycler_view"
                 android:scrollbars="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
@@ -109,12 +109,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_margin="16dp"
         android:padding="16dp"
         android:gravity="center|left"
         android:background="@color/white"
-        android:elevation="15dp">
+        android:elevation="5dp">
         <TextView
             android:text="3."
             android:layout_width="wrap_content"

@@ -4,19 +4,29 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
 
+import com.andrios.prt.Adapters.HeightAdapter;
 import com.andrios.prt.Adapters.HeightListViewAdapter;
-import com.andrios.prt.Adapters.MyAdapter;
+import com.andrios.prt.Adapters.WaistAdapter;
+import com.andrios.prt.Adapters.WeightAdapter;
 import com.andrios.prt.AndriosData;
 import com.andrios.prt.R;
 
 import java.util.ArrayList;
 
 public class BCA_Activity extends Activity {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView heightRecyclerView;
+    private RecyclerView.Adapter heightAdapter;
+    private RecyclerView.LayoutManager heightLayoutManager;
+
+    private RecyclerView weightRecyclerView;
+    private RecyclerView.Adapter weightAdapter;
+    private RecyclerView.LayoutManager weightLayoutManager;
+
+    private RecyclerView waistRecyclerView;
+    private RecyclerView.Adapter waistAdapter;
+    private RecyclerView.LayoutManager waistLayoutManager;
+
     AndriosData mData = new AndriosData();
     HeightListViewAdapter heightListViewAdapter;
     private static final int HORIZONTAL = 0;
@@ -26,51 +36,73 @@ public class BCA_Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bca_activity_update);
-        setConnections();
+
+        setHeightAdapter();
+        setWeightAdapter();
+        setWaistAdapter();
+
     }
 
-    private void setConnections() {
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+    private void setWeightAdapter() {
+        weightRecyclerView = (RecyclerView) findViewById(R.id.weight_recycler_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
+        weightRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this, VERTICAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        weightLayoutManager = new LinearLayoutManager(this, VERTICAL, false);
+        weightRecyclerView.setLayoutManager(weightLayoutManager);
+
+        ArrayList<Integer> heightList = new ArrayList<>();
+
+        // specify an adapter (see also next example)
+        weightAdapter = new WeightAdapter();
+        weightRecyclerView.setAdapter(weightAdapter);
+    }
+
+    private void setHeightAdapter() {
+
+        heightRecyclerView = (RecyclerView) findViewById(R.id.height_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        heightRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        heightLayoutManager = new LinearLayoutManager(this, VERTICAL, false);
+        heightRecyclerView.setLayoutManager(heightLayoutManager);
 
         ArrayList<Integer> heightList = new ArrayList<>();
         for (int i = 50; i < 90; i++){
             heightList.add(new Integer(i));
         }
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(heightList);
-        mRecyclerView.setAdapter(mAdapter);
-/**
-        final ListView instructionListView = (ListView) findViewById(R.id.height_list_view);
+        heightAdapter = new HeightAdapter(heightList);
+        heightRecyclerView.setAdapter(heightAdapter);
 
-        // Create a new {@link ArrayAdapter} of earthquakes
-        heightListViewAdapter = new HeightListViewAdapter(this);
-        // Set the adapter on the {@link ListView}
-        // so the list can be populated in the user interface
-        instructionListView.setAdapter(heightListViewAdapter);
+    }
 
-        instructionListView.setClickable(true);
-        instructionListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+    private void setWaistAdapter() {
 
+        waistRecyclerView = (RecyclerView) findViewById(R.id.waist_recycler_view);
 
-                int height = instructionListView.getHeight();
-                int itemHeight = instructionListView.getChildAt(0).getHeight();
-                instructionListView.setSelectionFromTop(position, height/2 - itemHeight/2);
-                TextView tv=(TextView)view.findViewById(R.id.height_text);
-                tv.setTextSize(48);
-            }
-        });
-**/
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        waistRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        waistLayoutManager = new LinearLayoutManager(this, HORIZONTAL, false);
+        waistRecyclerView.setLayoutManager(waistLayoutManager);
+
+        ArrayList<Integer> waistList = new ArrayList<>();
+        for (int i = 15; i < 55; i++){
+            waistList.add(new Integer(i));
+        }
+        // specify an adapter (see also next example)
+        waistAdapter = new WaistAdapter(waistList);
+        waistRecyclerView.setAdapter(waistAdapter);
+
     }
 
 

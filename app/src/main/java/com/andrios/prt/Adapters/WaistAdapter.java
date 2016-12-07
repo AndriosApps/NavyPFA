@@ -14,9 +14,9 @@ import java.util.ArrayList;
  * Created by Corey on 12/7/2016.
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class WaistAdapter extends RecyclerView.Adapter<WaistAdapter.ViewHolder> {
     private ArrayList<Integer> mDataset;
-    private static final String TAG = "MyAdapter";
+    private static final String TAG = "WaistAdapter";
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -31,14 +31,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<Integer> myDataset) {
+    public WaistAdapter(ArrayList<Integer> myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public WaistAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                      int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_height, parent, false);
@@ -53,9 +53,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        int weight = mDataset.get(position);
+        int waist = mDataset.get(position);
 
-        holder.mTextView.setText(formatHeight(weight));
+        holder.mTextView.setText(formatWaist(waist));
 
     }
 
@@ -65,13 +65,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return mDataset.size();
     }
 
-    private String formatHeight(int heightInInches){
+    private String formatWaist(int waistInInches){
 
-
-        Integer heightFeet = heightInInches/12;
-        Integer heightIncchesRemainder = heightInInches%12;
-
-
-        return heightFeet + "'" + heightIncchesRemainder + '"';
+        String waistString = Integer.toString(waistInInches);
+        return waistString + '"';
     }
 }

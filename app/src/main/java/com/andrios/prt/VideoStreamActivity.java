@@ -6,6 +6,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -23,44 +25,54 @@ public class VideoStreamActivity extends Activity {
         super.onCreate(savedInstanceState);
         // Get the layout from video_main.xml
         setContentView(R.layout.activity_video_stream);
+
+        Button firstButton = (Button) findViewById(R.id.first_video_button);
+        firstButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pDialog = new ProgressDialog(VideoStreamActivity.this);
+                // Set progressbar title
+                pDialog.setTitle("Android Video Streaming Tutorial");
+                // Set progressbar message
+                pDialog.setMessage("Buffering...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(false);
+                // Show progressbar
+                pDialog.show();
+
+                try {
+                    // Start the MediaController
+                    MediaController mediacontroller = new MediaController(
+                            VideoStreamActivity.this);
+                    mediacontroller.setAnchorView(videoview);
+                    // Get the URL from String VideoURL
+                    Uri video = Uri.parse(VideoURL);
+                    videoview.setMediaController(mediacontroller);
+                    videoview.setVideoURI(video);
+
+                } catch (Exception e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
+
+                videoview.requestFocus();
+                videoview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    // Close the progress bar and play the video
+                    public void onPrepared(MediaPlayer mp) {
+                        pDialog.dismiss();
+                        videoview.start();
+                    }
+                });
+            }
+        });
+
+
         // Find your VideoView in your video_main.xml layout
         // Create a progressbar
         videoview = (VideoView) findViewById(R.id.VideoView);
         // Execute StreamVideo AsyncTask
 
-        pDialog = new ProgressDialog(VideoStreamActivity.this);
-        // Set progressbar title
-        pDialog.setTitle("Android Video Streaming Tutorial");
-        // Set progressbar message
-        pDialog.setMessage("Buffering...");
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
-        // Show progressbar
-        pDialog.show();
 
-        try {
-            // Start the MediaController
-            MediaController mediacontroller = new MediaController(
-                    VideoStreamActivity.this);
-            mediacontroller.setAnchorView(videoview);
-            // Get the URL from String VideoURL
-            Uri video = Uri.parse(VideoURL);
-            videoview.setMediaController(mediacontroller);
-            videoview.setVideoURI(video);
-
-        } catch (Exception e) {
-            Log.e("Error", e.getMessage());
-            e.printStackTrace();
-        }
-
-        videoview.requestFocus();
-        videoview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            // Close the progress bar and play the video
-            public void onPrepared(MediaPlayer mp) {
-                pDialog.dismiss();
-                videoview.start();
-            }
-        });
 
     }
 }

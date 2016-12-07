@@ -1,5 +1,8 @@
 package com.andrios.prt.Adapters;
 
+import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
  */
 
 public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.ViewHolder> {
+    private final Context context;
     private ArrayList<Integer> mDataset;
     private static final String TAG = "HeightAdapter";
 
@@ -31,8 +35,9 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.ViewHolder
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public HeightAdapter(ArrayList<Integer> myDataset) {
+    public HeightAdapter(Context context, ArrayList<Integer> myDataset) {
         mDataset = myDataset;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -56,6 +61,13 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.ViewHolder
         int weight = mDataset.get(position);
 
         holder.mTextView.setText(formatHeight(weight));
+        GradientDrawable magnitudeCircle = (GradientDrawable) holder.mTextView.getBackground();
+
+        // Get the appropriate background color based on the current earthquake magnitude
+        int backgroundColor = getBackgroundColor();
+
+
+        magnitudeCircle.setColor(backgroundColor);
 
     }
 
@@ -73,5 +85,14 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.ViewHolder
 
 
         return heightFeet + "'" + heightIncchesRemainder + '"';
+    }
+
+    private int getBackgroundColor() {
+
+        int thisColorResourceId = R.color.transparent_white;
+
+        return ContextCompat.getColor(context, thisColorResourceId);
+
+
     }
 }

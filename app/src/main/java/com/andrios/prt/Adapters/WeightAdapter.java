@@ -1,11 +1,15 @@
 package com.andrios.prt.Adapters;
 
+import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.andrios.prt.AndriosData;
 import com.andrios.prt.R;
 
 import java.util.ArrayList;
@@ -15,8 +19,16 @@ import java.util.ArrayList;
  */
 
 public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder> {
+    private final Context context;
     private ArrayList<Integer> mDataset;
     private static final String TAG = "WeightAdapter";
+
+
+    private static int MIN_HEIGHT = 51;
+    private static int MAX_HEIGHT = 86;
+    private static int MIN_WEIGHT = 90;
+    private static int MAX_WEIGHT = 300;
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -31,8 +43,10 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public WeightAdapter() {
+    public WeightAdapter(Context context) {
         mDataset = createDataSet();
+
+        this.context = context;
     }
 
     private ArrayList<Integer> createDataSet() {
@@ -64,6 +78,13 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder
         int weight = mDataset.get(position);
 
         holder.mTextView.setText(formatWeight(weight));
+        GradientDrawable magnitudeCircle = (GradientDrawable) holder.mTextView.getBackground();
+
+        // Get the appropriate background color based on the current earthquake magnitude
+        int backgroundColor = getBackgroundColor(69, weight, 32, true);//TODO Hardcode
+
+
+        magnitudeCircle.setColor(backgroundColor);
 
     }
 
@@ -77,5 +98,26 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder
 
 
         return weightInPounds + "lbs";
+    }
+
+    private int getBackgroundColor(int height, int weight, int age, boolean isMale) {
+
+        int passColorResourceId = R.color.green;
+        int failColorResourceId = R.color.red;
+
+        AndriosData mData = new AndriosData();
+        if(isMale){
+            if(weight > mData.getWeightMale()[height-MIN_HEIGHT] ){
+                return ContextCompat.getColor(context, failColorResourceId);
+            }else{
+                return ContextCompat.getColor(context, passColorResourceId);
+            }
+        }else{
+            if(weight  > mData.getWeightFemale()[height-MIN_HEIGHT]){
+                return ContextCompat.getColor(context, failColorResourceId);
+            }else{
+                return ContextCompat.getColor(context, passColorResourceId);
+            }
+        }
     }
 }

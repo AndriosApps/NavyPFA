@@ -63,7 +63,7 @@ public class BCA_Activity extends Activity {
         ArrayList<Integer> heightList = new ArrayList<>();
 
         // specify an adapter (see also next example)
-        weightAdapter = new WeightAdapter();
+        weightAdapter = new WeightAdapter(this);
         weightRecyclerView.setAdapter(weightAdapter);
     }
 
@@ -84,7 +84,7 @@ public class BCA_Activity extends Activity {
             heightList.add(new Integer(i));
         }
         // specify an adapter (see also next example)
-        heightAdapter = new HeightAdapter(heightList);
+        heightAdapter = new HeightAdapter(this, heightList);
         heightRecyclerView.setAdapter(heightAdapter);
 
     }

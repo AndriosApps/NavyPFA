@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 
+import com.andrios.prt.Adapters.HeightListViewAdapter;
 import com.andrios.prt.Adapters.MyAdapter;
 
 import java.util.ArrayList;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.andrios.prt;
+package com.andrios.prt.Adapters;
 
 
 import android.content.Context;
@@ -23,6 +23,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.andrios.prt.Instruction;
+import com.andrios.prt.R;
 
 import java.util.ArrayList;
 

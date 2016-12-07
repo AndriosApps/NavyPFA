@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         tools:node="replace">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>

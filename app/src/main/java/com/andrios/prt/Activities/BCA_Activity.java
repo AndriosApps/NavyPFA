@@ -1,4 +1,4 @@
-package com.andrios.prt;
+package com.andrios.prt.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.ListView;
 
 import com.andrios.prt.Adapters.HeightListViewAdapter;
 import com.andrios.prt.Adapters.MyAdapter;
+import com.andrios.prt.AndriosData;
+import com.andrios.prt.R;
 
 import java.util.ArrayList;
 

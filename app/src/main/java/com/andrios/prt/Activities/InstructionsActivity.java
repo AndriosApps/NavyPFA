@@ -1,4 +1,4 @@
-package com.andrios.prt;
+package com.andrios.prt.Activities;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -13,6 +13,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.andrios.prt.Adapters.InstructionListViewAdapter;
+import com.andrios.prt.AndriosData;
+import com.andrios.prt.Classes.Instruction;
+import com.andrios.prt.R;
 
 import java.io.File;
 import java.util.ArrayList;

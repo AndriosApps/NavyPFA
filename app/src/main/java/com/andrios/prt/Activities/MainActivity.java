@@ -12,12 +12,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.andrios.prt.AndriosData;
-import com.andrios.prt.AppRater;
-import com.andrios.prt.BCA_Activity;
-import com.andrios.prt.CalculatorTabsActivity;
-import com.andrios.prt.InstructionsActivity;
-import com.andrios.prt.Profile;
-import com.andrios.prt.ProfileActivity;
+import com.andrios.prt.Classes.AppRater;
+import com.andrios.prt.Classes.Profile;
 import com.andrios.prt.R;
 
 import java.io.FileInputStream;

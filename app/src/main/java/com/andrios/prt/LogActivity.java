@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.andrios.prt.Adapters.LogAdapter;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

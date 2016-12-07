@@ -18,7 +18,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.andrios.prt.R;
+import com.andrios.prt.Classes.Profile;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;

@@ -3,6 +3,8 @@ package com.andrios.prt;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.andrios.prt.Classes.Instruction;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;

@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CalculatorTabsActivity"
+            android:name=".Activities.CalculatorTabsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".BCA_Activity"
+            android:name=".Activities.BCA_Activity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InstructionsActivity"
+            android:name=".Activities.InstructionsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".BCAActivity"
@@ -61,7 +61,7 @@
             android:name=".LogActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AboutActivity"
+            android:name=".Activities.AboutActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrtLogViewActivity"
@@ -70,7 +70,7 @@
             android:name=".BcaLogViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".Activities.ProfileActivity"
             android:screenOrientation="portrait" />
     </application>
 

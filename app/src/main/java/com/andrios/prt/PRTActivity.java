@@ -24,6 +24,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andrios.prt.Classes.Profile;
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Observable;

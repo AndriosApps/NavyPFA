@@ -1,4 +1,4 @@
-package com.andrios.prt;
+package com.andrios.prt.Activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -23,7 +23,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andrios.prt.Classes.Profile;
 import com.andrios.prt.R;
+import com.andrios.prt.SegmentedControlButton;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

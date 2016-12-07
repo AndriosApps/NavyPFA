@@ -1,4 +1,4 @@
-package com.andrios.prt;
+package com.andrios.prt.Classes;
 
 import android.graphics.Bitmap;
 import android.net.Uri;

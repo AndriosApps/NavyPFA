@@ -1,4 +1,4 @@
-package com.andrios.prt;
+package com.andrios.prt.Classes;
 
 public class Instruction implements Comparable<Instruction>{
 

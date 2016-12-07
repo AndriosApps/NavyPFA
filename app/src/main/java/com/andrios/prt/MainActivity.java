@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements
 	 */
 	private static final long serialVersionUID = -3088858143996312467L;
 	protected static final int PROFILEVIEW = 1;
-	Button profileBTN, logBTN, calcBTN, aboutBTN, instructionBTN;
+	Button profileBTN, logBTN, calcBTN, aboutBTN, instructionBTN, videoBTN;
 	boolean premium;
 	AndriosData mData;
 	Profile profile;
@@ -83,6 +83,7 @@ public class MainActivity extends Activity implements
 		calcBTN = (Button) findViewById(R.id.mainActivityCalculatorsBTN);
 		aboutBTN = (Button) findViewById(R.id.mainActivityAboutBTN);
 		instructionBTN = (Button) findViewById(R.id.mainActivityInstructionsBTN);
+		videoBTN = (Button) findViewById(R.id.mainActivityVideoBTN);
 		mData = new AndriosData();
 	}
 
@@ -101,12 +102,7 @@ public class MainActivity extends Activity implements
 
 			public void onClick(View v) {
 
-				Intent intent = new Intent(v.getContext(),
-						VideoStreamActivity.class);
-				//mData.setAge(profile.getAge());
-				//mData.setGender(profile.isMale());
-				//intent.putExtra("data", mData);
-				startActivity(intent);
+
 				/*
 				if (premium) {
 					Intent intent = new Intent(v.getContext(),
@@ -147,6 +143,16 @@ public class MainActivity extends Activity implements
 			}
 
 		});
+		videoBTN.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(),
+						VideoStreamActivity.class);
+				startActivity(intent);
+
+			}
+
+		});
 		instructionBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -158,6 +164,8 @@ public class MainActivity extends Activity implements
 			}
 
 		});
+
+
 
 	}
 

@@ -25,8 +25,6 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.andrios.prt.R;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -74,7 +72,6 @@ public class InstructionListViewAdapter extends BaseAdapter {
                     R.layout.instruction_list_item, parent, false);
         }
         Instruction instruction = getItem(position);
-
 
         TextView ssicTextView = (TextView) listItemView.findViewById(R.id.label_ssic);
         ssicTextView.setText(instruction.getSsic());

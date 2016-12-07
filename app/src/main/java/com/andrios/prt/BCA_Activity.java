@@ -2,14 +2,22 @@ package com.andrios.prt;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.andrios.prt.Adapters.MyAdapter;
+
+import java.util.ArrayList;
 
 public class BCA_Activity extends Activity {
-
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    AndriosData mData = new AndriosData();
     HeightListViewAdapter heightListViewAdapter;
+    private static final int HORIZONTAL = 0;
+    private static final int VERTICAL = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +28,24 @@ public class BCA_Activity extends Activity {
 
     private void setConnections() {
 
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this, VERTICAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        ArrayList<Integer> heightList = new ArrayList<>();
+        for (int i = 50; i < 90; i++){
+            heightList.add(new Integer(i));
+        }
+        // specify an adapter (see also next example)
+        mAdapter = new MyAdapter(heightList);
+        mRecyclerView.setAdapter(mAdapter);
+/**
         final ListView instructionListView = (ListView) findViewById(R.id.height_list_view);
 
         // Create a new {@link ArrayAdapter} of earthquakes
@@ -41,7 +67,7 @@ public class BCA_Activity extends Activity {
                 tv.setTextSize(48);
             }
         });
-
+**/
     }
 
 

@@ -15,6 +15,7 @@
                 android:text="TextView"
                 android:textColor="@drawable/button_text"
                 android:textIsSelectable="true"
+                android:background="@drawable/circle"
                 android:textSize="32sp"></TextView>
 
 

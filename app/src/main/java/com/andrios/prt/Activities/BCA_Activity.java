@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.andrios.prt.Adapters.HeightAdapter;
 import com.andrios.prt.Adapters.HeightListViewAdapter;
+import com.andrios.prt.Adapters.NeckAdapter;
 import com.andrios.prt.Adapters.WaistAdapter;
 import com.andrios.prt.Adapters.WeightAdapter;
 import com.andrios.prt.AndriosData;
@@ -27,6 +28,10 @@ public class BCA_Activity extends Activity {
     private RecyclerView.Adapter waistAdapter;
     private RecyclerView.LayoutManager waistLayoutManager;
 
+    private RecyclerView neckRecyclerView;
+    private RecyclerView.Adapter neckAdapter;
+    private RecyclerView.LayoutManager neckLayoutManager;
+
     AndriosData mData = new AndriosData();
     HeightListViewAdapter heightListViewAdapter;
     private static final int HORIZONTAL = 0;
@@ -40,6 +45,7 @@ public class BCA_Activity extends Activity {
         setHeightAdapter();
         setWeightAdapter();
         setWaistAdapter();
+        setNeckAdapter();
 
     }
 
@@ -100,10 +106,28 @@ public class BCA_Activity extends Activity {
             waistList.add(new Integer(i));
         }
         // specify an adapter (see also next example)
-        waistAdapter = new WaistAdapter(waistList);
+        waistAdapter = new WaistAdapter(this, waistList);
         waistRecyclerView.setAdapter(waistAdapter);
-
     }
 
+    private void setNeckAdapter() {
 
+        neckRecyclerView = (RecyclerView) findViewById(R.id.neck_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        neckRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        neckLayoutManager = new LinearLayoutManager(this, HORIZONTAL, false);
+        neckRecyclerView.setLayoutManager(neckLayoutManager);
+
+        ArrayList<Integer> neckList = new ArrayList<>();
+        for (int i = 12; i < 25; i++){
+            neckList.add(new Integer(i));
+        }
+        // specify an adapter (see also next example)
+        neckAdapter = new NeckAdapter(neckList);
+        neckRecyclerView.setAdapter(neckAdapter);
+    }
 }

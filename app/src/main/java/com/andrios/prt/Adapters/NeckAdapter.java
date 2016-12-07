@@ -1,8 +1,5 @@
 package com.andrios.prt.Adapters;
 
-import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +14,9 @@ import java.util.ArrayList;
  * Created by Corey on 12/7/2016.
  */
 
-public class WaistAdapter extends RecyclerView.Adapter<WaistAdapter.ViewHolder> {
-    private final Context context;
+public class NeckAdapter extends RecyclerView.Adapter<NeckAdapter.ViewHolder> {
     private ArrayList<Integer> mDataset;
     private static final String TAG = "WaistAdapter";
-
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -36,15 +31,14 @@ public class WaistAdapter extends RecyclerView.Adapter<WaistAdapter.ViewHolder> 
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public WaistAdapter(Context context, ArrayList<Integer> myDataset) {
+    public NeckAdapter(ArrayList<Integer> myDataset) {
         mDataset = myDataset;
-        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public WaistAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                      int viewType) {
+    public NeckAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                     int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_height, parent, false);
@@ -62,28 +56,7 @@ public class WaistAdapter extends RecyclerView.Adapter<WaistAdapter.ViewHolder> 
         int waist = mDataset.get(position);
 
         holder.mTextView.setText(formatWaist(waist));
-        GradientDrawable magnitudeCircle = (GradientDrawable) holder.mTextView.getBackground();
 
-        // Get the appropriate background color based on the current earthquake magnitude
-        int backgroundColor = getBackgroundColor(waist);
-
-
-        magnitudeCircle.setColor(backgroundColor);
-
-    }
-
-    private int getBackgroundColor(int waist) {
-
-        int passColorResourceId = R.color.green;
-        int failColorResourceId = R.color.red;
-
-
-        if(waist > 39.0){
-            return ContextCompat.getColor(context, failColorResourceId);
-        }else{
-
-            return ContextCompat.getColor(context, passColorResourceId);
-        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

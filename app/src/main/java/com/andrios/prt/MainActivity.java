@@ -68,7 +68,6 @@ public class MainActivity extends Activity implements
 					Toast.makeText(this, "Profile Inclomplete",
 							Toast.LENGTH_SHORT).show();
 				}
-
 			}
 		}
 	}

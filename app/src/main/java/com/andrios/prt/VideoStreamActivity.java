@@ -20,6 +20,8 @@ public class VideoStreamActivity extends Activity {
     // Insert your Video URL
     String sampleURL = "http://www.androidbegin.com/tutorial/AndroidCommercial.3gp";
     String singleSiteCircumference = "https://www.dvidshub.net/video/embed/445205";
+    String pushupVideo = "http://www.navy.mil/media/multimedia/prt/push.mp4";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class VideoStreamActivity extends Activity {
         firstButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playVideo(singleSiteCircumference);
+                playVideo(pushupVideo);
             }
         });
 

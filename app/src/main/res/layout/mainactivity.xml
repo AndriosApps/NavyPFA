@@ -157,6 +157,27 @@
                 android:layout_height="wrap_content"
                 android:text="@string/andrios"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/mainActivityVideoBTN"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/andrios"
+                android:gravity="center"
+                android:text="@string/emtpy_string"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/videos"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
 

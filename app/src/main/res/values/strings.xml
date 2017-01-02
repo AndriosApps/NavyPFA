@@ -41,4 +41,5 @@
     <string name="label_cardio_elliptical_time">Elliptical Time</string>
     <string name="label_cardio_bike_time">Bike Time</string>
     <string name="label_cardio_run_time">Run Time</string>
+    <string name="videos">Videos</string>
 </resources>

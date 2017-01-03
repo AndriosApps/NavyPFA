@@ -61,7 +61,7 @@
             android:name=".LogActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AboutActivity"
+            android:name=".Activity.AboutActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrtLogViewActivity"

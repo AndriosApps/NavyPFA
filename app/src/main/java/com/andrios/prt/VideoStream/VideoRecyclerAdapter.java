@@ -34,11 +34,10 @@ public class VideoRecyclerAdapter
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         holder.mItem = mValues.get(position);
-        holder.mAuthorView.setText(holder.mItem.getAuthor());
-        holder.mContentView.setText(mValues.get(position).getTitle());
+        holder.mTitleView.setText(holder.mItem.getTitle());
+        holder.mUrlView.setText(mValues.get(position).getUrl());
 
-        BitmapWorkerTask bitmapWorkerTask = new BitmapWorkerTask(holder.mImageView, getApplicationContext(), holder.mItem);
-        bitmapWorkerTask.execute();
+        //TODO Download thumbnails. http://stackoverflow.com/questions/4317665/how-to-get-thumbnail-for-video-in-my-sdcard-android-data-mypackage-files-folder
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +52,7 @@ public class VideoRecyclerAdapter
         return mValues.size();
     }
 
-    public void add(ArrayList<Book> data) {
+    public void add(ArrayList<VideoObject> data) {
         mValues.clear();
         mValues.addAll(data);
         notifyDataSetChanged();
@@ -62,27 +61,26 @@ public class VideoRecyclerAdapter
     public void clear() {
         mValues.clear();
         notifyDataSetChanged();
-        setView(EMPTY_TEXT);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mAuthorView;
-        public final TextView mContentView;
+        public final TextView mTitleView;
+        public final TextView mUrlView;
         public final ImageView mImageView;
-        public Book mItem;
+        public VideoObject mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mAuthorView = (TextView) view.findViewById(R.id.author_text_view);
-            mImageView = (ImageView) view.findViewById(R.id.cover_thumb_image_view);
-            mContentView = (TextView) view.findViewById(R.id.title_text_view);
+            mTitleView = (TextView) view.findViewById(R.id.title_text_view);
+            mImageView = (ImageView) view.findViewById(R.id.video_cover_image_view);
+            mUrlView = (TextView) view.findViewById(R.id.url_text_view);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mUrlView.getText() + "'";
         }
     }
 }

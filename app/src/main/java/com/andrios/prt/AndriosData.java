@@ -3,6 +3,8 @@ package com.andrios.prt;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.andrios.prt.VideoStream.VideoObject;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -537,5 +539,13 @@ public static ArrayList<Instruction> getInstructions(){
 
 	public int[] getWeightFemale() {
 		return weightFemale;
+	}
+
+	public static ArrayList<VideoObject> getVideos (){
+		ArrayList<VideoObject> videoList = new ArrayList<>();
+
+
+
+		return videoList;
 	}
 }

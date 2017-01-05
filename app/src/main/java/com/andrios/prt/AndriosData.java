@@ -545,6 +545,9 @@ public static ArrayList<Instruction> getInstructions(){
 		ArrayList<VideoObject> videoList = new ArrayList<>();
 
 
+        String pushupVideo = "http://www.navy.mil/media/multimedia/prt/push.mp4";
+        videoList.add(new VideoObject(pushupVideo, "Pushup Tutorial"));
+
 
 		return videoList;
 	}

@@ -9,8 +9,10 @@ public class VideoObject {
     private String title;
     private String url;
 
-    public VideoObject(){
+    public VideoObject(String url, String title){
 
+        this.url = url;
+        this.title = title;
     }
 
     public String getFilePath() {

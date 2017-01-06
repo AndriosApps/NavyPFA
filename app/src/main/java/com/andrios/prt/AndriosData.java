@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import com.andrios.prt.Classes.Instruction;
 
+import com.andrios.prt.VideoStream.VideoObject;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -539,5 +541,20 @@ public static ArrayList<Instruction> getInstructions(){
 
 	public int[] getWeightFemale() {
 		return weightFemale;
+	}
+
+	public static ArrayList<VideoObject> getVideos (){
+		ArrayList<VideoObject> videoList = new ArrayList<>();
+
+
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Pushup Tutorial", R.drawable.andrios));
+        videoList.add(new VideoObject("http://dvidshub.net/r/kv4t7p", "Single Site Circumference Measurement", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Curlup Tutorial", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Elliptical Tutorial", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Stationary Bike Tutorial", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Bodyfat Measurements", R.drawable.andrios));//TODO UPDATE
+
+
+		return videoList;
 	}
 }

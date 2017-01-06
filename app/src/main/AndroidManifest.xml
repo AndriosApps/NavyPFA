@@ -26,11 +26,11 @@
         <activity
             android:name=".Activities.CalculatorTabsActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.BCA_Activity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PRTActivity"
             android:screenOrientation="portrait">
@@ -61,7 +61,7 @@
             android:name=".LogActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.AboutActivity"
+            android:name=".Activity.AboutActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrtLogViewActivity"
@@ -71,6 +71,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".VideoStreamActivity" />
+        <activity
+            android:name=".VideoStream.VideoListActivity"
             android:screenOrientation="portrait" />
     </application>
 

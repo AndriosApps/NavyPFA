@@ -1,4 +1,4 @@
-package com.andrios.prt.Activities;
+package com.andrios.prt.Activity;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -15,6 +15,7 @@ import com.andrios.prt.AndriosData;
 import com.andrios.prt.Classes.AppRater;
 import com.andrios.prt.Classes.Profile;
 import com.andrios.prt.R;
+import com.andrios.prt.VideoStream.VideoListActivity;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -30,7 +31,7 @@ public class MainActivity extends Activity implements
 	 */
 	private static final long serialVersionUID = -3088858143996312467L;
 	protected static final int PROFILEVIEW = 1;
-	Button profileBTN, logBTN, calcBTN, aboutBTN, instructionBTN;
+	Button profileBTN, logBTN, calcBTN, aboutBTN, instructionBTN, videoBTN;
 	boolean premium;
 	AndriosData mData;
 	Profile profile;
@@ -73,7 +74,6 @@ public class MainActivity extends Activity implements
 					Toast.makeText(this, "Profile Inclomplete",
 							Toast.LENGTH_SHORT).show();
 				}
-
 			}
 		}
 	}
@@ -88,6 +88,7 @@ public class MainActivity extends Activity implements
 		calcBTN = (Button) findViewById(R.id.mainActivityCalculatorsBTN);
 		aboutBTN = (Button) findViewById(R.id.mainActivityAboutBTN);
 		instructionBTN = (Button) findViewById(R.id.mainActivityInstructionsBTN);
+		videoBTN = (Button) findViewById(R.id.mainActivityVideoBTN);
 		mData = new AndriosData();
 	}
 
@@ -143,6 +144,16 @@ public class MainActivity extends Activity implements
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), BCA_Activity.class);
 
+				startActivity(intent);
+
+			}
+
+		});
+		videoBTN.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(),
+						VideoListActivity.class);
 				startActivity(intent);
 
 			}

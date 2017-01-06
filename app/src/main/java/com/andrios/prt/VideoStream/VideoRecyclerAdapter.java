@@ -1,6 +1,7 @@
 package com.andrios.prt.VideoStream;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,9 @@ import java.util.ArrayList;
 
 public class VideoRecyclerAdapter
         extends RecyclerView.Adapter<VideoRecyclerAdapter.ViewHolder> {
+
+
+    private static final String TAG = "VideoRecyclerAdapter: ";
 
     private final ArrayList<VideoObject> mValues;
     public VideoRecyclerAdapter(ArrayList<VideoObject> items) {
@@ -43,7 +47,7 @@ public class VideoRecyclerAdapter
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Not required in scope of project
+                Log.d(TAG, "onClick: ");
             }
         });
     }

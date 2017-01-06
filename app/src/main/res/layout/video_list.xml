@@ -31,7 +31,7 @@
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.andrios.booklistingapp.BookListActivity"
-        tools:listitem="@layout/book_list_content">
+        tools:listitem="@layout/video_list_item">
 
 
     </android.support.v7.widget.RecyclerView>

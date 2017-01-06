@@ -545,8 +545,12 @@ public static ArrayList<Instruction> getInstructions(){
 		ArrayList<VideoObject> videoList = new ArrayList<>();
 
 
-        String pushupVideo = "http://www.navy.mil/media/multimedia/prt/push.mp4";
-        videoList.add(new VideoObject(pushupVideo, "Pushup Tutorial"));
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Pushup Tutorial", R.drawable.andrios));
+        videoList.add(new VideoObject("http://dvidshub.net/r/kv4t7p", "Single Site Circumference Measurement", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Curlup Tutorial", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Elliptical Tutorial", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Stationary Bike Tutorial", R.drawable.andrios));//TODO UPDATE
+        videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Bodyfat Measurements", R.drawable.andrios));//TODO UPDATE
 
 
 		return videoList;

@@ -36,6 +36,7 @@ public class VideoRecyclerAdapter
         holder.mItem = mValues.get(position);
         holder.mTitleView.setText(holder.mItem.getTitle());
         holder.mUrlView.setText(mValues.get(position).getUrl());
+        holder.mImageView.setImageResource(holder.mItem.getThumbResource());
 
         //TODO Download thumbnails. http://stackoverflow.com/questions/4317665/how-to-get-thumbnail-for-video-in-my-sdcard-android-data-mypackage-files-folder
 

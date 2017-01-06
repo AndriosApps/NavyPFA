@@ -8,11 +8,13 @@ public class VideoObject {
     private String filepath;
     private String title;
     private String url;
+    private int thumbResource;
 
-    public VideoObject(String url, String title){
+    public VideoObject(String url, String title, int thumbResource){
 
         this.url = url;
         this.title = title;
+        this.thumbResource = thumbResource;
     }
 
     public String getFilePath() {
@@ -25,5 +27,9 @@ public class VideoObject {
 
     public String getUrl() {
         return url;
+    }
+
+    public int getThumbResource() {
+        return thumbResource;
     }
 }

@@ -74,7 +74,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".VideoStreamActivity" />
         <activity
-            android:name=".VideoListActivity"
+            android:name=".VideoStream.VideoListActivity"
             android:screenOrientation="portrait" />
     </application>
 

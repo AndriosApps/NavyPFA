@@ -11,6 +11,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.andrios.prt.VideoStream.VideoListActivity;
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
@@ -146,7 +148,7 @@ public class MainActivity extends Activity implements
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(),
-						VideoStreamActivity.class);
+						VideoListActivity.class);
 				startActivity(intent);
 
 			}

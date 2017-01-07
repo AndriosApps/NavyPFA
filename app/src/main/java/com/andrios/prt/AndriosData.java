@@ -1,6 +1,7 @@
 package com.andrios.prt;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.andrios.prt.Classes.Instruction;
@@ -18,19 +19,27 @@ import java.util.GregorianCalendar;
 import java.util.Observable;
 
 
+
 public class AndriosData extends Observable implements Serializable, Cloneable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6149357292077176082L;
+    private static final String TAG = "AndriosData: ";
 
-	boolean isMale;
 	int age;
 	int runtime;
+	public boolean isAltitude;
+	boolean isMale;
+	private String cardio;
+	private ArrayList<int[]> scoreArray;
 
 
-    public int getWeightMale(int height) {
+	public int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
+
+
+	public int getWeightMale(int height) {
         if(height >= weightMale.length){
             return weightMale[weightMale.length - 1];
         }else{
@@ -280,7 +289,9 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	
 	public AndriosData(){
 		isMale = true;
-		age = 19;
+		isAltitude = false;
+		age = 54;
+        cardio = "1.5 Mile Run";
 		
 	}
 	
@@ -291,6 +302,10 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	
 	public boolean getGender(){
 		return isMale;
+	}
+
+	public boolean getAlitude(){
+		return isAltitude;
 	}
 	
 	public int getAge(){
@@ -308,6 +323,10 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 			return 35.5;
 		}
 	}
+
+	public String getCardio(){
+		return cardio;
+	}
 	
 	
 	
@@ -321,6 +340,13 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 		notifyObservers();
 		System.out.println("MODEL UPDATE GENDER");
 	}
+
+	public void setAltitude(boolean isAltitude){
+		this.isAltitude = isAltitude;
+		setChanged();
+		notifyObservers();
+		System.out.println("MODEL UPDATE ALTITUDE");
+	}
 	
 	public void setAge(int age){
 		this.age = age;
@@ -328,6 +354,13 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 		setChanged();
 		notifyObservers();
 		System.out.println("MODEL UPDATE AGE");
+	}
+
+	public void setCardio(String cardio){
+		this.cardio = cardio;
+		setChanged();
+		notifyObservers();
+		System.out.println("MODEL UPDATE CARDIO");
 	}
 	
 	public void setRunTime(int runtime){
@@ -573,4 +606,323 @@ public static ArrayList<Instruction> getInstructions(){
 
 		return videoList;
 	}
+
+
+    public ArrayList<int[]> getScoreArrays() {
+        Log.d(TAG, "getScoreArrays: isMale: " + isMale + " age: " + age + " isAlt: " + isAltitude);
+
+        if (isMale) {
+            if (isAltitude) {
+                if (getCardio().equals("500m Swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupMale17, situpMale17, altSwim500Male17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupMale20, situpMale20, altSwim500Male20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupMale25, situpMale25, altSwim500Male25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupMale30, situpMale30, altSwim500Male30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupMale35, situpMale35, altSwim500Male35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupMale40, situpMale40, altSwim500Male40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupMale45, situpMale45, altSwim500Male45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupMale50, situpMale50, altSwim500Male50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupMale55, situpMale55, altSwim500Male55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupMale60, situpMale60, altSwim500Male60);
+                    } else {
+                        buildScoresArray(pushupMale65, situpMale65, altSwim500Male65);
+                    }
+                } else if (getCardio().equals("450m Swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupMale17, situpMale17, altSwim450Male17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupMale20, situpMale20, altSwim450Male20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupMale25, situpMale25, altSwim450Male25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupMale30, situpMale30, altSwim450Male30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupMale35, situpMale35, altSwim450Male35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupMale40, situpMale40, altSwim450Male40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupMale45, situpMale45, altSwim450Male45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupMale50, situpMale50, altSwim450Male50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupMale55, situpMale55, altSwim450Male55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupMale60, situpMale60, altSwim450Male60);
+                    } else {
+                        buildScoresArray(pushupMale65, situpMale65, altSwim450Male65);
+                    }
+                } else {
+                    if (age < 20) {
+                        buildScoresArray(pushupMale17, situpMale17, altRunMale17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupMale20, situpMale20, altRunMale20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupMale25, situpMale25, altRunMale25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupMale30, situpMale30, altRunMale30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupMale35, situpMale35, altRunMale35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupMale40, situpMale40, altRunMale40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupMale45, situpMale45, altRunMale45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupMale50, situpMale50, altRunMale50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupMale55, situpMale55, altRunMale55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupMale60, situpMale60, altRunMale60);
+                    } else {
+                        buildScoresArray(pushupMale65, situpMale65, altRunMale65);
+                    }
+                }
+            } else {
+                if (getCardio().equals("500m Swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupMale17, situpMale17, swim500Male17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupMale20, situpMale20, swim500Male20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupMale25, situpMale25, swim500Male25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupMale30, situpMale30, swim500Male30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupMale35, situpMale35, swim500Male35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupMale40, situpMale40, swim500Male40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupMale45, situpMale45, swim500Male45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupMale50, situpMale50, swim500Male50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupMale55, situpMale55, swim500Male55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupMale60, situpMale60, swim500Male60);
+                    } else {
+                        buildScoresArray(pushupMale65, situpMale65, swim500Male65);
+                    }
+                } else if (getCardio().equals("450m swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupMale17, situpMale17, swim450Male17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupMale20, situpMale20, swim450Male20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupMale25, situpMale25, swim450Male25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupMale30, situpMale30, swim450Male30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupMale35, situpMale35, swim450Male35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupMale40, situpMale40, swim450Male40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupMale45, situpMale45, swim450Male45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupMale50, situpMale50, swim450Male50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupMale55, situpMale55, swim450Male55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupMale60, situpMale60, swim450Male60);
+                    } else {
+                        buildScoresArray(pushupMale65, situpMale65, swim450Male65);
+                    }
+                } else {
+                    if (age < 20) {
+                        buildScoresArray(pushupMale17, situpMale17, runMale17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupMale20, situpMale20, runMale20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupMale25, situpMale25, runMale25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupMale30, situpMale30, runMale30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupMale35, situpMale35, runMale35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupMale40, situpMale40, runMale40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupMale45, situpMale45, runMale45);
+                    } else if (age < 55) {
+                        Log.d(TAG, "getScoreArrays: < 50 male");
+                        buildScoresArray(pushupMale50, situpMale50, runMale50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupMale55, situpMale55, runMale55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupMale60, situpMale60, runMale60);
+                    } else {
+                        buildScoresArray(pushupMale65, situpMale65, runMale65);
+                    }
+                }
+            }
+
+
+        } else {
+            if (isAltitude) {
+                if (getCardio().equals("500m Swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupFemale17, situpFemale17, altSwim500Female17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupFemale20, situpFemale20, altSwim500Female20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupFemale25, situpFemale25, altSwim500Female25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupFemale30, situpFemale30, altSwim500Female30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupFemale35, situpFemale35, altSwim500Female35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupFemale40, situpFemale40, altSwim500Female40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupFemale45, situpFemale45, altSwim500Female45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupFemale50, situpFemale50, altSwim500Female50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupFemale55, situpFemale55, altSwim500Female55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupFemale60, situpFemale60, altSwim500Female60);
+                    } else {
+                        buildScoresArray(pushupFemale65, situpFemale65, altSwim500Female65);
+                    }
+                } else if (getCardio().equals("450m Swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupFemale17, situpFemale17, altSwim450Female17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupFemale20, situpFemale20, altSwim450Female20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupFemale25, situpFemale25, altSwim450Female25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupFemale30, situpFemale30, altSwim450Female30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupFemale35, situpFemale35, altSwim450Female35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupFemale40, situpFemale40, altSwim450Female40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupFemale45, situpFemale45, altSwim450Female45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupFemale50, situpFemale50, altSwim450Female50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupFemale55, situpFemale55, altSwim450Female55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupFemale60, situpFemale60, altSwim450Female60);
+                    } else {
+                        buildScoresArray(pushupFemale65, situpFemale65, altSwim450Female65);
+                    }
+                } else {
+                    if (age < 20) {
+                        buildScoresArray(pushupFemale17, situpFemale17, altRunFemale17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupFemale20, situpFemale20, altRunFemale20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupFemale25, situpFemale25, altRunFemale25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupFemale30, situpFemale30, altRunFemale30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupFemale35, situpFemale35, altRunFemale35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupFemale40, situpFemale40, altRunFemale40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupFemale45, situpFemale45, altRunFemale45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupFemale50, situpFemale50, altRunFemale50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupFemale55, situpFemale55, altRunFemale55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupFemale60, situpFemale60, altRunFemale60);
+                    } else {
+                        buildScoresArray(pushupFemale65, situpFemale65, altRunFemale65);
+                    }
+                }
+            } else {
+                if (getCardio().equals("500m Swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupFemale17, situpFemale17, swim500Female17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupFemale20, situpFemale20, swim500Female20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupFemale25, situpFemale25, swim500Female25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupFemale30, situpFemale30, swim500Female30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupFemale35, situpFemale35, swim500Female35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupFemale40, situpFemale40, swim500Female40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupFemale45, situpFemale45, swim500Female45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupFemale50, situpFemale50, swim500Female50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupFemale55, situpFemale55, swim500Female55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupFemale60, situpFemale60, swim500Female60);
+                    } else {
+                        buildScoresArray(pushupFemale65, situpFemale65, swim500Female65);
+                    }
+                } else if (getCardio().equals("450m swim")) {
+                    if (age < 20) {
+                        buildScoresArray(pushupFemale17, situpFemale17, swim450Female17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupFemale20, situpFemale20, swim450Female20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupFemale25, situpFemale25, swim450Female25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupFemale30, situpFemale30, swim450Female30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupFemale35, situpFemale35, swim450Female35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupFemale40, situpFemale40, swim450Female40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupFemale45, situpFemale45, swim450Female45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupFemale50, situpFemale50, swim450Female50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupFemale55, situpFemale55, swim450Female55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupFemale60, situpFemale60, swim450Female60);
+                    } else {
+                        buildScoresArray(pushupFemale65, situpFemale65, swim450Female65);
+                    }
+                } else {
+                    if (age < 20) {
+                        buildScoresArray(pushupFemale17, situpFemale17, runFemale17);
+                    } else if (age < 25) {
+                        buildScoresArray(pushupFemale20, situpFemale20, runFemale20);
+                    } else if (age < 30) {
+                        buildScoresArray(pushupFemale25, situpFemale25, runFemale25);
+                    } else if (age < 35) {
+                        buildScoresArray(pushupFemale30, situpFemale30, runFemale30);
+                    } else if (age < 40) {
+                        buildScoresArray(pushupFemale35, situpFemale35, runFemale35);
+                    } else if (age < 45) {
+                        buildScoresArray(pushupFemale40, situpFemale40, runFemale40);
+                    } else if (age < 50) {
+                        buildScoresArray(pushupFemale45, situpFemale45, runFemale45);
+                    } else if (age < 55) {
+                        buildScoresArray(pushupFemale50, situpFemale50, runFemale50);
+                    } else if (age < 60) {
+                        buildScoresArray(pushupFemale55, situpFemale55, runFemale55);
+                    } else if (age < 65) {
+                        buildScoresArray(pushupFemale60, situpFemale60, runFemale60);
+                    } else {
+                        buildScoresArray(pushupFemale65, situpFemale65, runFemale65);
+                    }
+                }
+            }
+
+        }
+        return scoreArray;
+    }
+
+    private void buildScoresArray(int[] pushupsArray, int[] situpArray, int[] cardioArray) {
+        scoreArray = new ArrayList<>();
+        scoreArray.add(pushupsArray);
+        scoreArray.add(situpArray);
+        scoreArray.add(cardioArray);
+    }
 }

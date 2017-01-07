@@ -2,4 +2,6 @@
 <resources>
     <color name="yellow">#ffff00</color>
     <color name="transparent_white">#60ffffff</color>
+    <color name="redorange">#ff8c00</color>
+    <color name="orange">#ffa500</color>
 </resources>

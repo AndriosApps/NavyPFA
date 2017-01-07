@@ -232,7 +232,7 @@
                     android:textColor="@color/black" />
 
                 <com.andrios.prt.CustomSeekBar
-                    android:id="@+id/circumferance_seek_bar"
+                    android:id="@+id/pushup_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:progressDrawable="@android:color/transparent"

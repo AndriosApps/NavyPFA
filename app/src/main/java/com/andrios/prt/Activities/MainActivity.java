@@ -12,9 +12,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.andrios.prt.AndriosData;
-import com.andrios.prt.BcaActivity;
 import com.andrios.prt.Classes.AppRater;
 import com.andrios.prt.Classes.Profile;
+import com.andrios.prt.NewPrtActivity;
+import com.andrios.prt.R;
 import com.andrios.prt.VideoStream.VideoListActivity;
 
 import java.io.FileInputStream;
@@ -142,7 +143,7 @@ public class MainActivity extends Activity implements
 		aboutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), BcaActivity.class);
+				Intent intent = new Intent(v.getContext(), NewPrtActivity.class);
 
 				startActivity(intent);
 

@@ -151,7 +151,7 @@ public class BcaActivity extends Activity implements Observer {
 
         });
 
-        circumferenceSeekBar = (CustomSeekBar) findViewById(R.id.circumferance_seek_bar);
+        circumferenceSeekBar = (CustomSeekBar) findViewById(R.id.pushup_seek_bar);
         circumferenceSeekBar.setMax((MAX_CIRCUM - MIN_CIRCUM) * 2);
         circumferenceSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
 

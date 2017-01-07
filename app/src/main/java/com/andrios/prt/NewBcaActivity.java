@@ -40,6 +40,7 @@ public class NewBcaActivity extends Activity {
     private TextView hipsTextView;
 
     private TextView circumferenceTextView;
+    private TextView bodyFatPercentTextView;
     private ImageView passHeightWeightImageView;
     private ImageView passCircumferenceImageView;
     private ImageView passBodyfatImageView;
@@ -84,6 +85,7 @@ public class NewBcaActivity extends Activity {
         neckTextView = (TextView) findViewById(R.id.neck_text_view);
         hipsTextView = (TextView) findViewById(R.id.hips_text_view);
         circumferenceTextView = (TextView) findViewById(R.id.circumferance_text_view);
+        bodyFatPercentTextView = (TextView) findViewById(R.id.bodyfat_percent_text_view);
 
         passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view_right);
         passCircumferenceImageView = (ImageView) findViewById(R.id.pass_circumference_image_view_right);
@@ -176,7 +178,7 @@ public class NewBcaActivity extends Activity {
                 Log.d(TAG, "onProgressChanged: Neck: " + neck);
                 neckTextView.setText(neck + "\"");
                 calculateBodyfat(circumference, neck, hips, height);
-
+                updateUI();
 
             }
 
@@ -247,9 +249,14 @@ public class NewBcaActivity extends Activity {
             } else {
                 passCircumferenceImageView.setImageResource(R.drawable.fail_icon);
                 bodyfatCardView.setVisibility(View.VISIBLE);
-
                 initNeckSeekBar();
-                initHipsSeekBar();
+                if(mData.isMale){
+                    hipsLayout.setVisibility(View.GONE);
+                }else{
+                    initHipsSeekBar();
+                    hipsLayout.setVisibility(View.VISIBLE);
+                }
+
                 if (isBodyfatPassing()) {
                     passBodyfatImageView.setImageResource(R.drawable.pass_icon);
                 } else {
@@ -319,13 +326,13 @@ public class NewBcaActivity extends Activity {
         progressItem = new ProgressItem();
         Log.d(TAG, "initNeckSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
-        progressItem.color = R.color.andrios_grey;
+        progressItem.color = R.color.red;
         progressItemList.add(progressItem);
 
         //GREY SPAN
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
-        progressItem.color = R.color.red;
+        progressItem.color = R.color.andrios_grey;
         progressItemList.add(progressItem);
 
 
@@ -382,7 +389,7 @@ public class NewBcaActivity extends Activity {
                 passBodyfat = false;
             }
         }
-        
+        bodyFatPercentTextView.setText(percentFat + "%");
         return percentFat;
     }
 

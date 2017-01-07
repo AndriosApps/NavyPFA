@@ -268,17 +268,22 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/pass_bodyfat_image_view_left"
+                <TextView
+                    android:id="@+id/bodyfat_percent_text_view"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_gravity="center" />
+                    android:gravity="center"
+                    android:layout_weight="0"
+                    android:text="22%"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Bodyfat"
+                    android:layout_weight="1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/black" />
 
@@ -286,6 +291,7 @@
                     android:id="@+id/pass_bodyfat_image_view_right"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:layout_weight="0"
                     android:layout_gravity="center" />
 
             </LinearLayout>

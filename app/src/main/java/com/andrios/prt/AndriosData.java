@@ -287,9 +287,9 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 
 	public double getCircumference (){
 		if(isMale){
-			return 39.0;//TODO Verify
+			return 39.0;
 		}else{
-			return 43.0;//TODO verify
+			return 35.5;
 		}
 	}
 	

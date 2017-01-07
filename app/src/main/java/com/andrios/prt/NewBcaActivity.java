@@ -44,6 +44,7 @@ public class NewBcaActivity extends Activity {
     private ImageView passHeightWeightImageView;
     private ImageView passCircumferenceImageView;
     private ImageView passBodyfatImageView;
+    private ImageView genderImageView;
 
     private CardView circumferenceCardView;
     private CardView bodyfatCardView;
@@ -68,13 +69,8 @@ public class NewBcaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bca);
 
-
         setConnection();
-
-
         updateUI();
-
-
     }
 
     private void setConnection() {
@@ -90,13 +86,20 @@ public class NewBcaActivity extends Activity {
         passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view_right);
         passCircumferenceImageView = (ImageView) findViewById(R.id.pass_circumference_image_view_right);
         passBodyfatImageView = (ImageView) findViewById(R.id.pass_bodyfat_image_view_right);
+        genderImageView = (ImageView) findViewById(R.id.gender_image_view);
+        genderImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mData.setGender(!mData.getGender());
+
+                updateUI();
+            }
+        });
 
         circumferenceCardView = (CardView) findViewById(R.id.circumference_card_view);
 
         bodyfatCardView = (CardView) findViewById(R.id.bodyfat_card_view);
         hipsLayout = (LinearLayout) findViewById(R.id.hips_layout);
-
-
 
         heightSeekBar = (CustomSeekBar) findViewById(R.id.height_seek_bar);
         heightSeekBar.setMax(MAX_HEIGHT - MIN_HEIGHT);
@@ -105,7 +108,6 @@ public class NewBcaActivity extends Activity {
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
                 height = arg1 + MIN_HEIGHT;
                 heightTextView.setText(formatInches(height));
-                calcHeightWeight();
                 updateUI();
             }
 
@@ -142,8 +144,6 @@ public class NewBcaActivity extends Activity {
 
         });
 
-
-
         circumferenceSeekBar = (CustomSeekBar) findViewById(R.id.circumferance_seek_bar);
         circumferenceSeekBar.setMax((MAX_CIRCUM - MIN_CIRCUM) * 2);
         circumferenceSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
@@ -154,8 +154,6 @@ public class NewBcaActivity extends Activity {
                 Log.d(TAG, "onProgressChanged: Circumference: " + circumference);
                 circumferenceTextView.setText(circumference + "\"");
                 updateUI();
-
-
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -179,7 +177,6 @@ public class NewBcaActivity extends Activity {
                 neckTextView.setText(neck + "\"");
                 calculateBodyfat(circumference, neck, hips, height);
                 updateUI();
-
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -189,7 +186,6 @@ public class NewBcaActivity extends Activity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
-
         });
 
         hipsSeekBar = (CustomSeekBar) findViewById(R.id.hips_seek_bar);
@@ -202,7 +198,6 @@ public class NewBcaActivity extends Activity {
                 Log.d(TAG, "onProgressChanged: Hips: " + hips);
                 hipsTextView.setText(hips + "\"");
                 calculateBodyfat(circumference, neck, hips, height);
-
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -212,10 +207,7 @@ public class NewBcaActivity extends Activity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
-
         });
-
-
 
         heightSeekBar.setProgress(height - MIN_HEIGHT);
         weightSeekBar.setProgress(weight - MIN_WEIGHT);
@@ -226,10 +218,15 @@ public class NewBcaActivity extends Activity {
 
     private void updateUI() {
 
+        if(mData.isMale){
+            genderImageView.setImageResource(R.drawable.icon_male);
+            initWeightSeekBar(mData.getWeightMale()[height - MIN_HEIGHT]);
+        }else{
+            genderImageView.setImageResource(R.drawable.icon_female);
+            initWeightSeekBar(mData.getWeightFemale()[height - MIN_HEIGHT]);
+        }
         calcHeightWeight();
         initHeightSeekBar();
-        initWeightSeekBar(mData.getWeightMale()[height - MIN_HEIGHT]);
-
 
         if (passHeightWeight) {
             passHeightWeightImageView.setImageResource(R.drawable.pass_icon);
@@ -250,6 +247,7 @@ public class NewBcaActivity extends Activity {
                 passCircumferenceImageView.setImageResource(R.drawable.fail_icon);
                 bodyfatCardView.setVisibility(View.VISIBLE);
                 initNeckSeekBar();
+
                 if(mData.isMale){
                     hipsLayout.setVisibility(View.GONE);
                 }else{
@@ -276,24 +274,21 @@ public class NewBcaActivity extends Activity {
 
         float passSpan = (passHips - MIN_HIPS) * 2;
 
-        //RED SPAN
+        //GREY SPAN
         progressItem = new ProgressItem();
         Log.d(TAG, "initHipsSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
         progressItem.color = R.color.andrios_grey;
         progressItemList.add(progressItem);
 
-        //GREY SPAN
+        //RED SPAN
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
         progressItem.color = R.color.red;
         progressItemList.add(progressItem);
 
-
         hipsSeekBar.initData(progressItemList);
         hipsSeekBar.invalidate();
-
-
     }
 
     private double calculatePassingHips() {
@@ -335,69 +330,17 @@ public class NewBcaActivity extends Activity {
         progressItem.color = R.color.andrios_grey;
         progressItemList.add(progressItem);
 
-
         neckSeekBar.initData(progressItemList);
         neckSeekBar.invalidate();
-
-
     }
 
-    private boolean isBodyfatPassing() {
-        double bodyfat = calculateBodyfat(circumference, neck, hips, height);
-        if (mData.isMale && bodyfat < MAX_BODYFAT_MALE) {
-            return true;
-        } else if (!mData.isMale && bodyfat < MAX_BODYFAT_FEMALE) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    private double calculatePassingNeck() {
-        double passingBodyfat;
-        if (mData.isMale) {
-            passingBodyfat = 26.0;
-        } else {
-            passingBodyfat = 36.0;
-        }
-        boolean passing = false;
-        double neckTest = MIN_NECK;
-        while (passingBodyfat < calculateBodyfat(circumference, neckTest, hips, height)) {
-            Log.d(TAG, "calculatePassingNeck: " + neckTest);
-            neckTest += .5;
-        }
-        return neckTest;
-
-    }
-
-    private double calculateBodyfat(double circumference, double neck, double hips, int height) {
-        double percentFat = 0;
-        if (mData.isMale) {
-
-            //Equation derived from DoD Instruction 1308.3 Page 13
-            percentFat = 86.010 * Math.log10(circumference - neck) - 70.041 * Math.log10(height) + 36.76;
-            if(percentFat < MAX_BODYFAT_MALE){
-                passBodyfat = true;
-            }else{
-                passBodyfat = false;
-            }
-        } else {
-            percentFat = 163.205 * Math.log10(circumference + hips - neck) - 97.684 * Math.log10(height) - 78.387;
-            if(percentFat < MAX_BODYFAT_FEMALE){
-                passBodyfat = true;
-            }else{
-                passBodyfat = false;
-            }
-        }
-        bodyFatPercentTextView.setText((int) Math.round(percentFat) + "%");
-        return percentFat;
-    }
 
     private void initCircumferenceBar() {
         int totalSpan = (MAX_CIRCUM - MIN_CIRCUM) * 2;
         progressItemList = new ArrayList<ProgressItem>();
 
-        float passSpan = (39 - MIN_CIRCUM) * 2;
+        float passSpan = (float) (mData.getCircumference() - MIN_CIRCUM) * 2;
 
         //RED SPAN
         progressItem = new ProgressItem();
@@ -466,6 +409,57 @@ public class NewBcaActivity extends Activity {
 
     }
 
+    private boolean isBodyfatPassing() {
+        double bodyfat = calculateBodyfat(circumference, neck, hips, height);
+        if (mData.isMale && bodyfat < MAX_BODYFAT_MALE) {
+            return true;
+        } else if (!mData.isMale && bodyfat < MAX_BODYFAT_FEMALE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private double calculatePassingNeck() {
+        double passingBodyfat;
+        if (mData.isMale) {
+            passingBodyfat = 26.0;
+        } else {
+            passingBodyfat = 36.0;
+        }
+        boolean passing = false;
+        double neckTest = MIN_NECK;
+        while (passingBodyfat < calculateBodyfat(circumference, neckTest, hips, height)) {
+            Log.d(TAG, "calculatePassingNeck: " + neckTest);
+            neckTest += .5;
+        }
+        return neckTest;
+
+    }
+
+    private double calculateBodyfat(double circumference, double neck, double hips, int height) {
+        double percentFat = 0;
+        if (mData.isMale) {
+
+            //Equation derived from DoD Instruction 1308.3 Page 13
+            percentFat = 86.010 * Math.log10(circumference - neck) - 70.041 * Math.log10(height) + 36.76;
+            if(percentFat < MAX_BODYFAT_MALE){
+                passBodyfat = true;
+            }else{
+                passBodyfat = false;
+            }
+        } else {
+            percentFat = 163.205 * Math.log10(circumference + hips - neck) - 97.684 * Math.log10(height) - 78.387;
+            if(percentFat < MAX_BODYFAT_FEMALE){
+                passBodyfat = true;
+            }else{
+                passBodyfat = false;
+            }
+        }
+        bodyFatPercentTextView.setText((int) Math.round(percentFat) + "%");
+        return percentFat;
+    }
+
     private void calcHeightWeight() {
         passHeightWeight = false;
         int maxWeight;
@@ -486,8 +480,6 @@ public class NewBcaActivity extends Activity {
                 passHeightWeight = true;
             }
         }
-
-
     }
 
     private void calculateCircumference() {

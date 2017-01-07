@@ -14,7 +14,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-
         android:backgroundTint="@color/white">
 
 
@@ -22,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/metrics_text_view"
@@ -43,15 +43,14 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/gender_image_view"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/andrios" />
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@color/andrios_grey" />
 
                 </LinearLayout>
 
@@ -59,14 +58,14 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/age_new_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="right"
                         android:text="32yrs"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
@@ -272,8 +271,8 @@
                     android:id="@+id/bodyfat_percent_text_view"
                     android:layout_width="64dp"
                     android:layout_height="32dp"
-                    android:gravity="left"
                     android:layout_weight="0"
+                    android:gravity="left"
                     android:text="22%"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/black" />
@@ -281,9 +280,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Bodyfat"
-                    android:layout_weight="1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/black" />
 
@@ -291,9 +290,9 @@
                     android:id="@+id/pass_bodyfat_image_view_right"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="32dp"
-                    android:layout_weight="0"
-                    android:layout_gravity="center" />
+                    android:layout_weight="0" />
 
             </LinearLayout>
 
@@ -306,26 +305,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/neck_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Height"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/neck_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Height"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Neck"
                         android:layout_weight="1"
                         android:gravity="right"
+                        android:text="Neck"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
+
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/neck_seek_bar"
                     android:layout_width="match_parent"

@@ -20,9 +20,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class NewBcaActivity extends Activity implements Observer {
+public class BcaActivity extends Activity implements Observer {
 
-    private static final String TAG = "NewBcaActivity";
+    private static final String TAG = "BcaActivity";
     private static final int MIN_HEIGHT = 51;
     private static final int MAX_HEIGHT = 86;
     private static final int MIN_WEIGHT = 90;

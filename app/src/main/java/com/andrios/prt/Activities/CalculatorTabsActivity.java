@@ -9,7 +9,7 @@ import android.widget.TabHost;
 
 import com.andrios.prt.AndriosData;
 import com.andrios.prt.CardioActivity;
-import com.andrios.prt.NewBcaActivity;
+import com.andrios.prt.BcaActivity;
 import com.andrios.prt.PRTActivity;
 import com.andrios.prt.R;
 
@@ -53,7 +53,7 @@ public class CalculatorTabsActivity extends TabActivity {
         		.setContent(intent));
         
         //Setup for Workout Tab (Tab 1)
-        intent = new Intent().setClass(this, NewBcaActivity.class);
+        intent = new Intent().setClass(this, BcaActivity.class);
         intent.putExtra("premium", isPremium);
         intent.putExtra("data", mData);
         mTabHost.addTab(mTabHost.newTabSpec("BCA").setIndicator("BCA")

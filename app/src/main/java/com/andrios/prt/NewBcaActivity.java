@@ -389,7 +389,7 @@ public class NewBcaActivity extends Activity {
                 passBodyfat = false;
             }
         }
-        bodyFatPercentTextView.setText(percentFat + "%");
+        bodyFatPercentTextView.setText((int) Math.round(percentFat) + "%");
         return percentFat;
     }
 

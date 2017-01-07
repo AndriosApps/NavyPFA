@@ -284,6 +284,14 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	public int getRunTime(){
 		return runtime;
 	}
+
+	public double getCircumference (){
+		if(isMale){
+			return 39.0;//TODO Verify
+		}else{
+			return 43.0;//TODO verify
+		}
+	}
 	
 	
 	

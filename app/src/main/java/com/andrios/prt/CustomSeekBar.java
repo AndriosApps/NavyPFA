@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.SeekBar;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
  */
 
 public class CustomSeekBar extends SeekBar {
+    private static final String TAG = "CustomSeekBar";
     private ArrayList<ProgressItem> mProgressItemsList;
 
     public CustomSeekBar(Context context){
@@ -29,6 +31,7 @@ public class CustomSeekBar extends SeekBar {
     }
 
     public void initData(ArrayList<ProgressItem> progressItemsList){
+        Log.d(TAG, "initData: ");
         this.mProgressItemsList = progressItemsList;
     }
 
@@ -61,5 +64,4 @@ public class CustomSeekBar extends SeekBar {
             super.onDraw(canvas);
         }
     }
-
 }

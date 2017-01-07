@@ -6,6 +6,7 @@ import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -15,72 +16,385 @@ import java.util.ArrayList;
 public class NewBcaActivity extends Activity {
 
     private static final String TAG = "NewBcaActivity";
-    private static int MIN_HEIGHT = 51;
-    private static int MAX_HEIGHT = 86;
-    private static int MIN_WEIGHT = 90;
-    private static int MAX_WEIGHT = 300;
-    private static int MIN_CIRCUM = 20;
-    private static int MAX_CIRCUM = 55;
+    private static final int MIN_HEIGHT = 51;
+    private static final int MAX_HEIGHT = 86;
+    private static final int MIN_WEIGHT = 90;
+    private static final int MAX_WEIGHT = 300;
+    private static final int MIN_CIRCUM = 20;
+    private static final int MAX_CIRCUM = 55;
+    private static final int MAX_NECK = 25;
+    private static final int MIN_NECK = 10;
+    private static final int MAX_HIPS = 55;
+    private static final int MIN_HIPS = 10;
 
     private CustomSeekBar heightSeekBar;
     private CustomSeekBar weightSeekBar;
     private CustomSeekBar circumferenceSeekBar;
+    private CustomSeekBar neckSeekBar;
+    private CustomSeekBar hipsSeekBar;
     private ArrayList<ProgressItem> progressItemList;
     private ProgressItem progressItem;
     private TextView heightTextView;
     private TextView weightTextView;
+    private TextView neckTextView;
+    private TextView hipsTextView;
+
     private TextView circumferenceTextView;
     private ImageView passHeightWeightImageView;
     private ImageView passCircumferenceImageView;
+    private ImageView passBodyfatImageView;
 
     private CardView circumferenceCardView;
+    private CardView bodyfatCardView;
+    private LinearLayout hipsLayout;
 
-    private boolean inStandards;
-    private boolean isMale = true;
+    private boolean passHeightWeight;
+    private boolean passCircumference;
+    private boolean passBodyfat;
+
     private AndriosData mData;
     private float remainderSpan;
-    private double circumference = 20.0;
+    private double circumference = 20.0, neck = 15.0, hips = 36.0;
 
 
     int height = 69, weight = 100, age = 17;
+    private double MAX_BODYFAT_MALE = 26;
+    private double MAX_BODYFAT_FEMALE = 36;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bca);
 
+
+        setConnection();
+
+
+        updateUI();
+
+
+    }
+
+    private void setConnection() {
+        mData = new AndriosData();
+
         heightTextView = (TextView) findViewById(R.id.height_text_view);
         weightTextView = (TextView) findViewById(R.id.weight_text_view);
+        neckTextView = (TextView) findViewById(R.id.neck_text_view);
+        hipsTextView = (TextView) findViewById(R.id.hips_text_view);
         circumferenceTextView = (TextView) findViewById(R.id.circumferance_text_view);
+
         passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view_right);
         passCircumferenceImageView = (ImageView) findViewById(R.id.pass_circumference_image_view_right);
+        passBodyfatImageView = (ImageView) findViewById(R.id.pass_bodyfat_image_view_right);
+
         circumferenceCardView = (CardView) findViewById(R.id.circumference_card_view);
 
-        mData = new AndriosData();
-        weightSeekBar = (CustomSeekBar) findViewById(R.id.weight_seek_bar);
-        heightSeekBar = (CustomSeekBar) findViewById(R.id.height_seek_bar);
-        circumferenceSeekBar = (CustomSeekBar) findViewById(R.id.circumferance_seek_bar);
+        bodyfatCardView = (CardView) findViewById(R.id.bodyfat_card_view);
+        hipsLayout = (LinearLayout) findViewById(R.id.hips_layout);
 
-        initWeightSeekBar(mData.getWeightMale()[height-MIN_HEIGHT]);
+
+
+        heightSeekBar = (CustomSeekBar) findViewById(R.id.height_seek_bar);
+        heightSeekBar.setMax(MAX_HEIGHT - MIN_HEIGHT);
+        heightSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+                height = arg1 + MIN_HEIGHT;
+                heightTextView.setText(formatInches(height));
+                calcHeightWeight();
+                updateUI();
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+        });
+
+        weightSeekBar = (CustomSeekBar) findViewById(R.id.weight_seek_bar);
+        weightSeekBar.setMax(MAX_WEIGHT - MIN_WEIGHT);
+        weightSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+
+                weight = arg1 + MIN_WEIGHT;
+                Log.d(TAG, "onProgressChanged: " + weight);
+                weightTextView.setText(weight + "lbs");
+
+                updateUI();
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+        });
+
+
+
+        circumferenceSeekBar = (CustomSeekBar) findViewById(R.id.circumferance_seek_bar);
+        circumferenceSeekBar.setMax((MAX_CIRCUM - MIN_CIRCUM) * 2);
+        circumferenceSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+                double decimal = arg1 % 2;
+                circumference = MIN_CIRCUM + (arg1 / 2) + decimal / 2;
+                Log.d(TAG, "onProgressChanged: Circumference: " + circumference);
+                circumferenceTextView.setText(circumference + "\"");
+                updateUI();
+
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+        });
+
+        neckSeekBar = (CustomSeekBar) findViewById(R.id.neck_seek_bar);
+        neckSeekBar.setMax((MAX_NECK - MIN_NECK) * 2);
+        neckSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+                double decimal = arg1 % 2;
+                neck = MIN_NECK + (arg1 / 2) + decimal / 2;
+                Log.d(TAG, "onProgressChanged: Neck: " + neck);
+                neckTextView.setText(neck + "\"");
+                calculateBodyfat(circumference, neck, hips, height);
+
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+        });
+
+        hipsSeekBar = (CustomSeekBar) findViewById(R.id.hips_seek_bar);
+        hipsSeekBar.setMax((MAX_HIPS - MIN_HIPS) * 2);
+        hipsSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+                double decimal = arg1 % 2;
+                hips = MIN_HIPS + (arg1 / 2) + decimal / 2;
+                Log.d(TAG, "onProgressChanged: Hips: " + hips);
+                hipsTextView.setText(hips + "\"");
+                calculateBodyfat(circumference, neck, hips, height);
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+        });
+
+
+
+        heightSeekBar.setProgress(height - MIN_HEIGHT);
+        weightSeekBar.setProgress(weight - MIN_WEIGHT);
+        circumferenceSeekBar.setProgress((int) (circumference * 2) - MIN_CIRCUM);
+        neckSeekBar.setProgress((int) neck - MIN_NECK);
+        hipsSeekBar.setProgress((int) hips - MIN_HIPS);
+    }
+
+    private void updateUI() {
+
+        calcHeightWeight();
         initHeightSeekBar();
-        initCircumferenceBar();
-        heightSeekBar.setProgress(height-MIN_HEIGHT);
-        weightSeekBar.setProgress(weight-MIN_WEIGHT);
-        circumferenceSeekBar.setProgress((int) (circumference*2) - MIN_CIRCUM);
-        //circumferenceSeekBar.setProgress(weight-MIN_WEIGHT);
+        initWeightSeekBar(mData.getWeightMale()[height - MIN_HEIGHT]);
+
+
+        if (passHeightWeight) {
+            passHeightWeightImageView.setImageResource(R.drawable.pass_icon);
+            circumferenceCardView.setVisibility(View.GONE);
+            bodyfatCardView.setVisibility(View.GONE);
+            Log.d(TAG, "calcHeightWeight: in standards");
+        } else {
+            calculateCircumference();
+            initCircumferenceBar();
+            passHeightWeightImageView.setImageResource(R.drawable.fail_icon);
+            circumferenceCardView.setVisibility(View.VISIBLE);
+            Log.d(TAG, "calcHeightWeight: not in standards");
+
+            if (passCircumference) {
+                bodyfatCardView.setVisibility(View.GONE);
+                passCircumferenceImageView.setImageResource(R.drawable.pass_icon);
+            } else {
+                passCircumferenceImageView.setImageResource(R.drawable.fail_icon);
+                bodyfatCardView.setVisibility(View.VISIBLE);
+
+                initNeckSeekBar();
+                initHipsSeekBar();
+                if (isBodyfatPassing()) {
+                    passBodyfatImageView.setImageResource(R.drawable.pass_icon);
+                } else {
+                    passBodyfatImageView.setImageResource(R.drawable.fail_icon);
+                }
+            }
         }
+    }
+
+    private void initHipsSeekBar() {
+        int totalSpan = (MAX_HIPS - MIN_HIPS) * 2;
+
+        progressItemList = new ArrayList<ProgressItem>();
+
+        float passHips = (float) calculatePassingHips();
+        Log.d(TAG, "initHipsSeekBar: PassHips " + passHips);
+
+        float passSpan = (passHips - MIN_HIPS) * 2;
+
+        //RED SPAN
+        progressItem = new ProgressItem();
+        Log.d(TAG, "initHipsSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
+        progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
+        progressItem.color = R.color.andrios_grey;
+        progressItemList.add(progressItem);
+
+        //GREY SPAN
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
+        progressItem.color = R.color.red;
+        progressItemList.add(progressItem);
+
+
+        hipsSeekBar.initData(progressItemList);
+        hipsSeekBar.invalidate();
+
+
+    }
+
+    private double calculatePassingHips() {
+        double passingBodyfat;
+        if (mData.isMale) {
+            passingBodyfat = MAX_BODYFAT_MALE;
+        } else {
+            passingBodyfat = MAX_BODYFAT_FEMALE;
+        }
+        double hipsTest = MAX_HIPS;
+        while (passingBodyfat < calculateBodyfat(circumference, neck, hipsTest, height) && hipsTest > MIN_HIPS) {
+            //Log.d(TAG, "calculatePassingHips: Hips" + hipsTest + " passing bodyfat: " + passingBodyfat + " < " + calculateBodyfat(circumference, neck, hipsTest, height));
+            hipsTest -= .5;
+        }
+        return hipsTest;
+    }
+
+
+    private void initNeckSeekBar() {
+        int totalSpan = (MAX_NECK - MIN_NECK) * 2;
+
+        progressItemList = new ArrayList<ProgressItem>();
+
+        float passNeck = (float) calculatePassingNeck();
+        Log.d(TAG, "initNeckSeekBar: PassNeck " + passNeck);
+
+        float passSpan = (passNeck - MIN_NECK) * 2;
+
+        //RED SPAN
+        progressItem = new ProgressItem();
+        Log.d(TAG, "initNeckSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
+        progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
+        progressItem.color = R.color.andrios_grey;
+        progressItemList.add(progressItem);
+
+        //GREY SPAN
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
+        progressItem.color = R.color.red;
+        progressItemList.add(progressItem);
+
+
+        neckSeekBar.initData(progressItemList);
+        neckSeekBar.invalidate();
+
+
+    }
+
+    private boolean isBodyfatPassing() {
+        double bodyfat = calculateBodyfat(circumference, neck, hips, height);
+        if (mData.isMale && bodyfat < MAX_BODYFAT_MALE) {
+            return true;
+        } else if (!mData.isMale && bodyfat < MAX_BODYFAT_FEMALE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private double calculatePassingNeck() {
+        double passingBodyfat;
+        if (mData.isMale) {
+            passingBodyfat = 26.0;
+        } else {
+            passingBodyfat = 36.0;
+        }
+        boolean passing = false;
+        double neckTest = MIN_NECK;
+        while (passingBodyfat < calculateBodyfat(circumference, neckTest, hips, height)) {
+            Log.d(TAG, "calculatePassingNeck: " + neckTest);
+            neckTest += .5;
+        }
+        return neckTest;
+
+    }
+
+    private double calculateBodyfat(double circumference, double neck, double hips, int height) {
+        double percentFat = 0;
+        if (mData.isMale) {
+
+            //Equation derived from DoD Instruction 1308.3 Page 13
+            percentFat = 86.010 * Math.log10(circumference - neck) - 70.041 * Math.log10(height) + 36.76;
+            if(percentFat < MAX_BODYFAT_MALE){
+                passBodyfat = true;
+            }else{
+                passBodyfat = false;
+            }
+        } else {
+            percentFat = 163.205 * Math.log10(circumference + hips - neck) - 97.684 * Math.log10(height) - 78.387;
+            if(percentFat < MAX_BODYFAT_FEMALE){
+                passBodyfat = true;
+            }else{
+                passBodyfat = false;
+            }
+        }
+        
+        return percentFat;
+    }
 
     private void initCircumferenceBar() {
         int totalSpan = (MAX_CIRCUM - MIN_CIRCUM) * 2;
-        circumferenceSeekBar.setMax(totalSpan);
-
         progressItemList = new ArrayList<ProgressItem>();
 
         float passSpan = (39 - MIN_CIRCUM) * 2;
 
         //RED SPAN
         progressItem = new ProgressItem();
-        Log.d(TAG, "initCircumSeekBar: pass span percent " + (passSpan/totalSpan)*100 +"%" );
+        Log.d(TAG, "initCircumSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
         progressItem.color = R.color.andrios_grey;
         progressItemList.add(progressItem);
@@ -95,32 +409,11 @@ public class NewBcaActivity extends Activity {
         circumferenceSeekBar.initData(progressItemList);
         circumferenceSeekBar.invalidate();
 
-        circumferenceSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener(){
-
-            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-                double decimal = arg1 % 2;
-                circumference = MIN_CIRCUM + (arg1 / 2) + decimal / 2;
-                Log.d(TAG, "onProgressChanged: Circumference: " + circumference);
-                circumferenceTextView.setText(circumference + "\"");
-                calculateCircumference();
-
-            }
-
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-
-        });
 
     }
 
     private void initHeightSeekBar() {
-        int totalSpan = MAX_HEIGHT-MIN_HEIGHT;
-        heightSeekBar.setMax(totalSpan);
+        int totalSpan = MAX_HEIGHT - MIN_HEIGHT;
 
         progressItemList = new ArrayList<ProgressItem>();
 
@@ -135,40 +428,21 @@ public class NewBcaActivity extends Activity {
         heightSeekBar.initData(progressItemList);
         heightSeekBar.invalidate();
 
-        heightSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener(){
 
-            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-                height = arg1 + MIN_HEIGHT;
-                Log.d(TAG, "onProgressChanged: " + formatInches(height));
-                heightTextView.setText(formatInches(height));
-                calcHeightWeight();
-
-            }
-
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-
-        });
     }
 
     private void initWeightSeekBar(int failWeight) {
-        float totalSpan = MAX_WEIGHT-MIN_WEIGHT;
+        float totalSpan = MAX_WEIGHT - MIN_WEIGHT;
         progressItemList = new ArrayList<ProgressItem>();
-        weightSeekBar.setMax(MAX_WEIGHT-MIN_WEIGHT);
 
 
         float passSpan = (failWeight - MIN_WEIGHT);
 
-        Log.d(TAG, "initWeightSeekBar: failWeight: " + failWeight + " pass span: " + passSpan );
+        Log.d(TAG, "initWeightSeekBar: failWeight: " + failWeight + " pass span: " + passSpan);
 
         //RED SPAN
         progressItem = new ProgressItem();
-        Log.d(TAG, "initWeightSeekBar: pass span percent " + (passSpan/totalSpan)*100 +"%" );
+        Log.d(TAG, "initWeightSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
         progressItem.color = R.color.andrios_grey;
         progressItemList.add(progressItem);
@@ -182,73 +456,46 @@ public class NewBcaActivity extends Activity {
 
         weightSeekBar.initData(progressItemList);
         weightSeekBar.invalidate();
-        weightSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener(){
 
-            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-
-                weight = arg1 + MIN_WEIGHT;
-                Log.d(TAG, "onProgressChanged: " + weight);
-                weightTextView.setText(weight + "lbs");
-                calcHeightWeight();
-
-            }
-
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-
-        });
     }
 
-    private void calcHeightWeight(){
-        inStandards = false;
+    private void calcHeightWeight() {
+        passHeightWeight = false;
         int maxWeight;
 
-        if(isMale){
-            maxWeight = mData.getWeightMale()[height-MIN_HEIGHT];
+        if (mData.isMale) {
+            maxWeight = mData.getWeightMale()[height - MIN_HEIGHT];
             initWeightSeekBar(maxWeight);
 
-            if(weight > maxWeight){
-                inStandards = false;
-            }else{
-                inStandards = true;
+            if (weight > maxWeight) {
+                passHeightWeight = false;
+            } else {
+                passHeightWeight = true;
             }
-        }else{
-            if(weight > mData.getWeightFemale()[height-MIN_HEIGHT]){
-                inStandards = false;
-            }else{
-                inStandards = true;
+        } else {
+            if (weight > mData.getWeightFemale()[height - MIN_HEIGHT]) {
+                passHeightWeight = false;
+            } else {
+                passHeightWeight = true;
             }
         }
 
-        if(inStandards){
-            passHeightWeightImageView.setImageResource(R.drawable.pass_icon);
-            circumferenceCardView.setVisibility(View.GONE);
-            Log.d(TAG, "calcHeightWeight: in standards");
-        }else{
-            passHeightWeightImageView.setImageResource(R.drawable.fail_icon);
-            circumferenceCardView.setVisibility(View.VISIBLE);
-            Log.d(TAG, "calcHeightWeight: not in standards");
-        }
+
     }
 
-    private void calculateCircumference(){
-       if (circumference <= mData.getCircumference()){
-            inStandards = true;
-           passCircumferenceImageView.setImageResource(R.drawable.pass_icon);
+    private void calculateCircumference() {
+        if (circumference <= mData.getCircumference()) {
+            passCircumference = true;
+            passCircumferenceImageView.setImageResource(R.drawable.pass_icon);
 
-        }else{
-           inStandards = false;
-           passCircumferenceImageView.setImageResource(R.drawable.fail_icon);
-       }
+        } else {
+            passCircumference = false;
+            passCircumferenceImageView.setImageResource(R.drawable.fail_icon);
+        }
     }
 
     //returns string of type 5'9"
-    private String formatInches(int inches){
+    private String formatInches(int inches) {
         String format = "";
         String feet = Integer.toString((int) inches / 12);
         String inchesRemaining = Integer.toString(inches % 12);

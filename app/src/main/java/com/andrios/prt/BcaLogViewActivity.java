@@ -75,7 +75,7 @@ public class BcaLogViewActivity extends Activity {
 		index = intent.getIntExtra("index", -1);
 		mData = (AndriosData) intent.getSerializableExtra("data");
 		if(index == -1){
-			Intent bcaIntent = new Intent(BcaLogViewActivity.this.getBaseContext(), BCAActivity.class);
+			Intent bcaIntent = new Intent(BcaLogViewActivity.this.getBaseContext(), NewBcaActivity.class);
 			
 			
 			

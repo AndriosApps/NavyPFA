@@ -28,7 +28,23 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	boolean isMale;
 	int age;
 	int runtime;
-	
+
+
+    public int getWeightMale(int height) {
+        if(height >= weightMale.length){
+            return weightMale[weightMale.length - 1];
+        }else{
+            return weightMale[height];
+        }
+    }
+
+    public int getWeightFemale(int height) {
+        if(height >= weightFemale.length){
+            return weightFemale[weightFemale.length - 1];
+        }else{
+            return weightFemale[height];
+        }
+    }
 	
 	//Male
 	int[] weightMale = {97, 102, 107, 112, 117, 122, 127, 131, 136, 141, 145, 150, 155,
@@ -542,14 +558,6 @@ public static ArrayList<Instruction> getInstructions(){
 
 }
 
-
-	public int[] getWeightMale() {
-		return weightMale;
-	}
-
-	public int[] getWeightFemale() {
-		return weightFemale;
-	}
 
 	public static ArrayList<VideoObject> getVideos (){
 		ArrayList<VideoObject> videoList = new ArrayList<>();

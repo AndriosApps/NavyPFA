@@ -107,13 +107,13 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder
 
         AndriosData mData = new AndriosData();
         if(isMale){
-            if(weight > mData.getWeightMale()[height-MIN_HEIGHT] ){
+            if(weight > mData.getWeightMale(height-MIN_HEIGHT)){
                 return ContextCompat.getColor(context, failColorResourceId);
             }else{
                 return ContextCompat.getColor(context, passColorResourceId);
             }
         }else{
-            if(weight  > mData.getWeightFemale()[height-MIN_HEIGHT]){
+            if(weight  > mData.getWeightFemale(height-MIN_HEIGHT)){
                 return ContextCompat.getColor(context, failColorResourceId);
             }else{
                 return ContextCompat.getColor(context, passColorResourceId);

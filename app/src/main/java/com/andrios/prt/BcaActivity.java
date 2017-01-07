@@ -225,15 +225,16 @@ public class BcaActivity extends Activity implements Observer {
 
     private void updateUI() {
 
+        Log.d(TAG, "updateUI: Height: " + height + " Weight: " + weight);
+        Log.d(TAG, "updateUI: Height/Weight passed: " + calcHeightWeight(height, weight));
+        initHeightSeekBar();
         if(mData.isMale){
             genderImageView.setImageResource(R.drawable.icon_male);
-            initWeightSeekBar(mData.getWeightMale()[height - MIN_HEIGHT]);
+            initWeightSeekBar(mData.getWeightMale(height - MIN_HEIGHT));
         }else{
             genderImageView.setImageResource(R.drawable.icon_female);
-            initWeightSeekBar(mData.getWeightFemale()[height - MIN_HEIGHT]);
+            initWeightSeekBar(mData.getWeightFemale(height - MIN_HEIGHT));
         }
-        calcHeightWeight();
-        initHeightSeekBar();
 
         if (passHeightWeight) {
             passHeightWeightImageView.setImageResource(R.drawable.pass_icon);
@@ -374,13 +375,28 @@ public class BcaActivity extends Activity implements Observer {
 
         progressItemList = new ArrayList<ProgressItem>();
 
+        Log.d(TAG, "initHeightSeekBar: Number of Progress Items: " + progressItemList.size());
+        int passHeight = calculatePassingHeight();
+        Log.d(TAG, "initHeightSeekBar: PassHeight " + passHeight );
 
-        //GREY SPAN
+        float failSpan = (passHeight - MIN_HEIGHT);
+        Log.d(TAG, "initHeightSeekBar: failspan: " + failSpan);
+
+        Log.d(TAG, "initHeightSeekBar prered: Number of Progress Items: " + progressItemList.size());
+        //RED SPAN
         progressItem = new ProgressItem();
-        progressItem.progressItemPercentage = (totalSpan);
-        progressItem.color = R.color.andrios_grey;
+        Log.d(TAG, "initHeightSeekBar: pass span percent " + (failSpan / totalSpan) * 100 + "%");
+        progressItem.progressItemPercentage = ((failSpan / totalSpan) * 100);
+        progressItem.color = R.color.red;
         progressItemList.add(progressItem);
 
+        Log.d(TAG, "initHeightSeekBar pregrey: Number of Progress Items: " + progressItemList.size());
+        //GREY SPAN
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
+        progressItem.color = R.color.andrios_grey;
+        progressItemList.add(progressItem);
+        Log.d(TAG, "initHeightSeekBar: Number of Progress Items: " + progressItemList.size());
 
         heightSeekBar.initData(progressItemList);
         heightSeekBar.invalidate();
@@ -409,7 +425,7 @@ public class BcaActivity extends Activity implements Observer {
         progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
         progressItem.color = R.color.red;
         progressItemList.add(progressItem);
-
+        Log.d(TAG, "initWeightSeekBar: Number of progress items: " + progressItemList.size() );
 
         weightSeekBar.initData(progressItemList);
         weightSeekBar.invalidate();
@@ -428,20 +444,32 @@ public class BcaActivity extends Activity implements Observer {
     }
 
     private double calculatePassingNeck() {
-        double passingBodyfat;
+        double passingNeck;
         if (mData.isMale) {
-            passingBodyfat = 26.0;
+            passingNeck = 26.0;
         } else {
-            passingBodyfat = 36.0;
+            passingNeck = 36.0;
         }
         boolean passing = false;
         double neckTest = MIN_NECK;
-        while (passingBodyfat < calculateBodyfat(circumference, neckTest, hips, height)) {
+        while (passingNeck < calculateBodyfat(circumference, neckTest, hips, height)) {
             Log.d(TAG, "calculatePassingNeck: " + neckTest);
             neckTest += .5;
         }
         return neckTest;
+    }
 
+    private int calculatePassingHeight() {
+        int testHeight = MIN_HEIGHT;
+
+        while (testHeightWeight(testHeight, weight) == false) {
+            Log.d(TAG, "calculatePassingHeight: " + testHeight);
+            testHeight += 1;
+            if(testHeight > MAX_HEIGHT){
+                return MAX_HEIGHT;
+            }
+        }
+        return testHeight;
     }
 
     private double calculateBodyfat(double circumference, double neck, double hips, int height) {
@@ -467,26 +495,46 @@ public class BcaActivity extends Activity implements Observer {
         return percentFat;
     }
 
-    private void calcHeightWeight() {
+    private boolean calcHeightWeight(int height, int weight) {
         passHeightWeight = false;
         int maxWeight;
 
         if (mData.isMale) {
-            maxWeight = mData.getWeightMale()[height - MIN_HEIGHT];
-            initWeightSeekBar(maxWeight);
-
+            maxWeight = mData.getWeightMale(height - MIN_HEIGHT);
             if (weight > maxWeight) {
                 passHeightWeight = false;
             } else {
                 passHeightWeight = true;
             }
         } else {
-            if (weight > mData.getWeightFemale()[height - MIN_HEIGHT]) {
+            if (weight > mData.getWeightFemale(height - MIN_HEIGHT)){
                 passHeightWeight = false;
             } else {
                 passHeightWeight = true;
             }
         }
+        return passHeightWeight;
+    }
+
+    private boolean testHeightWeight(int height, int weight) {
+        boolean testPassHeightWeight;
+        int maxWeight;
+
+        if (mData.isMale) {
+            maxWeight = mData.getWeightMale(height - MIN_HEIGHT);
+            if (weight > maxWeight) {
+                testPassHeightWeight = false;
+            } else {
+                testPassHeightWeight = true;
+            }
+        } else {
+            if (weight > mData.getWeightFemale(height - MIN_HEIGHT)) {
+                testPassHeightWeight = false;
+            } else {
+                testPassHeightWeight = true;
+            }
+        }
+        return testPassHeightWeight;
     }
 
     private void calculateCircumference() {

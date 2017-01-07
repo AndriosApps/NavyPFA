@@ -28,7 +28,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.BCA_Activity"
+            android:name=".BcaActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
@@ -45,7 +45,7 @@
             android:name=".Activities.InstructionsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BCAActivity"
+            android:name=".BcaActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="andrios.android.intent.action.NAVYBCA" />
@@ -73,8 +73,9 @@
             android:name=".Activities.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".VideoStreamActivity" />
-        <activity android:name=".BcaActivity"
-            android:screenOrientation="portrait"  />
+        <activity
+            android:name=".BcaActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VideoStream.VideoListActivity"
             android:screenOrientation="portrait" />

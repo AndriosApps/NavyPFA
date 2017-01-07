@@ -15,7 +15,6 @@ import com.andrios.prt.AndriosData;
 import com.andrios.prt.BcaActivity;
 import com.andrios.prt.Classes.AppRater;
 import com.andrios.prt.Classes.Profile;
-import com.andrios.prt.R;
 import com.andrios.prt.VideoStream.VideoListActivity;
 
 import java.io.FileInputStream;

@@ -52,8 +52,8 @@ public class NewBcaActivity extends Activity {
         heightTextView = (TextView) findViewById(R.id.height_text_view);
         weightTextView = (TextView) findViewById(R.id.weight_text_view);
         circumferenceTextView = (TextView) findViewById(R.id.circumferance_text_view);
-        passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view);
-        passCircumferenceImageView = (ImageView) findViewById(R.id.pass_circumference_image_view);
+        passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view_right);
+        passCircumferenceImageView = (ImageView) findViewById(R.id.pass_circumference_image_view_right);
         circumferenceCardView = (CardView) findViewById(R.id.circumference_card_view);
 
         mData = new AndriosData();

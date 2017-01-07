@@ -73,7 +73,8 @@
             android:name=".Activities.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".VideoStreamActivity" />
-        <activity android:name=".NewBcaActivity" />
+        <activity android:name=".NewBcaActivity"
+            android:screenOrientation="portrait"  />
         <activity
             android:name=".VideoStream.VideoListActivity"
             android:screenOrientation="portrait" />

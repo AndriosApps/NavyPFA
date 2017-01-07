@@ -1,6 +1,7 @@
 package com.andrios.prt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -10,10 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.andrios.prt.Classes.Profile;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class NewBcaActivity extends Activity {
+public class NewBcaActivity extends Activity implements Observer {
 
     private static final String TAG = "NewBcaActivity";
     private static final int MIN_HEIGHT = 51;
@@ -74,7 +81,7 @@ public class NewBcaActivity extends Activity {
     }
 
     private void setConnection() {
-        mData = new AndriosData();
+        getExtras();
 
         heightTextView = (TextView) findViewById(R.id.height_text_view);
         weightTextView = (TextView) findViewById(R.id.weight_text_view);
@@ -197,7 +204,7 @@ public class NewBcaActivity extends Activity {
                 hips = MIN_HIPS + (arg1 / 2) + decimal / 2;
                 Log.d(TAG, "onProgressChanged: Hips: " + hips);
                 hipsTextView.setText(hips + "\"");
-                calculateBodyfat(circumference, neck, hips, height);
+                updateUI();
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -500,6 +507,46 @@ public class NewBcaActivity extends Activity {
         String inchesRemaining = Integer.toString(inches % 12);
         format = feet + "'" + inchesRemaining + "\"";
         return format;
+    }
+
+    private void getExtras() {
+        Log.d(TAG, "getExtras: ");
+        Intent intent = this.getIntent();
+        //isLog = intent.getBooleanExtra("log", false);
+        //isPremium = intent.getBooleanExtra("premium", false);
+        mData = (AndriosData) intent.getSerializableExtra("data");
+        if(mData == null){
+            readData();
+        }
+        mData.addObserver(this);
+        age = mData.getAge();
+    }
+    
+    private void readData() {
+        Log.d(TAG, "readData: ");
+
+        try {
+            FileInputStream fis = openFileInput("profile");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            Profile profile = (Profile) ois.readObject();
+            ois.close();
+            fis.close();
+
+            mData = new AndriosData();
+            mData.setAge(profile.getAge());
+            mData.setGender(profile.isMale());
+
+
+        } catch (Exception e) {
+            Profile profile = new Profile();
+            mData = new AndriosData();
+        }
+    }
+
+    public void update(Observable observable, Object data) {
+        Log.d(TAG, "update: ");
+        updateUI();
     }
 
 }

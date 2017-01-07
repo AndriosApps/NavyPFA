@@ -8,8 +8,8 @@ import android.view.Window;
 import android.widget.TabHost;
 
 import com.andrios.prt.AndriosData;
-import com.andrios.prt.BCAActivity;
 import com.andrios.prt.CardioActivity;
+import com.andrios.prt.NewBcaActivity;
 import com.andrios.prt.PRTActivity;
 import com.andrios.prt.R;
 
@@ -24,10 +24,10 @@ public class CalculatorTabsActivity extends TabActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.calculatortabsactivity);
-        
-        
+
+
         getExtras();
-   
+
         setConnections();
     }
 
@@ -35,7 +35,7 @@ public class CalculatorTabsActivity extends TabActivity {
 		Intent intent = this.getIntent();
 		isPremium = intent.getBooleanExtra("premium", false);
 		mData = (AndriosData) intent.getSerializableExtra("data");
-		
+
 	}
 
 
@@ -49,21 +49,21 @@ public class CalculatorTabsActivity extends TabActivity {
         intent = new Intent().setClass(this, PRTActivity.class);
         intent.putExtra("premium", isPremium);        
         intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("PRT").setIndicator("",res.getDrawable(R.drawable.calculator2))
+        mTabHost.addTab(mTabHost.newTabSpec("PRT").setIndicator("PRT")
         		.setContent(intent));
         
         //Setup for Workout Tab (Tab 1)
-        intent = new Intent().setClass(this, BCAActivity.class);
+        intent = new Intent().setClass(this, NewBcaActivity.class);
         intent.putExtra("premium", isPremium);
         intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("BCA").setIndicator("",res.getDrawable(R.drawable.weight2))
+        mTabHost.addTab(mTabHost.newTabSpec("BCA").setIndicator("BCA")
         		.setContent(intent));
         
         //Setup for Profile Tab (Tab 2)
         intent = new Intent().setClass(this, CardioActivity.class);
         intent.putExtra("premium", isPremium);
         intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("Alternate Cardio").setIndicator("",res.getDrawable(R.drawable.cardio2))
+        mTabHost.addTab(mTabHost.newTabSpec("Alternate Cardio").setIndicator("CARDIO")
         		.setContent(intent));
              
       

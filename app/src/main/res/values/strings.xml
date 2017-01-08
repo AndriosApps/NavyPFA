@@ -42,4 +42,13 @@
     <string name="label_cardio_bike_time">Bike Time</string>
     <string name="label_cardio_run_time">Run Time</string>
     <string name="videos">Videos</string>
+    <string name="cardioswim450">450m Swim</string>
+    <string name="cardioswim500">500m Swim</string>
+    <string name="cardiorun">1.5 Mile Run</string>
+    <string name="cardiobike">Bike</string>
+    <string name="cardioellipefx556">EFX 556</string>
+    <string name="cardioellipct9500hr">CT 9500 HR</string>
+    <string name="cardioellipct9500">CT 9500</string>
+    <string name="cardioellip95xi">95 XI</string>
+    <string name="cardioellipe916">E9 16</string>
 </resources>

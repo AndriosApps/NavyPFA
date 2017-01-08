@@ -10,4 +10,5 @@
     <dimen name="scale_line_large">50dp</dimen>
     <dimen name="yellow_line_stroke_width">6dp</dimen>
     <dimen name="text_margin">4dp</dimen>
+    <dimen name="margins">12dp</dimen>
 </resources>

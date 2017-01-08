@@ -12,9 +12,9 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/margins"
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginTop="@dimen/margins"
         android:backgroundTint="@color/white">
 
 
@@ -45,13 +45,23 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/prt_gender_image_view"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
+                        android:layout_gravity="left"
                         android:background="@color/andrios_grey" />
+
+                    <TextView
+                        android:id="@+id/prt_age_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="32yrs"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -63,13 +73,14 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/age_new_text_view"
+                        android:id="@+id/prt_total_score_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="right"
-                        android:text="32yrs"
+                        android:background="@drawable/circle"
+                        android:gravity="center"
+                        android:text=""
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="12sp" />
 
 
                 </LinearLayout>
@@ -83,9 +94,9 @@
         android:id="@+id/circumference_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/margins"
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginTop="@dimen/margins"
         android:backgroundTint="@color/white">
 
         <LinearLayout
@@ -133,15 +144,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pushup_total_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:text="54"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/pushup_total_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="54"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
+
                     <TextView
                         android:id="@+id/pushup_score_text_view"
                         android:layout_width="0dp"
@@ -152,6 +165,7 @@
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
                 </LinearLayout>
+
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/pushup_seek_bar"
                     android:layout_width="match_parent"
@@ -159,7 +173,22 @@
                     android:progressDrawable="@android:color/transparent"
                     android:thumbOffset="12dp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -170,9 +199,9 @@
         android:id="@+id/curlup_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/margins"
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginTop="@dimen/margins"
         android:backgroundTint="@color/white">
 
         <LinearLayout
@@ -220,6 +249,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         android:id="@+id/curlup_total_text_view"
                         android:layout_width="0dp"
@@ -229,6 +259,7 @@
                         android:text="54"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
+
                     <TextView
                         android:id="@+id/curlup_score_text_view"
                         android:layout_width="0dp"
@@ -239,13 +270,29 @@
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
                 </LinearLayout>
+
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/curlup_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:progressDrawable="@android:color/transparent"
                     android:thumbOffset="12dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -257,9 +304,9 @@
         android:id="@+id/cardio_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/margins"
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginTop="@dimen/margins"
         android:backgroundTint="@color/white">
 
         <LinearLayout
@@ -278,13 +325,15 @@
 
                 <ImageView
                     android:id="@+id/pass_cardio_image_view_left"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_gravity="center" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/cardio_label_text_view"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Cardio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -307,6 +356,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         android:id="@+id/cardio_total_text_view"
                         android:layout_width="0dp"
@@ -316,6 +366,7 @@
                         android:text="54"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
+
                     <TextView
                         android:id="@+id/cardio_score_text_view"
                         android:layout_width="0dp"
@@ -326,16 +377,31 @@
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
                 </LinearLayout>
+
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/cardio_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:progressDrawable="@android:color/transparent"
                     android:thumbOffset="12dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/cardio_calories_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="127 Calories"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
 
 
+                </LinearLayout>
             </LinearLayout>
-
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

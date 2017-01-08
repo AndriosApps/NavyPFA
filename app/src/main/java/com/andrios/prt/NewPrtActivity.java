@@ -2,7 +2,9 @@ package com.andrios.prt;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +27,7 @@ public class NewPrtActivity extends Activity implements Observer {
     private CustomSeekBar pushupSeekBar;
 
     private ImageView genderImageView;
+    private ImageView cardioImageView;
 
     private TextView pushupScoreLBL;
     private TextView pushupTotalLBL;
@@ -33,6 +36,9 @@ public class NewPrtActivity extends Activity implements Observer {
 
     private TextView curlupScoreLBL;
     private TextView curlupTotalLBL;
+    private TextView ageTextView;
+    private TextView cardioLBL;
+    private TextView cardioCaloriesLBL;
 
     private CustomSeekBar cardioSeekBar;
 
@@ -60,6 +66,7 @@ public class NewPrtActivity extends Activity implements Observer {
     private boolean pushupchanged;
     private boolean cardiochanged;
     private boolean curlupchanged;
+    private CardioHelper cardioHelper;
 
 
     @Override
@@ -68,6 +75,26 @@ public class NewPrtActivity extends Activity implements Observer {
         setContentView(R.layout.activity_new_prt);
 
         getExtras();
+        cardioHelper = new CardioHelper(this);
+
+        ageTextView = (TextView) findViewById(R.id.prt_age_text_view);
+        cardioCaloriesLBL = (TextView) findViewById(R.id.cardio_calories_text_view);
+        cardioLBL = (TextView) findViewById(R.id.cardio_label_text_view);
+        cardioLBL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleCardio();
+            }
+        });
+
+        cardioImageView = (ImageView) findViewById(R.id.pass_cardio_image_view_left);
+        cardioImageView.setImageResource(R.drawable.pencil);
+        cardioImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleCardio();
+            }
+        });
 
         genderImageView = (ImageView) findViewById(R.id.prt_gender_image_view);
         genderImageView.setOnClickListener(new View.OnClickListener() {
@@ -160,10 +187,35 @@ public class NewPrtActivity extends Activity implements Observer {
 
         });
 
-
+        toggleCardio();//set initially to 1.5 Mile Run
         updateUI();
 
     }
+
+    private void toggleCardio(){
+        String[] cardioOptions = cardioHelper.getNextCardioOptions();
+        cardioLBL.setText(cardioOptions[0]);
+        mData.setCardio(cardioOptions[0]);
+
+        String imageChoice = cardioOptions[1];
+        switch(imageChoice){
+            case "1": cardioImageView.setImageResource(R.drawable.run);
+                cardioCaloriesLBL.setVisibility(View.INVISIBLE);
+                break;
+            case "2": cardioImageView.setImageResource(R.drawable.swim_2);
+                cardioCaloriesLBL.setVisibility(View.INVISIBLE);
+                break;
+            case "3": cardioImageView.setImageResource(R.drawable.cardio_bike_2);
+                cardioCaloriesLBL.setVisibility(View.VISIBLE);
+                break;
+            case "4": cardioImageView.setImageResource(R.drawable.elliptical_2);
+                cardioCaloriesLBL.setVisibility(View.VISIBLE);
+                break;
+        }
+        initCardioBar();
+    }
+
+
 
     private void updateUI() {
         initPushupBar();
@@ -172,6 +224,7 @@ public class NewPrtActivity extends Activity implements Observer {
         pushupTotalLBL.setText(pushups + "");
         curlupTotalLBL.setText(curlups + "");
         cardioTotalLBL.setText(formatTime(runtime));
+        ageTextView.setText(mData.getAge() + "Yrs");
         if(mData.isMale){
             genderImageView.setImageResource(R.drawable.icon_male);
         }else{
@@ -184,7 +237,7 @@ public class NewPrtActivity extends Activity implements Observer {
     private void initPushupBar() {
         int totalSpan = (MAX_PUSHUP - MIN_PUSHUP);
 
-        int[] pushupRanges = mData.getScoreArrays().get(0);
+        int[] pushupRanges = mData.getScoreArrays(this).get(0);
         progressItemList = new ArrayList<ProgressItem>();
 
         float failureSpan = (float) pushupRanges[0];//TODO
@@ -245,7 +298,7 @@ public class NewPrtActivity extends Activity implements Observer {
         Log.d(TAG, "initCurlupBar: ");
         int totalSpan = (MAX_CURLUP - MIN_CURLUP);
 
-        int[] curlupRanges = mData.getScoreArrays().get(1);
+        int[] curlupRanges = mData.getScoreArrays(this).get(1);
 
         //int[] situpMale50 = {29, 30, 32, 37, 44, 63, 71, 76, 77, 78, 84, 85};
         progressItemList = new ArrayList<ProgressItem>();
@@ -304,7 +357,7 @@ public class NewPrtActivity extends Activity implements Observer {
         Log.d(TAG, "initCardioBar: ");
         int totalSpan = (MAX_CARDIO - MIN_CARDIO);
 
-        int[] cardioRanges = mData.getScoreArrays().get(2);
+        int[] cardioRanges = mData.getScoreArrays(this).get(2);
 
         //int[] situpMale50 = {29, 30, 32, 37, 44, 63, 71, 76, 77, 78, 84, 85};
         progressItemList = new ArrayList<ProgressItem>();
@@ -401,7 +454,7 @@ public class NewPrtActivity extends Activity implements Observer {
 
 
     private void calculateScore() {
-        ArrayList<int[]> scoresList = mData.getScoreArrays();
+        ArrayList<int[]> scoresList = mData.getScoreArrays(this);
         int[] pushupScores = scoresList.get(0);
         int[] curlupScores = scoresList.get(1);
         int[] cardioScores = scoresList.get(2);
@@ -459,26 +512,17 @@ public class NewPrtActivity extends Activity implements Observer {
         }
 
 
-        if (!pushupsFailed && !curlupsFailed && !cardioFailed && changed()) {
+        TextView finalScoreTextView = (TextView) findViewById(R.id.prt_total_score_text_view);
+        GradientDrawable backgroundCircleDrawable = (GradientDrawable) finalScoreTextView.getBackground();
 
-            if ((totalScore / 3) < 45) {
-                //TODO scoreLBL.setBackgroundColor(Color.RED);
-                //TODO scoreLBL.setTextColor(Color.BLACK);
-                //TODO scoreLBL.getBackground().setAlpha(100);
-            } else {
-                //TODO scoreLBL.setBackgroundColor(Color.GREEN);
-                //TODO scoreLBL.setTextColor(Color.BLACK);
-                //TODO scoreLBL.getBackground().setAlpha(100);
-            }
-
-            //TODO scoreLBL.setText(getCategory(totalScore / 3));
-
-        } else if (changed()) {
-            //TODO scoreLBL.setText(R.string.score_failure);
-            //TODO scoreLBL.setBackgroundColor(Color.RED);
-            //TODO scoreLBL.setTextColor(Color.BLACK);
-            //TODO  scoreLBL.getBackground().setAlpha(100);
+        if(pushupsFailed || curlupsFailed || cardioFailed){
+            finalScoreTextView.setText(getCategory(0));
+            backgroundCircleDrawable.setColor(getCategoryColor(0));
+        }else{
+            finalScoreTextView.setText(getCategory(totalScore / 3));
+            backgroundCircleDrawable.setColor(getCategoryColor(totalScore / 3));
         }
+
     }
 
 
@@ -515,6 +559,43 @@ public class NewPrtActivity extends Activity implements Observer {
 
 
         return scoreString;
+
+    }
+
+
+    public int getCategoryColor(int score) {
+        int scoreColor = R.color.prt_failure;
+
+        if ((score) < 45) {
+            scoreColor = R.color.prt_failure;
+        } else if ((score) < 50) {
+            scoreColor = R.color.prt_probationary;
+        } else if ((score) < 55) {
+            scoreColor = R.color.prt_satisfactory;
+        } else if ((score) < 60) {
+            scoreColor = R.color.prt_satisfactory;
+        } else if ((score) < 65) {
+            scoreColor = R.color.prt_good;
+        } else if ((score) < 70) {
+            scoreColor = R.color.prt_good;
+        } else if ((score) < 75) {
+            scoreColor = R.color.prt_good;
+        } else if ((score) < 80) {
+            scoreColor = R.color.prt_excellent;
+        } else if ((score) < 85) {
+            scoreColor = R.color.prt_excellent;
+        } else if ((score) < 90) {
+            scoreColor = R.color.prt_excellent;
+        } else if ((score) < 95) {
+            scoreColor = R.color.prt_outstanding;
+        } else if ((score) < 100) {
+            scoreColor = R.color.prt_outstanding;
+        } else if ((score) >= 100) {
+            scoreColor = R.color.prt_outstanding;
+        }
+
+
+        return ContextCompat.getColor(this, scoreColor);
 
     }
 

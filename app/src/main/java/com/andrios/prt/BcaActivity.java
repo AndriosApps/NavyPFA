@@ -53,6 +53,8 @@ public class BcaActivity extends Activity implements Observer {
     private ImageView passBodyfatImageView;
     private ImageView genderImageView;
 
+    private TextView ageTextView;
+
     private CardView circumferenceCardView;
     private CardView bodyfatCardView;
     private LinearLayout hipsLayout;
@@ -89,6 +91,7 @@ public class BcaActivity extends Activity implements Observer {
         hipsTextView = (TextView) findViewById(R.id.hips_text_view);
         circumferenceTextView = (TextView) findViewById(R.id.circumferance_text_view);
         bodyFatPercentTextView = (TextView) findViewById(R.id.bodyfat_percent_text_view);
+        ageTextView = (TextView) findViewById(R.id.bca_age_text_view);
 
         passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view_right);
         passCircumferenceImageView = (ImageView) findViewById(R.id.pass_circumference_image_view_right);
@@ -227,6 +230,8 @@ public class BcaActivity extends Activity implements Observer {
 
         Log.d(TAG, "updateUI: Height: " + height + " Weight: " + weight);
         Log.d(TAG, "updateUI: Height/Weight passed: " + calcHeightWeight(height, weight));
+
+        ageTextView.setText(mData.getAge() + "Yrs");
         initHeightSeekBar();
         if(mData.isMale){
             genderImageView.setImageResource(R.drawable.icon_male);

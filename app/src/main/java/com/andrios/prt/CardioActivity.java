@@ -17,8 +17,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.andrios.prt.R;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -298,7 +296,7 @@ public class CardioActivity extends Activity implements Observer{
 			myCalories += 13;
 		}else if(posit == 3){
 			myCalories += 20;
-		}if(posit == 4){
+		}else if(posit == 4){
 			myCalories += 7;
 		}
 		//TODO Add rest of ellipticals here. 

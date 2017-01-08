@@ -34,6 +34,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	boolean isMale;
 	private String cardio;
 	private ArrayList<int[]> scoreArray;
+    private String[] cardioOptions;
 
 
 	public int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
@@ -608,12 +609,12 @@ public static ArrayList<Instruction> getInstructions(){
 	}
 
 
-    public ArrayList<int[]> getScoreArrays() {
+    public ArrayList<int[]> getScoreArrays(Context context) {
         Log.d(TAG, "getScoreArrays: isMale: " + isMale + " age: " + age + " isAlt: " + isAltitude);
 
         if (isMale) {
             if (isAltitude) {
-                if (getCardio().equals("500m Swim")) {
+                if (getCardio().equals(context.getString(R.string.cardioswim500))) {
                     if (age < 20) {
                         buildScoresArray(pushupMale17, situpMale17, altSwim500Male17);
                     } else if (age < 25) {
@@ -637,7 +638,7 @@ public static ArrayList<Instruction> getInstructions(){
                     } else {
                         buildScoresArray(pushupMale65, situpMale65, altSwim500Male65);
                     }
-                } else if (getCardio().equals("450m Swim")) {
+                } else if (getCardio().equals(context.getString(R.string.cardioswim450))) {
                     if (age < 20) {
                         buildScoresArray(pushupMale17, situpMale17, altSwim450Male17);
                     } else if (age < 25) {
@@ -687,7 +688,7 @@ public static ArrayList<Instruction> getInstructions(){
                     }
                 }
             } else {
-                if (getCardio().equals("500m Swim")) {
+                if (getCardio().equals(context.getString(R.string.cardioswim500))) {
                     if (age < 20) {
                         buildScoresArray(pushupMale17, situpMale17, swim500Male17);
                     } else if (age < 25) {
@@ -711,7 +712,7 @@ public static ArrayList<Instruction> getInstructions(){
                     } else {
                         buildScoresArray(pushupMale65, situpMale65, swim500Male65);
                     }
-                } else if (getCardio().equals("450m swim")) {
+                } else if (getCardio().equals(context.getString(R.string.cardioswim450))) {
                     if (age < 20) {
                         buildScoresArray(pushupMale17, situpMale17, swim450Male17);
                     } else if (age < 25) {
@@ -751,7 +752,6 @@ public static ArrayList<Instruction> getInstructions(){
                     } else if (age < 50) {
                         buildScoresArray(pushupMale45, situpMale45, runMale45);
                     } else if (age < 55) {
-                        Log.d(TAG, "getScoreArrays: < 50 male");
                         buildScoresArray(pushupMale50, situpMale50, runMale50);
                     } else if (age < 60) {
                         buildScoresArray(pushupMale55, situpMale55, runMale55);
@@ -766,7 +766,7 @@ public static ArrayList<Instruction> getInstructions(){
 
         } else {
             if (isAltitude) {
-                if (getCardio().equals("500m Swim")) {
+                if (getCardio().equals(context.getString(R.string.cardioswim500))) {
                     if (age < 20) {
                         buildScoresArray(pushupFemale17, situpFemale17, altSwim500Female17);
                     } else if (age < 25) {
@@ -790,7 +790,7 @@ public static ArrayList<Instruction> getInstructions(){
                     } else {
                         buildScoresArray(pushupFemale65, situpFemale65, altSwim500Female65);
                     }
-                } else if (getCardio().equals("450m Swim")) {
+                } else if (getCardio().equals(context.getString(R.string.cardioswim450))) {
                     if (age < 20) {
                         buildScoresArray(pushupFemale17, situpFemale17, altSwim450Female17);
                     } else if (age < 25) {
@@ -840,7 +840,7 @@ public static ArrayList<Instruction> getInstructions(){
                     }
                 }
             } else {
-                if (getCardio().equals("500m Swim")) {
+                if (getCardio().equals(context.getString(R.string.cardioswim500))) {
                     if (age < 20) {
                         buildScoresArray(pushupFemale17, situpFemale17, swim500Female17);
                     } else if (age < 25) {
@@ -864,7 +864,7 @@ public static ArrayList<Instruction> getInstructions(){
                     } else {
                         buildScoresArray(pushupFemale65, situpFemale65, swim500Female65);
                     }
-                } else if (getCardio().equals("450m swim")) {
+                } else if (getCardio().equals(context.getString(R.string.cardioswim450))) {
                     if (age < 20) {
                         buildScoresArray(pushupFemale17, situpFemale17, swim450Female17);
                     } else if (age < 25) {

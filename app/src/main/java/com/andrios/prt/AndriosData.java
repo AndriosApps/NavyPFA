@@ -35,6 +35,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	private String cardio;
 	private ArrayList<int[]> scoreArray;
     private String[] cardioOptions;
+    private int weight;
 
 
 	public int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
@@ -293,6 +294,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 		isAltitude = false;
 		age = 54;
         cardio = "1.5 Mile Run";
+        weight = 125;
 		
 	}
 	
@@ -304,6 +306,10 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	public boolean getGender(){
 		return isMale;
 	}
+
+    public int getWeight() {
+        return weight;
+    }
 
 	public boolean getAlitude(){
 		return isAltitude;
@@ -341,6 +347,15 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 		notifyObservers();
 		System.out.println("MODEL UPDATE GENDER");
 	}
+
+
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+        setChanged();
+        notifyObservers();
+        System.out.println("MODEL UPDATE WEIGHT");
+    }
 
 	public void setAltitude(boolean isAltitude){
 		this.isAltitude = isAltitude;
@@ -744,6 +759,7 @@ public static ArrayList<Instruction> getInstructions(){
                     } else if (age < 30) {
                         buildScoresArray(pushupMale25, situpMale25, runMale25);
                     } else if (age < 35) {
+                        Log.d(TAG, "getScoreArrays: This is where i think i need");
                         buildScoresArray(pushupMale30, situpMale30, runMale30);
                     } else if (age < 40) {
                         buildScoresArray(pushupMale35, situpMale35, runMale35);
@@ -925,4 +941,6 @@ public static ArrayList<Instruction> getInstructions(){
         scoreArray.add(situpArray);
         scoreArray.add(cardioArray);
     }
+
+
 }

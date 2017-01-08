@@ -67,6 +67,8 @@ public class NewPrtActivity extends Activity implements Observer {
     private boolean cardiochanged;
     private boolean curlupchanged;
     private CardioHelper cardioHelper;
+    private int weight;
+    private int calories;
 
 
     @Override
@@ -173,6 +175,7 @@ public class NewPrtActivity extends Activity implements Observer {
                 runtime = MIN_CARDIO + (arg1);
                 Log.d(TAG, "onProgressChanged: Circumference: " + curlups);
                 cardioTotalLBL.setText(formatTime(runtime));
+
                 cardiochanged = true;
                 calculateScore();
             }
@@ -218,6 +221,9 @@ public class NewPrtActivity extends Activity implements Observer {
 
 
     private void updateUI() {
+
+        weight = mData.getWeight();
+
         initPushupBar();
         initCurlupBar();
         initCardioBar();
@@ -376,25 +382,25 @@ public class NewPrtActivity extends Activity implements Observer {
 
         //Excellent
         progressItem = new ProgressItem();
-        progressItem.progressItemPercentage = ((probationarySpan / totalSpan) * 100);
+        progressItem.progressItemPercentage = ((excellentSpan / totalSpan) * 100);
         progressItem.color = R.color.prt_excellent;
         progressItemList.add(progressItem);
 
         //Good
         progressItem = new ProgressItem();
-        progressItem.progressItemPercentage = ((satisfactorySpan / totalSpan) * 100);
+        progressItem.progressItemPercentage = ((goodSpan / totalSpan) * 100);
         progressItem.color = R.color.prt_good;
         progressItemList.add(progressItem);
 
         //Satisfactory
         progressItem = new ProgressItem();
-        progressItem.progressItemPercentage = ((goodSpan / totalSpan) * 100);
+        progressItem.progressItemPercentage = ((satisfactorySpan / totalSpan) * 100);
         progressItem.color = R.color.prt_satisfactory;
         progressItemList.add(progressItem);
 
         //Probationary
         progressItem = new ProgressItem();
-        progressItem.progressItemPercentage = ((excellentSpan / totalSpan) * 100);
+        progressItem.progressItemPercentage = ((probationarySpan / totalSpan) * 100);
         progressItem.color = R.color.prt_probationary;
         progressItemList.add(progressItem);
 
@@ -523,6 +529,12 @@ public class NewPrtActivity extends Activity implements Observer {
             backgroundCircleDrawable.setColor(getCategoryColor(totalScore / 3));
         }
 
+        if(cardioHelper.getCurrentCardioOption()[1].equals("3")){
+            calcBike();
+        }else if(cardioHelper.getCurrentCardioOption()[1].equals("4")){
+            newCalcElliptical();
+        }
+
     }
 
 
@@ -624,8 +636,74 @@ public class NewPrtActivity extends Activity implements Observer {
         }
         String formattedTimeString = minutesTXT + ":" + secondsTXT;
 
-        return formattedTimeString;
+        //return formattedTimeString;
+        return totalSeconds + " / " + formattedTimeString;
     }
+
+    private void calcBike(){
+        float cal = 0;
+        float biketime = runtime;
+        biketime = biketime/60;
+        Log.d(TAG, "calcBike: Biketime: " + biketime);
+        if(mData.isMale){
+
+            float x = new Float(4.087);
+            float y = new Float(6.296);
+            //bikeTime = 6.296 + 4.087 * weight / calories;
+            cal = (x * weight) / (biketime - y);
+
+            cal = cal;
+            Log.d(TAG, "calcBike: " + cal);
+            calories = (int) cal;
+
+        }else{
+            float x = new Float(4.087);
+            float y = new Float(8.066);
+           // bikeTime = 6.296 + 4.087 * weight / calories + 1.77;
+            cal = (x * weight)/(biketime-y);
+        }
+
+        cardioCaloriesLBL.setText((int) cal + " Calories");
+    }
+
+    private int calcRawRunTime(int calories, int weight){
+        double myCalories = (double) calories;
+        String cardioString = cardioHelper.getCurrentCardioOption()[0];
+        if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellip95xi))){
+            myCalories += 13;
+        }else if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellipe916))){
+            myCalories += 20;
+        }else if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellipefx556))){
+            myCalories += 7;
+        }
+        //TODO Add rest of ellipticals here.
+        double myWeight = weight * 0.45359237; // convert to kg
+        double ER = 2.413 * myWeight;
+        double EER = (double) myCalories / 12.0;
+        double T = ER / EER;
+
+        int totalSeconds = (int) (T*60);
+        return totalSeconds;
+    }
+
+    private void newCalcElliptical(){
+        float eliptimeMins = 0;
+        if(mData.isMale){
+            eliptimeMins = new Float(runtime-68);
+        }else{
+            eliptimeMins = new Float(runtime-135);
+        }
+
+        eliptimeMins = eliptimeMins/60;
+        float kgWeight = new Float(weight);
+        kgWeight = kgWeight * new Float(0.45359237);
+        float x = new Float(28.956);
+        float cal = x * kgWeight / eliptimeMins;
+
+        cardioCaloriesLBL.setText((int) cal + " Calories");
+    }
+
+
 
 
 }

@@ -141,6 +141,7 @@ public class BcaActivity extends Activity implements Observer {
                 Log.d(TAG, "onProgressChanged: " + weight);
                 weightTextView.setText(weight + "lbs");
 
+                mData.setWeight(weight);
                 updateUI();
             }
 

@@ -42,6 +42,11 @@ public class CardioHelper {
         return cardioArray[cardioOption];
     }
 
+    public String[] getCurrentCardioOption(){
+
+        return cardioArray[cardioOption];
+    }
+
 
 
 

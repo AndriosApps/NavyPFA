@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -17,7 +18,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class NewPrtActivity extends Activity implements Observer{
+public class NewPrtActivity extends Activity implements Observer {
 
 
     private static final String TAG = "NewPrtActivity";
@@ -69,6 +70,13 @@ public class NewPrtActivity extends Activity implements Observer{
         getExtras();
 
         genderImageView = (ImageView) findViewById(R.id.prt_gender_image_view);
+        genderImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mData.setGender(!mData.getGender());
+                updateUI();
+            }
+        });
 
         pushupScoreLBL = (TextView) findViewById(R.id.pushup_score_text_view);
         pushupTotalLBL = (TextView) findViewById(R.id.pushup_total_text_view);
@@ -130,7 +138,7 @@ public class NewPrtActivity extends Activity implements Observer{
 
         cardioSeekBar = (CustomSeekBar) findViewById(R.id.cardio_seek_bar);
         cardioSeekBar.setMax(MAX_CARDIO - MIN_CARDIO);
-        cardioSeekBar.setProgress(MIN_CARDIO);
+        cardioSeekBar.setProgress(0);
         cardioSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
 
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
@@ -152,13 +160,25 @@ public class NewPrtActivity extends Activity implements Observer{
 
         });
 
-        initPushupBar();
-        initCurlupBar();
-        initCardioBar();
 
+        updateUI();
 
     }
 
+    private void updateUI() {
+        initPushupBar();
+        initCurlupBar();
+        initCardioBar();
+        pushupTotalLBL.setText(pushups + "");
+        curlupTotalLBL.setText(curlups + "");
+        cardioTotalLBL.setText(formatTime(runtime));
+        if(mData.isMale){
+            genderImageView.setImageResource(R.drawable.icon_male);
+        }else{
+            genderImageView.setImageResource(R.drawable.icon_female);
+        }
+        calculateScore();
+    }
 
 
     private void initPushupBar() {
@@ -291,8 +311,8 @@ public class NewPrtActivity extends Activity implements Observer{
 
         float outstandingSpan = (float) cardioRanges[9] - MIN_CARDIO;//TODO
         float excellentSpan = (cardioRanges[6] - MIN_CARDIO - outstandingSpan);//TODO
-        float goodSpan = (cardioRanges[2] - MIN_CARDIO - outstandingSpan - excellentSpan );//TODO
-        float satisfactorySpan = cardioRanges[1] - MIN_CARDIO - outstandingSpan - excellentSpan - goodSpan ;//TODO
+        float goodSpan = (cardioRanges[2] - MIN_CARDIO - outstandingSpan - excellentSpan);//TODO
+        float satisfactorySpan = cardioRanges[1] - MIN_CARDIO - outstandingSpan - excellentSpan - goodSpan;//TODO
         float probationarySpan = cardioRanges[0] - MIN_CARDIO - outstandingSpan - excellentSpan - goodSpan - satisfactorySpan;//TODO
 
         //Outstanding
@@ -345,7 +365,7 @@ public class NewPrtActivity extends Activity implements Observer{
         //isLog = intent.getBooleanExtra("log", false);
         //isPremium = intent.getBooleanExtra("premium", false);
         mData = (AndriosData) intent.getSerializableExtra("data");
-        if(mData == null){
+        if (mData == null) {
             readData();
         }
         mData.addObserver(this);
@@ -459,7 +479,6 @@ public class NewPrtActivity extends Activity implements Observer{
             //TODO  scoreLBL.getBackground().setAlpha(100);
         }
     }
-
 
 
     public String getCategory(int score) {

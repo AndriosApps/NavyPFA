@@ -52,6 +52,7 @@ public class NewPrtActivity extends Activity implements Observer {
     private static final int MAX_CURLUP = 110;
 
     private static final int MIN_CARDIO = 375;
+    private static final int MIN_CARDIO_BIKE = 420;
     private static final int MAX_CARDIO = 1400;
 
     private ArrayList<ProgressItem> progressItemList;
@@ -172,7 +173,12 @@ public class NewPrtActivity extends Activity implements Observer {
 
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 
-                runtime = MIN_CARDIO + (arg1);
+                if(mData.getCardio().equalsIgnoreCase(getResources().getString(R.string.cardiobike))){
+                    runtime = MIN_CARDIO_BIKE + (arg1);
+                }else{
+                    runtime = MIN_CARDIO + (arg1);
+                }
+
                 Log.d(TAG, "onProgressChanged: Circumference: " + curlups);
                 cardioTotalLBL.setText(formatTime(runtime));
 
@@ -199,7 +205,7 @@ public class NewPrtActivity extends Activity implements Observer {
         String[] cardioOptions = cardioHelper.getNextCardioOptions();
         cardioLBL.setText(cardioOptions[0]);
         mData.setCardio(cardioOptions[0]);
-
+        cardiochanged = true;
         String imageChoice = cardioOptions[1];
         switch(imageChoice){
             case "1": cardioImageView.setImageResource(R.drawable.run);
@@ -216,6 +222,7 @@ public class NewPrtActivity extends Activity implements Observer {
                 break;
         }
         initCardioBar();
+        calculateScore();
     }
 
 
@@ -361,18 +368,30 @@ public class NewPrtActivity extends Activity implements Observer {
 
     private void initCardioBar() {
         Log.d(TAG, "initCardioBar: ");
-        int totalSpan = (MAX_CARDIO - MIN_CARDIO);
+        int minCardio;
+
+        if(mData.getCardio().equalsIgnoreCase(getResources().getString(R.string.cardiobike))){
+            minCardio = MIN_CARDIO_BIKE;
+
+        }else{
+            minCardio = MIN_CARDIO;
+        }
+
+
+        int totalSpan = (MAX_CARDIO - minCardio);
+        cardioSeekBar.setMax(MAX_CARDIO - minCardio);
+        cardioSeekBar.invalidate();
 
         int[] cardioRanges = mData.getScoreArrays(this).get(2);
 
         //int[] situpMale50 = {29, 30, 32, 37, 44, 63, 71, 76, 77, 78, 84, 85};
         progressItemList = new ArrayList<ProgressItem>();
 
-        float outstandingSpan = (float) cardioRanges[9] - MIN_CARDIO;//TODO
-        float excellentSpan = (cardioRanges[6] - MIN_CARDIO - outstandingSpan);//TODO
-        float goodSpan = (cardioRanges[2] - MIN_CARDIO - outstandingSpan - excellentSpan);//TODO
-        float satisfactorySpan = cardioRanges[1] - MIN_CARDIO - outstandingSpan - excellentSpan - goodSpan;//TODO
-        float probationarySpan = cardioRanges[0] - MIN_CARDIO - outstandingSpan - excellentSpan - goodSpan - satisfactorySpan;//TODO
+        float outstandingSpan = (float) cardioRanges[9] - minCardio;//TODO
+        float excellentSpan = (cardioRanges[6] - minCardio - outstandingSpan);//TODO
+        float goodSpan = (cardioRanges[2] - minCardio - outstandingSpan - excellentSpan);//TODO
+        float satisfactorySpan = cardioRanges[1] - minCardio - outstandingSpan - excellentSpan - goodSpan;//TODO
+        float probationarySpan = cardioRanges[0] - minCardio - outstandingSpan - excellentSpan - goodSpan - satisfactorySpan;//TODO
 
         //Outstanding
         progressItem = new ProgressItem();
@@ -533,8 +552,8 @@ public class NewPrtActivity extends Activity implements Observer {
             calcBike();
         }else if(cardioHelper.getCurrentCardioOption()[1].equals("4")){
             newCalcElliptical();
+            Log.d(TAG, "calculateScore: Elliptical");
         }
-
     }
 
 
@@ -663,19 +682,14 @@ public class NewPrtActivity extends Activity implements Observer {
             cal = (x * weight)/(biketime-y);
         }
 
+
+
         cardioCaloriesLBL.setText((int) cal + " Calories");
     }
 
     private int calcRawRunTime(int calories, int weight){
         double myCalories = (double) calories;
-        String cardioString = cardioHelper.getCurrentCardioOption()[0];
-        if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellip95xi))){
-            myCalories += 13;
-        }else if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellipe916))){
-            myCalories += 20;
-        }else if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellipefx556))){
-            myCalories += 7;
-        }
+
         //TODO Add rest of ellipticals here.
         double myWeight = weight * 0.45359237; // convert to kg
         double ER = 2.413 * myWeight;
@@ -699,6 +713,14 @@ public class NewPrtActivity extends Activity implements Observer {
         kgWeight = kgWeight * new Float(0.45359237);
         float x = new Float(28.956);
         float cal = x * kgWeight / eliptimeMins;
+        String cardioString = cardioHelper.getCurrentCardioOption()[0];
+        if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellip95xi))){
+            cal -= Float.valueOf(13);
+        }else if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellipe916))){
+            cal -= new Float(20);
+        }else if(cardioString.equalsIgnoreCase(getResources().getString(R.string.cardioellipefx556))){
+            cal -= new Float(7);
+        }
 
         cardioCaloriesLBL.setText((int) cal + " Calories");
     }

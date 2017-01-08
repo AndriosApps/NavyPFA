@@ -1,13 +1,13 @@
 package com.andrios.prt;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class NewPrtActivity extends AppCompatActivity {
+public class NewProfileActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_prt);
+        setContentView(R.layout.activity_new_profile);
     }
 }

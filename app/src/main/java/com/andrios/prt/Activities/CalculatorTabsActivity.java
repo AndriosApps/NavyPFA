@@ -8,9 +8,9 @@ import android.view.Window;
 import android.widget.TabHost;
 
 import com.andrios.prt.AndriosData;
-import com.andrios.prt.CardioActivity;
 import com.andrios.prt.BcaActivity;
-import com.andrios.prt.PRTActivity;
+import com.andrios.prt.CardioActivity;
+import com.andrios.prt.NewPrtActivity;
 import com.andrios.prt.R;
 
 public class CalculatorTabsActivity extends TabActivity {
@@ -46,7 +46,7 @@ public class CalculatorTabsActivity extends TabActivity {
         Resources res = getResources(); 
         
         //Setup for Home Tab (Tab 0)
-        intent = new Intent().setClass(this, PRTActivity.class);
+        intent = new Intent().setClass(this, NewPrtActivity.class);
         intent.putExtra("premium", isPremium);        
         intent.putExtra("data", mData);
         mTabHost.addTab(mTabHost.newTabSpec("PRT").setIndicator("PRT")

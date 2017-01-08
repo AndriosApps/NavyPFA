@@ -395,6 +395,7 @@ public class NewPrtActivity extends Activity implements Observer {
 
     public void update(Observable observable, Object data) {
         Log.d(TAG, "update: ");
+        updateUI();
         //TODO updateUI();
     }
 

@@ -33,23 +33,31 @@ public class NewPrtActivity extends Activity implements Observer{
     private TextView curlupScoreLBL;
     private TextView curlupTotalLBL;
 
+    private CustomSeekBar cardioSeekBar;
+
+    private TextView cardioScoreLBL;
+    private TextView cardioTotalLBL;
+
     private static final int MIN_PUSHUP = 0;
     private static final int MAX_PUSHUP = 100;
 
     private static final int MIN_CURLUP = 0;
     private static final int MAX_CURLUP = 110;
 
+    private static final int MIN_CARDIO = 375;
+    private static final int MAX_CARDIO = 1400;
+
     private ArrayList<ProgressItem> progressItemList;
     private ProgressItem progressItem;
 
-    private int pushups = 0;
-    private int curlups = 0;
-    private int runtime = 0;
+    private int pushups = MIN_PUSHUP;
+    private int curlups = MIN_CURLUP;
+    private int runtime = MIN_CARDIO;
 
     private AndriosData mData;
     private float remainderSpan;
     private boolean pushupchanged;
-    private boolean runchanged;
+    private boolean cardiochanged;
     private boolean curlupchanged;
 
 
@@ -67,7 +75,7 @@ public class NewPrtActivity extends Activity implements Observer{
 
         pushupSeekBar = (CustomSeekBar) findViewById(R.id.pushup_seek_bar);
         pushupSeekBar.setMax(MAX_PUSHUP - MIN_PUSHUP);
-        pushupSeekBar.setProgress(54-MIN_PUSHUP);
+        pushupSeekBar.setProgress(MIN_PUSHUP);
         pushupSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
 
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
@@ -76,7 +84,7 @@ public class NewPrtActivity extends Activity implements Observer{
                 Log.d(TAG, "onProgressChanged: Circumference: " + pushups);
                 pushupTotalLBL.setText(pushups + "");
                 pushupchanged = true;
-                initPushupBar();
+                calculateScore();
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -94,7 +102,7 @@ public class NewPrtActivity extends Activity implements Observer{
 
         curlupSeekBar = (CustomSeekBar) findViewById(R.id.curlup_seek_bar);
         curlupSeekBar.setMax(MAX_CURLUP - MIN_CURLUP);
-        curlupSeekBar.setProgress(54-MIN_CURLUP);
+        curlupSeekBar.setProgress(MIN_CURLUP);
         curlupSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
 
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
@@ -103,7 +111,35 @@ public class NewPrtActivity extends Activity implements Observer{
                 Log.d(TAG, "onProgressChanged: Circumference: " + curlups);
                 curlupTotalLBL.setText(curlups + "");
                 curlupchanged = true;
-                initCurlupBar();
+                calculateScore();
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+        });
+
+        cardioScoreLBL = (TextView) findViewById(R.id.cardio_score_text_view);
+        cardioTotalLBL = (TextView) findViewById(R.id.cardio_total_text_view);
+        cardioTotalLBL.setText(formatTime(runtime));
+
+        cardioSeekBar = (CustomSeekBar) findViewById(R.id.cardio_seek_bar);
+        cardioSeekBar.setMax(MAX_CARDIO - MIN_CARDIO);
+        cardioSeekBar.setProgress(MIN_CARDIO);
+        cardioSeekBar.setOnSeekBarChangeListener(new CustomSeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+
+                runtime = MIN_CARDIO + (arg1);
+                Log.d(TAG, "onProgressChanged: Circumference: " + curlups);
+                cardioTotalLBL.setText(formatTime(runtime));
+                cardiochanged = true;
+                calculateScore();
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -118,6 +154,7 @@ public class NewPrtActivity extends Activity implements Observer{
 
         initPushupBar();
         initCurlupBar();
+        initCardioBar();
 
 
     }
@@ -140,41 +177,41 @@ public class NewPrtActivity extends Activity implements Observer{
         progressItem = new ProgressItem();
         Log.d(TAG, "initCircumSeekBar: pass span percent " + (failureSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((failureSpan / totalSpan) * 100);
-        progressItem.color = R.color.red;
+        progressItem.color = R.color.prt_failure;
         progressItemList.add(progressItem);
 
         //Probationary
         progressItem = new ProgressItem();
         Log.d(TAG, "initCircumSeekBar: pass span percent " + (probationarySpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((probationarySpan / totalSpan) * 100);
-        progressItem.color = R.color.redorange;
+        progressItem.color = R.color.prt_probationary;
         progressItemList.add(progressItem);
 
         //Satisfactory
         progressItem = new ProgressItem();
         Log.d(TAG, "initCircumSeekBar: pass span percent " + (satisfactorySpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((satisfactorySpan / totalSpan) * 100);
-        progressItem.color = R.color.orange;
+        progressItem.color = R.color.prt_satisfactory;
         progressItemList.add(progressItem);
 
         //Good
         progressItem = new ProgressItem();
         Log.d(TAG, "initCircumSeekBar: pass span percent " + (goodSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((goodSpan / totalSpan) * 100);
-        progressItem.color = R.color.yellow;
+        progressItem.color = R.color.prt_good;
         progressItemList.add(progressItem);
 
         //Excellent
         progressItem = new ProgressItem();
         Log.d(TAG, "initCircumSeekBar: pass span percent " + (excellentSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((excellentSpan / totalSpan) * 100);
-        progressItem.color = R.color.blue;
+        progressItem.color = R.color.prt_excellent;
         progressItemList.add(progressItem);
 
         //Outstanding
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
-        progressItem.color = R.color.green;
+        progressItem.color = R.color.prt_outstanding;
         progressItemList.add(progressItem);
 
 
@@ -202,37 +239,37 @@ public class NewPrtActivity extends Activity implements Observer{
         //Failure
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = ((failureSpan / totalSpan) * 100);
-        progressItem.color = R.color.red;
+        progressItem.color = R.color.prt_failure;
         progressItemList.add(progressItem);
 
         //Probationary
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = ((probationarySpan / totalSpan) * 100);
-        progressItem.color = R.color.redorange;
+        progressItem.color = R.color.prt_probationary;
         progressItemList.add(progressItem);
 
         //Satisfactory
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = ((satisfactorySpan / totalSpan) * 100);
-        progressItem.color = R.color.orange;
+        progressItem.color = R.color.prt_satisfactory;
         progressItemList.add(progressItem);
 
         //Good
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = ((goodSpan / totalSpan) * 100);
-        progressItem.color = R.color.yellow;
+        progressItem.color = R.color.prt_good;
         progressItemList.add(progressItem);
 
         //Excellent
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = ((excellentSpan / totalSpan) * 100);
-        progressItem.color = R.color.blue;
+        progressItem.color = R.color.prt_excellent;
         progressItemList.add(progressItem);
 
         //Outstanding
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
-        progressItem.color = R.color.green;
+        progressItem.color = R.color.prt_outstanding;
         progressItemList.add(progressItem);
 
 
@@ -240,6 +277,65 @@ public class NewPrtActivity extends Activity implements Observer{
         curlupSeekBar.invalidate();
 
         Log.d(TAG, "initCurlupBar: " + progressItemList.size());
+
+    }
+
+    private void initCardioBar() {
+        Log.d(TAG, "initCardioBar: ");
+        int totalSpan = (MAX_CARDIO - MIN_CARDIO);
+
+        int[] cardioRanges = mData.getScoreArrays().get(2);
+
+        //int[] situpMale50 = {29, 30, 32, 37, 44, 63, 71, 76, 77, 78, 84, 85};
+        progressItemList = new ArrayList<ProgressItem>();
+
+        float outstandingSpan = (float) cardioRanges[9] - MIN_CARDIO;//TODO
+        float excellentSpan = (cardioRanges[6] - MIN_CARDIO - outstandingSpan);//TODO
+        float goodSpan = (cardioRanges[2] - MIN_CARDIO - outstandingSpan - excellentSpan );//TODO
+        float satisfactorySpan = cardioRanges[1] - MIN_CARDIO - outstandingSpan - excellentSpan - goodSpan ;//TODO
+        float probationarySpan = cardioRanges[0] - MIN_CARDIO - outstandingSpan - excellentSpan - goodSpan - satisfactorySpan;//TODO
+
+        //Outstanding
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = ((outstandingSpan / totalSpan) * 100);
+        progressItem.color = R.color.prt_outstanding;
+        progressItemList.add(progressItem);
+
+        //Excellent
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = ((probationarySpan / totalSpan) * 100);
+        progressItem.color = R.color.prt_excellent;
+        progressItemList.add(progressItem);
+
+        //Good
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = ((satisfactorySpan / totalSpan) * 100);
+        progressItem.color = R.color.prt_good;
+        progressItemList.add(progressItem);
+
+        //Satisfactory
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = ((goodSpan / totalSpan) * 100);
+        progressItem.color = R.color.prt_satisfactory;
+        progressItemList.add(progressItem);
+
+        //Probationary
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = ((excellentSpan / totalSpan) * 100);
+        progressItem.color = R.color.prt_probationary;
+        progressItemList.add(progressItem);
+
+        //Failure
+        progressItem = new ProgressItem();
+        progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
+        progressItem.color = R.color.prt_failure;
+        progressItemList.add(progressItem);
+
+
+        cardioSeekBar.initData(progressItemList);
+        cardioSeekBar.invalidate();
+
+        Log.d(TAG, "initCardioBar: " + progressItemList.size());
 
     }
 
@@ -284,328 +380,21 @@ public class NewPrtActivity extends Activity implements Observer{
 
 
     private void calculateScore() {
-        int age = mData.getAge();
-        if (mData.isMale) {
-            if (mData.isAltitude) {
-                if (mData.getCardio().equals("500m Swim")) {
-                    if (age < 20) {
-                        calculateMale(mData.pushupMale17, mData.situpMale17, mData.altSwim500Male17);
-                    } else if (age < 25) {
-                        calculateMale(mData.pushupMale20, mData.situpMale20, mData.altSwim500Male20);
-                    } else if (age < 30) {
-                        calculateMale(mData.pushupMale25, mData.situpMale25, mData.altSwim500Male25);
-                    } else if (age < 35) {
-                        calculateMale(mData.pushupMale30, mData.situpMale30, mData.altSwim500Male30);
-                    } else if (age < 40) {
-                        calculateMale(mData.pushupMale35, mData.situpMale35, mData.altSwim500Male35);
-                    } else if (age < 45) {
-                        calculateMale(mData.pushupMale40, mData.situpMale40, mData.altSwim500Male40);
-                    } else if (age < 50) {
-                        calculateMale(mData.pushupMale45, mData.situpMale45, mData.altSwim500Male45);
-                    } else if (age < 55) {
-                        calculateMale(mData.pushupMale50, mData.situpMale50, mData.altSwim500Male50);
-                    } else if (age < 60) {
-                        calculateMale(mData.pushupMale55, mData.situpMale55, mData.altSwim500Male55);
-                    } else if (age < 65) {
-                        calculateMale(mData.pushupMale60, mData.situpMale60, mData.altSwim500Male60);
-                    } else {
-                        calculateMale(mData.pushupMale65, mData.situpMale65, mData.altSwim500Male65);
-                    }
-                } else if (mData.getCardio().equals("450m Swim")) {
-                    if (age < 20) {
-                        calculateMale(mData.pushupMale17, mData.situpMale17, mData.altSwim450Male17);
-                    } else if (age < 25) {
-                        calculateMale(mData.pushupMale20, mData.situpMale20, mData.altSwim450Male20);
-                    } else if (age < 30) {
-                        calculateMale(mData.pushupMale25, mData.situpMale25, mData.altSwim450Male25);
-                    } else if (age < 35) {
-                        calculateMale(mData.pushupMale30, mData.situpMale30, mData.altSwim450Male30);
-                    } else if (age < 40) {
-                        calculateMale(mData.pushupMale35, mData.situpMale35, mData.altSwim450Male35);
-                    } else if (age < 45) {
-                        calculateMale(mData.pushupMale40, mData.situpMale40, mData.altSwim450Male40);
-                    } else if (age < 50) {
-                        calculateMale(mData.pushupMale45, mData.situpMale45, mData.altSwim450Male45);
-                    } else if (age < 55) {
-                        calculateMale(mData.pushupMale50, mData.situpMale50, mData.altSwim450Male50);
-                    } else if (age < 60) {
-                        calculateMale(mData.pushupMale55, mData.situpMale55, mData.altSwim450Male55);
-                    } else if (age < 65) {
-                        calculateMale(mData.pushupMale60, mData.situpMale60, mData.altSwim450Male60);
-                    } else {
-                        calculateMale(mData.pushupMale65, mData.situpMale65, mData.altSwim450Male65);
-                    }
-                } else {
-                    if (age < 20) {
-                        calculateMale(mData.pushupMale17, mData.situpMale17, mData.altRunMale17);
-                    } else if (age < 25) {
-                        calculateMale(mData.pushupMale20, mData.situpMale20, mData.altRunMale20);
-                    } else if (age < 30) {
-                        calculateMale(mData.pushupMale25, mData.situpMale25, mData.altRunMale25);
-                    } else if (age < 35) {
-                        calculateMale(mData.pushupMale30, mData.situpMale30, mData.altRunMale30);
-                    } else if (age < 40) {
-                        calculateMale(mData.pushupMale35, mData.situpMale35, mData.altRunMale35);
-                    } else if (age < 45) {
-                        calculateMale(mData.pushupMale40, mData.situpMale40, mData.altRunMale40);
-                    } else if (age < 50) {
-                        calculateMale(mData.pushupMale45, mData.situpMale45, mData.altRunMale45);
-                    } else if (age < 55) {
-                        calculateMale(mData.pushupMale50, mData.situpMale50, mData.altRunMale50);
-                    } else if (age < 60) {
-                        calculateMale(mData.pushupMale55, mData.situpMale55, mData.altRunMale55);
-                    } else if (age < 65) {
-                        calculateMale(mData.pushupMale60, mData.situpMale60, mData.altRunMale60);
-                    } else {
-                        calculateMale(mData.pushupMale65, mData.situpMale65, mData.altRunMale65);
-                    }
-                }
-            } else {
-                if (mData.getCardio().equals("500m Swim")) {
-                    if (age < 20) {
-                        calculateMale(mData.pushupMale17, mData.situpMale17, mData.swim500Male17);
-                    } else if (age < 25) {
-                        calculateMale(mData.pushupMale20, mData.situpMale20, mData.swim500Male20);
-                    } else if (age < 30) {
-                        calculateMale(mData.pushupMale25, mData.situpMale25, mData.swim500Male25);
-                    } else if (age < 35) {
-                        calculateMale(mData.pushupMale30, mData.situpMale30, mData.swim500Male30);
-                    } else if (age < 40) {
-                        calculateMale(mData.pushupMale35, mData.situpMale35, mData.swim500Male35);
-                    } else if (age < 45) {
-                        calculateMale(mData.pushupMale40, mData.situpMale40, mData.swim500Male40);
-                    } else if (age < 50) {
-                        calculateMale(mData.pushupMale45, mData.situpMale45, mData.swim500Male45);
-                    } else if (age < 55) {
-                        calculateMale(mData.pushupMale50, mData.situpMale50, mData.swim500Male50);
-                    } else if (age < 60) {
-                        calculateMale(mData.pushupMale55, mData.situpMale55, mData.swim500Male55);
-                    } else if (age < 65) {
-                        calculateMale(mData.pushupMale60, mData.situpMale60, mData.swim500Male60);
-                    } else {
-                        calculateMale(mData.pushupMale65, mData.situpMale65, mData.swim500Male65);
-                    }
-                } else if (mData.getCardio().equals("450m swim")) {
-                    if (age < 20) {
-                        calculateMale(mData.pushupMale17, mData.situpMale17, mData.swim450Male17);
-                    } else if (age < 25) {
-                        calculateMale(mData.pushupMale20, mData.situpMale20, mData.swim450Male20);
-                    } else if (age < 30) {
-                        calculateMale(mData.pushupMale25, mData.situpMale25, mData.swim450Male25);
-                    } else if (age < 35) {
-                        calculateMale(mData.pushupMale30, mData.situpMale30, mData.swim450Male30);
-                    } else if (age < 40) {
-                        calculateMale(mData.pushupMale35, mData.situpMale35, mData.swim450Male35);
-                    } else if (age < 45) {
-                        calculateMale(mData.pushupMale40, mData.situpMale40, mData.swim450Male40);
-                    } else if (age < 50) {
-                        calculateMale(mData.pushupMale45, mData.situpMale45, mData.swim450Male45);
-                    } else if (age < 55) {
-                        calculateMale(mData.pushupMale50, mData.situpMale50, mData.swim450Male50);
-                    } else if (age < 60) {
-                        calculateMale(mData.pushupMale55, mData.situpMale55, mData.swim450Male55);
-                    } else if (age < 65) {
-                        calculateMale(mData.pushupMale60, mData.situpMale60, mData.swim450Male60);
-                    } else {
-                        calculateMale(mData.pushupMale65, mData.situpMale65, mData.swim450Male65);
-                    }
-                } else {
-                    if (age < 20) {
-                        calculateMale(mData.pushupMale17, mData.situpMale17, mData.runMale17);
-                    } else if (age < 25) {
-                        calculateMale(mData.pushupMale20, mData.situpMale20, mData.runMale20);
-                    } else if (age < 30) {
-                        calculateMale(mData.pushupMale25, mData.situpMale25, mData.runMale25);
-                    } else if (age < 35) {
-                        calculateMale(mData.pushupMale30, mData.situpMale30, mData.runMale30);
-                    } else if (age < 40) {
-                        calculateMale(mData.pushupMale35, mData.situpMale35, mData.runMale35);
-                    } else if (age < 45) {
-                        calculateMale(mData.pushupMale40, mData.situpMale40, mData.runMale40);
-                    } else if (age < 50) {
-                        calculateMale(mData.pushupMale45, mData.situpMale45, mData.runMale45);
-                    } else if (age < 55) {
-                        calculateMale(mData.pushupMale50, mData.situpMale50, mData.runMale50);
-                    } else if (age < 60) {
-                        calculateMale(mData.pushupMale55, mData.situpMale55, mData.runMale55);
-                    } else if (age < 65) {
-                        calculateMale(mData.pushupMale60, mData.situpMale60, mData.runMale60);
-                    } else {
-                        calculateMale(mData.pushupMale65, mData.situpMale65, mData.runMale65);
-                    }
-                }
-            }
-
-
-        } else {
-            if (mData.isAltitude) {
-                if (mData.getCardio().equals("500m Swim")) {
-                    if (age < 20) {
-                        calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altSwim500Female17);
-                    } else if (age < 25) {
-                        calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altSwim500Female20);
-                    } else if (age < 30) {
-                        calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altSwim500Female25);
-                    } else if (age < 35) {
-                        calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altSwim500Female30);
-                    } else if (age < 40) {
-                        calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altSwim500Female35);
-                    } else if (age < 45) {
-                        calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altSwim500Female40);
-                    } else if (age < 50) {
-                        calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altSwim500Female45);
-                    } else if (age < 55) {
-                        calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altSwim500Female50);
-                    } else if (age < 60) {
-                        calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altSwim500Female55);
-                    } else if (age < 65) {
-                        calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altSwim500Female60);
-                    } else {
-                        calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altSwim500Female65);
-                    }
-                } else if (mData.getCardio().equals("450m Swim")) {
-                    if (age < 20) {
-                        calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altSwim450Female17);
-                    } else if (age < 25) {
-                        calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altSwim450Female20);
-                    } else if (age < 30) {
-                        calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altSwim450Female25);
-                    } else if (age < 35) {
-                        calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altSwim450Female30);
-                    } else if (age < 40) {
-                        calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altSwim450Female35);
-                    } else if (age < 45) {
-                        calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altSwim450Female40);
-                    } else if (age < 50) {
-                        calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altSwim450Female45);
-                    } else if (age < 55) {
-                        calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altSwim450Female50);
-                    } else if (age < 60) {
-                        calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altSwim450Female55);
-                    } else if (age < 65) {
-                        calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altSwim450Female60);
-                    } else {
-                        calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altSwim450Female65);
-                    }
-                } else {
-                    if (age < 20) {
-                        calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.altRunFemale17);
-                    } else if (age < 25) {
-                        calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.altRunFemale20);
-                    } else if (age < 30) {
-                        calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.altRunFemale25);
-                    } else if (age < 35) {
-                        calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.altRunFemale30);
-                    } else if (age < 40) {
-                        calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.altRunFemale35);
-                    } else if (age < 45) {
-                        calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.altRunFemale40);
-                    } else if (age < 50) {
-                        calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.altRunFemale45);
-                    } else if (age < 55) {
-                        calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.altRunFemale50);
-                    } else if (age < 60) {
-                        calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.altRunFemale55);
-                    } else if (age < 65) {
-                        calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.altRunFemale60);
-                    } else {
-                        calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.altRunFemale65);
-                    }
-                }
-            } else {
-                if (mData.getCardio().equals("500m Swim")) {
-                    if (age < 20) {
-                        calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.swim500Female17);
-                    } else if (age < 25) {
-                        calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.swim500Female20);
-                    } else if (age < 30) {
-                        calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.swim500Female25);
-                    } else if (age < 35) {
-                        calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.swim500Female30);
-                    } else if (age < 40) {
-                        calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.swim500Female35);
-                    } else if (age < 45) {
-                        calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.swim500Female40);
-                    } else if (age < 50) {
-                        calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.swim500Female45);
-                    } else if (age < 55) {
-                        calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.swim500Female50);
-                    } else if (age < 60) {
-                        calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.swim500Female55);
-                    } else if (age < 65) {
-                        calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.swim500Female60);
-                    } else {
-                        calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.swim500Female65);
-                    }
-                } else if (mData.getCardio().equals("450m swim")) {
-                    if (age < 20) {
-                        calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.swim450Female17);
-                    } else if (age < 25) {
-                        calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.swim450Female20);
-                    } else if (age < 30) {
-                        calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.swim450Female25);
-                    } else if (age < 35) {
-                        calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.swim450Female30);
-                    } else if (age < 40) {
-                        calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.swim450Female35);
-                    } else if (age < 45) {
-                        calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.swim450Female40);
-                    } else if (age < 50) {
-                        calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.swim450Female45);
-                    } else if (age < 55) {
-                        calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.swim450Female50);
-                    } else if (age < 60) {
-                        calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.swim450Female55);
-                    } else if (age < 65) {
-                        calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.swim450Female60);
-                    } else {
-                        calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.swim450Female65);
-                    }
-                } else {
-                    if (age < 20) {
-                        calculateFemale(mData.pushupFemale17, mData.situpFemale17, mData.runFemale17);
-                    } else if (age < 25) {
-                        calculateFemale(mData.pushupFemale20, mData.situpFemale20, mData.runFemale20);
-                    } else if (age < 30) {
-                        calculateFemale(mData.pushupFemale25, mData.situpFemale25, mData.runFemale25);
-                    } else if (age < 35) {
-                        calculateFemale(mData.pushupFemale30, mData.situpFemale30, mData.runFemale30);
-                    } else if (age < 40) {
-                        calculateFemale(mData.pushupFemale35, mData.situpFemale35, mData.runFemale35);
-                    } else if (age < 45) {
-                        calculateFemale(mData.pushupFemale40, mData.situpFemale40, mData.runFemale40);
-                    } else if (age < 50) {
-                        calculateFemale(mData.pushupFemale45, mData.situpFemale45, mData.runFemale45);
-                    } else if (age < 55) {
-                        calculateFemale(mData.pushupFemale50, mData.situpFemale50, mData.runFemale50);
-                    } else if (age < 60) {
-                        calculateFemale(mData.pushupFemale55, mData.situpFemale55, mData.runFemale55);
-                    } else if (age < 65) {
-                        calculateFemale(mData.pushupFemale60, mData.situpFemale60, mData.runFemale60);
-                    } else {
-                        calculateFemale(mData.pushupFemale65, mData.situpFemale65, mData.runFemale65);
-                    }
-                }
-            }
-
-        }
-
-
-    }
-
-
-    private void calculateMale(int[] pushupMale, int[] situpMale, int[] runMale) {
+        ArrayList<int[]> scoresList = mData.getScoreArrays();
+        int[] pushupScores = scoresList.get(0);
+        int[] curlupScores = scoresList.get(1);
+        int[] cardioScores = scoresList.get(2);
         int totalScore = 0;
         int pushupScore = 0;
-        int situpScore = 0;
+        int curlupScore = 0;
         int cardioScore = 0;
         boolean pushupsFailed = true;
-        boolean situpsFailed = true;
+        boolean curlupsFailed = true;
         boolean cardioFailed = true;
 
         if (pushupchanged) {
             for (int i = 11; i >= 0; i--) {
-                if (pushups >= pushupMale[i]) {
+                if (pushups >= pushupScores[i]) {
                     totalScore += mData.Scores[i];
                     pushupScore = mData.Scores[i];
                     pushupScoreLBL.setText(getCategory(pushupScore));
@@ -620,36 +409,36 @@ public class NewPrtActivity extends Activity implements Observer{
 
         if (curlupchanged) {
             for (int i = 11; i >= 0; i--) {
-                if (curlups >= situpMale[i]) {
+                if (curlups >= curlupScores[i]) {
                     totalScore += mData.Scores[i];
-                    situpScore = mData.Scores[i];
-                    //TODO situpScoreLBL.setText(getCategory(situpScore));
-                    situpsFailed = false;
+                    curlupScore = mData.Scores[i];
+                    curlupScoreLBL.setText(getCategory(curlupScore));
+                    curlupsFailed = false;
                     break;
                 }
             }
-            if (situpsFailed) {
-                //TODO situpScoreLBL.setText(R.string.score_failure);
+            if (curlupsFailed) {
+                curlupScoreLBL.setText(R.string.score_failure);
             }
         }
 
-        if (runchanged) {
+        if (cardiochanged) {
             for (int i = 11; i >= 0; i--) {
-                if (runtime <= runMale[i]) {
+                if (runtime <= cardioScores[i]) {
                     totalScore += mData.Scores[i];
                     cardioScore = mData.Scores[i];
-                    //TODO runScoreLBL.setText(getCategory(cardioScore));
+                    cardioScoreLBL.setText(getCategory(cardioScore));
                     cardioFailed = false;
                     break;
                 }
             }
             if (cardioFailed) {
-                //TODO runScoreLBL.setText(R.string.score_failure);
+                cardioScoreLBL.setText(R.string.score_failure);
             }
         }
 
 
-        if (!pushupsFailed && !situpsFailed && !cardioFailed && changed()) {
+        if (!pushupsFailed && !curlupsFailed && !cardioFailed && changed()) {
 
             if ((totalScore / 3) < 45) {
                 //TODO scoreLBL.setBackgroundColor(Color.RED);
@@ -668,86 +457,6 @@ public class NewPrtActivity extends Activity implements Observer{
             //TODO scoreLBL.setBackgroundColor(Color.RED);
             //TODO scoreLBL.setTextColor(Color.BLACK);
             //TODO  scoreLBL.getBackground().setAlpha(100);
-        }
-
-
-    }
-
-
-    private void calculateFemale(int[] pushupFemale, int[] situpFemale, int[] runFemale) {
-        int totalScore = 0;
-        int pushupScore = 0;
-        int situpScore = 0;
-        int runScore = 0;
-        boolean fail0 = true;//pushups
-        boolean fail1 = true;//situps
-        boolean fail2 = true;//run
-
-        if (pushupchanged) {
-
-
-            for (int i = 11; i >= 0; i--) {
-                if (pushups >= pushupFemale[i]) {
-                    totalScore += mData.Scores[i];
-                    pushupScore = mData.Scores[i];
-                    pushupScoreLBL.setText(getCategory(pushupScore));
-                    fail0 = false;
-                    break;
-                }
-            }
-            if (fail0) {
-                pushupScoreLBL.setText(getString(R.string.score_failure));
-            }
-        }
-
-        if (curlupchanged) {
-            for (int i = 11; i >= 0; i--) {
-                if (curlups >= situpFemale[i]) {
-                    totalScore += mData.Scores[i];
-                    situpScore = mData.Scores[i];
-                    //TODO situpScoreLBL.setText(getCategory(situpScore));
-                    fail1 = false;
-                    break;
-                }
-            }
-            if (fail1) {
-               //TODO situpScoreLBL.setText(R.string.score_failure);
-            }
-        }
-
-        if (runchanged) {
-            for (int i = 11; i >= 0; i--) {
-                if (runtime <= runFemale[i]) {
-                    totalScore += mData.Scores[i];
-                    runScore = mData.Scores[i];
-                    //TODO runScoreLBL.setText(getCategory(runScore));
-                    fail2 = false;
-                    break;
-                }
-            }
-            if (fail2) {
-                //TODO runScoreLBL.setText(R.string.score_failure);
-            }
-        }
-
-        if (!fail0 && !fail1 && !fail2 && changed()) {
-
-            if ((totalScore / 3) < 45) {
-                //TODO scoreLBL.setBackgroundColor(Color.RED);
-                //TODO scoreLBL.setTextColor(Color.BLACK);
-                //TODO scoreLBL.getBackground().setAlpha(100);
-            } else {
-                //TODO scoreLBL.setBackgroundColor(Color.GREEN);
-                //TODO  scoreLBL.setTextColor(Color.BLACK);
-                //TODO scoreLBL.getBackground().setAlpha(100);
-            }
-            //TODO scoreLBL.setText(getCategory(totalScore / 3));
-
-        } else if (changed()) {
-            //TODO scoreLBL.setText(R.string.score_failure);
-            //TODO scoreLBL.setBackgroundColor(Color.RED);
-            //TODO scoreLBL.setTextColor(Color.BLACK);
-            //TODO scoreLBL.getBackground().setAlpha(100);
         }
     }
 
@@ -792,9 +501,30 @@ public class NewPrtActivity extends Activity implements Observer{
     private boolean changed() {
         boolean changed = false;
         //TODO is this supposed to only return if everything changed?
-        if (runchanged && curlupchanged && pushupchanged) {
+        if (cardiochanged && curlupchanged && pushupchanged) {
             changed = true;
         }
         return changed;
     }
+
+    private String formatTime(int totalSeconds) {
+        String minutesTXT, secondsTXT;
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        if (minutes < 10) {
+            minutesTXT = "0" + Integer.toString(minutes);
+        } else {
+            minutesTXT = Integer.toString(minutes);
+        }
+        if (seconds < 10) {
+            secondsTXT = "0" + Integer.toString(seconds);
+        } else {
+            secondsTXT = Integer.toString(seconds);
+        }
+        String formattedTimeString = minutesTXT + ":" + secondsTXT;
+
+        return formattedTimeString;
+    }
+
+
 }

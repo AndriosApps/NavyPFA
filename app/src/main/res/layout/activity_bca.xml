@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.andrios.prt.Activities.BCA_Activity">
+    tools:context="com.andrios.prt.BcaActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

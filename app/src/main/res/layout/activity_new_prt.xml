@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_bca"
+    android:id="@+id/activity_new_prt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.andrios.prt.BcaActivity">
+    tools:context="com.andrios.prt.NewPrtActivity">
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -43,12 +44,12 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="left"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/gender_image_view"
+                        android:id="@+id/prt_gender_image_view"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_gravity="center"
@@ -59,123 +60,50 @@
                         android:elevation="6dp"
                         app:srcCompat="@drawable/icon_male"  />
 
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:gravity="right"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/bca_age_text_view"
+                        android:id="@+id/prt_total_score_text_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="right"
+                        android:layout_height="wrap_content"
                         android:text="32yrs"
+                        android:background="@drawable/circle"
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="12sp"
+                        android:gravity="center" />
 
 
                 </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margins"
-        android:layout_marginStart="@dimen/margins"
-        android:layout_marginTop="@dimen/margins"
-        android:backgroundTint="@color/white">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/pass_height_weight_image_view_left"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center" />
-
-                <TextView
-                    android:id="@+id/age_text_view"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Height / Weight"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/black" />
+                    android:layout_weight="2"
+                    android:gravity="left"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/pass_height_weight_image_view_right"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center" />
 
+                    <TextView
+                        android:id="@+id/prt_age_text_view"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:elevation="6dp"
+                        android:background="@drawable/circle"
+                        android:gravity="center"
+                        android:text="32"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/height_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Height"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black" />
-
-                <com.andrios.prt.CustomSeekBar
-                    android:id="@+id/height_seek_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/weight_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Height"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black" />
-
-                <com.andrios.prt.CustomSeekBar
-                    android:id="@+id/weight_seek_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
-
-            </LinearLayout>
-
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -203,6 +131,7 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
+
                 <ImageView
                     android:id="@+id/pass_circumference_image_view_left"
                     android:layout_width="32dp"
@@ -213,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Circumference"
+                    android:text="Pushups"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/black" />
 
@@ -230,13 +159,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/circumferance_text_view"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Height"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/pushup_total_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="54"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/pushup_score_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="Outstanding"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
+                </LinearLayout>
 
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/pushup_seek_bar"
@@ -245,7 +192,22 @@
                     android:progressDrawable="@android:color/transparent"
                     android:thumbOffset="12dp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -253,7 +215,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/bodyfat_card_view"
+        android:id="@+id/curlup_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margins"
@@ -274,32 +236,26 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/bodyfat_percent_text_view"
-                    android:layout_width="64dp"
+
+                <ImageView
+                    android:id="@+id/pass_curlup_image_view_left"
+                    android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_weight="0"
-                    android:gravity="left"
-                    android:text="22%"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black" />
+                    android:layout_gravity="center" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Bodyfat"
+                    android:text="Curlups"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/black" />
 
                 <ImageView
-                    android:id="@+id/pass_bodyfat_image_view_right"
+                    android:id="@+id/pass_curlup_image_view_right"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="32dp"
-                    android:layout_weight="0" />
+                    android:layout_gravity="center" />
 
             </LinearLayout>
 
@@ -314,38 +270,103 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/neck_text_view"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/curlup_total_text_view"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
-                        android:text="Height"
+                        android:text="54"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/curlup_score_text_view"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:text="Neck"
+                        android:text="Outstanding"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
-
                 </LinearLayout>
 
                 <com.andrios.prt.CustomSeekBar
-                    android:id="@+id/neck_seek_bar"
+                    android:id="@+id/curlup_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:progressDrawable="@android:color/transparent"
                     android:thumbOffset="12dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardio_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margins"
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginTop="@dimen/margins"
+        android:backgroundTint="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/pass_cardio_image_view_left"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/cardio_label_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Cardio"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/pass_cardio_image_view_right"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/hips_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -356,36 +377,50 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/hips_text_view"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/cardio_total_text_view"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
-                        android:text="Height"
+                        android:text="54"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/cardio_score_text_view"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:text="Hips"
+                        android:text="Outstanding"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black" />
-
                 </LinearLayout>
 
                 <com.andrios.prt.CustomSeekBar
-                    android:id="@+id/hips_seek_bar"
+                    android:id="@+id/cardio_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:progressDrawable="@android:color/transparent"
                     android:thumbOffset="12dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/cardio_calories_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="127 Calories"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/black" />
 
 
+                </LinearLayout>
             </LinearLayout>
-
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

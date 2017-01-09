@@ -1,10 +1,16 @@
 package com.andrios.prt.Classes;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
+import android.util.Log;
 
 import com.andrios.prt.LogEntry;
+import com.andrios.prt.R;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,7 +32,7 @@ public class Profile extends Observable implements Serializable{
 	boolean isMale;
 	boolean isPinProtected;
 	int pin;
-	Uri profilePic;
+	String profilePicUriString;
 	Bitmap profileBitmap;
 	
 	public Profile(){
@@ -36,7 +42,7 @@ public class Profile extends Observable implements Serializable{
 		nextPFA = Calendar.getInstance();
 		logList = new ArrayList<LogEntry>();
 		this.isPinProtected = false;
-		//this.profilePic = "profile";
+		this.profilePicUriString = "android.resource://com.andrios.prt/" + R.drawable.icon_profile;
 	}
 	
 	/*
@@ -127,12 +133,29 @@ public class Profile extends Observable implements Serializable{
 		return this.pin;
 	}
 	
-	public Uri getProfilePic(){
-		return profilePic;
+	public Uri getProfilePicUri(){
+
+		return Uri.parse(profilePicUriString);
 	}
 	
-	public Bitmap getProfileBitmap(){
-		return profileBitmap;
+	public Bitmap getProfileBitmap(Context context){
+        Log.d("Profile: ", "getProfileBitmap: ");
+        Bitmap bitmap = null;
+		try {
+			bitmap = MediaStore.Images.Media.getBitmap(context.getApplicationContext().getContentResolver(), getProfilePicUri());
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+            Log.d("Profile: ", "getProfileBitmap: File Not Found");
+            e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+            Log.d("Profile: ", "getProfileBitmap: iO Exception");
+			e.printStackTrace();
+		}
+
+
+		return bitmap;
 	}
 	
 	
@@ -167,8 +190,9 @@ public class Profile extends Observable implements Serializable{
 	}
 
 	
-	public void setProfilePic(Uri profilePic){
-		this.profilePic = profilePic;
+	public void setProfilePicUriString(Uri profilePicUriString){
+        //TODO Fix this
+		this.profilePicUriString = "";
 	}
 	
 	public void setProfileBitmap(Bitmap profileBitmap){

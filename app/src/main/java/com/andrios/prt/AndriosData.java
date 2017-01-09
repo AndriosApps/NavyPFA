@@ -29,10 +29,10 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	private static final long serialVersionUID = -6149357292077176082L;
     private static final String TAG = "AndriosData: ";
 
-	int age;
-	int runtime;
+	private int age;
+	private int runtime;
 	public boolean isAltitude;
-	boolean isMale;
+	public boolean isMale;
 	private String cardio;
 	private ArrayList<int[]> scoreArray;
     private String[] cardioOptions;
@@ -318,7 +318,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	}
 	
 	public int getAge(){
-		return age;
+		return profile.getAge();
 	}
 	
 	public int getRunTime(){
@@ -951,5 +951,6 @@ public static ArrayList<Instruction> getInstructions(){
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+        isMale = profile.isMale();
     }
 }

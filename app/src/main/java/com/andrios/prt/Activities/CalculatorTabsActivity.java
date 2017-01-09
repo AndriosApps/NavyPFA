@@ -9,10 +9,8 @@ import android.widget.TabHost;
 
 import com.andrios.prt.AndriosData;
 import com.andrios.prt.BcaActivity;
-import com.andrios.prt.CardioActivity;
-import com.andrios.prt.NewPrtActivity;
 import com.andrios.prt.NewProfileActivity;
-import com.andrios.prt.PRTActivity;
+import com.andrios.prt.NewPrtActivity;
 import com.andrios.prt.R;
 
 public class CalculatorTabsActivity extends TabActivity {
@@ -65,7 +63,7 @@ public class CalculatorTabsActivity extends TabActivity {
         intent = new Intent().setClass(this, NewProfileActivity.class);
         intent.putExtra("premium", isPremium);
         intent.putExtra("data", mData);
-        mTabHost.addTab(mTabHost.newTabSpec("Alternate Cardio").setIndicator("CARDIO")
+        mTabHost.addTab(mTabHost.newTabSpec("Profile").setIndicator("PROFILE")
         		.setContent(intent));
              
       

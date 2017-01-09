@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andrios.prt.Classes.Profile;
+import com.andrios.prt.Classes.RoundedImageView;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -22,7 +23,7 @@ public class NewProfileActivity extends Activity implements Observer{
     private String TAG = "ProfileActivity";
     AndriosData mData;
     ImageView genderImageView;
-    ImageView profileImageView;
+    RoundedImageView profileImageView;
     TextView ageTextView;
 
     @Override
@@ -43,7 +44,7 @@ public class NewProfileActivity extends Activity implements Observer{
                 updateUI();
             }
         });
-        profileImageView = (ImageView) findViewById(R.id.profile_image_view);
+        profileImageView = (RoundedImageView) findViewById(R.id.profile_image_view);
         ageTextView = (TextView) findViewById(R.id.profile_age_textview);
 
         ageTextView.setText(mData.getAge() + "");
@@ -53,14 +54,14 @@ public class NewProfileActivity extends Activity implements Observer{
             genderImageView.setImageResource(R.drawable.icon_female);
         }
 
-        GradientDrawable backgroundCircle = (GradientDrawable) profileImageView.getBackground();
+        GradientDrawable backgroundCircle = (GradientDrawable) genderImageView.getBackground();
         // Get the appropriate background color based on the current earthquake magnitude
         int magnitudeColor = ContextCompat.getColor(this, R.color.andrios_grey);
         // Set the color on the magnitude circle
         backgroundCircle.setColor(magnitudeColor);
 
-        backgroundCircle = (GradientDrawable) genderImageView.getBackground();
-        backgroundCircle.setColor(magnitudeColor);
+        //backgroundCircle = (GradientDrawable) profileImageView.getBackground();
+        //backgroundCircle.setColor(magnitudeColor);
 
         backgroundCircle = (GradientDrawable) ageTextView.getBackground();
         backgroundCircle.setColor(magnitudeColor);

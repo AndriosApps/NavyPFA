@@ -208,16 +208,16 @@ public class NewPrtActivity extends Activity implements Observer {
         cardiochanged = true;
         String imageChoice = cardioOptions[1];
         switch(imageChoice){
-            case "1": cardioImageView.setImageResource(R.drawable.run);
+            case "1": cardioImageView.setImageResource(R.drawable.icon_cardio_run);
                 cardioCaloriesLBL.setVisibility(View.INVISIBLE);
                 break;
-            case "2": cardioImageView.setImageResource(R.drawable.swim_2);
+            case "2": cardioImageView.setImageResource(R.drawable.icon_cardio_swim);
                 cardioCaloriesLBL.setVisibility(View.INVISIBLE);
                 break;
-            case "3": cardioImageView.setImageResource(R.drawable.cardio_bike_2);
+            case "3": cardioImageView.setImageResource(R.drawable.icon_cardio_bike);
                 cardioCaloriesLBL.setVisibility(View.VISIBLE);
                 break;
-            case "4": cardioImageView.setImageResource(R.drawable.elliptical_2);
+            case "4": cardioImageView.setImageResource(R.drawable.icon_cardio_elliptical);
                 cardioCaloriesLBL.setVisibility(View.VISIBLE);
                 break;
         }

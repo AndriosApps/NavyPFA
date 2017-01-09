@@ -55,10 +55,10 @@
                         android:layout_gravity="center"
                         android:adjustViewBounds="false"
                         android:background="@drawable/circle"
-                        android:scaleType="center"
-                        android:padding="12dp"
+                        android:scaleType="fitXY"
                         android:elevation="6dp"
-                        app:srcCompat="@drawable/icon_male"  />
+                        android:layout_margin="6dp"
+                        app:srcCompat="@drawable/icon_male" />
 
 
                 </LinearLayout>
@@ -78,6 +78,7 @@
                         android:background="@drawable/circle"
                         android:textColor="@color/black"
                         android:textSize="12sp"
+                        android:layout_margin="6dp"
                         android:gravity="center" />
 
 
@@ -99,6 +100,7 @@
                         android:background="@drawable/circle"
                         android:gravity="center"
                         android:text="32"
+                        android:layout_margin="6dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/black" />
 

@@ -1,4 +1,4 @@
-package com.andrios.prt;
+package com.andrios.prt.Activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +10,13 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.andrios.prt.AndriosData;
+import com.andrios.prt.BcaActivity;
+import com.andrios.prt.Classes.AppRater;
+import com.andrios.prt.Classes.Profile;
+import com.andrios.prt.R;
+import com.andrios.prt.VideoStreamActivity;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -115,8 +122,7 @@ public class MainActivity extends Activity implements
                 Intent intent = new Intent(v.getContext(),
                         CalculatorTabsActivity.class);
                 intent.putExtra("premium", premium);
-                mData.setAge(profile.getAge());
-                mData.setGender(profile.isMale());
+                mData.setProfile(profile);
                 intent.putExtra("data", mData);
                 startActivity(intent);
             }
@@ -125,7 +131,7 @@ public class MainActivity extends Activity implements
         aboutBTN.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), BCA_Activity.class);
+                Intent intent = new Intent(v.getContext(), BcaActivity.class);
                 startActivity(intent);
             }
 

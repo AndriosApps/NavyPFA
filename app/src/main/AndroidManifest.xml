@@ -75,6 +75,9 @@
         <activity
             android:name=".NewPrtActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewProfileActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

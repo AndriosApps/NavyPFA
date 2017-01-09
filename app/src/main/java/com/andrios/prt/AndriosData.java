@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.andrios.prt.Classes.Instruction;
 
+import com.andrios.prt.Classes.Profile;
 import com.andrios.prt.VideoStream.VideoObject;
 
 import java.io.FileOutputStream;
@@ -36,6 +37,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	private ArrayList<int[]> scoreArray;
     private String[] cardioOptions;
     private int weight;
+    private Profile profile;
 
 
 	public int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
@@ -943,4 +945,11 @@ public static ArrayList<Instruction> getInstructions(){
     }
 
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 }

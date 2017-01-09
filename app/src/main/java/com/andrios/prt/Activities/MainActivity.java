@@ -69,7 +69,8 @@ public class MainActivity extends Activity implements
 		if (requestCode == PROFILEVIEW) {
 			if (resultCode == RESULT_OK) {
 				profile = (Profile) intent.getSerializableExtra("profile");
-				// setConnections();
+
+                // setConnections();
 			} else {
 				if (profile.getName().equals("Click to Set Name")) {
 					Toast.makeText(this, "Profile Inclomplete",
@@ -119,16 +120,16 @@ public class MainActivity extends Activity implements
 					intent.putExtra("data", mData);
 					startActivity(intent);
 				} else {
-
 					setAlertDialog();
 				}*/
-
 			}
 
 		});
+
 		calcBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+
 				Intent intent = new Intent(v.getContext(),
 						CalculatorTabsActivity.class);
 				intent.putExtra("premium", premium);
@@ -204,6 +205,8 @@ public class MainActivity extends Activity implements
 			profile = new Profile();
 
 		}
+        mData.setProfile(profile);
+
 	}
 
 	/*

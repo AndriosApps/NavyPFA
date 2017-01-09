@@ -53,11 +53,17 @@ public class NewProfileActivity extends Activity implements Observer{
             genderImageView.setImageResource(R.drawable.icon_female);
         }
 
-        GradientDrawable profileBackgroundCircle = (GradientDrawable) profileImageView.getBackground();
+        GradientDrawable backgroundCircle = (GradientDrawable) profileImageView.getBackground();
         // Get the appropriate background color based on the current earthquake magnitude
-        int magnitudeColor = ContextCompat.getColor(this, R.color.red);
+        int magnitudeColor = ContextCompat.getColor(this, R.color.andrios_grey);
         // Set the color on the magnitude circle
-        profileBackgroundCircle.setColor(magnitudeColor);
+        backgroundCircle.setColor(magnitudeColor);
+
+        backgroundCircle = (GradientDrawable) genderImageView.getBackground();
+        backgroundCircle.setColor(magnitudeColor);
+
+        backgroundCircle = (GradientDrawable) ageTextView.getBackground();
+        backgroundCircle.setColor(magnitudeColor);
 
         //TODO add library to handle circular imagecropping.
         Log.d(TAG, "setConnections: " + mData.getProfile().getAge());

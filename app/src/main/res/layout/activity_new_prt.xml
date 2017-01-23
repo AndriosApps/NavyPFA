@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/metrics_text_view"
@@ -75,7 +75,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="32yrs"
-                        android:background="@drawable/circle"
                         android:textColor="@color/black"
                         android:textSize="12sp"
                         android:layout_margin="6dp"
@@ -191,8 +190,7 @@
                     android:id="@+id/pushup_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
+                    android:progressDrawable="@android:color/transparent"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -296,8 +294,7 @@
                     android:id="@+id/curlup_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
+                    android:progressDrawable="@android:color/transparent" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -403,8 +400,7 @@
                     android:id="@+id/cardio_seek_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
+                    android:progressDrawable="@android:color/transparent" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

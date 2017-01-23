@@ -10,14 +10,16 @@
     	android:layout_height="fill_parent" 
     	android:orientation="vertical">
         <TabWidget 
-        	android:layout_width="fill_parent" 
-        	android:layout_height="wrap_content"
-			android:padding="5dp"
-        	android:id="@android:id/tabs">
+        	android:layout_width="fill_parent"
+            android:gravity="bottom"
+        	android:layout_height="@dimen/custom_tab_layout_height"
+        	android:id="@android:id/tabs"
+            android:background="@color/colorPrimary"
+            android:elevation="8dp">
         </TabWidget>
         <FrameLayout 
         	android:layout_width="fill_parent" 
-        	android:layout_height="fill_parent" 
+        	android:layout_height="fill_parent"
         	android:id="@android:id/tabcontent">
 
 

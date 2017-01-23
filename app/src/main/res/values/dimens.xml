@@ -11,4 +11,8 @@
     <dimen name="yellow_line_stroke_width">6dp</dimen>
     <dimen name="text_margin">4dp</dimen>
     <dimen name="margins">12dp</dimen>
+    <dimen name="tab_max_width">264dp</dimen>
+    <dimen name="tab_padding_bottom">16dp</dimen>
+    <dimen name="tab_label">14sp</dimen>
+    <dimen name="custom_tab_layout_height">36dp</dimen>
 </resources>

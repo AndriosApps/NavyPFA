@@ -15,19 +15,16 @@ import com.andrios.prt.R;
 
 public class CalculatorTabsActivity extends TabActivity {
     
-	private AndriosData mData; //Read in from saved file, passed to all future intents.
+	private AndriosData mData;
 	
 	boolean isPremium;
-	/** Called when the activity is first created. */
    
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.calculatortabsactivity);
 
-
         getExtras();
-
         setConnections();
     }
 
@@ -35,10 +32,7 @@ public class CalculatorTabsActivity extends TabActivity {
 		Intent intent = this.getIntent();
 		isPremium = intent.getBooleanExtra("premium", false);
 		mData = (AndriosData) intent.getSerializableExtra("data");
-
 	}
-
-
 
 	private void setConnections() {
 		TabHost mTabHost = getTabHost();
@@ -65,15 +59,18 @@ public class CalculatorTabsActivity extends TabActivity {
         intent.putExtra("data", mData);
         mTabHost.addTab(mTabHost.newTabSpec("Profile").setIndicator("PROFILE")
         		.setContent(intent));
-             
-      
 
         //Set Tab host to PRT Tab
         mTabHost.setCurrentTab(0);
+
+
+            mTabHost.getTabWidget().getChildAt(0).setBackgroundResource(R.color.colorPrimary);
+        mTabHost.getTabWidget().getChildAt(1).setBackgroundResource(R.color.colorPrimary);
+        mTabHost.getTabWidget().getChildAt(2).setBackgroundResource(R.color.colorPrimary);
+
+
 	}
-	
-	
-	
+
 	public void onDestroy(){
 		super.onDestroy();
 		mData.write(this);

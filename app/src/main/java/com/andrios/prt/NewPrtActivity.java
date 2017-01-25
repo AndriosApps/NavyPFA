@@ -2,7 +2,6 @@ package com.andrios.prt;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -538,14 +537,14 @@ public class NewPrtActivity extends Activity implements Observer {
 
 
         TextView finalScoreTextView = (TextView) findViewById(R.id.prt_total_score_text_view);
-        GradientDrawable backgroundCircleDrawable = (GradientDrawable) finalScoreTextView.getBackground();
+        //GradientDrawable backgroundCircleDrawable = (GradientDrawable) finalScoreTextView.getBackground();
 
         if(pushupsFailed || curlupsFailed || cardioFailed){
             finalScoreTextView.setText(getCategory(0));
-            backgroundCircleDrawable.setColor(getCategoryColor(0));
+            //backgroundCircleDrawable.setColor(getCategoryColor(0));
         }else{
             finalScoreTextView.setText(getCategory(totalScore / 3));
-            backgroundCircleDrawable.setColor(getCategoryColor(totalScore / 3));
+            //backgroundCircleDrawable.setColor(getCategoryColor(totalScore / 3));
         }
 
         if(cardioHelper.getCurrentCardioOption()[1].equals("3")){

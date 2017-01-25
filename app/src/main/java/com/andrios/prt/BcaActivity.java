@@ -1,11 +1,14 @@
 package com.andrios.prt;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -16,12 +19,15 @@ import com.andrios.prt.Classes.Profile;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
 
 
 public class BcaActivity extends Activity implements Observer {
 
+
+    static final int DATE_DIALOG_ID = 1;
     private static final String TAG = "BcaActivity";
     private static final int MIN_HEIGHT = 51;
     private static final int MAX_HEIGHT = 86;
@@ -92,6 +98,13 @@ public class BcaActivity extends Activity implements Observer {
         circumferenceTextView = (TextView) findViewById(R.id.circumferance_text_view);
         bodyFatPercentTextView = (TextView) findViewById(R.id.bodyfat_percent_text_view);
         ageTextView = (TextView) findViewById(R.id.bca_age_text_view);
+        ageTextView.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View v) {
+                showDialog(DATE_DIALOG_ID);
+            }
+
+        });
 
         passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view_right);
         passCircumferenceImageView = (ImageView) findViewById(R.id.pass_circumference_image_view_right);
@@ -602,5 +615,53 @@ public class BcaActivity extends Activity implements Observer {
         Log.d(TAG, "update: ");
         updateUI();
     }
+
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+
+            case DATE_DIALOG_ID:
+                int mYear = mData.getProfile().getDate().get(Calendar.YEAR);
+                int mMonth = mData.getProfile().getDate().get(Calendar.MONTH);
+                int mDay = mData.getProfile().getDate().get(Calendar.DAY_OF_MONTH);
+                return new DatePickerDialog(this,
+                        mDateSetListener,
+                        mYear, mMonth, mDay);
+        }
+        return null;
+    }
+    protected void onPrepareDialog(int id, Dialog dialog) {
+        switch (id) {
+
+            case DATE_DIALOG_ID:
+                //getCalendar();
+                int mYear = mData.getProfile().getDate().get(Calendar.YEAR);
+                int mMonth = mData.getProfile().getDate().get(Calendar.MONTH);
+                int mDay = mData.getProfile().getDate().get(Calendar.DAY_OF_MONTH);
+                System.out.println("On Prepare " + mMonth+" "+mYear+" "+mDay);//TODO
+                ((DatePickerDialog) dialog).updateDate(mYear, mMonth, mDay);
+                break;
+        }
+    }
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener =
+            new DatePickerDialog.OnDateSetListener() {
+
+                public void onDateSet(DatePicker view, int year,
+                                      int monthOfYear, int dayOfMonth) {
+
+                    mData.getProfile().getDate().set(Calendar.YEAR, year);
+                    mData.getProfile().getDate().set(Calendar.MONTH, monthOfYear);
+                    mData.getProfile().getDate().set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+
+                    ageTextView.setText(mData.getAge() + "Yrs");
+                }
+
+
+            };
+
+
 
 }

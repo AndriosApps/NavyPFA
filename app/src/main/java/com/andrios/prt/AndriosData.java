@@ -761,7 +761,6 @@ public static ArrayList<Instruction> getInstructions(){
                     } else if (age < 30) {
                         buildScoresArray(pushupMale25, situpMale25, runMale25);
                     } else if (age < 35) {
-                        Log.d(TAG, "getScoreArrays: This is where i think i need");
                         buildScoresArray(pushupMale30, situpMale30, runMale30);
                     } else if (age < 40) {
                         buildScoresArray(pushupMale35, situpMale35, runMale35);

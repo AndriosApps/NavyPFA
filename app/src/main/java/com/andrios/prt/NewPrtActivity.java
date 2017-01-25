@@ -370,6 +370,7 @@ public class NewPrtActivity extends Activity implements Observer {
         int minCardio;
 
         if(mData.getCardio().equalsIgnoreCase(getResources().getString(R.string.cardiobike))){
+            //Algorithm goes haywire beyond this point.
             minCardio = MIN_CARDIO_BIKE;
 
         }else{

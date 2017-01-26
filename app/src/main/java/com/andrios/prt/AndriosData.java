@@ -39,9 +39,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
     private int weight;
     private Profile profile;
 
-
 	public int[] Scores = {45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
-
 
 	public int getWeightMale(int height) {
         if(height >= weightMale.length){
@@ -173,13 +171,11 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] altSwim450Male55 = {908,	    875,	847,	817,	754,	693,	635,	600,    572,	536,	503,	470};
 	int[] altSwim450Male60 = {919,	    891,	864,	836,	776,	715,	655,	616,	578,	539,	506,	473};
 	int[] altSwim450Male65 = {930,	    913,	891,	869,	803,	743,	682,	633,	589,	545,	512,	479};
-	
-	
+
 	//Female
 	int[] weightFemale = {102, 106, 110, 114, 118, 123, 127, 131, 136, 141, 145,
 			149, 152, 156, 160, 163, 167, 170, 174, 177, 181, 185, 189, 194, 200,
 			205, 277, 216, 222, 227, 233, 239, 245, 251, 257, 263};
-	
 	
 	int[] pushupFemale17 = {19, 20, 22, 24, 30, 36, 42, 43, 45, 47, 50, 51};
 	int[] pushupFemale20 = {16, 17, 20, 21, 28, 33, 39, 40, 43, 44, 47, 48};
@@ -204,8 +200,7 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
     int[] situpFemale55 = {26, 28, 30, 36, 40, 54, 62, 66, 70, 74, 80, 81};
     int[] situpFemale60 = {20, 22, 24, 26, 32, 40, 56, 62, 66, 70, 74, 75};
     int[] situpFemale65 = {10, 13, 17, 20, 28, 36, 44, 50, 55, 60, 64, 65};
-	
-	
+
 	int[] runFemale17 = {900, 	885, 	855, 	810, 	780, 	765, 	750, 	720, 	705, 	690, 	675, 	569};
 	int[] runFemale20 = {930, 	915, 	900,	855,	825, 	810, 	795, 	765, 	735, 	690, 	675, 	587};
 	int[] runFemale25 = {968, 	945, 	923, 	893, 	870, 	840, 	803, 	780, 	750, 	705, 	690, 	617};
@@ -288,18 +283,14 @@ public class AndriosData extends Observable implements Serializable, Cloneable {
 	int[] altSwim450Female55 = {1045,	1012,	996,	979,	897,	831,	743,	732,	690,	657,	616,	567};
 	int[] altSwim450Female60 = {1062,	1029,	1012,	996,	913,	847,	754,	748,	699,	666,	633,	583};
 	int[] altSwim450Female65 = {1078,	1045,	1029,	1012,	930,	864,	770,	765,	706,	674,	649,	600};
-	
-	
-	
+
 	public AndriosData(){
 		isMale = true;
 		isAltitude = false;
 		age = 54;
         cardio = "1.5 Mile Run";
         weight = 125;
-		
 	}
-	
 
 	/**
 	 * Getter Methods
@@ -601,18 +592,11 @@ public static ArrayList<Instruction> getInstructions(){
     );
 
     Collections.sort(instructionList);
-
-
-
-
     return instructionList;
-
 }
-
 
 	public static ArrayList<VideoObject> getVideos (){
 		ArrayList<VideoObject> videoList = new ArrayList<>();
-
 
         videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Pushup Tutorial", R.drawable.andrios));
         videoList.add(new VideoObject("http://dvidshub.net/r/kv4t7p", "Single Site Circumference Measurement", R.drawable.andrios));//TODO UPDATE
@@ -621,12 +605,11 @@ public static ArrayList<Instruction> getInstructions(){
         videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Stationary Bike Tutorial", R.drawable.andrios));//TODO UPDATE
         videoList.add(new VideoObject("http://www.navy.mil/media/multimedia/prt/push.mp4", "Bodyfat Measurements", R.drawable.andrios));//TODO UPDATE
 
-
 		return videoList;
 	}
 
-
     public ArrayList<int[]> getScoreArrays(Context context) {
+
         Log.d(TAG, "getScoreArrays: isMale: " + isMale + " age: " + age + " isAlt: " + isAltitude);
 
         if (isMale) {
@@ -779,8 +762,6 @@ public static ArrayList<Instruction> getInstructions(){
                     }
                 }
             }
-
-
         } else {
             if (isAltitude) {
                 if (getCardio().equals(context.getString(R.string.cardioswim500))) {
@@ -942,7 +923,6 @@ public static ArrayList<Instruction> getInstructions(){
         scoreArray.add(situpArray);
         scoreArray.add(cardioArray);
     }
-
 
     public Profile getProfile() {
         return profile;

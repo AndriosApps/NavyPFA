@@ -49,9 +49,7 @@ public class LogActivity extends Activity {
         setConnections();
         setOnClickListeners();
     }
-    
 
-	
 	public void onResume(){
 		super.onResume();
 	}
@@ -59,19 +57,14 @@ public class LogActivity extends Activity {
 	public void onPause(){
 		super.onPause();
 	}
-    
-    
 
 	private void getExtras() {
 		Intent intent = this.getIntent();
 		mData = (AndriosData) intent.getSerializableExtra("data");
 	}
 
-
-
 	private void setConnections() {
-		
-		
+
 		newBTN = (Button) findViewById(R.id.logListActivityNewBTN);
 		listView = (ListView) findViewById(R.id.logListActivityListview);
 		logAdapter = new LogAdapter(this, R.layout.list_item_prt_entry,
@@ -90,20 +83,13 @@ public class LogActivity extends Activity {
 		            } else {
 		                return 0;
 		            }
-				
 			}
-
 		});
-		
 	}
-	
-	
+
 	private void setOnClickListeners() {
 			newBTN.setOnClickListener(new OnClickListener(){
 				public void onClick(View v) {
-					/*
-					
-					*/
 					createLogDialog();
 				}
 			});
@@ -118,13 +104,10 @@ public class LogActivity extends Activity {
 					}else{
 						intent = new Intent(v.getContext(), BcaLogViewActivity.class);
 					}
-					
 					intent.putExtra("list", notesList);
 					intent.putExtra("index", row);
 					startActivityForResult(intent, LOGVIEW);
-					
 				}
-
 			});
 			
 			listView.setOnItemLongClickListener(new OnItemLongClickListener(){
@@ -134,21 +117,14 @@ public class LogActivity extends Activity {
 					createDeleteDialog(arg2);
 					return false;
 				}
-				
 			});
 	}
-
-
-
-
 
 	private void createTestNote() {
 		
 		
 	}
 
-    
-	
 	@Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		
@@ -158,13 +134,11 @@ public class LogActivity extends Activity {
     			setConnections();
     			write(LogActivity.this);
     		} else {
-    			
     			Toast.makeText(this, "Log Entry Canceled", Toast.LENGTH_SHORT).show();
     		}
     	}
     }
-	
-	
+
     private void readData() {
 		try {
 			FileInputStream fis = openFileInput("notes");
@@ -177,12 +151,9 @@ public class LogActivity extends Activity {
 		} catch (Exception e) {
 			notesList = new ArrayList<LogEntry>();
 			createTestNote();
-			
-			
 		}
-		
-		
 	}
+
 	private void createDeleteDialog(final int row){
 		
 		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -228,7 +199,6 @@ public class LogActivity extends Activity {
 					intent.putExtra("index", -1);
 					startActivityForResult(intent, LOGVIEW);
 				}
-				
 			}
 		});
 		
@@ -248,7 +218,6 @@ public class LogActivity extends Activity {
 	public void write(Context ctx){
 		
 		try {
-		
 			FileOutputStream fos;
 			fos = ctx.openFileOutput("notes", Context.MODE_PRIVATE);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);

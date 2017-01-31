@@ -99,11 +99,9 @@ public class BcaActivity extends Activity implements Observer {
         bodyFatPercentTextView = (TextView) findViewById(R.id.bodyfat_percent_text_view);
         ageTextView = (TextView) findViewById(R.id.bca_age_text_view);
         ageTextView.setOnClickListener(new View.OnClickListener(){
-
             public void onClick(View v) {
                 showDialog(DATE_DIALOG_ID);
             }
-
         });
 
         passHeightWeightImageView = (ImageView) findViewById(R.id.pass_height_weight_image_view_right);
@@ -655,13 +653,7 @@ public class BcaActivity extends Activity implements Observer {
                     mData.getProfile().getDate().set(Calendar.MONTH, monthOfYear);
                     mData.getProfile().getDate().set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-
                     ageTextView.setText(mData.getAge() + "Yrs");
                 }
-
-
             };
-
-
-
 }

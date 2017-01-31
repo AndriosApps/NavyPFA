@@ -86,7 +86,6 @@ public class NewPrtActivity extends Activity implements Observer {
 
         ageTextView = (TextView) findViewById(R.id.prt_age_text_view);
         ageTextView.setOnClickListener(new View.OnClickListener(){
-
             public void onClick(View v) {
                 showDialog(DATE_DIALOG_ID);
             }
@@ -209,7 +208,6 @@ public class NewPrtActivity extends Activity implements Observer {
 
         toggleCardio();//set initially to 1.5 Mile Run
         updateUI();
-
     }
 
     private void toggleCardio(){
@@ -236,8 +234,6 @@ public class NewPrtActivity extends Activity implements Observer {
         calculateScore();
     }
 
-
-
     private void updateUI() {
 
         weight = mData.getWeight();
@@ -245,6 +241,7 @@ public class NewPrtActivity extends Activity implements Observer {
         initPushupBar();
         initCurlupBar();
         initCardioBar();
+
         pushupTotalLBL.setText(pushups + "");
         curlupTotalLBL.setText(curlups + "");
         cardioTotalLBL.setText(formatTime(runtime));

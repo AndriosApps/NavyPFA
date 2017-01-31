@@ -8,97 +8,103 @@
     android:orientation="vertical"
     tools:context="com.andrios.prt.NewProfileActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/prt_about_card_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@color/prt_good"
-        android:elevation="4dp"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:text="Corey Murphy"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margins"
+        android:layout_marginStart="@dimen/margins"
+        android:layout_marginTop="@dimen/margins"
+        android:backgroundTint="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/profile_title_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="About"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/black" />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/profile_gender_imageview"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="false"
-                    android:background="@drawable/circle"
-                    android:scaleType="fitXY"
-                    android:elevation="6dp"
-                    app:srcCompat="@drawable/icon_male"  />
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="left"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:weightSum="1">
+                    <ImageView
+                        android:id="@+id/profile_gender_image_view"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:adjustViewBounds="false"
+                        android:elevation="6dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/icon_male" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/profile_total_score_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:gravity="bottom|center"
+                        android:text="32yrs"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
 
 
-                <com.andrios.prt.Classes.RoundedImageView
-                    android:id="@+id/profile_image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/circle"
-                    android:adjustViewBounds="true"
-                    android:layout_margin="12dp"
-                    android:padding="48dp"
-                    android:elevation="6dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/icon_profile" />
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="left"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/profile_age_textview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:adjustViewBounds="false"
-                    android:background="@drawable/circle"
-                    android:elevation="6dp"
-                    android:gravity="center"
-                    android:text="32"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
-                    tools:drawableTop="@drawable/icon_age" />
+
+                    <TextView
+                        android:id="@+id/profile_age_text_view"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:elevation="6dp"
+                        android:gravity="center"
+                        android:text="32"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
 
+    </android.support.v7.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"

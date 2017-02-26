@@ -303,7 +303,7 @@ public class BcaActivity extends Activity implements Observer {
         progressItem = new ProgressItem();
         Log.d(TAG, "initHipsSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
-        progressItem.color = R.color.andrios_grey;
+        progressItem.color = R.color.prt_outstanding;
         progressItemList.add(progressItem);
 
         //RED SPAN
@@ -352,7 +352,7 @@ public class BcaActivity extends Activity implements Observer {
         //GREY SPAN
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
-        progressItem.color = R.color.andrios_grey;
+        progressItem.color = R.color.prt_outstanding;
         progressItemList.add(progressItem);
 
         neckSeekBar.initData(progressItemList);
@@ -371,7 +371,7 @@ public class BcaActivity extends Activity implements Observer {
         progressItem = new ProgressItem();
         Log.d(TAG, "initCircumSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
-        progressItem.color = R.color.andrios_grey;
+        progressItem.color = R.color.prt_outstanding;
         progressItemList.add(progressItem);
 
         //GREY SPAN
@@ -411,7 +411,7 @@ public class BcaActivity extends Activity implements Observer {
         //GREY SPAN
         progressItem = new ProgressItem();
         progressItem.progressItemPercentage = (remainderSpan / totalSpan) * 100;
-        progressItem.color = R.color.andrios_grey;
+        progressItem.color = R.color.prt_outstanding;
         progressItemList.add(progressItem);
         Log.d(TAG, "initHeightSeekBar: Number of Progress Items: " + progressItemList.size());
 
@@ -434,7 +434,7 @@ public class BcaActivity extends Activity implements Observer {
         progressItem = new ProgressItem();
         Log.d(TAG, "initWeightSeekBar: pass span percent " + (passSpan / totalSpan) * 100 + "%");
         progressItem.progressItemPercentage = ((passSpan / totalSpan) * 100);
-        progressItem.color = R.color.andrios_grey;
+        progressItem.color = R.color.prt_outstanding;
         progressItemList.add(progressItem);
 
         //GREY SPAN

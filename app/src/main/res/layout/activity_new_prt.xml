@@ -130,7 +130,6 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
-
                 <ImageView
                     android:id="@+id/pass_circumference_image_view_left"
                     android:layout_width="32dp"
@@ -187,8 +186,8 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/pushup_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent" />
+                    android:layout_height="30dp"
+                    android:progressDrawable="@android:color/transparent"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -291,8 +290,8 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/curlup_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent" />
+                    android:layout_height="30dp"
+                    android:progressDrawable="@android:color/transparent"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -398,7 +397,7 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/cardio_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:progressDrawable="@android:color/transparent" />
 
                 <LinearLayout

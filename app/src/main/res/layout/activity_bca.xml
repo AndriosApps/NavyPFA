@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/metrics_text_view"
@@ -67,9 +67,6 @@
                     android:layout_weight="3"
                     android:gravity="right"
                     android:orientation="vertical">
-
-
-
 
                 </LinearLayout>
 
@@ -131,9 +128,8 @@
 
                 <TextView
                     android:id="@+id/age_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
                     android:gravity="center"
                     android:text="Height / Weight"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -165,9 +161,8 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/height_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
+                    android:layout_height="30dp"
+                    android:progressDrawable="@android:color/transparent"/>
 
 
             </LinearLayout>
@@ -188,9 +183,8 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/weight_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
+                    android:layout_height="30dp"
+                    android:progressDrawable="@android:color/transparent"/>
 
             </LinearLayout>
 
@@ -262,9 +256,8 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/pushup_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
+                    android:layout_height="30dp"
+                    android:progressDrawable="@android:color/transparent"/>
 
 
             </LinearLayout>
@@ -358,10 +351,8 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/neck_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
-
+                    android:layout_height="30dp"
+                    android:progressDrawable="@android:color/transparent"/>
 
             </LinearLayout>
 
@@ -400,9 +391,8 @@
                 <com.andrios.prt.CustomSeekBar
                     android:id="@+id/hips_seek_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@android:color/transparent"
-                    android:thumbOffset="12dp" />
+                    android:layout_height="30dp"
+                    android:progressDrawable="@android:color/transparent"/>
 
 
             </LinearLayout>
